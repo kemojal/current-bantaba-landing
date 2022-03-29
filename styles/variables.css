@@ -1,0 +1,47 @@
+:root {
+    --main-bg-color: #00853B;
+    --dark-green-color: #005225;
+    --jade-green-color: #4FBA7E;
+    --algae-green-color: #00853B;
+    --white-ice-color: #E8FCF0;
+    --rum-swizzle-color: #FCF9E8;
+    --alabaster-color: #FAFAFA;
+    --bg-black-color: #131313;
+    --bg-white-color: #ffffff;
+
+    --h1-font-size: 28px;
+    --h2-font-size: 20px;
+    --h3-font-size: 20px;
+    --body-font-size: 18px;
+    --base-font-size: 16px;
+
+    --l3-height: 32px;
+
+    --button-padding-vertical: 14.5px;
+    --button-padding-horizontal: 44px;
+    --button-border-radius: 20px;
+
+    --geyser: #d6dceb;
+    --alabaster: #fafaff;
+    --chicago: #5d5d5d;
+    --onyx: #393939;
+    --narvik: #e8fcf1;
+    --kaitoke-green: #005225;
+    --algae-green: #9ce1b8;
+    --fun-green: #00853b;
+    --licorice: #131313;
+    --ottoman: #e8fcf0;
+    --white: #ffffff;
+    --font-size-l: 20px;
+    --font-size-m: 18px;
+    --font-size-s: 16px;
+    --font-size-xl: 24px;
+    --font-size-xs: 14px;
+    --font-size-xxl: 28px;
+    --font-size-xxs: 13px;
+    --font-family-noto_sans: "Noto Sans", Helvetica;
+
+
+    --normal-text-color: #5B615E;
+
+}

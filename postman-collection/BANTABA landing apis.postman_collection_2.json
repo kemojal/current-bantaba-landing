@@ -1,0 +1,918 @@
+{
+	"info": {
+		"_postman_id": "9d2c53b1-01e2-442a-a4c2-cdea54e07b1f",
+		"name": "BANTABA APIS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Landing Page",
+			"item": [
+				{
+					"name": "FAQ",
+					"item": [
+						{
+							"name": "ALL FAQ GROUPS By Lang",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/faqs/groups/all",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"faqs",
+										"groups",
+										"all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CREATE FAQ GROUP",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"group_name\":\"Peace\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:3000/faqs/create/group",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"faqs",
+										"create",
+										"group"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CREATE FAQ QUESTION",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"lang\":\"en\",\n\t\"question_text\": \"what is peace\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:3000/faqs/group/4/add-question",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"faqs",
+										"group",
+										"4",
+										"add-question"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CREATE FAQ ANSWER",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"lang\":\"en\",\n\t\"question_id\": \"3\",\n\t\"answer_text\": \"Welcome to the website. If you're here, you're likely looking to find random words.\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:3000/faqs/group/4/question/add-answer",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"faqs",
+										"group",
+										"4",
+										"question",
+										"add-answer"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DELETE FAQ GROUP",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:3000/faqs/group/4/delete",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"faqs",
+										"group",
+										"4",
+										"delete"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Partners",
+					"item": [
+						{
+							"name": "GET ALL PARTNERS",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:3000/partners/all",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"partners",
+										"all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CREATE  PARTNERS",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n     \"name\": \"Spencer Milimu\",\r\n        \"position\": \"Tutor\",\r\n        \"image\": \"http://localhost:3000\",\r\n        \"company_name\": \"IBM\",\r\n        \"message\": \"When  make a type specimen book.\",\r\n        \"lang\": \"en\"\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:3000/partners/create",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"partners",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DELETE PARTNER",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n     \"name\": \"Spencer Milimu\",\r\n        \"position\": \"Tutor\",\r\n        \"image\": \"http://localhost:3000\",\r\n        \"company_name\": \"IBM\",\r\n        \"message\": \"When  make a type specimen book.\",\r\n        \"lang\": \"en\"\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:3000/partners/6/delete",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"partners",
+										"6",
+										"delete"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Teams",
+					"item": [
+						{
+							"name": "GET ALL TEAM MEMBERS BY LANG",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/teams/members/lang/all",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"teams",
+										"members",
+										"lang",
+										"all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CREATE TEAM MEMBER",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\t\"name\":\"New Member\",\n\t\t\"email\":\"membernext@example.com\",\n\t\t\"lang\": \"en\",\n\t\t\"position\": \"Human Resource\",\n\t\t\"linkedin\": \"https://linkedin.com/new-member\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:3000/teams/member/create",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"teams",
+										"member",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DELETE TEAM MEMBER",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:3000/teams/member/1/delete",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"teams",
+										"member",
+										"1",
+										"delete"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Testimonials",
+					"item": [
+						{
+							"name": "ALL TESTIMONIALS BY LANG",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"lang\": \"en\"\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:3000/testimonials/lang/all",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"testimonials",
+										"lang",
+										"all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CREATE TESTIMONIAL",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n     \"name\": \"Spencer Milimu\",\r\n        \"position\": \"Tutor\",\r\n        \"image\": \"http://localhost:3000\",\r\n        \"company_name\": \"IBM\",\r\n        \"message\": \"When  make a type specimen book.\",\r\n        \"lang\": \"en\"\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:3000/testimonials/create",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"testimonials",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DELETE TESTIMONIAL",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n     \"name\": \"Spencer Milimu\",\r\n        \"position\": \"Tutor\",\r\n        \"image\": \"http://localhost:3000\",\r\n        \"company_name\": \"IBM\",\r\n        \"message\": \"When  make a type specimen book.\",\r\n        \"lang\": \"en\"\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:3000/testimonials/2/delete",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"testimonials",
+										"2",
+										"delete"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Newsletter",
+					"item": [
+						{
+							"name": "ALL SIGN UP",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/newsletter/all",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"newsletter",
+										"all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SIGNUPS BY CATEGORIES",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/newsletter/all",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"newsletter",
+										"all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CREATE SIGN UP",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\t\"name\": \"Henry Ford\",\n\t\t\"category\": \"startup\",\n\t\t\"email\": \"ford@email.com\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:3000/newsletter/create",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"newsletter",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DELETE NEWSLETTER SIGNUP",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:3000/newsletter/email/kayinva@email.com/delete",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"newsletter",
+										"email",
+										"kayinva@email.com",
+										"delete"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Non Diaspora Waiting List",
+					"item": [
+						{
+							"name": "ALL  DIASPORA SIGN UP",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/nonDiaspora/all",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"nonDiaspora",
+										"all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CREATE NON DIASPORA SIGN UP",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\t\"firstname\": \"Edgar\",\n\t\t\"category\": \"consult\",\n\t\t\"email\": \"fiedgar@email.com\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:3000/nonDiaspora/create",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"nonDiaspora",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DELETE NON DIASPORA SIGN UP",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": \"11\",\r\n    \"user_id\": 2,\r\n            \"username\": \"Elvis\",\r\n            \"user_type\": 3,\r\n            \"referrals_count\": 13\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:3000/referrals/1/delete",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"referrals",
+										"1",
+										"delete"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Contacts",
+					"item": [
+						{
+							"name": "ALL CONTACTS",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/contacts/all",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"contacts",
+										"all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "FIND CONTACT BY EMAIL",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/contacts/email/newton@email.com",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"contacts",
+										"email",
+										"newton@email.com"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CREATE CONTACT",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Newton\",\r\n        \"email\": \"newton@email.com\",\r\n        \"message\": \"Ise before Letraset made it popular as a dummy text \"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/contacts/create",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"contacts",
+										"create"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "REFERRALS",
+					"item": [
+						{
+							"name": "ALL REFERRALS",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:3000/referrals/all",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"referrals",
+										"all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "COUNT REFERRALS BY ID",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:3000/referrals/count/11",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"referrals",
+										"count",
+										"11"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CREATE REFERRALS",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"user_id\": 11,\r\n        \"username\": \"Elvis\",\r\n        \"user_type\": 2,\r\n        \"referrals_count\": 3\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:3000/referrals/create",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"referrals",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UPDATE REFERRAL",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": \"11\",\r\n    \"user_id\": 2,\r\n            \"username\": \"Elvis\",\r\n            \"user_type\": 3,\r\n            \"referrals_count\": 13\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:3000/referrals/update",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"referrals",
+										"update"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DELETE REFERRAL",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": \"11\",\r\n    \"user_id\": 2,\r\n            \"username\": \"Elvis\",\r\n            \"user_type\": 3,\r\n            \"referrals_count\": 13\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:3000/referrals/1/delete",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"referrals",
+										"1",
+										"delete"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Blog",
+					"item": [
+						{
+							"name": "All. Blogs",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Press",
+					"item": [
+						{
+							"name": "All Press",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,26 @@
+export default {
+  hero_header: `Rejoignez la plus grande Communauté Africaine Startups-diaspora `,
+  hero_discription: `Notre plateforme met en relation les startups tech africaines avec des experts et investisseurs de la diaspora Africaine. `,
+  // functionData: ['Savoir', 'Capital', 'Réseautage'],
+  knowledge: 'Savoir',
+  capital: 'Capital',
+  network: 'Réseautage',
+  create_account: `Créer un compte`,
+  login: 'Se connecter',
+  why_join_diaspora: `Pourquoi rejoindre notre communauté diasporique ?`,
+  discover_mentor_and_invest:
+    'Découvrez, encadrez et investissez dans des startups technologiques africaines.',
+  get_an_opportunity: `Saisissez l'opportunité de faire partie de la success story d'une startup
+    et contribuer à l'écosystème technologique africain`,
+  join_as_diaspora: `S'inscrire comme diaspora`,
+  are_you_none_diaspora: `Êtes-vous un non-diaspora intéressé par l'écosystème tech Africain ?`,
+  connect_with_us: 'Connectez-vous',
+  here: 'ici',
+  invest_in_afica: 'Investir en Afrique',
+  be_part_of_the_startup_success: `Contribuer à la réussite d'une startup`,
+  career_opportunities: 'Opportunités de carrière',
+  invest_subtext: `Découvrez des opportunités d'investissement en accédant à un grand nombre de startups tech africaines - Choisir parmi un millier`,
+  startup_success_subtext: `Participer à la création de startups prometteuses dans l'écosystème tech africain par le biais du mentorat et du conseil.`,
+  career_opportunities_subtext: `Trouvez des opportunités d'emploi attrayantes en Afrique en parcourant notre liste de carrière soigneusement élaborée.`,
+  en_title_: `bmbmbmbmbmbmmbmbmbmbm`,
+};
