@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Img } from '../components/Img';
+import { useSelector } from 'react-redux';
 
 import Select from 'react-select';
 
 const ModalContainer = styled.div`
+
   position: fixed;
   top: 0;
   left: 0;
@@ -12,6 +14,7 @@ const ModalContainer = styled.div`
   height: 100%;
   background: rgba(0, 0, 0, 0.7);
   z-index: 10;
+  display: none;
   .main-modal {
     position: fixed;
     background: #ffffff;
@@ -229,10 +232,10 @@ const ModalContainer = styled.div`
   }
 `;
 const JoinNewsLetterModal = () => {
-    const [formStage, setFormStage] = useState(2);
-    const closemodal = ()=>{
-        
-    }
+  const [formStage, setFormStage] = useState(2);
+
+  const { isNewsLetterModal } = useSelector((state) => state);
+  const closemodal = () => {};
   const options = [
     { value: 'Invest', label: 'Invest' },
     { value: 'Mentor', label: 'Mentor' },
@@ -259,6 +262,7 @@ const JoinNewsLetterModal = () => {
                   companies to invest in. We promise, we would only send you the
                   good stuff.
                 </p>
+
                 <div className='modal-input-container'>
                   <form>
                     <input type='text' className='name' placeholder='Name' />
@@ -317,9 +321,8 @@ const JoinNewsLetterModal = () => {
                 <p className='s2-text'>
                   Thank you for your interest, we will be in touch soon.
                 </p>
-                              <button
-                                  onclick={closemodal}
-                                  className='back-to-home-btn'>
+                <p> modal status {isNewsLetterModal}</p>
+                <button onclick={closemodal} className='back-to-home-btn'>
                   <div className='button-arrow'>
                     <Img
                       src='back-arrow.svg'
@@ -328,6 +331,7 @@ const JoinNewsLetterModal = () => {
                       objectFit='cover'
                     />
                   </div>
+
                   <span className='btn-text'>Back To Home</span>
                 </button>
               </div>
