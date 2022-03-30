@@ -107,6 +107,7 @@ import { Press } from '../Sections/Press';
 import { Partner } from '../Sections/Partner';
 import { Mission } from '../Sections/Mission';
 import Illustration from '../Sections/Illustration';
+import JoinNewsLetterModal from '../components/JoinNewsLetterModal';
 
 export default function Home() {
   const router = useRouter();
@@ -140,6 +141,7 @@ export default function Home() {
         <Partner lang={lan} />
         <Mission lang={lan} />
         <NavBar locale={lan} path={'/'} router={router} />
+        <JoinNewsLetterModal />
       </main>
 
       {/* <footer className={styles.footer}>
