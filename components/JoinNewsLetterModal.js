@@ -13,6 +13,7 @@ const ModalContainer = styled.div`
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.7);
+  display:${({ modalState }) => (modalState ? 'block' : 'none')} ;
   z-index: 10;
   display: none;
   .main-modal {
@@ -195,6 +196,7 @@ const ModalContainer = styled.div`
       justify-content: center;
       align-items: center;
       cursor: pointer;
+      /* z-index: 90; */
   }
   .back-to-home-btn{
       cursor: pointer;
@@ -231,25 +233,31 @@ const ModalContainer = styled.div`
     height: 14px;
   }
 `;
-const JoinNewsLetterModal = () => {
-    const showHideClassName = show ? "modal display-block" : "modal display-none";
-    const [formStage, setFormStage] = useSta[te(2);
-    const 
+const JoinNewsLetterModal = ({ handleClose, show }) => {
+  const [formStage, setFormStage] = useState(2);
+  const [modalState, setModalState] = useState(show ? true : false);
+
+//   const showHideClassName = modalState
+//     ? 'modal display-block'
+//     : 'modal display-none';
 
   const { isNewsLetterModal } = useSelector((state) => state);
-  const closemodal = () => {};
+  const closemodal = () => {
+    setModalState(false);
+    alert('closed');
+  };
   const options = [
     { value: 'Invest', label: 'Invest' },
     { value: 'Mentor', label: 'Mentor' },
     { value: 'Consult', label: 'Consult' },
   ];
-  useEffect(() => {
-    document.body.style.overflow = 'hidden';
-    return () => (document.body.style.overflow = 'unset');
-  }, []);
+  //   useEffect(() => {
+  //     document.body.style.overflow = 'hidden';
+  //     return () => (document.body.style.overflow = 'unset');
+  //   }, []);
   //
   return (
-    <ModalContainer>
+    <ModalContainer modalState={modalState}>
       <div className='main-modal'>
         <div className='relative-container'>
           {formStage == 0 && (
@@ -324,7 +332,7 @@ const JoinNewsLetterModal = () => {
                   Thank you for your interest, we will be in touch soon.
                 </p>
                 <p> modal status {isNewsLetterModal}</p>
-                <button onclick={closemodal} className='back-to-home-btn'>
+                <button onClick={closemodal} className='back-to-home-btn'>
                   <div className='button-arrow'>
                     <Img
                       src='back-arrow.svg'
@@ -340,7 +348,7 @@ const JoinNewsLetterModal = () => {
             </>
           )}
 
-          <div className='close-btn' onclick={closemodal}>
+          <div className='close-btn' onClick={closemodal}>
             <div className='close-img'>
               <Img src='close.svg' alt='logo' layout='fill' objectFit='cover' />
             </div>
