@@ -232,7 +232,9 @@ const ModalContainer = styled.div`
   }
 `;
 const JoinNewsLetterModal = () => {
-  const [formStage, setFormStage] = useState(2);
+    const showHideClassName = show ? "modal display-block" : "modal display-none";
+    const [formStage, setFormStage] = useSta[te(2);
+    const 
 
   const { isNewsLetterModal } = useSelector((state) => state);
   const closemodal = () => {};
