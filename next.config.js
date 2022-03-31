@@ -13,13 +13,16 @@ module.exports = {
     defaultLocale: 'en',
     locales: ['en', 'fr'],
   },
-  reactStrictMode: true,
+  images: {
+    domains: ['res.cloudinary.com'],
+  },
+  // reactStrictMode: true,
 
   // domains: ['res.cloudinary.com'],
 };
 
-module.exports = {
-  images: {
-    domains: ['res.cloudinary.com'],
-  },
-};
+// module.exports = {
+//   images: {
+//     domains: ['res.cloudinary.com'],
+//   },
+// };

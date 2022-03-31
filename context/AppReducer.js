@@ -20,6 +20,8 @@ export default (state, action) => {
         ...state,
         showJoinNewsLetterModal: action.payload,
       };
+    case 'SET_LANGUAGE':
+      return { ...state, currentLanguage: action.payload };
     default:
       return state;
   }

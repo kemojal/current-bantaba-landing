@@ -134,7 +134,7 @@ const HeroSection = styled.section`
       /* margin-top: 28px; */
       margin-top: 2.8rem;
       padding-bottom: 3.25rem;
-      border-bottom: 1px solid ##C9CECB;
+      border-bottom: 1px solid ##c9cecb;
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
@@ -280,7 +280,7 @@ export const Hero = ({ lang }) => {
           title={lang.create_account}
           isArrow={true}
           color={'white'}
-          maxWidth ='276.4px'
+          maxWidth='276.4px'
           href='https://community.ourbantaba.com/en/register'
         />
         <ButtonArrow
@@ -288,7 +288,7 @@ export const Hero = ({ lang }) => {
           title={lang.login}
           bgcolor='transparent'
           color='#009743'
-          maxWidth='120px'
+          maxWidth='150px'
           href='https://community.ourbantaba.com/en/login'
         />
       </motion.div>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Link from 'next/link';
 
 import { useDispatch } from 'react-redux';
@@ -7,6 +7,8 @@ import styled from 'styled-components';
 import ButtonArrow from '../components/ButtonArrow.';
 import Select from 'react-select';
 import { Img } from '../components/Img';
+
+import { GlobalContext } from '../context/GlobalState';
 
 // import { useRouter } from 'next/router';
 
@@ -265,7 +267,9 @@ const Menu = styled.ul`
   }
 `;
 const Customselect = styled.select``;
+
 export const NavBar = ({ locale, router, path }) => {
+  const { setCurrentLanguage } = useContext(GlobalContext);
   const [hastoggle, setHastoggle] = useState(false);
   const toggleHambburger = () => {
     setHastoggle(!hastoggle);
@@ -281,7 +285,8 @@ export const NavBar = ({ locale, router, path }) => {
   const [currentLang, setCurrentLang] = useState('en');
   const selectLanguage = (e) => {
     setCurrentLang(e.value);
-    dispatch({ type: 'SET_LANGUAGE', payload: e.value });
+    setCurrentLanguage(e.value);
+    // dispatch({ type: 'SET_LANGUAGE', payload: e.value });
     closeNav();
     // console.log('option select. = ', currentLang);
   };
@@ -291,9 +296,10 @@ export const NavBar = ({ locale, router, path }) => {
   const onChangeLanguage = (e) => {
     const locale = e.target.value;
     // console.log('router path ', router);
-    // router.push('/', '/', { locale });
-    router.push(path, path, { locale });
-    dispatch({ type: 'SET_LANGUAGE', payload: locale });
+    router.push('/', '/', { locale });
+    // router.push(path, path, { locale });
+    setCurrentLanguage(locale);
+    // dispatch({ type: 'SET_LANGUAGE', payload: locale });
     closeNav();
   };
   return (

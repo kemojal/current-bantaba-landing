@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 
 import Head from 'next/head';
 import Image from 'next/image';
@@ -111,10 +111,14 @@ import { Mission } from '../Sections/Mission';
 import Illustration from '../Sections/Illustration';
 import JoinNewsLetterModal from '../components/JoinNewsLetterModal';
 
+import { GlobalContext } from '../context/GlobalState';
+
 export default function Home({ press }) {
   const router = useRouter();
   const { locale } = router;
   const lan = locale == 'en' ? en : fr;
+
+  const { currentLanguage } = useContext(GlobalContext);
 
   // const { currentLanguage } = useSelector((state) => state);
 
