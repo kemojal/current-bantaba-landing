@@ -48,6 +48,7 @@ const PressSection = styled.section`
 
   @media (min-width: 1280px) {
     background-color: #f9f9f9;
+    background-color: white;
     .card-container {
       flex-direction: row;
       height: auto;
@@ -92,6 +93,7 @@ const PressSection = styled.section`
       line-height: 150%;
       text-align: center;
       color: #009743;
+      display: none;
     }
     .view-icon {
       position: relative;
@@ -107,7 +109,7 @@ const PressSection = styled.section`
     }
   }
 `;
-export const Press = () => {
+export const Press = ({ press }) => {
   return (
     <PressSection>
       <div className='fluid'>
@@ -133,11 +135,14 @@ export const Press = () => {
         </Fade>
         <Fade bottom>
           <div className='card-container'>
-            <PressCard />
-            <PressCard />
-            <PressCard />
-            <PressCard />
-            <PressCard />
+            {press.press.map((item, index) => {
+              return <PressCard key={index} {...item} />;
+            })}
+            {/* <PressCard {...press.press[0]} />
+            <PressCard {...press.press[1]} />
+            <PressCard {...press.press[2]} />
+            <PressCard {...press.press[3]} />
+            <PressCard {...press.press[4]} /> */}
           </div>
         </Fade>
         <ArrowButton position={'left'} />

@@ -71,6 +71,11 @@ const Aboutontainer = styled.div`
     position: relative;
     width: 350px;
     height: 111px;
+
+    width: 350px;
+    height: 265px;
+    border-radius: 10px;
+    overflow: hidden;
   }
   .bg-section-two {
     background-color: #e8fcf1;
@@ -126,7 +131,7 @@ const Aboutontainer = styled.div`
     position: relative;
   }
   .section-four {
-    margin-top: 100px;
+    margin-top: 150px;
     padding-bottom: 4rem;
     position: relative;
   }
@@ -195,9 +200,30 @@ const Aboutontainer = styled.div`
     .about-img-2 {
       width: 558px;
       height: 358px;
+      /* height: 422px; */
       border-radius: 10px;
       overflow: hidden;
       margin: 0;
+      /* background-color: red; */
+    }
+    .h-422 {
+      height: 422px;
+    }
+    .h-324 {
+      height: 318px;
+    }
+    .h-399 {
+      height: 399px;
+    }
+    .about-img-22 {
+      width: 558px;
+
+      height: 422px;
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 0;
+      background-color: green;
+      position: relative;
     }
     .img-wrapper {
       width: auto;
@@ -227,6 +253,22 @@ const Aboutontainer = styled.div`
       line-height: 150%;
       text-align: center;
       color: #011108;
+      position: relative;
+    }
+    .fixed-bg {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      height: 100%;
+      /* background-color: pink !important; */
+    }
+    .fixed-bg-relative {
+      position: relative;
+      width: 1146px;
+      height: 206px;
+      width: 100%;
     }
     .color-green-desktop {
       color: #009743;
@@ -283,7 +325,7 @@ const Aboutontainer = styled.div`
   }
 `;
 
-export default function about() {
+export default function About({ team }) {
   const router = useRouter();
   const { locale } = router;
   const lan = locale == 'en' ? en : fr;
@@ -341,15 +383,15 @@ export default function about() {
               <div className='img-wrapper'>
                 <div className='about-img-1 hide-on-desktop'>
                   <Img
-                    src={'about-img-1.svg'}
+                    src={'Group-image_1.jpg'}
                     alt='logo'
                     layout='fill'
                     objectFit='contain'
                   />
                 </div>
-                <div className='about-img-2 hide-on-mobile'>
+                <div className='about-img-2 h-422 hide-on-mobile'>
                   <Img
-                    src={'about-img-1d.svg'}
+                    src={'Group-image_1.jpg'}
                     alt='logo'
                     layout='fill'
                     objectFit='contain'
@@ -386,15 +428,15 @@ export default function about() {
             <Fade bottom>
               <div className='about-img-2 hide-on-desktop'>
                 <Img
-                  src={'about-img-2.svg'}
+                  src={'Group-image_2.jpg'}
                   alt='logo'
                   layout='fill'
                   objectFit='contain'
                 />
               </div>
-              <div className='about-img-2 hide-on-mobile'>
+              <div className='about-img-2 h-324 hide-on-mobile'>
                 <Img
-                  src={'about-img-2d.svg'}
+                  src={'Group-image_2.jpg'}
                   alt='logo'
                   layout='fill'
                   objectFit='contain'
@@ -428,9 +470,9 @@ export default function about() {
           </div>
           <div className='desk-textcolum align-column-end'>
             <Fade bottom>
-              <div className='about-img-2 hide-on-mobile'>
+              <div className='about-img-2 h-399 hide-on-mobile'>
                 <Img
-                  src={'about-img-3d.svg'}
+                  src={'Group-image_3.jpg'}
                   alt='logo'
                   layout='fill'
                   objectFit='contain'
@@ -460,6 +502,16 @@ export default function about() {
               </div>
             </Fade>
           </div>
+          <div className='fixed-bg hide-on-mobile'>
+            <div className='fixed-bg-relative'>
+              <Img
+                src={'fixed-bg-about.svg'}
+                alt='logo'
+                layout='fill'
+                objectFit='contain'
+              />
+            </div>
+          </div>
           <Fade bottom>
             <p className='notosans-bold-licorice-22px  align-center z-10 blob-green'>
               It&#39;s{' '}
@@ -477,19 +529,9 @@ export default function about() {
           </Fade>
           <Fade bottom>
             <ul className='team-list'>
-              <AboutTeamCard name='Lamin K. Darboe' position='CEO' />
-              <AboutTeamCard
-                name='Lamin K. Darboe'
-                position='Co-Founder & CTO'
-              />
-              <AboutTeamCard
-                name='Lamin K. Darboe'
-                position='Co-Founder & CMO'
-              />
-              <AboutTeamCard
-                name='Lamin K. Darboe'
-                position='Software Engineer'
-              />
+              {team.team.map((item, index) => {
+                return <AboutTeamCard key={index} {...item} />;
+              })}
             </ul>
           </Fade>
         </div>
@@ -499,3 +541,11 @@ export default function about() {
     </Aboutontainer>
   );
 }
+
+About.getInitialProps = async (ctx) => {
+  const res = await fetch(
+    'https://landingapi-dev.ourbantaba.com/teams/members/fr/all'
+  );
+  const json = await res.json();
+  return { team: json };
+};

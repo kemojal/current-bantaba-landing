@@ -146,15 +146,19 @@ export const Mission = () => {
   const socialList = [
     {
       scrDesktop: 'twiiter-d.svg',
+      link: ' //twitter.com/OurBantaba/',
     },
     {
       scrDesktop: 'facebook-d.svg',
+      link: ' //www.facebook.com/ourbantaba/',
     },
     {
       scrDesktop: 'instagram-d.svg',
+      link: '//www.instagram.com/ourbantaba/',
     },
     {
       scrDesktop: 'linkedin-d.svg',
+      link: ' //www.linkedin.com/company/bantaba/',
     },
   ];
 
@@ -191,10 +195,10 @@ export const Mission = () => {
         </Fade>
 
         <div className='sub-mission address-w-25'>
-          <div className="hide-on-mobile">
-          <FooterCols {...address} />
+          <div className='hide-on-mobile'>
+            <FooterCols {...address} />
           </div>
-         
+
           <Fade bottom>
             <SocialContainer socialList={socialList} />
           </Fade>

@@ -30,6 +30,7 @@ const SocialDiv = styled.div`
 const SocialContainer = ({ socialList }) => {
   return (
     <SocialDiv>
+    
       <div className="containerDiv">
         {socialList.map((item, index) => {
           return <SocialIcons key={index} {...item} />;

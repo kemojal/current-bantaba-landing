@@ -2,6 +2,7 @@
 
 const nextConfig = {
   reactStrictMode: true,
+  // domains: ['res.cloudinary.com'],
 };
 
 module.exports = nextConfig;
@@ -11,5 +12,14 @@ module.exports = {
   i18n: {
     defaultLocale: 'en',
     locales: ['en', 'fr'],
+  },
+  reactStrictMode: true,
+
+  // domains: ['res.cloudinary.com'],
+};
+
+module.exports = {
+  images: {
+    domains: ['res.cloudinary.com'],
   },
 };

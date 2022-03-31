@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import ButtonArrow from '../components/ButtonArrow.';
 import Select from 'react-select';
 import { Img } from '../components/Img';
+
 // import { useRouter } from 'next/router';
 
 const Nav = styled.nav`
@@ -285,7 +286,7 @@ export const NavBar = ({ locale, router, path }) => {
     // console.log('option select. = ', currentLang);
   };
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const onChangeLanguage = (e) => {
     const locale = e.target.value;

@@ -111,12 +111,12 @@ import { Mission } from '../Sections/Mission';
 import Illustration from '../Sections/Illustration';
 import JoinNewsLetterModal from '../components/JoinNewsLetterModal';
 
-export default function Home() {
+export default function Home({ press }) {
   const router = useRouter();
   const { locale } = router;
   const lan = locale == 'en' ? en : fr;
 
-  const { currentLanguage } = useSelector((state) => state);
+  // const { currentLanguage } = useSelector((state) => state);
 
   return (
     <div className={styles.container}>
@@ -139,7 +139,7 @@ export default function Home() {
         <About lang={lan} />
         <MapSection lang={lan} />
         <Testimonial lang={lan} />
-        <Press lang={lan} />
+        <Press lang={lan} press={press} />
         <Partner lang={lan} />
         <Mission lang={lan} />
         <NavBar locale={lan} path={'/'} router={router} />
@@ -161,3 +161,9 @@ export default function Home() {
     </div>
   );
 }
+
+Home.getInitialProps = async (ctx) => {
+  const res = await fetch('https://blogapi.ourbantaba.com/presses/all/en');
+  const json = await res.json();
+  return { press: json };
+};

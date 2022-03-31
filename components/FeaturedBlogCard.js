@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Img } from '../components/Img';
 import Fade from 'react-reveal/Fade';
 import Link from 'next/link';
-
+import Image from 'next/image';
 const FeaturedBlogCardContainer = styled.div`
   width: 100%;
   /* width: 754px; */
@@ -24,6 +24,8 @@ const FeaturedBlogCardContainer = styled.div`
     align-items: center;
     justify-content: center;
     padding: 10px 0;
+    /* border-radius: 10px;
+    overflow: hidden; */
   }
   .f-img-wrapper {
     /* width: 696px;
@@ -38,6 +40,8 @@ const FeaturedBlogCardContainer = styled.div`
 
     /* width: 100%; */
     position: relative;
+    border-radius: 10px;
+    overflow: hidden;
   }
   .featured-body {
     display: flex;
@@ -105,30 +109,29 @@ const FeaturedBlogCardContainer = styled.div`
     margin-top: 20px;
   }
 `;
-const FeaturedBlogCard = () => {
+const FeaturedBlogCard = ({
+  title,
+  category,
+  read_time,
+  summary,
+  cover_img,
+}) => {
   return (
     <FeaturedBlogCardContainer>
       <div className='featured-img-cover'>
         <Fade bottom>
           <div className='f-img-wrapper'>
-            <Img
-              src='featured-img-cover.svg'
-              alt='logo'
-              layout='fill'
-              objectFit='cover'
-            />
+            <Image src={cover_img} alt='logo' layout='fill' objectFit='cover' />
           </div>
         </Fade>
       </div>
       <div className='featured-body'>
         <Fade bottom>
-          <p className='f-title'>
-            How STEM education could solve Africa&#39;s problems
-          </p>
+          <p className='f-title'>{title}</p>
         </Fade>
         <div className='f-category-row'>
           <Fade bottom>
-            <p className='f-category'>Category</p>
+            <p className='f-category'>{category}</p>
           </Fade>
           <div className='f-read-time'>
             <Fade bottom>
@@ -142,21 +145,12 @@ const FeaturedBlogCard = () => {
               </div>
             </Fade>
             <Fade bottom>
-              <span className='f-read-time-label'>Read 1 min</span>
+              <span className='f-read-time-label'>Read {read_time}</span>
             </Fade>
           </div>
         </div>
         <Fade bottom>
-          <div className='f-summary-text'>
-            STEM education worldwide is increasing in popularity—more schools
-            are implementing STEM learning into their curriculum and making it
-            an integral part of what they teach.
-            <br />
-            <br />
-            If Africans solve problems and lead social and economic development
-            in their own countries – rather than leaving it to international
-            aid...
-          </div>
+          <div className='f-summary-text'>{summary}</div>
         </Fade>
         <div className='read-button'>
           <Fade bottom>

@@ -5,7 +5,7 @@ import Fade from 'react-reveal/Fade';
 import Link from 'next/link';
 
 const DesktopBlogCardContainer = styled.div`
-  width:${({ width }) => (width ? width : 'calc(50% - 15px)')}; 
+  width: ${({ width }) => (width ? width : 'calc(50% - 15px)')};
   padding: 20px 0;
   background: #ffffff;
   box-shadow: 1.91534px 3.83069px 100px 1.91534px rgba(166, 166, 166, 0.15);
@@ -14,8 +14,6 @@ const DesktopBlogCardContainer = styled.div`
   margin-bottom: ${({ mBottom }) => (mBottom ? mBottom : '0')};
   margin-left: ${({ mLeft }) => (mLeft ? mLeft : '0')};
   margin-right: ${({ mRight }) => (mRight ? mRight : '0')};
-
-
 
   .blog-img-cover {
     display: flex;
@@ -92,14 +90,25 @@ const DesktopBlogCardContainer = styled.div`
     color: #1c202a;
   }
 `;
-const DesktopBlogCard = ({ mTop, mBottom, mLeft, mRight, width }) => {
+const DesktopBlogCard = ({
+  mTop,
+  mBottom,
+  mLeft,
+  mRight,
+  width,
+  title,
+  category,
+  read_time,
+  summary,
+  cover_img,
+}) => {
   return (
     <DesktopBlogCardContainer
       mTop={mTop}
       mBottom={mBottom}
       mLeft={mLeft}
-          mRight={mRight}
-          width={width}
+      mRight={mRight}
+      width={width}
     >
       <div className='blog-img-cover'>
         <Fade bottom>
@@ -115,13 +124,11 @@ const DesktopBlogCard = ({ mTop, mBottom, mLeft, mRight, width }) => {
       </div>
       <div className='blog-card-body'>
         <Fade bottom>
-          <p className='blog-title'>
-            Why you should mentor a start-up in Africa
-          </p>
+          <p className='blog-title'>{title}</p>
         </Fade>
         <div className='category-row'>
           <Fade bottom>
-            <p className='b-category'>Diaspora</p>
+            <p className='b-category'>{category}</p>
           </Fade>
           <div className='read-time'>
             <Fade bottom>
@@ -135,7 +142,7 @@ const DesktopBlogCard = ({ mTop, mBottom, mLeft, mRight, width }) => {
               </div>
             </Fade>
             <Fade bottom>
-              <span className='f-read-time-label'>Read 1 min</span>
+              <span className='f-read-time-label'>Read {read_time}</span>
             </Fade>
           </div>
         </div>

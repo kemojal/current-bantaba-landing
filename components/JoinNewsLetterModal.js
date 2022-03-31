@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import styled from 'styled-components';
 import { Img } from '../components/Img';
 import { useSelector } from 'react-redux';
+
+import { GlobalContext } from '../context/GlobalState';
 
 import Select from 'react-select';
 
@@ -15,7 +17,7 @@ const ModalContainer = styled.div`
   background: rgba(0, 0, 0, 0.7);
   display:${({ modalState }) => (modalState ? 'block' : 'none')} ;
   z-index: 10;
-  display: none;
+  /* display: none; */
   .main-modal {
     position: fixed;
     background: #ffffff;
@@ -107,7 +109,7 @@ const ModalContainer = styled.div`
     font-weight: 400;
     font-size: 14px;
     line-height: 160%;
-    color: #01110805;
+    color: #011108;
   }
   input[type='submit'] {
     width: 100%;
@@ -172,6 +174,12 @@ const ModalContainer = styled.div`
     height: 344.74px;
     position: relative;
   }
+  .s3-illustration-person{
+    position: relative;
+    width: 351.42px;
+    height: 285px;
+    margin-top: 50px;
+  }
   .s2-text{
     font-family: 'Poppins';
     font-style: normal;
@@ -232,19 +240,178 @@ const ModalContainer = styled.div`
     width: 14px;
     height: 14px;
   }
+  .error{
+      color: #FF716C;
+
+  }
+  @media (max-width: 1280px) {
+     .main-modal {
+         width: 95%;
+         height: 100%;
+         overflow-x: hidden;
+         overflow-y: scroll;
+     } 
+     .relative-container{
+         display: flex;
+         flex-direction: column-reverse;
+     }
+     .left-modal {
+         width: 100%;
+         height: 80%;
+         background-color:white;
+         padding: 20px 20px;
+         z-index: 9;
+     }
+     .right-modal {
+    width: 100%;
+    height: 50%;
+    position: absolute;
+    background: white;
+    top: 0;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .modal-title {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 140%;
+    color: #011108;
+  }
+  .modal-normal-text {
+    font-size: 14px;
+    line-height: 160%;
+    color: #5B615E;
+    margin-top: 8px;
+  }
+  .modal-input-container{
+      width: 100%;
+      margin-top: 0.5rem;
+  }
+  form {
+    width: 100%;
+    padding: 6px 0;
+    align-self: stretch;
+  }
+  input[type='text'] {
+    width: 100%;
+    padding: 10px 20px;
+    margin: 4px;
+    max-height: 45px;
+    margin: 5px 0;
+  }
+  input[type='submit'] {
+    padding: 10px 10px;
+    margin: 4px;
+    margin-top: 12px;
+    border-radius: 3px;
+  }
+  .input-select {
+    border: 1px solid var(--geyser);
+    border-radius: 5px;
+    margin: 6px 0;
+    height: 44px;
+  }
+  .form-step-two{
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative: ;
+      max-width: 100vw;
+      /* justify-content: center; */
+  }
+  .s2-illustration-absolute{
+    max-width: 100vw;
+    height: auto;
+  }
+  .s2-illustration{
+    width: 100%;
+    width: 934px;
+    max-width: 100vw;
+    position: relative;
+  }
+  .s2-illustration-person{
+    max-width:100vw;
+  }
+  .s2-text{
+    width: 100%;
+    padding: 20px;
+    margin-top: 15px;
+  }
+  .close-btn{
+      /* background-color: #FF716C; */
+      background-color: white;
+      top: 10px;
+      right: 10px;
+  }
+  }
 `;
-const JoinNewsLetterModal = ({ handleClose, show }) => {
-  const [formStage, setFormStage] = useState(2);
-  const [modalState, setModalState] = useState(show ? true : false);
+const JoinNewsLetterModal = () => {
+  const [formStage, setFormStage] = useState(3);
+  const [formData, setFormData] = useState({});
+  const [formError, setFormError] = useState(false);
+  const [isEmailValid, setIsEmailValid] = useState(true);
+  //   const [modalState, setModalState] = useState(show ? true : true);
 
-//   const showHideClassName = modalState
-//     ? 'modal display-block'
-//     : 'modal display-none';
+  //   const showHideClassName = modalState
+  //     ? 'modal display-block'
+  //     : 'modal display-none';
 
-  const { isNewsLetterModal } = useSelector((state) => state);
-  const closemodal = () => {
-    setModalState(false);
-    alert('closed');
+  //   const { isNewsLetterModal } = useSelector((state) => state);
+  //   console.log('redux state parameter = ', isNewsLetterModal);
+
+  const { showModal, closeNewsLetterModal } = useContext(GlobalContext);
+  const closemodal = (e) => {
+    e.stopPropagation();
+    setFormStage(1);
+    setFormData({});
+    setFormError(false);
+    closeNewsLetterModal(false);
+  };
+  const preventClickPropation = (e) => {
+    e.stopPropagation();
+  };
+  const handleChange = (e) => {
+    e.stopPropagation();
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    if (Object.keys(formData).length === 0) {
+      setFormStage(1);
+    }
+    if (Object.keys(formData).length >= 1 && Object.keys(formData).length < 3) {
+      setFormError(true);
+      setFormStage(3);
+    }
+    if (Object.keys(formData).length >= 3) {
+      setIsEmailValid(validateEmail(formData.userEmail));
+      if (validateEmail(formData.userEmail)) {
+        setFormError(false);
+        setFormStage(2);
+      }
+    }
+  };
+  const handleSelectChange = (category) => {
+    setFormData({
+      ...formData,
+      userCategory: category.value,
+    });
+  };
+  const validateEmail = (emailAdress) => {
+    let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if (emailAdress.match(regexEmail)) {
+      return true;
+    } else {
+      return false;
+    }
   };
   const options = [
     { value: 'Invest', label: 'Invest' },
@@ -256,11 +423,12 @@ const JoinNewsLetterModal = ({ handleClose, show }) => {
   //     return () => (document.body.style.overflow = 'unset');
   //   }, []);
   //
+
   return (
-    <ModalContainer modalState={modalState}>
-      <div className='main-modal'>
+    <ModalContainer modalState={showModal} onClick={closemodal}>
+      <div className='main-modal' onClick={preventClickPropation}>
         <div className='relative-container'>
-          {formStage == 0 && (
+          {formStage == 1 && (
             <>
               <div className='left-modal'>
                 <p className='modal-title'>
@@ -274,14 +442,26 @@ const JoinNewsLetterModal = ({ handleClose, show }) => {
                 </p>
 
                 <div className='modal-input-container'>
-                  <form>
-                    <input type='text' className='name' placeholder='Name' />
+                  <form onSubmit={onSubmit}>
                     <input
+                      name='userName'
+                      value={formData.userName || ''}
+                      onChange={handleChange}
+                      type='text'
+                      className='name'
+                      placeholder='Name'
+                    />
+                    <input
+                      name='userEmail'
+                      value={formData.userEmail || ''}
+                      onChange={handleChange}
                       type='text'
                       className='name'
                       placeholder='Email Address'
                     />
                     <Select
+                      value={formData.userCategory || ''}
+                      onChange={handleSelectChange}
                       options={options}
                       className='input-select'
                       placeholder='Category'
@@ -293,6 +473,12 @@ const JoinNewsLetterModal = ({ handleClose, show }) => {
                       placeholder='messa'
                     />
                   </form>
+                  {formError && (
+                    <p className='error'>Please fill in the missing inputs</p>
+                  )}
+                  {!isEmailValid && (
+                    <p className='error'>Please provide a valid email</p>
+                  )}
                 </div>
               </div>
               <div className='right-modal'>
@@ -331,7 +517,46 @@ const JoinNewsLetterModal = ({ handleClose, show }) => {
                 <p className='s2-text'>
                   Thank you for your interest, we will be in touch soon.
                 </p>
-                <p> modal status {isNewsLetterModal}</p>
+                <button onClick={closemodal} className='back-to-home-btn'>
+                  <div className='button-arrow'>
+                    <Img
+                      src='back-arrow.svg'
+                      alt='logo'
+                      layout='fill'
+                      objectFit='cover'
+                    />
+                  </div>
+
+                  <span className='btn-text'>Back To Home</span>
+                </button>
+              </div>
+            </>
+          )}
+
+          {formStage == 3 && (
+            <>
+              <div className='form-step-two'>
+                {/* <div className='s2-illustration-absolute'>
+                  <div className='s2-illustration'>
+                    <Img
+                      src='s2-illustration.svg'
+                      alt='logo'
+                      layout='fill'
+                      objectFit='cover'
+                    />
+                  </div>
+                </div> */}
+                <div className='s3-illustration-person'>
+                  <Img
+                    src='s3-illustration-person.svg'
+                    alt='logo'
+                    layout='fill'
+                    objectFit='cover'
+                  />
+                </div>
+                <p className='s2-text'>
+                  Ooppss! Something went wrong. Please try later.
+                </p>
                 <button onClick={closemodal} className='back-to-home-btn'>
                   <div className='button-arrow'>
                     <Img

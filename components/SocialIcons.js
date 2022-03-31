@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Img } from '../components/Img';
+import Link from 'next/link';
 
 const IconDiv = styled.div`
   position: relative;
@@ -11,18 +12,32 @@ const IconDiv = styled.div`
   @media (min-width: 1280px) {
     width: 34px;
     height: 34px;
-
   }
 `;
-const SocialIcons = ({ src, scrDesktop }) => {
+const SocialIcons = ({ src, scrDesktop, link, key }) => {
   return (
     <>
-      <IconDiv scrDesktop={scrDesktop}>
-        {src && <Img src={src} alt='logo' layout='fill' objectFit='contain' />}
-        {scrDesktop && (
-          <Img src={scrDesktop} alt='logo' layout='fill' objectFit='contain' />
-        )}
-      </IconDiv>
+      <a
+        key={key}
+        href={link}
+        passHref={true}
+        prefetch={false}
+        target={'_blank'}
+      >
+        <IconDiv scrDesktop={scrDesktop}>
+          {src && (
+            <Img src={src} alt='logo' layout='fill' objectFit='contain' />
+          )}
+          {scrDesktop && (
+            <Img
+              src={scrDesktop}
+              alt='logo'
+              layout='fill'
+              objectFit='contain'
+            />
+          )}
+        </IconDiv>
+      </a>
     </>
   );
 };

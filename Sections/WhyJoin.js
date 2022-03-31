@@ -1,9 +1,11 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
 import Link from 'next/link';
 
 import styled from 'styled-components';
 import { Button } from '../components/Button';
+
 import { Img } from '../components/Img';
+import { GlobalContext } from '../context/GlobalState';
 
 import { motion } from 'framer-motion';
 import { useIntersection } from 'react-use';
@@ -131,6 +133,7 @@ const WhySection = styled.section`
     text-decoration: underline;
     color: #0033ff;
     margin-left: 10px;
+    cursor: pointer;
   }
   @media (min-width: 1280px) {
     flex-direction: row;
@@ -250,6 +253,12 @@ const DestopLeftIllustration = styled.div`
   }
 `;
 export const WhyJoin = ({ lang }) => {
+  const { showModal, showNewsLetterModal, closeNewsLetterModal } =
+    useContext(GlobalContext);
+
+  const openNewsLetterModal = () => {
+    showNewsLetterModal();
+  };
   const myRef = useRef(null);
   const intersection = useIntersection(myRef, {
     root: null,
@@ -332,10 +341,8 @@ export const WhyJoin = ({ lang }) => {
           <div className='footer-text'>
             <Fade right>
               {lang.are_you_none_diaspora + ' ' + lang.connect_with_us}
-              <span className='link'>
-                <Link href='https://nextjs.org'>
-                  <a>{lang.here}.</a>
-                </Link>
+              <span className='link' onClick={openNewsLetterModal}>
+                <a>{lang.here}.</a>
               </span>
             </Fade>
           </div>
@@ -395,13 +402,11 @@ export const WhyJoin = ({ lang }) => {
               <div className='align-row'>
                 <span>{lang.connect_with_us}</span>
                 <span className='link'>
-                
-                <Link href='https://nextjs.org'>
-                  <a>{lang.here}.</a>
-                </Link>
-              </span>
+                  <span onClick={openNewsLetterModal}>
+                    <a>{lang.here}.</a>
+                  </span>
+                </span>
               </div>
-
             </Fade>
           </div>
         </div>

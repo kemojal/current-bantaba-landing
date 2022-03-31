@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { BlogCard } from '../components/BlogCard';
 import { PressCard } from '../components/PressCard';
@@ -84,7 +84,12 @@ const BlogContainer = styled.div`
     }
   }
 `;
-function blog() {
+function Blog({ blogs }) {
+  const featured = blogs.blogs[0];
+  const restBlogs = [...blogs.blogs];
+  const rightSide = '';
+  // const [restBlogs, setRestBlogs] = useState();
+
   const Blogs = [
     {
       title: '',
@@ -108,6 +113,20 @@ function blog() {
       full_text: 'bmbmbmbmb // render as html',
     },
   ];
+  // useEffect(() => {
+  //   setRestBlogs(blogs.blogs.shift());
+  // }, []);
+
+  const chunkArray = (arr, n) => {
+    var chunkLength = Math.max(arr.length / n, 1);
+    var chunks = [];
+    for (var i = 0; i < n; i++) {
+      if (chunkLength * (i + 1) <= arr.length)
+        chunks.push(arr.slice(chunkLength * i, chunkLength * (i + 1)));
+    }
+    return chunks;
+  };
+  // const LeftChunk = chunkArray(JSON.stringify(blogs.blogs));
   return (
     <BlogContainer>
       <FluidContainer>
@@ -116,29 +135,94 @@ function blog() {
           <h1 className='blog-m-title hide-on-mobile'>Updated News</h1> */}
           <h1 className='blog-m-title'>Blog</h1>
         </Fade>
+        {/* <div>{JSON.stringify(LeftChunk)}</div> */}
+
         <div className='blog-cards-container mt-24 hide-on-desktop'>
           <div></div>
+          {blogs.blogs.map((item, index) => {
+            return <BlogCard key={index} {...item} />;
+          })}
+          {/* <BlogCard />
           <BlogCard />
           <BlogCard />
           <BlogCard />
-          <BlogCard />
-          <BlogCard />
+          <BlogCard /> */}
           <MobileBlogDetail />
         </div>
         <div className='blog-cards-container mt-24  hide-on-mobile desktop-layout '>
           <div className='blog-desk-colum-left'>
-            <FeaturedBlogCard />
+            <FeaturedBlogCard {...featured} />
             <div className='previous-blogs-container'>
-              <DesktopBlogCard mRight='15px' mBottom='15px' mTop='30px'/>
-              <DesktopBlogCard mLeft='15px' mBottom='15px' mTop='30px'/>
+              {restBlogs.map((item, index) => {
+                if (index === 0 || index > (restBlogs.length - 1) / 2) return;
+                if (index === 1) {
+                  return (
+                    <DesktopBlogCard
+                      mRight='15px'
+                      mBottom='15px'
+                      mTop='30px'
+                      key={index}
+                      {...item}
+                    />
+                  );
+                }
+                if (index === 2) {
+                  return (
+                    <DesktopBlogCard
+                      mLeft='15px'
+                      mBottom='15px'
+                      mTop='30px'
+                      key={index}
+                      {...item}
+                    />
+                  );
+                }
+
+                if (index % 2 == 1 && index !== 1) {
+                  return (
+                    <DesktopBlogCard
+                      mRight='15px'
+                      mBottom='15px'
+                      mTop='15px'
+                      key={index}
+                      {...item}
+                    />
+                  );
+                } else if (index % 2 == 0 && index !== 2) {
+                  return (
+                    <DesktopBlogCard
+                      mLeft='15px'
+                      mBottom='15px'
+                      mTop='15px'
+                      key={index}
+                      {...item}
+                    />
+                  );
+                }
+              })}
+              {/* <DesktopBlogCard mRight='15px' mBottom='15px' mTop='30px' />
+              <DesktopBlogCard mLeft='15px' mBottom='15px' mTop='30px' />
               <DesktopBlogCard mRight='15px' mBottom='15px' mTop='15px' />
-              <DesktopBlogCard mLeft='15px' mBottom='15px' mTop='15px' />
+              <DesktopBlogCard mLeft='15px' mBottom='15px' mTop='15px' /> */}
             </div>
           </div>
           <div className='blog-desk-colum-right'>
-            <DesktopBlogCard width='100%' mBottom='15px' />
+            {restBlogs.map((item, index) => {
+              if (index === 0 || index <= (restBlogs.length - 1) / 2) return;
+              else {
+                return (
+                  <DesktopBlogCard
+                    width='100%'
+                    mBottom='15px'
+                    key={index}
+                    {...item}
+                  />
+                );
+              }
+            })}
+            {/* <DesktopBlogCard width='100%' mBottom='15px' />
             <DesktopBlogCard width='100%' mBottom='15px' mTop='15px' />
-            <DesktopBlogCard width='100%' mBottom='15px' mTop='15px' />
+            <DesktopBlogCard width='100%' mBottom='15px' mTop='15px' /> */}
             {/* <DesktopBlogCard width='100%' mBottom='15px' mTop='15px' /> */}
           </div>
         </div>
@@ -150,4 +234,10 @@ function blog() {
   );
 }
 
-export default blog;
+export default Blog;
+
+Blog.getInitialProps = async (ctx) => {
+  const res = await fetch('https://blogapi.ourbantaba.com/blogs/all/en');
+  const json = await res.json();
+  return { blogs: json };
+};

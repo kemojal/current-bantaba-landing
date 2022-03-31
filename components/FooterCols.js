@@ -61,9 +61,9 @@ const FooterCols = ({ title, list, address }) => {
         {list &&
           list.map((item) => (
             <li className='notosans-normal-licorice-14px' key={item}>
-              <Link href={item.link ? item.link : ''}>
-                <a>{item.title}</a>
-              </Link>
+                <Link href={item.link ? item.link : ''}>
+                  <a>{item.title}</a>
+                </Link>
             </li>
           ))}
       </ul>
