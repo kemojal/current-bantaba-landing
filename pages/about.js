@@ -545,7 +545,7 @@ export default function About({ team }) {
 
 About.getInitialProps = async (ctx) => {
   const res = await fetch(
-    'https://landingapi-dev.ourbantaba.com/teams/members/fr/all'
+    'https://landingapi-dev.ourbantaba.com/teams/members/en/all'
   );
   const json = await res.json();
   return { team: json };

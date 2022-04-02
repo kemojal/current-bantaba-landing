@@ -46,6 +46,7 @@ const TeamContainer = styled.li`
     padding: 5px 0;
   }
   .s-links {
+    curson: pointer;
     padding: 0px 0;
     width: 40%;
     display: flex;
@@ -58,6 +59,7 @@ const TeamContainer = styled.li`
     margin-right: 5px;
   }
   .s-email {
+    curson: pointer;
     position: relative;
     width: 30px;
     height: 30px;
@@ -74,9 +76,9 @@ const TeamContainer = styled.li`
     filter: drop-shadow(0px 10px 100px rgba(0, 0, 0, 0.1));
     border-radius: 10px;
     background-color: white;
-    
-    max-width: calc( 24.5% - 15px );
-    
+
+    max-width: calc(24.5% - 15px);
+
     &:first-child {
       margin-left: 0px;
     }
@@ -132,6 +134,7 @@ const TeamContainer = styled.li`
       background-color: red;
       /* width: 100%; */
       width: 80px;
+
       /* height: 30px; */
       padding: 5px;
       background: linear-gradient(
