@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import styled from 'styled-components';
 import { BlogCard } from '../components/BlogCard';
 import { PressCard } from '../components/PressCard';
@@ -10,6 +10,9 @@ import { FluidContainer } from '../components/FluidContainer';
 import FeaturedBlogCard from '../components/FeaturedBlogCard';
 import DesktopBlogCard from '../components/DesktopBlogCard';
 import { MobileBlogDetail } from '../components/MobileBlogDetail';
+import BlogDetail from '../components/BlogDetails';
+
+import { GlobalContext } from '../context/GlobalState';
 
 const BlogContainer = styled.div`
   width: 100%;
@@ -17,8 +20,9 @@ const BlogContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 4rem 0;
+  padding: 0;
   padding-top: 94px;
+
   position: relative;
   .blog-m-title {
     /* color: #00853b; */
@@ -46,6 +50,38 @@ const BlogContainer = styled.div`
   .hide-on-mobile {
     display: none;
   }
+  .blog-mobile-cards-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 100px;
+  }
+  .desktop-layout {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .blog-desk-colum-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+  .previous-blogs-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+  .blog-desk-colum-right {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
   @media (min-width: 1280px) {
     padding-top: 64px;
     padding-bottom: 0;
@@ -65,20 +101,26 @@ const BlogContainer = styled.div`
 
     .desktop-layout {
       display: flex;
+      flex-direction: row;
       align-items: flex-start;
     }
     .blog-desk-colum-left {
+      flex-direction: column;
+      backgrounnd-color: orange;
+
       width: calc(67% - 15px);
       margin-right: 15px;
     }
     .previous-blogs-container {
       width: 100%;
       /* margin-top: 30px; */
-      display: flex;
+      flex-direction: row;
       flex-wrap: wrap;
       margin-bottom: 100px;
     }
     .blog-desk-colum-right {
+      display: flex;
+      flex-direction: column;
       margin-left: 15px;
       width: calc(33% - 15px);
     }
@@ -89,6 +131,8 @@ function Blog({ blogs }) {
   const restBlogs = [...blogs.blogs];
   const rightSide = '';
   // const [restBlogs, setRestBlogs] = useState();
+
+  const { showBlogDetail } = useContext(GlobalContext);
 
   const Blogs = [
     {
@@ -135,21 +179,17 @@ function Blog({ blogs }) {
           <h1 className='blog-m-title hide-on-mobile'>Updated News</h1> */}
           <h1 className='blog-m-title'>Blog</h1>
         </Fade>
-        {/* <div>{JSON.stringify(LeftChunk)}</div> */}
 
-        <div className='blog-cards-container mt-24 hide-on-desktop'>
-          <div></div>
-          {blogs.blogs.map((item, index) => {
-            return <BlogCard key={index} {...item} />;
-          })}
-          {/* <BlogCard />
-          <BlogCard />
-          <BlogCard />
-          <BlogCard />
-          <BlogCard /> */}
+        {/* <div className='blog-cards-container mt-24 hide-on-desktop'>
+          <div className='blog-mobile-cards-container'>
+            {restBlogs.map((item, index) => {
+              return <BlogCard key={index} {...item} />;
+            })}
+          </div>
+          
           <MobileBlogDetail />
-        </div>
-        <div className='blog-cards-container mt-24  hide-on-mobile desktop-layout '>
+        </div> */}
+        <div className='blog-cards-container mt-24   desktop-layout '>
           <div className='blog-desk-colum-left'>
             <FeaturedBlogCard {...featured} />
             <div className='previous-blogs-container'>
@@ -163,6 +203,9 @@ function Blog({ blogs }) {
                       mTop='30px'
                       key={index}
                       {...item}
+                      onClick={() => {
+                        alert('clicked');
+                      }}
                     />
                   );
                 }
@@ -230,6 +273,7 @@ function Blog({ blogs }) {
 
       <Mission />
       <NavBar />
+      {showBlogDetail && <BlogDetail {...featured} />}
     </BlogContainer>
   );
 }

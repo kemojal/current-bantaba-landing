@@ -59,7 +59,7 @@ const CombinedHero = styled.div`
       flex-direction: row;
       /* padding-right: 150px; */
       padding: 0 !important;
-      width: 1200px !important;
+      width: var(--max-width) !important;
 
       /* overflow: hidden !important; */
     }

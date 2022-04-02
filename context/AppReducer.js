@@ -22,6 +22,10 @@ export default (state, action) => {
       };
     case 'SET_LANGUAGE':
       return { ...state, currentLanguage: action.payload };
+    case 'SHOW_DETAILS':
+      return { ...state, showBlogDetail: action.payload };
+    case 'SET_DETAILS':
+      return { ...state, currentDetail: action.payload };
     default:
       return state;
   }

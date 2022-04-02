@@ -10,12 +10,14 @@ const ButtonArrow = ({
   color,
   href,
   type,
+  width,
   maxWidth,
   maxHeight,
   fontSize,
+  mRight
 }) => {
   return (
-    <Link href={href ? href : ''} passHref={true}>
+    <Link href={href ? href : '/'} passHref={true}>
       <Button
         isArrow={isArrow}
         bgcolor={bgcolor}
@@ -23,6 +25,8 @@ const ButtonArrow = ({
         type={type}
         maxWidth={maxWidth}
         maxHeight={maxHeight}
+        width={width}
+        mRight = {mRight}
       >
         <Text fontSize={fontSize} isArrow={isArrow} className='btn-title'>
           {title}
@@ -66,9 +70,10 @@ const Button = styled.div`
     color: ${({ color }) => (color ? color : '#ffffff')} !important;
   }
   @media (min-width: 600px) {
+    width: ${({ width }) => (width ? width : '260px')};
     max-width: 320px;
     max-width: ${({ maxWidth }) => (maxWidth ? maxWidth : '320px')};
-    margin-right: 26px !important;
+    margin-right:${({ mRight }) => (mRight ? mRight : '26px !important')};
     max-height: ${({ maxHeight }) => (maxHeight ? maxHeight : '66px')};
     border-radius: 6px;
 

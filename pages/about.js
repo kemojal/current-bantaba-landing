@@ -193,6 +193,7 @@ const Aboutontainer = styled.div`
       flex-direction: column;
       align-items: flex-start;
       align-self: stretch;
+      justify-content: center;
     }
     .align-column-end {
       align-items: flex-end;
@@ -330,26 +331,26 @@ export default function About({ team }) {
   const { locale } = router;
   const lan = locale == 'en' ? en : fr;
 
-  const TeamMembers = [
-    {
-      name: 'Lamin K. Darboe',
-      position: 'CEO',
-      linkedinLink: 'anananannannan@linkedin',
-      email: 'vmvmvmvm@email',
-    },
-    {
-      name: 'Lamin K. Darboe',
-      position: 'CEO',
-      linkedinLink: 'anananannannan@linkedin',
-      email: 'vmvmvmvm@email',
-    },
-    {
-      name: 'Lamin K. Darboe',
-      position: 'CEO',
-      linkedinLink: 'anananannannan@linkedin',
-      email: 'vmvmvmvm@email',
-    },
-  ];
+  // const TeamMembers = [
+  //   {
+  //     name: 'Lamin K. Darboe',
+  //     position: 'CEO',
+  //     linkedinLink: 'anananannannan@linkedin',
+  //     email: 'vmvmvmvm@email',
+  //   },
+  //   {
+  //     name: 'Lamin K. Darboe',
+  //     position: 'CEO',
+  //     linkedinLink: 'anananannannan@linkedin',
+  //     email: 'vmvmvmvm@email',
+  //   },
+  //   {
+  //     name: 'Lamin K. Darboe',
+  //     position: 'CEO',
+  //     linkedinLink: 'anananannannan@linkedin',
+  //     email: 'vmvmvmvm@email',
+  //   },
+  // ];
   return (
     <Aboutontainer>
       <FluidContainer>
@@ -515,8 +516,8 @@ export default function About({ team }) {
           <Fade bottom>
             <p className='notosans-bold-licorice-22px  align-center z-10 blob-green'>
               It&#39;s{' '}
-              <span className='color-green-desktop'>TIME FOR AFRICA</span>, we
-              start the revolution together!
+              <span className='color-green-desktop'>TIME FOR AFRICA</span>,
+              Let's start the revolution together!
             </p>
           </Fade>
         </div>

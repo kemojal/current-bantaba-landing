@@ -43,6 +43,7 @@ const MissionSection = styled.section`
   }
   .footer-wrapper{
     width: 100%;
+    max-width: var(--max-width)
     display: flex;
     flex-direction: column;
     align-items: center;

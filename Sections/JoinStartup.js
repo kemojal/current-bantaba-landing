@@ -15,14 +15,15 @@ const WhySection = styled.section`
   justify-content: center;
   align-items: center;
 
-  @media (min-width: 1500px) {
+  @media (min-width: 1280px) {
     position: relative;
     padding: 140px 0;
     padding-bottom: 0px;
     .container {
-      max-width: 1200px;
-      max-width: calc(100% - 300px);
+      /* max-width: 1200px; */
+      /* max-width: calc(100% - 300px); */
       /* background-color: orange; */
+      max-width: var(--max-width);
     }
     /* .right-section {
       padding: 0 50px;

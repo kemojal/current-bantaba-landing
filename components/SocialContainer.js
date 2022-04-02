@@ -10,7 +10,7 @@ const SocialDiv = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  
+
   padding: 20px 0;
   .containerDiv {
     max-width: 50vw;
@@ -22,16 +22,13 @@ const SocialDiv = styled.div`
   @media (min-width: 1280px) {
     width: 100%;
     /* background-color: red; */
-
   }
-
 `;
 
 const SocialContainer = ({ socialList }) => {
   return (
     <SocialDiv>
-    
-      <div className="containerDiv">
+      <div className='containerDiv'>
         {socialList.map((item, index) => {
           return <SocialIcons key={index} {...item} />;
         })}

@@ -94,16 +94,20 @@ const DestopLeftIllustration = styled.div`
     z-index: 10;
     position: relative;
     /* background-color: brown; */
-    margin-top: 100px;
+    margin-top: 170px;
 
     &::before {
       content: '';
       position: absolute;
-      width: 973.96px;
-      height: 956.06px;
-      /* top: 0; */
-      /* bottom: 0; */
-      right: -260px;
+      /* width: 973.96px;
+      height: 956.06px; */
+
+      /* right: -260px; */
+      /* right: -372px; */
+
+      width: 835.96px;
+      height: 870.06px;
+      right: -300px;
       background: url('/assets/images/why-startup.svg') no-repeat;
       background-size: 100% 100%;
     }

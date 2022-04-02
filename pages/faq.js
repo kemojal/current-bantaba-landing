@@ -14,8 +14,20 @@ const FAQContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
   /* padding-top: 4rem; */
   padding-top: 94px;
+
+  /* &:before{
+    position: absolute;
+    content: '';
+    
+    width: 100%;
+    top: 0;
+    height: 300px;
+    max-width: var(--max-width);
+    background-color: #009743;
+  } */
 
   .container {
     width: 100%;
@@ -69,39 +81,47 @@ const FAQContainer = styled.div`
     padding-top: 10px;
     width: calc(100% - 30px);
     margin: 15px;
+    width: calc(100% - 10px);
+    margin: 5px;
     /* border: 1px solid #9ce1b8; */
     /* border: 1px solid rgba(91, 97, 94, 0.1); */
     box-sizing: border-box;
     border-radius: 6px;
+    margin-bottom: 100px;
   }
+
+
 
   @media (min-width: 600px) {
     .container {
       width: 100%;
-      max-width: 1146px;
+      max-width: var(--max-width);
     }
     .input-search {
       height: 104px;
       width: 100%;
-      background: #f2fdf7;
-      background-color: orange;
       background: #ffffff;
       box-shadow: 1.91534px 3.83069px 100px 1.91534px rgba(166, 166, 166, 0.15);
       box-shadow: 1px 8px 50px 1px rgba(119, 134, 117, 0.1);
-      border-radius: 10px;
-      padding: 25px;
+      border-radius: 13px;
+      padding: 15px;
     }
     .search-container {
-      width: calc(100% - 50px);
+      width: calc(100% - 0px);
       background: #fafafa;
-      /* border: 1px solid rgba(91, 97, 94, 0.2); */
       box-sizing: border-box;
-      /* border-radius: 6px; */
+      height: 59px;
     }
     .question-list-container {
+      padding-top: 0;
       margin-top: 25px;
       margin-bottom: 100px;
-      background: #ffffff;
+      /* background: #ffffff; */
+      background-color: transparent;
+      padding: 0;
+      margin-left: 0;
+      marig-right: 0;
+      width: 100%;
       box-shadow: 1.91534px 3.83069px 100px 1.91534px rgba(166, 166, 166, 0.15);
     }
   }
@@ -131,7 +151,7 @@ const Input = styled.input`
     outline: none;
   }
 `;
-export default function FAQ() {
+export default function FAQ({ faqs }) {
   const [query, setQuery] = useState('');
   let inputHandler = (e) => {
     setQuery(e.target.value);
@@ -225,24 +245,45 @@ export default function FAQ() {
             </div>
           </div>
         </Fade>
-        <Fade bottom>
-          <ul className='question-list-container'>
-            {FAQData.filter((post) => {
-              if (query === '') {
-                return post;
-              } else if (
-                post.section.toLowerCase().includes(query.toLowerCase())
-              ) {
-                return post;
-              }
-            }).map((item, index) => {
-              return <Accordion key={index} {...item} />;
-            })}
-          </ul>
-        </Fade>
+
+        {/* <div>{JSON.stringify(faqs.FAQData)}</div> */}
+        <ul className='question-list-container'>
+          {faqs.FAQData.filter((post) => {
+            if (query === '') {
+              return post;
+            } else if (
+              post.section.toLowerCase().includes(query.toLowerCase())
+            ) {
+              return post;
+            }
+          }).map((item, index) => {
+            return <Accordion key={index} {...item} />;
+          })}
+        </ul>
       </div>
       <Mission />
       <NavBar />
     </FAQContainer>
   );
 }
+
+FAQ.getInitialProps = async (ctx) => {
+  const res = await fetch(
+    'https://landingapi-dev.ourbantaba.com/faqs/groups/en/all'
+  );
+
+  Promise.all([
+    fetch('https://jsonplaceholder.typicode.com/todos/1').then((resp) =>
+      resp.json()
+    ),
+    fetch('https://jsonplaceholder.typicode.com/todos/2').then((resp) =>
+      resp.json()
+    ),
+    fetch('https://jsonplaceholder.typicode.com/todos/3').then((resp) =>
+      resp.json()
+    ),
+  ]).then(console.log);
+
+  const json = await res.json();
+  return { faqs: json };
+};

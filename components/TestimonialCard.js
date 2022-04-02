@@ -10,6 +10,7 @@ const CardDiv = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  
   /* overflow: hidden; */
   /* background-color: orange; */
   /* margin: 0 20px; */
@@ -45,6 +46,7 @@ const CardDiv = styled.div`
     /* font-size: 24px; */
   }
   .text {
+    
     /* letter-spacing: 0px;
     line-height: 16px;
     color: var(--licorice);
@@ -62,9 +64,9 @@ const CardDiv = styled.div`
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    background: green;
+    
     /* width: 500px; */
-    ÷flex-wrap: nowrap;
+    /* flex-wrap: nowrap; */
     margin-left: 12.5px;
     background: #ffffff;
     border: 1px solid rgba(1, 17, 8, 0.1);
@@ -82,6 +84,8 @@ const CardDiv = styled.div`
       position: relative;
       /* width: 102px; */
       height: 102px;
+      border-radius: 50%;
+      background-color: #009A3650;
     }
     .text {
       border-bottom: 1px solid #dfe2e6;
@@ -92,9 +96,11 @@ const CardDiv = styled.div`
       line-height: 160%;
       letter-spacing: -0.03em;
       color: #5b615e;
+      
       padding: 5px;
-      padding-bottom: 20px;
-      height: 5.44rem;
+      padding-top: 25px;
+      padding-bottom: 15px;
+      /* height: 5.44rem; */
       display: -webkit-box;
       -webkit-line-clamp: 3;
       -webkit-box-orient: vertical;
@@ -104,18 +110,18 @@ const CardDiv = styled.div`
       margin-top: 0px;
       font-family: 'Poppins';
       font-style: normal;
-      font-weight: 400;
-      font-size: 16px;
+      font-weight: 600;
+      font-size: 18px;
       line-height: 160%;
       color: #011108;
       padding: 0;
     }
     .position {
-      margin-top: 15px;
+      margin-top: 5px;
       font-family: 'Poppins';
       font-style: normal;
       font-weight: 400;
-      font-size: 14px;
+      font-size: 16px;
       line-height: 160%;
       padding: 0;
       /* or 22px */
@@ -138,11 +144,13 @@ const TestCol = styled.div`
     flex-direction: column-reverse;
     align-items: flex-start;
     padding: 0 10px;
+    padding-bottom: 25px;
     width: 423px;
     position: relative;
     .col-flip-desktop{
       display: flex;
-      flex-direction: column-reverse;
+      flex-direction: column;
+      padding-top: 20px
     }
     &::before {
       content: '';

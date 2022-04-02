@@ -82,8 +82,8 @@ const NavContainer = styled.div`
   }
   /* background-color: orange; */
   @media (min-width: 1280px) {
-    max-width: calc(100% - 300px);
-    max-width: 1200px;
+    /* max-width: calc(100% - 300px); */
+    max-width: var(--max-width);
     max-height: 50px;
     justify-content: space-between;
     padding: 0;
@@ -91,6 +91,7 @@ const NavContainer = styled.div`
     .desk-left-nav {
       display: flex;
       padding-left: 30px;
+
     }
     .desk-right-nav li,
     .desk-left-nav li {
@@ -109,11 +110,11 @@ const NavContainer = styled.div`
       justify-content: flex-end;
       align-items: center;
       padding-left: 0px;
-      padding-right: 0;
+      padding-right: 0 !important; 
       width: 50%;
     }
     .desk-right-nav li {
-      margin-rght: 0px;
+      margin-right: 0px;
       cursor: pointer;
     }
 
@@ -372,6 +373,7 @@ export const NavBar = ({ locale, router, path }) => {
               color={'white'}
               href='https://community.ourbantaba.com/en/register'
               fontSize='1rem'
+              mRight = '0px'
             />
           </li>
         </ul>

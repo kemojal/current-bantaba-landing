@@ -7,16 +7,23 @@ import Fade from 'react-reveal/Fade';
 
 const AccordionContainer = styled.div`
   width: 100%;
+  transition: all 0.2 ease-in-out;
   /* padding: 0 15px; */
   /* border-bottom: 1px solid #9ce1b8; */
   border: 1px solid rgba(91, 97, 94, 0.1);
   margin: 5px 0;
   border-radius: 6px;
+  /* background-color: #04853a05; */
+
   .accordion-header {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    /* background-color: ${({ isActive }) => (isActive ? '#04853a100' : 'white')}; */
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
     padding: 0 16px;
     cursor: pointer;
   }
@@ -32,7 +39,9 @@ const AccordionContainer = styled.div`
     padding: 12px 0;
     /* font-weight: bold; */
     /* color: #009743; */
-    color: #011108;
+    color: ${({ isActive }) => (isActive ? '#009743' : '#011108')};
+
+    width: 100%;
   }
   .subsection-container {
     width: 100%;
@@ -45,6 +54,7 @@ const AccordionContainer = styled.div`
     border: 1px solid rgba(91, 97, 94, 0.1);
     .subsection-container {
       background: #e7fff030;
+      background-color: ${({ isActive }) => (isActive ? '#04853a10' : 'white')};
     }
     .section-title {
       font-style: normal;
@@ -53,6 +63,8 @@ const AccordionContainer = styled.div`
       line-height: 140%;
       color: #009743;
       color: #011108;
+      color: white;
+      color: ${({ isActive }) => (isActive ? '#009743' : '#011108')};
       padding: 20px 30px;
     }
     .subsection-container {
@@ -73,7 +85,7 @@ const AIcon = styled.div`
 const Accordion = ({ section, subSection }) => {
   const [isActive, setIsActive] = useState(true);
   return (
-    <AccordionContainer>
+    <AccordionContainer isActive={isActive}>
       <div className='accordion-header' onClick={() => setIsActive(!isActive)}>
         <p className='notosans-normal-kaitoke-green-18px section-title'>
           {section}

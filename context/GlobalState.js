@@ -7,6 +7,8 @@ const initialState = {
   showModal: false,
   showContactModal: false,
   showJoinNewsLetterModal: false,
+  showBlogDetail: false,
+  currentDetail: {},
 };
 
 // Create context
@@ -49,6 +51,18 @@ export const GlobalProvider = ({ children }) => {
       payload: lang,
     });
   }
+  function showBlogDetailFunction(condition) {
+    dispatch({
+      type: 'SHOW_DETAILS',
+      payload: condition,
+    });
+  }
+  function setBlogDetailFunction(condition) {
+    dispatch({
+      type: 'SET_DETAILS',
+      payload: condition,
+    });
+  }
 
   return (
     <GlobalContext.Provider
@@ -57,9 +71,13 @@ export const GlobalProvider = ({ children }) => {
         showModal: state.showModal,
         showContactModal: state.showContactModal,
         showJoinNewsLetterModal: state.showJoinNewsLetterModal,
+        showBlogDetail: state.showBlogDetail,
+        currentDetail: state.currentDetail,
         showNewsLetterModal,
         closeNewsLetterModal,
         setCurrentLanguage,
+        showBlogDetailFunction,
+        setBlogDetailFunction,
       }}
     >
       {children}

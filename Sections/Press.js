@@ -57,14 +57,13 @@ const PressSection = styled.section`
     }
     .fluid {
       /* max-width: 1200px; */
-      max-width: 1150px;
+      max-width: var(--max-width);
+
       display: flex;
 
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      /* flex-direction: row; */
-      /* padding: 40px 0; */
       position: relative;
     }
     .read-title {

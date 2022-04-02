@@ -144,7 +144,7 @@ const WhySection = styled.section`
 
     .container {
       /* max-width: 1220px; */
-      max-width: 1200px;
+      max-width: var(--max-width);
       display: flex;
       flex-direction: row;
       padding: 40px 0;
@@ -158,13 +158,18 @@ const WhySection = styled.section`
       text-align: left;
       color: #011108;
       width: 100%;
-      padding: 0 25px;
+      /* padding: 0 25px; */
       margin-bottom: 2rem;
+      padding: 0;
     }
     
     .right-section {
       width: 50%;
-      height: 950px;
+      padding: 0 10px;
+      padding-top: 50px;
+
+      /* height: 950px; */
+      
       
       /* margin-left: 0px; */
       /* padding-right: 150px; */
@@ -174,7 +179,8 @@ const WhySection = styled.section`
       /* padding-top: 150px; */
     }
     .why-list-container {
-      padding: 10px 0;
+      /* padding: 10px 0; */
+      /* background-color: green; */
     }
     .mobile-info {
       display: none;
@@ -189,7 +195,7 @@ const WhySection = styled.section`
       justify-content: flex-start;
     }
     .join-btn {
-      width: 200px !important;
+      /* width: 200px !important; */
     }
     .footer-text {
       width: 90%;
@@ -201,23 +207,34 @@ const WhySection = styled.section`
       font-weight: 400;
       font-size: 20px;
       line-height: 160%;
+      position: relative;
       /* or 32px */
 
       /* Paragraph */
 
       color: #5b615e;
     }
+    .align-row{
+      position: absolute;
+      top: 64px;
+      left: 125px;
+      display: flex;
+      width: auto;
+      justify-content: flex-start;
+  }
   }
   @media (min-width: 1500px) {
     position: relative;
     padding: 40px 0;
     .container {
-      max-width: 1200px;
-      max-width: calc(100% - 300px);
+      /* max-width: 1200px; */
+      /* max-width: calc(100% - 300px); */
       /* background-color: orange; */
+      max-width: var(--max-width);
     }
     .right-section {
-      padding: 0 50px;
+      /* padding: 0 10px; */
+      /* padding-top */
     }
   }
 `;
@@ -241,12 +258,17 @@ const DestopLeftIllustration = styled.div`
     &::before {
       content: '';
       position: absolute;
-      width: 973.96px;
-      /* height: 956.06px; */
-      top: 0;
-      bottom: 0;
+      /* width: 973.96px; */
+      /* width: 830.96px; */
+      width: 672.96px;
+      top: 50px;
+      bottom: 0px;
       /* left: -260px; */
-      left: -329px;
+      /* left: -329px; */
+      left: -175px;
+
+      width: 900px;
+      left: -300px;
       background: url('/assets/images/why-blob.svg') no-repeat;
       background-size: 100% 100%;
     }
@@ -335,15 +357,20 @@ export const WhyJoin = ({ lang }) => {
               title={lang.join_as_diaspora}
               bgcolor='transparent'
               color='#009743'
-              maxWidth='235.2px'
+              maxWidth='auto'
+              width = '300px'
+              href={'https://community.ourbantaba.com/en/register'}
             />
           </div>
           <div className='footer-text'>
             <Fade right>
-              {lang.are_you_none_diaspora + ' ' + lang.connect_with_us}
-              <span className='link' onClick={openNewsLetterModal}>
-                <a>{lang.here}.</a>
-              </span>
+              {lang.are_you_none_diaspora + ' '}
+              <div className='align-row'>
+                <span>{lang.connect_with_us}</span>
+                <span className='link' onClick={openNewsLetterModal}>
+                  <a>{lang.here}.</a>
+                </span>
+              </div>
             </Fade>
           </div>
         </div>

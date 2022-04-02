@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { Img } from '../components/Img';
 import Fade from 'react-reveal/Fade';
 import Link from 'next/link';
 import Image from 'next/image';
+
+import { GlobalContext } from '../context/GlobalState';
+
 const FeaturedBlogCardContainer = styled.div`
   width: 100%;
   /* width: 754px; */
@@ -16,6 +19,7 @@ const FeaturedBlogCardContainer = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  position: relative;
 
   .featured-img-cover {
     /* background-color: yellow; */
@@ -107,15 +111,48 @@ const FeaturedBlogCardContainer = styled.div`
     text-decoration-line: underline;
     color: #009743;
     margin-top: 20px;
+    cursor: pointer;
+  }
+  @media (max-width: 1279px) {
+    max-width: 98%;
+  }
+  .featured-body {
+    padding: 10px;
+  }
+  .f-img-wrapper {
+    width: 100vw;
+    height: 173px;
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
   }
 `;
+
 const FeaturedBlogCard = ({
   title,
   category,
   read_time,
   summary,
   cover_img,
+  author,
+  full_text,
 }) => {
+  const { showBlogDetail, showBlogDetailFunction, setBlogDetailFunction } =
+    useContext(GlobalContext);
+
+  const showDetail = () => {
+    showBlogDetailFunction(true);
+    setBlogDetailFunction({
+      title,
+      category,
+      read_time,
+      full_text,
+      summary,
+      cover_img,
+      author,
+    });
+  };
+
   return (
     <FeaturedBlogCardContainer>
       <div className='featured-img-cover'>
@@ -150,13 +187,16 @@ const FeaturedBlogCard = ({
           </div>
         </div>
         <Fade bottom>
-          <div className='f-summary-text'>{summary}</div>
+          <div
+            dangerouslySetInnerHTML={{ __html: summary }}
+            className='f-summary-text'
+          />
         </Fade>
-        <div className='read-button'>
+        <div onClick={showDetail} className='read-button'>
           <Fade bottom>
-            <Link href='/blogdetail'>
+            <span>
               <a>Read More</a>
-            </Link>
+            </span>
           </Fade>
         </div>
       </div>

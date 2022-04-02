@@ -111,8 +111,9 @@ const PCard = styled.div`
   }
   @media (min-width: 1280px) {
     width: 300px;
-    width: 33%;
+    width: 31%;
     max-width: 360px;
+    /* max-width: 31%; */
     height: 550px;
     margin: 0 15px;
     .wrapper {

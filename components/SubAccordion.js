@@ -9,7 +9,7 @@ const SubAccordionContainer = styled.div`
   width: 100%;
   padding: 10px 15px;
   /* border-bottom: 1px solid #9ce1b8; */
-  border: 1px solid rgba(91, 97, 94, 0.1);
+  border: 0.5px solid rgba(91, 97, 94, 0.05);
 
   &:last-child {
     border-bottom: none;
@@ -34,9 +34,10 @@ const SubAccordionContainer = styled.div`
     padding: 10px;
     width: calc(100% - 30px);
     color: #011108;
+    font-weight: 600;
     opacity: 0.8;
     font-size: 18px;
-    font-weight: 400;
+    /* font-weight: 400; */
   }
   .answer-container {
     width: 100%;
@@ -48,15 +49,14 @@ const SubAccordionContainer = styled.div`
     color: #5b615e;
   }
   @media (min-width: 600px) {
-
-    .sub-accordion-header{
+    .sub-accordion-header {
       flex-direction: row-reverse;
     }
-    .answer-container{
+    .answer-container {
       padding-left: 30px;
       padding-right: 30px;
+      max-width: 900px;
     }
-   
   }
 `;
 export const SubAccordion = ({ question, answer }) => {
@@ -90,8 +90,12 @@ export const SubAccordion = ({ question, answer }) => {
         </p>
       </div>
       {isActive && (
-        <div className='notosans-normal-kaitoke-green-18px answer-container'>
-          {answer}
+        <div
+          dangerouslySetInnerHTML={{ __html: answer }}
+          className='notosans-normal-kaitoke-green-18px answer-container'
+        >
+          {/* <div  /> */}
+          {/* {answer} */}
         </div>
       )}
     </SubAccordionContainer>

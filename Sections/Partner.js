@@ -57,7 +57,7 @@ const PartnerSection = styled.section`
       box-shadow: 0px 10px 200px rgba(0, 0, 0, 0.1);
       border-radius: 20px;
       padding: 0 0px;
-      max-width: 1200px;
+      max-width: var(--max-width);
     }
     .partner-title {
       font-family: 'Poppins';
@@ -114,10 +114,9 @@ const partnersData = [
   {
     src: 'turku.svg',
     title: 'University of Turku',
-    transpose:'center',
-    
+    transpose: 'center',
   },
-  
+
   // {
   //   src: 'sendgrid.svg',
   //   title: 'TWILIO SendGrid',

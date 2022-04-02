@@ -68,12 +68,19 @@ const TeamContainer = styled.li`
     align-items: center;
     justify-content: center;
     width: 264px;
-    margin: 15px;
+    margin: 10px;
     max-height: 368px;
     padding-bottom: 10px;
     filter: drop-shadow(0px 10px 100px rgba(0, 0, 0, 0.1));
     border-radius: 10px;
     background-color: white;
+    
+    max-width: calc( 24.5% - 15px );
+    
+    &:first-child {
+      margin-left: 0px;
+    }
+
     .left {
       width: 100%;
       border-top-left-radius: 10px;

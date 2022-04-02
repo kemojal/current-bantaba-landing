@@ -116,18 +116,17 @@ const AboutSection = styled.section`
     padding: 0rem;
     background-color: var(--ottoman);
     .container {
-      max-width: 1210px;
+      max-width: var(--max-width);
       display: flex;
       flex-direction: row;
       padding: 6.25rem 0;
     }
     .about-left {
       width: 50%;
-
     }
     .about-right {
       width: 50%;
-      padding: 0 30px;
+      padding: 0px;
       padding-left: 50px;
     }
     .about-img {
@@ -159,7 +158,7 @@ const AboutSection = styled.section`
       font-family: 'Poppins';
       font-style: normal;
       font-weight: 400;
-      font-size: 1.25rem;
+      font-size: 1.2rem;
       line-height: 160%;
       color: #5B615E;
     }

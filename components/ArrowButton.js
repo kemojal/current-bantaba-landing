@@ -15,6 +15,7 @@ const Button = styled.button`
   justify-content: center;
   align-items: center;
   top: 50%;
+  top: ${({ top }) => (top ? top : '50%')};
   left: ${({ position }) =>
     position == 'left' ? '10px' : 'calc(100% - 55px)'};
   transform: ${({ position }) =>
@@ -35,9 +36,9 @@ const Button = styled.button`
     background-color: #e2f6eb;
   }
 `;
-export const ArrowButton = ({ position }) => {
+export const ArrowButton = ({ position, top }) => {
   return (
-    <Button position={position}>
+    <Button position={position} top={top}>
       <div className='arrow-img'>
         <Img
           src='arrow-next-mobile.svg'

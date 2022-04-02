@@ -13,8 +13,6 @@ import Fade from 'react-reveal/Fade';
 const MapSectionContainer = styled.section`
   /* background-color: #e8fcf0; */
   background-color: var(--ottoman);
-  /* background-color: white; */
-  /* min-height: 100vh; */
   width: 100vw;
   display: flex;
   flex-direction: column;
@@ -81,6 +79,7 @@ const MapSectionContainer = styled.section`
     background-color: white;
     display: flex;
     flex-direction: column-reverse;
+    padding-bottom: 0;
     .map-right {
       max-width: 1000px;
       display: flex;
@@ -88,6 +87,8 @@ const MapSectionContainer = styled.section`
       align-items: center;
       justify-content: center;
       padding-bottom: 3.75rem;
+      paddin-left: 0;
+      padding-right: 0;
     }
 
     .map-left {
@@ -110,6 +111,7 @@ const MapSectionContainer = styled.section`
       line-height: 130%;
       text-align: center;
       color: #011108;
+      max-width: 750px;
     }
     p.normal {
       text-align: center;
@@ -138,6 +140,8 @@ const MapSectionContainer = styled.section`
     .map-desktop {
       display: block;
       width: 100vw;
+      max-width: var(--max-width);
+      padding: 0;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -163,6 +167,9 @@ const MapImg = styled(motion.div)`
   @media (min-width: 1280px) {
     width: 1498px;
     height: 834px;
+
+    width: var(--max-width);
+    height: 622px;
   }
 `;
 

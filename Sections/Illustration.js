@@ -23,7 +23,7 @@ const IllustrationContainer = styled.section`
   @media (min-width: 600px) {
     width: 50%;
     height: 100%;
-    padding-top: 80px;
+    /* padding-top: 80px; */
     /* padding-top: 80px; */
     /* padding-right: 150px; */
     display: flex;
@@ -63,11 +63,12 @@ const ImgContainer = styled.div`
 `;
 const ImgWrapper = styled.div`
   position: relative;
-  /* width: 654px; */
-  width: 40.875rem;
-  height: 43rem;
-  /* height: 688px; */
-  transform: translateX(15%);
+  /* width: 40.875rem;
+  height: 43rem; */
+
+  width: 33.875rem;
+  height: 44rem;
+  /* transform: translateX(15%); */
 `;
 
 const Illustration = () => {

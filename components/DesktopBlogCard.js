@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { Img } from '../components/Img';
 import Fade from 'react-reveal/Fade';
 import Link from 'next/link';
+import Image from 'next/image';
+
+import { GlobalContext } from '../context/GlobalState';
 
 const DesktopBlogCardContainer = styled.div`
+  cursor: pointer;
   width: ${({ width }) => (width ? width : 'calc(50% - 15px)')};
   padding: 20px 0;
   background: #ffffff;
@@ -89,6 +93,16 @@ const DesktopBlogCardContainer = styled.div`
     line-height: 150%;
     color: #1c202a;
   }
+  @media (max-width: 1279px) {
+    max-width: 355px;
+
+    margin: 15px;
+  }
+  @media (max-width: 600px) {
+    min-width: 100vw;
+    margin-left: 0;
+    margin-right: 0;
+  }
 `;
 const DesktopBlogCard = ({
   mTop,
@@ -101,7 +115,23 @@ const DesktopBlogCard = ({
   read_time,
   summary,
   cover_img,
+  author,
+  full_text,
 }) => {
+  const { showBlogDetail, showBlogDetailFunction, setBlogDetailFunction } =
+    useContext(GlobalContext);
+  const showDetail = () => {
+    showBlogDetailFunction(true);
+    setBlogDetailFunction({
+      title,
+      category,
+      read_time,
+      full_text,
+      summary,
+      cover_img,
+      author,
+    });
+  };
   return (
     <DesktopBlogCardContainer
       mTop={mTop}
@@ -109,16 +139,12 @@ const DesktopBlogCard = ({
       mLeft={mLeft}
       mRight={mRight}
       width={width}
+      onClick={showDetail}
     >
       <div className='blog-img-cover'>
         <Fade bottom>
           <div className='b-img-wrapper'>
-            <Img
-              src='b-cover-1.svg'
-              alt='logo'
-              layout='fill'
-              objectFit='cover'
-            />
+            <Image src={cover_img} alt='logo' layout='fill' objectFit='cover' />
           </div>
         </Fade>
       </div>

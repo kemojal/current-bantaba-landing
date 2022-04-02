@@ -46,14 +46,13 @@ const TestimonialSection = styled.section`
     .fluid {
       /* max-width: 1200px; */
       /* max-width: 953px; */
-      max-width: 1153px;
+      max-width: var(--max-width);
       display: flex;
 
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      /* flex-direction: row; */
-      /* padding: 40px 0; */
+
       position: relative;
     }
     h1 {
@@ -79,6 +78,8 @@ const TestimonialSection = styled.section`
       position: relative;
       width: 100%;
       margin-bottom: 2rem;
+      margin-bottom: 4.375rem;
+      padding: 5px 0;
     }
     .hide-on-desktop {
       display: none;
@@ -114,7 +115,8 @@ const Cards = styled.div`
     justify-content: flex-start;
     overflow: scroll;
     width: 100%;
-    max-width: 1200px;
+    max-width: 1150px ;
+    /* max-width: var(--max-width); */
     overflow-x: scroll;
     padding: 10px 0;
     border-radius: 10px;
@@ -161,8 +163,8 @@ export const Testimonial = () => {
           </Fade>
           <Fade bottom>
             <div className='desktop-arrow-container'>
-              <ArrowButton position={'left'} />
-              <ArrowButton position={'right'} />
+              <ArrowButton position={'left'} top={'0'}/>
+              <ArrowButton position={'right'} top={'0'}/>
             </div>
           </Fade>
         </div>
