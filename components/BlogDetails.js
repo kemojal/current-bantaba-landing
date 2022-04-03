@@ -12,31 +12,46 @@ import SocialContainer from '../components/SocialContainer';
 import { GlobalContext } from '../context/GlobalState';
 
 import Image from 'next/image';
+
 const BlogDetailContainer = styled.div`
-  width: 100%;
+  width: 99%;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 4rem 0;
-  padding-top: 94px;
+  margin-top: 75px;
   padding-bottom: 0;
+  border-radius: 20px;
   position: fixed;
   background-color: white;
   overflow: scroll;
   height: 100vh;
   top: 0;
+  box-shadow: 1.91534px 3.83069px 100px 1.91534px rgba(166, 166, 166, 0.15);
   .close-detail-btn {
+    cursor: pointer;
     border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: #04853a;
     padding: 10px 15px;
     color: white;
     border-radius: 8px;
+    position: fixed;
+    top: 100px;
+    z-index: 99;
+    color: white;
+    left: 120px;
   }
 
   .tags {
     width: 100%;
     text-align: center;
+  }
+  .title-span {
+    width: 100%;
   }
   @media (min-width: 1280px) {
     /* padding-top: 64px; */
@@ -46,6 +61,7 @@ const BlogDetailContainer = styled.div`
       display: flex;
     }
     .reading-col {
+      position: relative;
       width: calc(67% - 15px);
       margin-right: 15px;
       /* padding: 15px; */
@@ -65,7 +81,7 @@ const BlogDetailContainer = styled.div`
       ont-family: 'Poppins';
       font-style: normal;
       font-weight: 700;
-      font-size: 50px;
+      font-size: 40px;
       line-height: 130%;
       color: #011108;
     }
@@ -148,6 +164,28 @@ const BlogDetailContainer = styled.div`
       width: 100%;
       max-width: 1126px;
     }
+    .blog-text-container p {
+      margin-bottom: 10px;
+      font-size: 18px;
+      line-height: 160%;
+      font-style: normal;
+      color: #5b615e;
+    }
+
+
+/* p.ib.ic.cq.dx.id.ie.if.ig.ih.ii.ij.ik.il.im.in.io.ip.iq.ir.is.it.iu.iv.iw.ix.iy.dn strong{
+  font-size: 16px;
+  font-weight: 600;
+} */
+    .blog-text-container h3, strong {
+      margin: 5px 0;
+      font-style: normal;
+      font-weight: 600;
+      font-family: 'Poppins';
+      font-size: 25px;
+      line-height: 160%;
+      color: #011108;
+    }
     .text-title {
       font-family: 'Poppins';
       font-style: normal;
@@ -167,7 +205,7 @@ const BlogDetailContainer = styled.div`
       border-bottom: 1px solid #f8f8f8;
       margin: 5px 0;
       padding: 5px 0;
-    
+      cursor: pointer;
     }
     .related-blogs--container-header {
       font-family: 'Poppins';
@@ -255,10 +293,11 @@ const BlogDetailContainer = styled.div`
         ont-family: 'Poppins';
         font-style: normal;
         font-weight: 700;
-        font-size: 50px;
+        font-size: 30px;
         line-height: 130%;
         color: #011108;
       }
+
       .imageWrapper {
         position: relative;
         /* width: 1146px;
@@ -331,6 +370,22 @@ const BlogDetailContainer = styled.div`
         max-width: 1126px;
         font-family: 'Poppins';
       }
+      .blog-text-container p {
+      margin-bottom: 5px;
+      font-size: 16px;
+      line-height: 160%;
+      font-style: normal;
+      color: #5b615e;
+    }
+    .blog-text-container h3, strong {
+      margin: 5px 0;
+      font-style: normal;
+      font-weight: 600;
+      font-family: 'Poppins';
+      font-size: 20px;
+      line-height: 160%;
+      color: #011108;
+    }
       .text-title {
         font-family: 'Poppins';
         font-style: normal;
@@ -412,8 +467,31 @@ const BlogDetailContainer = styled.div`
         margin-left: 10px;
       }
     }
+
+    .close-detail-btn {
+      left: 20px;
+    }
   }
 `;
+const ArrowWrapper = styled.div`
+  position: relative;
+  height: 12px;
+  width: 14px;
+  display: flex;
+  margin-right: 5px;
+  justify-content: center;
+  align-items: center;
+  transform: scaleX(-1);
+  &:before {
+    width: 40px;
+    height: 0px;
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    content: '';
+  }
+`;
+
 const BlogDetail = ({
   title,
   category,
@@ -439,33 +517,33 @@ const BlogDetail = ({
       scrDesktop: 'linkedin-d.svg',
     },
   ];
-  const relatedNews = [
-    {
-      title: 'What makes a Perfect Pitch Deck?',
-      readTime: 3,
-      category: 'Tech',
-    },
-    {
-      title: 'Challenges faced by female Entrepreneurs in Africa',
-      readTime: 3,
-      category: 'Tech',
-    },
-    {
-      title: 'Why you should mentor a start-up in Africa',
-      readTime: 3,
-      category: 'Tech',
-    },
-    {
-      title: 'Relief for African startups as Bantaba platform goes live',
-      readTime: 3,
-      category: 'Tech',
-    },
-    {
-      title: 'These are the leading investment countries in Africa',
-      readTime: 3,
-      category: 'Tech',
-    },
-  ];
+  // const relatedNews = [
+  //   {
+  //     title: 'What makes a Perfect Pitch Deck?',
+  //     readTime: 3,
+  //     category: 'Tech',
+  //   },
+  //   {
+  //     title: 'Challenges faced by female Entrepreneurs in Africa',
+  //     readTime: 3,
+  //     category: 'Tech',
+  //   },
+  //   {
+  //     title: 'Why you should mentor a start-up in Africa',
+  //     readTime: 3,
+  //     category: 'Tech',
+  //   },
+  //   {
+  //     title: 'Relief for African startups as Bantaba platform goes live',
+  //     readTime: 3,
+  //     category: 'Tech',
+  //   },
+  //   {
+  //     title: 'These are the leading investment countries in Africa',
+  //     readTime: 3,
+  //     category: 'Tech',
+  //   },
+  // ];
 
   const RenderHTML = (props) => (
     <span dangerouslySetInnerHTML={{ __html: props.HTML }}></span>
@@ -473,8 +551,12 @@ const BlogDetail = ({
   const closeDetail = () => {
     showBlogDetailFunction(false);
   };
+  const showDetail = (item) => {
+    setBlogDetailFunction(item);
+  };
 
-  const { currentDetail, showBlogDetailFunction } = useContext(GlobalContext);
+  const { currentDetail, showBlogDetailFunction, setBlogDetailFunction } =
+    useContext(GlobalContext);
 
   return (
     <BlogDetailContainer>
@@ -482,13 +564,19 @@ const BlogDetail = ({
         <div className='detail-row'>
           <div className='reading-col'>
             <p className='blog-title'>
-              <span>
-                {' '}
-                <button className='close-detail-btn' onClick={closeDetail}>
-                  Back
-                </button>
-              </span>
-              <span>{currentDetail.title}</span>
+              <button className='close-detail-btn' onClick={closeDetail}>
+                <ArrowWrapper>
+                  <Img
+                    src='arrow.svg'
+                    alt='logo'
+                    layout='fill'
+                    objectFit='contain'
+                  />
+                </ArrowWrapper>
+                Back
+              </button>
+
+              <span className='title-span'>{currentDetail.title}</span>
             </p>
             <div className='imageWrapper'>
               {currentDetail.cover_img && (
@@ -561,7 +649,13 @@ const BlogDetail = ({
             <ul className='related-blog-list-container'>
               {related.map((item, index) => {
                 return (
-                  <li key={index} className='related-list'>
+                  <li
+                    onClick={() => {
+                      showDetail(item);
+                    }}
+                    key={index}
+                    className='related-list'
+                  >
                     <Fade bottom>
                       <p className='related-list-title'>{item.title}</p>
                     </Fade>

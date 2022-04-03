@@ -90,8 +90,6 @@ const FAQContainer = styled.div`
     margin-bottom: 100px;
   }
 
-
-
   @media (min-width: 600px) {
     .container {
       width: 100%;
@@ -153,8 +151,10 @@ const Input = styled.input`
 `;
 export default function FAQ({ faqs }) {
   const [query, setQuery] = useState('');
+  const [result, setResult] = useState(faqs.FAQData);
   let inputHandler = (e) => {
     setQuery(e.target.value);
+    setResult(QueryData(query));
     // var lowerCase = e.target.value.toLowerCase();
     // setInputText(lowerCase);
   };
@@ -222,6 +222,18 @@ export default function FAQ({ faqs }) {
     },
   ];
 
+  
+  const QueryData = (query) => {
+    return faqs.FAQData.reduce((r, { section, subSection }) => {
+      let o = subSection.filter(
+        ({ question, answer }) =>
+          question.toLowerCase().includes(query.toLowerCase()) ||
+          answer.toLowerCase().includes(query.toLowerCase())
+      );
+      if (o && o.length) r.push({ section, subSection: [...o] });
+      return r;
+    }, []);
+  };
   return (
     <FAQContainer>
       <div className='container'>
@@ -248,7 +260,10 @@ export default function FAQ({ faqs }) {
 
         {/* <div>{JSON.stringify(faqs.FAQData)}</div> */}
         <ul className='question-list-container'>
-          {faqs.FAQData.filter((post) => {
+          {result.map((item, index) => {
+            return <Accordion key={index} {...item} />;
+          })}
+          {/* {faqs.FAQData.filter((post) => {
             if (query === '') {
               return post;
             } else if (
@@ -258,7 +273,7 @@ export default function FAQ({ faqs }) {
             }
           }).map((item, index) => {
             return <Accordion key={index} {...item} />;
-          })}
+          })} */}
         </ul>
       </div>
       <Mission />
