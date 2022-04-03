@@ -16,6 +16,7 @@ module.exports = {
   images: {
     domains: ['res.cloudinary.com'],
   },
+  trailingSlash: true,
   // reactStrictMode: true,
 
   // domains: ['res.cloudinary.com'],
