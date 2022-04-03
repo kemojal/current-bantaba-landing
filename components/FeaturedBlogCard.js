@@ -9,8 +9,6 @@ import { GlobalContext } from '../context/GlobalState';
 
 const FeaturedBlogCardContainer = styled.div`
   width: 100%;
-  /* width: 754px; */
-  /* height: 774px; */
   background: #ffffff;
   box-shadow: 1.91534px 3.83069px 100px rgba(166, 166, 166, 0.15);
   border-radius: 10px;
@@ -22,7 +20,6 @@ const FeaturedBlogCardContainer = styled.div`
   position: relative;
 
   .featured-img-cover {
-    /* background-color: yellow; */
     display: flex;
     width: 100%;
     align-items: center;
@@ -81,6 +78,11 @@ const FeaturedBlogCardContainer = styled.div`
     font-size: 18px;
     line-height: 160%;
     color: #5b615e;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .f-read-time {
@@ -136,6 +138,8 @@ const FeaturedBlogCard = ({
   cover_img,
   author,
   full_text,
+  tags,
+  related,
 }) => {
   const { showBlogDetail, showBlogDetailFunction, setBlogDetailFunction } =
     useContext(GlobalContext);
@@ -150,6 +154,7 @@ const FeaturedBlogCard = ({
       summary,
       cover_img,
       author,
+      related,
     });
   };
 

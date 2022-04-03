@@ -91,7 +91,6 @@ const NavContainer = styled.div`
     .desk-left-nav {
       display: flex;
       padding-left: 30px;
-
     }
     .desk-right-nav li,
     .desk-left-nav li {
@@ -110,7 +109,7 @@ const NavContainer = styled.div`
       justify-content: flex-end;
       align-items: center;
       padding-left: 0px;
-      padding-right: 0 !important; 
+      padding-right: 0 !important;
       width: 50%;
     }
     .desk-right-nav li {
@@ -270,8 +269,12 @@ const Menu = styled.ul`
 const Customselect = styled.select``;
 
 export const NavBar = ({ locale, router, path }) => {
-  const { setCurrentLanguage } = useContext(GlobalContext);
+  const { setCurrentLanguage, currentLanguage } = useContext(GlobalContext);
   const [hastoggle, setHastoggle] = useState(false);
+  
+
+  console.log('router  = ', router);
+
   const toggleHambburger = () => {
     setHastoggle(!hastoggle);
   };
@@ -297,7 +300,7 @@ export const NavBar = ({ locale, router, path }) => {
   const onChangeLanguage = (e) => {
     const locale = e.target.value;
     // console.log('router path ', router);
-    router.push('/', '/', { locale });
+    router.push(router.pathname, router.pathname, { locale });
     // router.push(path, path, { locale });
     setCurrentLanguage(locale);
     // dispatch({ type: 'SET_LANGUAGE', payload: locale });
@@ -373,7 +376,7 @@ export const NavBar = ({ locale, router, path }) => {
               color={'white'}
               href='https://community.ourbantaba.com/en/register'
               fontSize='1rem'
-              mRight = '0px'
+              mRight='0px'
             />
           </li>
         </ul>

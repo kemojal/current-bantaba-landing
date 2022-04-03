@@ -5,7 +5,7 @@ import { Img } from '../components/Img';
 import Image from 'next/image';
 const PCard = styled.div`
   width: 100vw;
-  height: 550px;
+  height: 500px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -32,9 +32,6 @@ const PCard = styled.div`
   .profile-frame {
     position: relative;
     width: 88vw;
-    /* height: 335px; */
-    /* height: 235px; */
-    /* width: 330px; */
     overflow: hidden;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
@@ -42,25 +39,12 @@ const PCard = styled.div`
     width: 350px;
     height: 248px;
 
-    /* border-top-left-radius: 20px;
-    border-top-right-radius: 20px; */
+    
     width: 350px;
     height: 259px;
   }
 
   .title {
-    /* color: var(--licorice);
-    font-family: var(--font-family-noto_sans);
-    font-size: var(--font-size-m);
-    font-style: normal;
-    font-weight: 700;
-    letter-spacing: 0px;
-    line-height: 18px;
-    text-align: left;
-    padding: 10px 0;
-    text-align: center; */
-    /* font-size: 24px; */
-
     line-height: 26px;
     color: var(--licorice);
     font-family: var(--font-family-noto_sans);
@@ -73,11 +57,11 @@ const PCard = styled.div`
     margin-top: 18px;
 
     display: -webkit-box;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
-    height: 78px;
+    height: 50px;
   }
   .ellipse-text {
     height: 100px;
@@ -87,7 +71,6 @@ const PCard = styled.div`
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
-    /* padding-bottom: 15px; */
   }
 
   .read-more {
@@ -114,16 +97,10 @@ const PCard = styled.div`
     width: 300px;
     width: 31%;
     max-width: 360px;
-    /* max-width: 31%; */
-    height: 550px;
+    height: 500px;
     margin: 0 15px;
     .wrapper {
-      /* width: 362px; */
       width: 100%;
-      /* height: auto; */
-      /* max-width: 360px; */
-      /* box-shadow: 4px 22px 70px rgba(71, 83, 72, 0.1); */
-      /* border-radius: 10px; */
       overflow: hidden;
     }
 
@@ -166,13 +143,18 @@ const P = styled.p`
 const SourceRow = styled.div`
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+  padding: 0 30px;
+  padding-top: 5px;
 
   .source-img {
     position: relative;
-    width: 25px;
-    height: 25px;
+    /* width: 25px;
+    height: 25px; */
+
+    width: 60px;
+    height: 60px;
   }
   .source {
     color: var(--licorice);

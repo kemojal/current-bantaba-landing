@@ -70,7 +70,8 @@ const PressSection = styled.section`
       font-family: 'Poppins';
       font-style: normal;
       font-weight: 700;
-      font-size: 40px;
+      /* font-size: 40px; */
+      font-size: 2rem;
       line-height: 130%;
       text-align: left;
     }
@@ -115,9 +116,9 @@ export const Press = ({ press }) => {
         <Fade bottom>
           <h1 className='notosans-bold-licorice-20px show-on-mobile'>Press</h1>
           <div className='press-header show-on-desktop'>
-            <div className='notosans-bold-licorice-20px read-title '>
+            <h1 className='notosans-bold-licorice-20px read-title '>
               Read more about us
-            </div>
+            </h1>
 
             <div className='view-all'>
               <div className='view-icon'>

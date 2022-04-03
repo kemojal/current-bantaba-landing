@@ -10,7 +10,7 @@ import { GlobalContext } from '../context/GlobalState';
 const DesktopBlogCardContainer = styled.div`
   cursor: pointer;
   width: ${({ width }) => (width ? width : 'calc(50% - 15px)')};
-  padding: 20px 0;
+  padding: 10px 0;
   background: #ffffff;
   box-shadow: 1.91534px 3.83069px 100px 1.91534px rgba(166, 166, 166, 0.15);
   border-radius: 10px;
@@ -24,6 +24,7 @@ const DesktopBlogCardContainer = styled.div`
     width: 100%;
     align-items: center;
     justify-content: center;
+    padding: 0 10px;
     /* padding: 10px 0; */
     /* background-color: yellow; */
   }
@@ -35,9 +36,12 @@ const DesktopBlogCardContainer = styled.div`
     /* tuned-image */
     width: 352px;
     height: 240.85px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 1.91534px 3.83069px 100px 1.91534px rgba(166, 166, 166, 0.15);
   }
   .blog-card-body {
-    padding: 0 25px;
+    padding: 0 10px;
   }
   .blog-card-body {
     font-family: 'Poppins';
@@ -92,6 +96,8 @@ const DesktopBlogCardContainer = styled.div`
     font-size: 18px;
     line-height: 150%;
     color: #1c202a;
+    margin-top: 20px;
+    width: 100%;
   }
   @media (max-width: 1279px) {
     max-width: 355px;
@@ -117,6 +123,8 @@ const DesktopBlogCard = ({
   cover_img,
   author,
   full_text,
+  tags,
+  related,
 }) => {
   const { showBlogDetail, showBlogDetailFunction, setBlogDetailFunction } =
     useContext(GlobalContext);
@@ -130,6 +138,8 @@ const DesktopBlogCard = ({
       summary,
       cover_img,
       author,
+      tags,
+      related,
     });
   };
   return (

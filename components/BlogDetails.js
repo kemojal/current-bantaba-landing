@@ -33,6 +33,11 @@ const BlogDetailContainer = styled.div`
     color: white;
     border-radius: 8px;
   }
+
+  .tags {
+    width: 100%;
+    text-align: center;
+  }
   @media (min-width: 1280px) {
     /* padding-top: 64px; */
 
@@ -119,6 +124,17 @@ const BlogDetailContainer = styled.div`
       line-height: 160%;
       color: #011108;
     }
+    .tags {
+      width: auto;
+      font-size: 13px;
+      margin-left: 50px;
+      text-align: left;
+    }
+    .tags span {
+      background-color: #ebf5ed;
+      color: #04853a;
+      margin: 0 2px;
+    }
     .social-container {
       display: flex;
       align-items: center;
@@ -150,7 +166,8 @@ const BlogDetailContainer = styled.div`
     .related-list {
       border-bottom: 1px solid #f8f8f8;
       margin: 5px 0;
-      padding: 5px;
+      padding: 5px 0;
+    
     }
     .related-blogs--container-header {
       font-family: 'Poppins';
@@ -177,6 +194,7 @@ const BlogDetailContainer = styled.div`
       display: flex;
       justify-content: space-between;
       padding: 5px 0;
+      margin-top: 5px;
       /* background-color: green; */
     }
     .category {
@@ -312,7 +330,6 @@ const BlogDetailContainer = styled.div`
         width: 100%;
         max-width: 1126px;
         font-family: 'Poppins';
-        
       }
       .text-title {
         font-family: 'Poppins';
@@ -405,6 +422,8 @@ const BlogDetail = ({
   summary,
   cover_img,
   author,
+  tags,
+  related,
 }) => {
   const socialList = [
     {
@@ -518,124 +537,6 @@ const BlogDetail = ({
                 dangerouslySetInnerHTML={{ __html: currentDetail.full_text }}
               />
 
-              {/* <Fade bottom>
-                <p className='text-title'>Fosters ingenuity and creativity:</p>
-              </Fade>
-              <Fade bottom>
-                <p className='normal-text'>
-                  Students learn in a safe environment during STEM education
-                  activities that allow them to fall and try again. STEM
-                  education stresses the value of failure as a learning
-                  exercise, which will enable students to embrace mistakes as
-                  part of the learning process. This allows students to build
-                  confidence and resilience, which will enable them to keep
-                  going when the going gets rough. After all, failure is part of
-                  a process that ultimately leads to success.
-                </p>
-              </Fade>
-              <br />
-              <Fade bottom>
-                <p className='text-title'>Builds resilience:</p>
-              </Fade>
-              <Fade bottom>
-                <p className='normal-text'>
-                  Ingenuity and creativity can pair with STEM and lead to new
-                  ideas and innovations. Without ingenuity and creativity, the
-                  recent developments in artificial intelligence or digital
-                  learning would not be possible. These technologies were
-                  created by people who learned that the human mind can achieve
-                  it if the human mind can conceive it.
-                </p>
-              </Fade>
-              <br />
-              <Fade bottom>
-                <p className='text-title'>Encourages experimentation:</p>
-              </Fade>
-              <Fade bottom>
-                <p className='normal-text'>
-                  Without a little risk-taking, and experimentation, many of the
-                  technological advancements that have occurred in the last
-                  couple of decades would not be possible. Many of these
-                  innovations were created by people who were told that their
-                  ideas wouldn’t work and their response was, “Let’s try it and
-                  see.” This type of attitude can be encouraged with STEM
-                  learning by allowing students to experiment and take risks
-                  during learning activities.
-                </p>
-              </Fade>
-              <br />
-              <Fade bottom>
-                <p className='text-title'>Encourages teamwork:</p>
-              </Fade>
-              <Fade bottom>
-                <p className='normal-text'>
-                  STEM education can be taught to students of all ability
-                  levels. Students of varying levels of ability can work
-                  together in teams to find solutions to problems, record data,
-                  write reports, give presentations, etc. The end result is
-                  students who understand how to collaborate with others and
-                  thrive in a team-oriented environment.
-                </p>
-              </Fade>
-              <br />
-              <Fade bottom>
-                <p className='text-title'>Encourages knowledge application:</p>
-              </Fade>
-              <Fade bottom>
-                <p className='normal-text'>
-                  In STEM education, students are taught skills that they can
-                  use in the real world. This motivates students to learn, as
-                  they know that the skills that they acquire can be utilized
-                  immediately, and in ways that positively impact them and their
-                  loved ones. The ability to apply their knowledge to new and
-                  novel tasks will bode well for them when they enter the
-                  workforce.
-                </p>
-              </Fade>
-              <br />
-              <Fade bottom>
-                <p className='text-title'>Fosters ingenuity and creativity:</p>
-              </Fade>
-              <Fade bottom>
-                <p className='normal-text'>
-                  Ingenuity and creativity can pair with STEM and lead to new
-                  ideas and innovations. Without ingenuity and creativity, the
-                  recent developments in artificial intelligence or digital
-                  learning would not be possible. These technologies were
-                  created by people who learned that the human mind can achieve
-                  it if the human mind can conceive it.
-                </p>
-              </Fade>
-              <br />
-              <Fade bottom>
-                <p className='text-title'>Fosters ingenuity and creativity:</p>
-              </Fade>
-              <Fade bottom>
-                <p className='normal-text'>
-                  Ingenuity and creativity can pair with STEM and lead to new
-                  ideas and innovations. Without ingenuity and creativity, the
-                  recent developments in artificial intelligence or digital
-                  learning would not be possible. These technologies were
-                  created by people who learned that the human mind can achieve
-                  it if the human mind can conceive it.
-                </p>
-              </Fade>
-              <br />
-              <Fade bottom>
-                <p className='text-title'>Fosters ingenuity and creativity:</p>
-              </Fade>
-              <Fade bottom>
-                <p className='normal-text'>
-                  Ingenuity and creativity can pair with STEM and lead to new
-                  ideas and innovations. Without ingenuity and creativity, the
-                  recent developments in artificial intelligence or digital
-                  learning would not be possible. These technologies were
-                  created by people who learned that the human mind can achieve
-                  it if the human mind can conceive it.
-                </p>
-              </Fade>
-              <br /> */}
-
               <div className='footer-row'>
                 <div className='social-container'>
                   <Fade bottom>
@@ -645,14 +546,20 @@ const BlogDetail = ({
                     <SocialContainer socialList={socialList} />
                   </Fade>{' '}
                 </div>
-                <div className='author'>Tags: Tech, Science</div>
+                <div className='author tags'>
+                  Tags:{' '}
+                  {tags.map((tag, i) => (
+                    <span key={i}>{tag.name + ', '}</span>
+                  ))}
+                  {/* Tags: Tech, Science XXX */}
+                </div>
               </div>
             </div>
           </div>
           <div className='related-blogs-container'>
             <p className='related-blogs--container-header'>Related Blogs</p>
             <ul className='related-blog-list-container'>
-              {relatedNews.map((item, index) => {
+              {related.map((item, index) => {
                 return (
                   <li key={index} className='related-list'>
                     <Fade bottom>
@@ -675,7 +582,7 @@ const BlogDetail = ({
                         </Fade>
                         <Fade bottom>
                           <span className='f-read-time-label'>
-                            Read {item.readTime}
+                            Read {item.read_time}
                           </span>
                         </Fade>
                       </div>
