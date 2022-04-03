@@ -39,9 +39,9 @@ const PCard = styled.div`
     width: 350px;
     height: 248px;
 
-    
     width: 350px;
     height: 259px;
+    border-bottom: 2px solid #0000002e;
   }
 
   .title {
@@ -61,13 +61,13 @@ const PCard = styled.div`
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
-    height: 50px;
+    height: 60px;
   }
   .ellipse-text {
     height: 100px;
     line-height: 22px;
     display: -webkit-box;
-    -webkit-line-clamp: 4;
+    -webkit-line-clamp: 4 !important;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -92,6 +92,15 @@ const PCard = styled.div`
     width: 10px;
     height: 10px;
     margin-left: 0.5625rem;
+  }
+
+  .source {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    padding-left: 5px;
+    line-height: 160%;
+    color: #5b615e;
   }
   @media (min-width: 1280px) {
     width: 300px;
@@ -137,7 +146,7 @@ const P = styled.p`
     margin: 16px 0;
     display: -webkit-box;
     -webkit-line-clamp: 2 !important;
-    height: 60px !important;
+    /* height: 60px !important; */
   }
 `;
 const SourceRow = styled.div`
@@ -165,7 +174,6 @@ const SourceRow = styled.div`
     letter-spacing: 0px;
     line-height: 19px;
     padding: 5px 0;
-    padding-left: 5px;
   }
 
   @media (min-width: 1280px) {
@@ -173,7 +181,8 @@ const SourceRow = styled.div`
       font-family: 'Poppins';
       font-style: normal;
       font-weight: 400;
-      font-size: 14px;
+      font-size: 15px;
+      padding-left: 5px;
       line-height: 160%;
       color: #5b615e;
     }

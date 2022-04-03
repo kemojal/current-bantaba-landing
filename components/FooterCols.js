@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {useContext } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
 
+import { GlobalContext } from '../context/GlobalState';
 const FooterColumn = styled.div`
   width: ${({ address }) => (address ? '100%' : 'auto')};
   margin-top: 20px;
@@ -28,6 +29,7 @@ const FooterColumn = styled.div`
     line-height: 19px;
     text-align: left;
     margin: 6px 0;
+    cursor: pointer;
   }
   .address-div {
     width: 50vw;
@@ -54,18 +56,52 @@ const FooterColumn = styled.div`
   }
 `;
 const FooterCols = ({ title, list, address }) => {
+  const { toggleContactModal, showNewsLetterModal, toggleSubscribeNewsletterModal } =
+    useContext(GlobalContext);
+  
+  const openJoinNewsletter = () => {
+    toggleSubscribeNewsletterModal(true);
+  };
+  const openContactUs = () => {
+    toggleContactModal(true)
+  };
   return (
     <FooterColumn address={address}>
       <p className='notosans-bold-licorice-16px title'>{title}</p>
       <ul>
         {list &&
-          list.map((item) => (
-            <li className='notosans-normal-licorice-14px' key={item}>
-                <Link href={item.link ? item.link : ''}>
+          list.map((item) => {
+            if (item.title === 'Join our newsletter') {
+              return (
+                <li
+                  onClick={openJoinNewsletter}
+                  className='notosans-normal-licorice-14px'
+                  key={item}
+                >
                   <a>{item.title}</a>
-                </Link>
-            </li>
-          ))}
+                </li>
+              );
+            }
+            if (item.title === 'Contact Us') {
+              return (
+                <li
+                  onClick={openContactUs}
+                  className='notosans-normal-licorice-14px'
+                  key={item}
+                >
+                  <a>{item.title}</a>
+                </li>
+              );
+            } else {
+              return (
+                <li className='notosans-normal-licorice-14px' key={item}>
+                  <Link href={item.link ? item.link : ''}>
+                    <a>{item.title}</a>
+                  </Link>
+                </li>
+              );
+            }
+          })}
       </ul>
       {address && (
         <div className='notosans-normal-licorice-14px address-div'>

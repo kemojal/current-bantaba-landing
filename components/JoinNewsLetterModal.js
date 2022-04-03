@@ -350,7 +350,7 @@ const ModalContainer = styled.div`
   }
 `;
 const JoinNewsLetterModal = () => {
-  const [formStage, setFormStage] = useState(3);
+  const [formStage, setFormStage] = useState(1);
   const [formData, setFormData] = useState({});
   const [formError, setFormError] = useState(false);
   const [isEmailValid, setIsEmailValid] = useState(true);
@@ -432,7 +432,7 @@ const JoinNewsLetterModal = () => {
             <>
               <div className='left-modal'>
                 <p className='modal-title'>
-                  Receive massages from the future. We only fill your inbox with
+                  Receive messages from the future. We only fill your inbox with
                   happiness.
                 </p>
                 <p className='modal-normal-text'>

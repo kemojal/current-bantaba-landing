@@ -227,7 +227,7 @@ export const About = () => {
             <div className='desktop-spacer' />
             <Fade bottom>
               <LinkContainer>
-                <Link className='link' href='https://nextjs.org'>
+                <Link className='link'  href={'https://community.ourbantaba.com/en/register'}>
                   <a>Let&#39;s build Africa Together</a>
                 </Link>
                 <ArrowIcon>

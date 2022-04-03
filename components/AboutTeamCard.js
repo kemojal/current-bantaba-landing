@@ -46,7 +46,7 @@ const TeamContainer = styled.li`
     padding: 5px 0;
   }
   .s-links {
-    curson: pointer;
+    cursor: pointer;
     padding: 0px 0;
     width: 40%;
     display: flex;
@@ -59,7 +59,7 @@ const TeamContainer = styled.li`
     margin-right: 5px;
   }
   .s-email {
-    curson: pointer;
+    cursor: pointer;
     position: relative;
     width: 30px;
     height: 30px;
@@ -152,6 +152,14 @@ const TeamContainer = styled.li`
       /* transform: translateX(calc( 100% )) */
     }
   }
+  @media (max-width: 320px) {
+    .about-team-img {
+      position: relative;
+      width: 116px;
+      height: 148px;
+      overflow: hidden;
+    }
+  }
 `;
 const AboutTeamCard = ({
   src,
@@ -186,7 +194,7 @@ const AboutTeamCard = ({
         </Fade>
         <Fade bottom>
           <ul className='s-links'>
-            <Link href={linkedinLink} passHref={true}>
+            <a target='_blank' href={linkedinLink} passHref={true}>
               <li className='s-icon'>
                 <Img
                   src={'linkedin-d.svg'}
@@ -195,9 +203,9 @@ const AboutTeamCard = ({
                   objectFit='contain'
                 />
               </li>
-            </Link>
+            </a>
 
-            <Link href={`mailto:${email}`} passHref={true}>
+            <a target='_blank' href={`mailto:${email}`} passHref={true}>
               <li className='s-email'>
                 <Img
                   src={'email-d.svg'}
@@ -206,7 +214,7 @@ const AboutTeamCard = ({
                   objectFit='contain'
                 />
               </li>
-            </Link>
+            </a>
           </ul>
         </Fade>
       </div>

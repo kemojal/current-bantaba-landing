@@ -143,6 +143,7 @@ const Aboutontainer = styled.div`
     top: -35px;
     border-top: 1px solid #00853b !important;
     max-width: 351px;
+    display: none;
   }
   .team-list {
     width: 100%;
@@ -323,6 +324,10 @@ const Aboutontainer = styled.div`
     /* .section {
     padding: 0;
     } */
+
+    .reset-mb-50{
+      margin-bottom: 0;
+    }
   }
 `;
 
@@ -490,7 +495,7 @@ export default function About({ team }) {
             </p>
           </Fade>
         </div>
-        <div className='section s-three mb-50'>
+        <div className='section s-three mb-50 reset-mb-50'>
           <div className='bg-fix-s3'>
             <Fade bottom>
               <div className='blob-wrapper'>

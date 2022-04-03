@@ -164,6 +164,7 @@ const DesktopDiaspora = () => {
               title={'Join as Startup'}
               bgcolor='transparent'
               color='#009743'
+              href={'https://community.ourbantaba.com/en/register'}
             />
           </div>
         </Fade>

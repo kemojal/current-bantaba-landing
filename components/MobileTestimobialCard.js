@@ -1,7 +1,7 @@
 import React from 'react';
 import { Img } from '../components/Img';
 import styled from 'styled-components';
-
+import Image from 'next/image';
 const CardDiv = styled.div`
   width: 100vw;
   scroll-snap-align: center;
@@ -25,6 +25,15 @@ const CardDiv = styled.div`
     height: 262px;
     /* width: 102px;
     height: 102px; */
+
+    position: relative;
+    width: 180px;
+    height: 180px;
+    overflow: hidden;
+    border-radius: 50%
+    box-shadow: 1.91534px 3.83069px 100px 1.91534px rgb(166 166 166 / 15%);
+    border-radius: 50%;
+    margin: 20px 0;
   }
   .img-col {
     width: 100vw;
@@ -92,7 +101,7 @@ const MobileTestimobialCard = ({ src, name, position, text }) => {
     <CardDiv>
       <div className='img-col'>
         <div className='profile-frame'>
-          <Img src={src} alt='logo' layout='fill' objectFit='contain' />
+          <Image src={src} alt='logo' layout='fill' objectFit='contain' />
         </div>
       </div>
       <div className='test-col'>

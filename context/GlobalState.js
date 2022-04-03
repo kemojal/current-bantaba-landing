@@ -5,7 +5,9 @@ import AppReducer from './AppReducer';
 const initialState = {
   currentLanguage: 'en',
   showModal: false,
+  showContactUsModal: true,
   showContactModal: false,
+  subscribeNewsletterModal: false,
   showJoinNewsLetterModal: false,
   showBlogDetail: false,
   currentDetail: {},
@@ -39,6 +41,13 @@ export const GlobalProvider = ({ children }) => {
       payload: condition,
     });
   }
+  function toggleSubscribeNewsletterModal(condition) {
+    dispatch({
+      type: 'TOGGLE_SUBSCRIBE_NEWSLETTER_MODAL',
+      payload: condition,
+    });
+  }
+
   function toggleJoinNewsLetterModal(condition) {
     dispatch({
       type: 'TOGGLE_JOIN_NEWSLETTER_MODAL',
@@ -73,11 +82,15 @@ export const GlobalProvider = ({ children }) => {
         showJoinNewsLetterModal: state.showJoinNewsLetterModal,
         showBlogDetail: state.showBlogDetail,
         currentDetail: state.currentDetail,
+        showContactUsModal: state.showContactUsModal,
+        subscribeNewsletterModal: state.subscribeNewsletterModal,
         showNewsLetterModal,
+        toggleContactModal,
         closeNewsLetterModal,
         setCurrentLanguage,
         showBlogDetailFunction,
         setBlogDetailFunction,
+        toggleSubscribeNewsletterModal,
       }}
     >
       {children}

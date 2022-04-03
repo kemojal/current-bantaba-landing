@@ -216,7 +216,7 @@ const WhySection = styled.section`
     }
     .align-row{
       position: absolute;
-      top: 64px;
+      top: 67px;
       left: 125px;
       display: flex;
       width: auto;
@@ -358,7 +358,7 @@ export const WhyJoin = ({ lang }) => {
               bgcolor='transparent'
               color='#009743'
               maxWidth='auto'
-              width = '300px'
+              width='300px'
               href={'https://community.ourbantaba.com/en/register'}
             />
           </div>

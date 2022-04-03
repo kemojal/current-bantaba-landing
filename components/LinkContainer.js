@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const LinkContainer = styled.h3`
+  cursor: pointer;
   color: blue;
   font-weight: normal;
   display: flex;

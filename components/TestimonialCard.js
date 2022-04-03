@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Fade from 'react-reveal/Fade';
 
 import { Img } from '../components/Img';
+import Image from 'next/image'
 const CardDiv = styled.div`
   /* box-sizing: border-box; */
   /* width: 300px !important; */
@@ -71,6 +72,7 @@ const CardDiv = styled.div`
     background: #ffffff;
     border: 1px solid rgba(1, 17, 8, 0.1);
     border-radius: 10px;
+    max-width: 558px;
 
     .img-col {
       width: 135px;
@@ -86,6 +88,8 @@ const CardDiv = styled.div`
       height: 102px;
       border-radius: 50%;
       background-color: #009A3650;
+      overflow: hidden;
+      box-shadow: 1.91534px 3.83069px 100px 1.91534px rgb(166 166 166 / 15%);
     }
     .text {
       border-bottom: 1px solid #dfe2e6;
@@ -98,13 +102,14 @@ const CardDiv = styled.div`
       color: #5b615e;
       
       padding: 5px;
-      padding-top: 25px;
+      padding-top: 10px;
       padding-bottom: 15px;
       /* height: 5.44rem; */
       display: -webkit-box;
-      -webkit-line-clamp: 3;
+      -webkit-line-clamp: 5;
       -webkit-box-orient: vertical;
       overflow: hidden;
+      height: 75%;
     }
     .name {
       margin-top: 0px;
@@ -117,7 +122,7 @@ const CardDiv = styled.div`
       padding: 0;
     }
     .position {
-      margin-top: 5px;
+      /* margin-top: 5px; */
       font-family: 'Poppins';
       font-style: normal;
       font-weight: 400;
@@ -144,13 +149,13 @@ const TestCol = styled.div`
     flex-direction: column-reverse;
     align-items: flex-start;
     padding: 0 10px;
-    padding-bottom: 25px;
+    padding-bottom: 5px;
     width: 423px;
     position: relative;
     .col-flip-desktop{
       display: flex;
       flex-direction: column;
-      padding-top: 20px
+      padding-top: 5px
     }
     &::before {
       content: '';
@@ -193,7 +198,7 @@ export const TestimonialCard = ({ src, name, position, text }) => {
       <div className='img-col'>
         <Fade bottom>
           <div className='profile-frame'>
-            <Img src={src} alt='logo' layout='fill' objectFit='contain' />
+            <Image src={src} alt='logo' layout='fill' objectFit='contain' />
           </div>
         </Fade>
       </div>

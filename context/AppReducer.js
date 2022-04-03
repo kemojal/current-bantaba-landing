@@ -15,6 +15,11 @@ export default (state, action) => {
         ...state,
         showContactModal: action.payload,
       };
+    case 'TOGGLE_SUBSCRIBE_NEWSLETTER_MODAL':
+      return {
+        ...state,
+        subscribeNewsletterModal: action.payload,
+      };
     case 'TOGGLE_JOIN_NEWSLETTER_MODAL':
       return {
         ...state,

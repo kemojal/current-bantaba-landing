@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "animate.css": "^4.1.1",
+    "axios": "^0.26.1",
     "framer-motion": "^6.2.8",
     "i18next": "^21.6.14",
     "next": "12.1.0",

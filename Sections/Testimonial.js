@@ -1,5 +1,8 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
+
+
 import { ArrowButton } from '../components/ArrowButton';
 import { FluidContainer } from '../components/FluidContainer';
 import MobileTestimobialCard from '../components/MobileTestimobialCard';
@@ -126,32 +129,44 @@ const Cards = styled.div`
     }
   }
 `;
-const Testimonials = [
-  {
-    // src: 'mf1.svg',
-    src: 'test-profile1.svg',
-    name: 'Name Nameson',
-    position: 'Startup name',
-    text: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since..`,
-  },
-  {
-    // src: 'mf2.svg',
-    src: 'test-profile1.svg',
-    name: 'Darlene Robertson',
-    position: 'Startup name',
-    text: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since..`,
-  },
-  {
-    // src: 'mf1.svg',
-    src: 'test-profile1.svg',
-    name: 'Name Nameson',
-    position: 'Startup Name',
-    text: `Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-    nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-    sed diam voluptua.`,
-  },
-];
+// const Testimonials = [
+//   {
+//     // src: 'mf1.svg',
+//     src: 'test-profile1.svg',
+//     name: 'Name Nameson',
+//     position: 'Startup name',
+//     text: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since..`,
+//   },
+//   {
+//     // src: 'mf2.svg',
+//     src: 'test-profile1.svg',
+//     name: 'Darlene Robertson',
+//     position: 'Startup name',
+//     text: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since..`,
+//   },
+//   {
+//     // src: 'mf1.svg',
+//     src: 'test-profile1.svg',
+//     name: 'Name Nameson',
+//     position: 'Startup Name',
+//     text: `Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+//     nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+//     sed diam voluptua.`,
+//   },
+// ];
 export const Testimonial = () => {
+  const [testimonials, setTestimonials] = useState([]);
+
+  useEffect(() => {
+    getTestimonials();
+  }, []);
+
+  async function getTestimonials() {
+    const response = await fetch('https://landingapi-dev.ourbantaba.com/testimonials/en/all');
+    const data = await response.json();
+    setTestimonials(data.testimonials);
+  }
+
   return (
     <TestimonialSection>
       <div className='fluid'>
@@ -172,14 +187,14 @@ export const Testimonial = () => {
         <Fade bottom>
           <div className='mobile'>
             <Cards>
-              {Testimonials.map((item, index) => {
+              {testimonials.map((item, index) => {
                 return <MobileTestimobialCard key={index} {...item} />;
               })}
             </Cards>
           </div>
           <div className='desktop'>
             <Cards>
-              {Testimonials.map((item, index) => {
+              {testimonials.map((item, index) => {
                 return <TestimonialCard key={index} {...item} />;
               })}
             </Cards>
