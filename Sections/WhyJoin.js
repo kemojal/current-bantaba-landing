@@ -130,7 +130,7 @@ const WhySection = styled.section`
   }
 
   .link {
-    text-decoration: underline;
+    /* text-decoration: underline; */
     color: #0033ff;
     margin-left: 10px;
     cursor: pointer;
