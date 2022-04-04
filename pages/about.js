@@ -393,6 +393,7 @@ export default function About({ team }) {
                     alt='logo'
                     layout='fill'
                     objectFit='contain'
+                    priority={true}
                   />
                 </div>
                 <div className='about-img-2 h-422 hide-on-mobile'>
@@ -401,6 +402,7 @@ export default function About({ team }) {
                     alt='logo'
                     layout='fill'
                     objectFit='contain'
+                    priority={true}
                   />
                 </div>
               </div>
@@ -438,6 +440,7 @@ export default function About({ team }) {
                   alt='logo'
                   layout='fill'
                   objectFit='contain'
+                  priority={true}
                 />
               </div>
               <div className='about-img-2 h-324 hide-on-mobile'>
@@ -446,13 +449,14 @@ export default function About({ team }) {
                   alt='logo'
                   layout='fill'
                   objectFit='contain'
+                  priority={true}
                 />
               </div>
             </Fade>
           </div>
         </div>
         <div className='section row-on-desktop'>
-          <div className='desk-textcolum pl-30'>
+          <div className='desk-textcolum pr-30'>
             <Fade bottom>
               <p className='notosans-bold-licorice-22px  about-section-title pt-24 pt-24 desktop-about-title'>
                 We’re empowering startups and bringing Africa closer to the
@@ -482,6 +486,7 @@ export default function About({ team }) {
                   alt='logo'
                   layout='fill'
                   objectFit='contain'
+                  priority={true}
                 />
               </div>
             </Fade>
@@ -504,6 +509,8 @@ export default function About({ team }) {
                   alt='logo'
                   layout='fill'
                   objectFit='contain'
+                  priority={true}
+
                 />
               </div>
             </Fade>
@@ -515,6 +522,7 @@ export default function About({ team }) {
                 alt='logo'
                 layout='fill'
                 objectFit='contain'
+                priority={true}
               />
             </div>
           </div>

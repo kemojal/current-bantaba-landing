@@ -1,7 +1,6 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
-
 
 import { ArrowButton } from '../components/ArrowButton';
 import { FluidContainer } from '../components/FluidContainer';
@@ -118,7 +117,7 @@ const Cards = styled.div`
     justify-content: flex-start;
     overflow: scroll;
     width: 100%;
-    max-width: 1150px ;
+    max-width: 1150px;
     /* max-width: var(--max-width); */
     overflow-x: scroll;
     padding: 10px 0;
@@ -155,14 +154,25 @@ const Cards = styled.div`
 //   },
 // ];
 export const Testimonial = () => {
+  const scrollTestimonialRef1 = useRef();
+  const scrollTestimonialRef2 = useRef();
   const [testimonials, setTestimonials] = useState([]);
+
+  const scrollRef1 = (scrollOffset) => {
+    scrollTestimonialRef1.current.scrollLeft += scrollOffset;
+  };
+  const scrollRef2 = (scrollOffset) => {
+    scrollTestimonialRef2.current.scrollLeft += scrollOffset;
+  };
 
   useEffect(() => {
     getTestimonials();
   }, []);
 
   async function getTestimonials() {
-    const response = await fetch('https://landingapi-dev.ourbantaba.com/testimonials/en/all');
+    const response = await fetch(
+      'https://landingapi-dev.ourbantaba.com/testimonials/en/all'
+    );
     const data = await response.json();
     setTestimonials(data.testimonials);
   }
@@ -178,22 +188,26 @@ export const Testimonial = () => {
           </Fade>
           <Fade bottom>
             <div className='desktop-arrow-container'>
-              <ArrowButton position={'left'} top={'0'}/>
-              <ArrowButton position={'right'} top={'0'}/>
+              <span onClick={() => scrollRef2(380)}>
+                <ArrowButton position={'left'} top={'0'} />
+              </span>
+              <span onClick={() => scrollRef2(-380)}>
+                <ArrowButton position={'right'} top={'0'} />
+              </span>
             </div>
           </Fade>
         </div>
 
         <Fade bottom>
           <div className='mobile'>
-            <Cards>
+            <Cards ref={scrollTestimonialRef1}>
               {testimonials.map((item, index) => {
                 return <MobileTestimobialCard key={index} {...item} />;
               })}
             </Cards>
           </div>
           <div className='desktop'>
-            <Cards>
+            <Cards ref={scrollTestimonialRef2}>
               {testimonials.map((item, index) => {
                 return <TestimonialCard key={index} {...item} />;
               })}
@@ -201,8 +215,12 @@ export const Testimonial = () => {
           </div>
         </Fade>
         <div className='mobile'>
-          <ArrowButton position={'left'} className='hide-on-desktop' />
-          <ArrowButton position={'right'} className='hide-on-desktop' />
+          <span onClick={() => scrollRef1(380)}>
+            <ArrowButton position={'left'} className='hide-on-desktop' />
+          </span>
+          <span onClick={() => scrollRef1(-380)}>
+            <ArrowButton position={'right'} className='hide-on-desktop' />
+          </span>
         </div>
       </div>
     </TestimonialSection>

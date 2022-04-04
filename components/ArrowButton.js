@@ -33,7 +33,7 @@ const Button = styled.button`
     height: 13px;
   }
   &:hover {
-    background-color: #e2f6eb;
+    background-color: #009A3640;
   }
 `;
 export const ArrowButton = ({ position, top }) => {

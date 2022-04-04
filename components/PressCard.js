@@ -5,12 +5,12 @@ import { Img } from '../components/Img';
 import Image from 'next/image';
 const PCard = styled.div`
   width: 100vw;
-  height: 500px;
+  /* height: 500px; */
   display: flex;
   flex-direction: column;
   align-items: center;
   /* padding: 0 30px; */
-  margin: 0px 30px;
+  margin: 0px 15px;
   scroll-snap-align: center;
   .wrapper {
     background-color: var(--white);
@@ -71,6 +71,7 @@ const PCard = styled.div`
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
+    /* height: 88px; */
   }
 
   .read-more {

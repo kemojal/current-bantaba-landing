@@ -7,7 +7,7 @@ import { LinkContainer } from '../components/LinkContainer';
 
 import Fade from 'react-reveal/Fade';
 
-const AboutSection = styled.section`
+const AboutSectionContainer = styled.section`
   background-color: white;
   /* min-height: 100vh; */
   width: 100vw;
@@ -183,9 +183,9 @@ const ArrowIcon = styled.div`
   align-items: center;
   margin-left: 10px;
 `;
-export const About = () => {
+export const AboutSection = () => {
   return (
-    <AboutSection>
+    <AboutSectionContainer>
       <div className='container'>
         <Fade bottom>
           <div className='about-left'>
@@ -243,6 +243,6 @@ export const About = () => {
           </div>
         </div>
       </div>
-    </AboutSection>
+    </AboutSectionContainer>
   );
 };

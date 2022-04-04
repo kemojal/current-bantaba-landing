@@ -53,8 +53,8 @@ const SubAccordionContainer = styled.div`
       flex-direction: row-reverse;
     }
     .answer-container {
-      padding-left: 30px;
-      padding-right: 30px;
+      padding-left: 40px;
+      padding-right: 40px;
       max-width: 900px;
     }
   }

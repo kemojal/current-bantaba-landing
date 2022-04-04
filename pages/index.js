@@ -102,7 +102,7 @@ import { NavBar } from '../Sections/NavBar';
 import { Hero } from '../Sections/Hero';
 import { WhyJoin } from '../Sections/WhyJoin';
 import { JoinStartup } from '../Sections/JoinStartup';
-import { About } from '../Sections/About';
+import { AboutSection } from '../Sections/About';
 import { MapSection } from '../Sections/MapSection';
 import { Testimonial } from '../Sections/Testimonial';
 import { Press } from '../Sections/Press';
@@ -142,16 +142,16 @@ export default function Home({ press }) {
         </CombinedHero>
         <WhyJoin lang={lan} />
         <JoinStartup lang={lan} />
-        <About lang={lan} />
+        <AboutSection lang={lan} />
         <MapSection lang={lan} />
         <Testimonial lang={lan} />
         <Press lang={lan} press={press} />
         <Partner lang={lan} />
         <Mission lang={lan} />
         <NavBar locale={lan} path={'/'} router={router} />
-        <JoinNewsLetterModal />
+        {/* <JoinNewsLetterModal />
         <ContactUsModal />
-        <NewsLetterModal />
+        <NewsLetterModal /> */}
       </main>
 
       {/* <footer className={styles.footer}>

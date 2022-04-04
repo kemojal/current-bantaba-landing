@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import styled from 'styled-components';
 import { ArrowButton } from '../components/ArrowButton';
 import { PressCard } from '../components/PressCard';
@@ -24,6 +24,8 @@ const PressSection = styled.section`
     margin-bottom: 28px;
   }
   .card-container {
+    scroll-behavior: smooth;
+    transition: all 0.2s ease-in-out;: ;
     display: flex;
     /* justify-content: center; */
     align-items: center;
@@ -110,6 +112,11 @@ const PressSection = styled.section`
   }
 `;
 export const Press = ({ press }) => {
+  const scrollRef = useRef();
+
+  const scroll = (scrollOffset) => {
+    scrollRef.current.scrollLeft += scrollOffset;
+  };
   return (
     <PressSection>
       <div className='fluid'>
@@ -133,20 +140,23 @@ export const Press = ({ press }) => {
             </div>
           </div>
         </Fade>
-        <Fade bottom>
-          <div className='card-container'>
-            {press.press.map((item, index) => {
-              return <PressCard key={index} {...item} />;
-            })}
-            {/* <PressCard {...press.press[0]} />
+        <div className='card-container' ref={scrollRef}>
+          {press.press.map((item, index) => {
+            return <PressCard key={index} {...item} />;
+          })}
+          {/* <PressCard {...press.press[0]} />
             <PressCard {...press.press[1]} />
             <PressCard {...press.press[2]} />
             <PressCard {...press.press[3]} />
             <PressCard {...press.press[4]} /> */}
-          </div>
-        </Fade>
-        <ArrowButton position={'left'} />
-        <ArrowButton position={'right'} />
+        </div>
+
+        <span onClick={() => scroll(380)}>
+          <ArrowButton position={'left'} />
+        </span>
+        <span onClick={() => scroll(-380)}>
+          <ArrowButton position={'right'} />
+        </span>
       </div>
     </PressSection>
   );

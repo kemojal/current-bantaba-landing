@@ -320,7 +320,7 @@ export const WhyJoin = ({ lang }) => {
     },
   ];
   return (
-    <WhySection ref={myRef}>
+    <WhySection ref={myRef} id="whyjoin">
       <div className='container'>
         <DestopLeftIllustration>
           <Fade bottom>

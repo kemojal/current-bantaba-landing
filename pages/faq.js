@@ -1,4 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { useRouter } from 'next/router';
+import { GlobalContext } from '../context/GlobalState';
+
 import styled from 'styled-components';
 import Accordion from '../components/Accordion';
 
@@ -7,6 +10,9 @@ import { NavBar } from '../Sections/NavBar';
 
 import Fade from 'react-reveal/Fade';
 import { Mission } from '../Sections/Mission';
+
+import en from '../lang/en';
+import fr from '../lang/fr';
 
 const FAQContainer = styled.div`
   width: 100%;
@@ -149,82 +155,36 @@ const Input = styled.input`
     outline: none;
   }
 `;
-export default function FAQ({ faqs }) {
+export default function FAQ({ EnglishFaQ, FrenchFAQ }) {
+  const router = useRouter();
+  const { locale } = router;
+  const lan = locale == 'en' ? en : fr;
+
+  const { currentLanguage } = useContext(GlobalContext);
+  const [currentQueryData, setCurrentQueryData] = useState(
+    currentLanguage === 'en' ? EnglishFaQ.FAQData : FrenchFAQ.FAQData
+  );
   const [query, setQuery] = useState('');
-  const [result, setResult] = useState(faqs.FAQData);
+
+  const [result, setResult] = useState(
+    currentLanguage === 'en' ? EnglishFaQ.FAQData : FrenchFAQ.FAQData
+  );
   let inputHandler = (e) => {
     setQuery(e.target.value);
     setResult(QueryData(query));
-    // var lowerCase = e.target.value.toLowerCase();
-    // setInputText(lowerCase);
   };
 
-  const FAQData = [
-    {
-      section: 'General',
-      subSection: [
-        {
-          question: 'What is Bantaba?',
-          answer:
-            'Bantaba is a community that connects African tech startups with Africans living abroad. As a startup, the platform provides access to investors, mentors and consultants in the diaspora community. In turn, the diaspora has the opportunity to contribute to the African tech ecosystem through networking, mentoring and investing in tech startups on the continent.',
-        },
-        {
-          question: 'What kind of startups are there on Bantaba?',
-          answer: 'Bantaba is a community that connects African tech ',
-        },
-        {
-          question: 'Who is behind Bantaba?',
-          answer:
-            'connects African tech startups with Africans living abroad. As a startup, the platform provides access to investors, mentors and consultants in the diaspora community. In turn, the diaspora has the opportunity to contribute to the African tech ecosystem through networking, mentoring and investing in tech startups on the continent.',
-        },
-        {
-          question: 'How do I change my password?',
-          answer:
-            'Bantaba is a community that connects African tech startups with Africans living abroad. As a startup, the platform provides access to investors, mentors and consultants in the diaspora community. In turn, the diaspora has the opportunity to contribute to the African tech ecosystem through networking, mentoring and investing in tech startups on the continent.',
-        },
-        {
-          question:
-            'How much does Bantaba charge? or is it free to use Bantaba?',
-          answer:
-            'Bantaba is a community that connects African tech startups with Africans living abroad. As a startup, the platform provides access to investors, mentors and consultants in the diaspora community. In turn, the diaspora has the opportunity to contribute to the African tech ecosystem through networking, mentoring and investing in tech startups on the continent.',
-        },
-      ],
-    },
-    {
-      section: 'Startups',
-      subSection: [
-        {
-          question: 'What is Bantaba?',
-          answer:
-            'Bantaba is a community that connects African tech startups with Africans living abroad. As a startup, the platform provides access to investors, mentors and consultants in the diaspora community. In turn, the diaspora has the opportunity to contribute to the African tech ecosystem through networking, mentoring and investing in tech startups on the continent.',
-        },
-      ],
-    },
-    {
-      section: 'Diaspora',
-      subSection: [
-        {
-          question: 'What is Bantaba?',
-          answer:
-            'Bantaba is a community that connects African tech startups with Africans living abroad. As a startup, the platform provides access to investors, mentors and consultants in the diaspora community. In turn, the diaspora has the opportunity to contribute to the African tech ecosystem through networking, mentoring and investing in tech startups on the continent.',
-        },
-      ],
-    },
-    {
-      section: 'Data Protection',
-      subSection: [
-        {
-          question: 'What is Bantaba?',
-          answer:
-            'Bantaba is a community that connects African tech startups with Africans living abroad. As a startup, the platform provides access to investors, mentors and consultants in the diaspora community. In turn, the diaspora has the opportunity to contribute to the African tech ecosystem through networking, mentoring and investing in tech startups on the continent.',
-        },
-      ],
-    },
-  ];
+  useEffect(() => {
+    setResult(
+      currentLanguage === 'en' ? EnglishFaQ.FAQData : FrenchFAQ.FAQData
+    );
+    setCurrentQueryData(
+      currentLanguage === 'en' ? EnglishFaQ.FAQData : FrenchFAQ.FAQData
+    );
+  }, [currentLanguage]);
 
-  
   const QueryData = (query) => {
-    return faqs.FAQData.reduce((r, { section, subSection }) => {
+    return currentQueryData.reduce((r, { section, subSection }) => {
       let o = subSection.filter(
         ({ question, answer }) =>
           question.toLowerCase().includes(query.toLowerCase()) ||
@@ -257,48 +217,25 @@ export default function FAQ({ faqs }) {
             </div>
           </div>
         </Fade>
-
-        {/* <div>{JSON.stringify(faqs.FAQData)}</div> */}
         <ul className='question-list-container'>
           {result.map((item, index) => {
             return <Accordion key={index} {...item} />;
           })}
-          {/* {faqs.FAQData.filter((post) => {
-            if (query === '') {
-              return post;
-            } else if (
-              post.section.toLowerCase().includes(query.toLowerCase())
-            ) {
-              return post;
-            }
-          }).map((item, index) => {
-            return <Accordion key={index} {...item} />;
-          })} */}
         </ul>
       </div>
       <Mission />
-      <NavBar />
+      <NavBar locale={lan} router={router} />
     </FAQContainer>
   );
 }
 
 FAQ.getInitialProps = async (ctx) => {
-  const res = await fetch(
-    'https://landingapi-dev.ourbantaba.com/faqs/groups/en/all'
-  );
+  const [EnglishFaQResponse, FrenchFAQResponse] = await Promise.all([
+    fetch('https://landingapi-dev.ourbantaba.com/faqs/groups/en/all'),
+    fetch('https://landingapi-dev.ourbantaba.com/faqs/groups/fr/all'),
+  ]);
 
-  Promise.all([
-    fetch('https://jsonplaceholder.typicode.com/todos/1').then((resp) =>
-      resp.json()
-    ),
-    fetch('https://jsonplaceholder.typicode.com/todos/2').then((resp) =>
-      resp.json()
-    ),
-    fetch('https://jsonplaceholder.typicode.com/todos/3').then((resp) =>
-      resp.json()
-    ),
-  ]).then(console.log);
-
-  const json = await res.json();
-  return { faqs: json };
+  const EnglishFaQ = await EnglishFaQResponse.json();
+  const FrenchFAQ = await FrenchFAQResponse.json();
+  return { EnglishFaQ, FrenchFAQ };
 };

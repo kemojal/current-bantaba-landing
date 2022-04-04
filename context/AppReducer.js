@@ -31,6 +31,9 @@ export default (state, action) => {
       return { ...state, showBlogDetail: action.payload };
     case 'SET_DETAILS':
       return { ...state, currentDetail: action.payload };
+    case 'SET_TAB':
+      return { ...state, currentActiveTab: action.payload };
+
     default:
       return state;
   }

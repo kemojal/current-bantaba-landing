@@ -11,6 +11,7 @@ const initialState = {
   showJoinNewsLetterModal: false,
   showBlogDetail: false,
   currentDetail: {},
+  currentActiveTab: 'home',
 };
 
 // Create context
@@ -72,6 +73,18 @@ export const GlobalProvider = ({ children }) => {
       payload: condition,
     });
   }
+  function setTab(condition) {
+    dispatch({
+      type: 'SET_TAB',
+      payload: condition,
+    });
+  }
+  // function setFrFAQ(condition) {
+  //   dispatch({
+  //     type: 'SET_FRFAQS',
+  //     payload: condition,
+  //   });
+  // }
 
   return (
     <GlobalContext.Provider
@@ -84,6 +97,7 @@ export const GlobalProvider = ({ children }) => {
         currentDetail: state.currentDetail,
         showContactUsModal: state.showContactUsModal,
         subscribeNewsletterModal: state.subscribeNewsletterModal,
+        currentActiveTab: state.currentActiveTab,
         showNewsLetterModal,
         toggleContactModal,
         closeNewsLetterModal,
@@ -91,6 +105,7 @@ export const GlobalProvider = ({ children }) => {
         showBlogDetailFunction,
         setBlogDetailFunction,
         toggleSubscribeNewsletterModal,
+        setTab,
       }}
     >
       {children}

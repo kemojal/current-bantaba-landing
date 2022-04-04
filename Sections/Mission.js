@@ -7,6 +7,9 @@ import Footer from './Footer';
 
 import Fade from 'react-reveal/Fade';
 import FooterCols from '../components/FooterCols';
+import JoinNewsLetterModal from '../components/JoinNewsLetterModal';
+import ContactUsModal from '../components/ContactUsModal';
+import NewsLetterModal from '../components/NewsLetterModal';
 
 const MissionSection = styled.section`
   width: 100vw;
@@ -216,6 +219,9 @@ export const Mission = () => {
           </span>
         </Fade>
       </Copyright>
+      <JoinNewsLetterModal />
+      <ContactUsModal />
+      <NewsLetterModal/>
     </MissionSection>
   );
 };

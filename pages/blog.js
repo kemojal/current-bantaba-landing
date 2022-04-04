@@ -1,5 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react';
 import styled from 'styled-components';
+
+import { useRouter } from 'next/router';
+
 import { BlogCard } from '../components/BlogCard';
 import { PressCard } from '../components/PressCard';
 import { NavBar } from '../Sections/NavBar';
@@ -13,6 +16,9 @@ import { MobileBlogDetail } from '../components/MobileBlogDetail';
 import BlogDetail from '../components/BlogDetails';
 
 import { GlobalContext } from '../context/GlobalState';
+
+import en from '../lang/en';
+import fr from '../lang/fr';
 
 const BlogContainer = styled.div`
   width: 100%;
@@ -134,29 +140,34 @@ function Blog({ blogs }) {
 
   const { showBlogDetail } = useContext(GlobalContext);
 
-  const Blogs = [
-    {
-      title: '',
-      category: 'Design',
-      cover_img: 'nmnmnmnmn.png svg jp',
-      summart: '',
-      full_text: 'bmbmbmbmb // render as html',
-    },
-    {
-      title: '',
-      category: 'Design',
-      cover_img: 'nmnmnmnmn.png svg jp',
-      summart: '',
-      full_text: 'bmbmbmbmb // render as html',
-    },
-    {
-      title: '',
-      category: 'Design',
-      cover_img: 'nmnmnmnmn.png svg jp',
-      summart: '',
-      full_text: 'bmbmbmbmb // render as html',
-    },
-  ];
+  const router = useRouter();
+  const { locale } = router;
+  const lan = locale == 'en' ? en : fr;
+
+
+  // const Blogs = [
+  //   {
+  //     title: '',
+  //     category: 'Design',
+  //     cover_img: 'nmnmnmnmn.png svg jp',
+  //     summart: '',
+  //     full_text: 'bmbmbmbmb // render as html',
+  //   },
+  //   {
+  //     title: '',
+  //     category: 'Design',
+  //     cover_img: 'nmnmnmnmn.png svg jp',
+  //     summart: '',
+  //     full_text: 'bmbmbmbmb // render as html',
+  //   },
+  //   {
+  //     title: '',
+  //     category: 'Design',
+  //     cover_img: 'nmnmnmnmn.png svg jp',
+  //     summart: '',
+  //     full_text: 'bmbmbmbmb // render as html',
+  //   },
+  // ];
   // useEffect(() => {
   //   setRestBlogs(blogs.blogs.shift());
   // }, []);
@@ -170,25 +181,14 @@ function Blog({ blogs }) {
     }
     return chunks;
   };
-  // const LeftChunk = chunkArray(JSON.stringify(blogs.blogs));
   return (
     <BlogContainer>
       <FluidContainer>
         <Fade bottom>
-          {/* <h1 className='blog-m-title hide-on-desktop'>Blog</h1>
-          <h1 className='blog-m-title hide-on-mobile'>Updated News</h1> */}
           <h1 className='blog-m-title'>Blog</h1>
         </Fade>
 
-        {/* <div className='blog-cards-container mt-24 hide-on-desktop'>
-          <div className='blog-mobile-cards-container'>
-            {restBlogs.map((item, index) => {
-              return <BlogCard key={index} {...item} />;
-            })}
-          </div>
-          
-          <MobileBlogDetail />
-        </div> */}
+       
         <div className='blog-cards-container mt-24   desktop-layout '>
           <div className='blog-desk-colum-left'>
             <FeaturedBlogCard {...featured} />
@@ -243,10 +243,6 @@ function Blog({ blogs }) {
                   );
                 }
               })}
-              {/* <DesktopBlogCard mRight='15px' mBottom='15px' mTop='30px' />
-              <DesktopBlogCard mLeft='15px' mBottom='15px' mTop='30px' />
-              <DesktopBlogCard mRight='15px' mBottom='15px' mTop='15px' />
-              <DesktopBlogCard mLeft='15px' mBottom='15px' mTop='15px' /> */}
             </div>
           </div>
           <div className='blog-desk-colum-right'>
@@ -263,16 +259,12 @@ function Blog({ blogs }) {
                 );
               }
             })}
-            {/* <DesktopBlogCard width='100%' mBottom='15px' />
-            <DesktopBlogCard width='100%' mBottom='15px' mTop='15px' />
-            <DesktopBlogCard width='100%' mBottom='15px' mTop='15px' /> */}
-            {/* <DesktopBlogCard width='100%' mBottom='15px' mTop='15px' /> */}
           </div>
         </div>
       </FluidContainer>
 
       <Mission />
-      <NavBar />
+      <NavBar locale={lan} router={router} />
       {showBlogDetail && <BlogDetail {...featured} />}
     </BlogContainer>
   );

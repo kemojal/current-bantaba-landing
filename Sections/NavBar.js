@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import Link from 'next/link';
 
 import { useDispatch } from 'react-redux';
@@ -27,7 +27,7 @@ const Nav = styled.nav`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 10px;
+  padding: 10px 0;
   border-bottom: 1px solid #e6f1eb;
 
   .lang {
@@ -61,7 +61,6 @@ const Nav = styled.nav`
     }
     .right {
       right: 0;
-      /* background-color: var(--ottoman); */
     }
   }
 `;
@@ -80,6 +79,18 @@ const NavContainer = styled.div`
   .desk-left-nav {
     display: none;
   }
+  .nav-bg {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    height: 100%;
+    padding: 0 10px;
+    background-color: ${({ hastoggle }) =>
+      hastoggle ? 'white' : 'var(--white-ice-color)'};
+    border-bottom: 1px solid #e6f1eb;
+  }
   /* background-color: orange; */
   @media (min-width: 1280px) {
     /* max-width: calc(100% - 300px); */
@@ -87,6 +98,10 @@ const NavContainer = styled.div`
     max-height: 50px;
     justify-content: space-between;
     padding: 0;
+
+    .nav-bg {
+      background-color: transparent;
+    }
 
     .desk-left-nav {
       display: flex;
@@ -101,6 +116,42 @@ const NavContainer = styled.div`
       line-height: 150%;
       color: #5b615e;
       margin: 0px 25px;
+      /* width: 50px; */
+      padding: 10px 0;
+      text-align: center;
+    }
+
+    .why-join-tab {
+      color: ${({ currentActiveTab }) =>
+        currentActiveTab == 'whyjoin'? '#009743 !important' : '#5b615e'};
+      border-bottom: ${({ currentActiveTab }) =>
+        currentActiveTab == 'whyjoin'
+          ? '3px solid #009743'
+          : '3px solid transparent'};
+    }
+    .about-li {
+      color: ${({ currentActiveTab }) =>
+        currentActiveTab == 'about'? '#009743 !important' : '#5b615e'};
+      border-bottom: ${({ currentActiveTab }) =>
+        currentActiveTab === 'about'
+          ? '3px solid #009743'
+          : '3px solid transparent'};
+    }
+    .blog-li {
+      color: ${({ currentActiveTab }) =>
+        currentActiveTab == 'blog'? '#009743 !important' : '#5b615e'};
+      border-bottom: ${({ currentActiveTab }) =>
+        currentActiveTab === 'blog'
+          ? '3px solid #009743'
+          : '3px solid transparent'};
+    }
+    .faq-li {
+      color: ${({ currentActiveTab }) =>
+        currentActiveTab == 'faq'? '#009743 !important' : '#5b615e'};
+      border-bottom: ${({ currentActiveTab }) =>
+        currentActiveTab === 'faq'
+          ? '3px solid #009743'
+          : '3px solid transparent'};
     }
 
     .desk-right-nav {
@@ -268,12 +319,81 @@ const Menu = styled.ul`
 `;
 const Customselect = styled.select``;
 
-export const NavBar = ({ locale, router, path }) => {
-  const { setCurrentLanguage, currentLanguage } = useContext(GlobalContext);
-  const [hastoggle, setHastoggle] = useState(false);
-  
+const SelectOption = styled.div`
+  /* width: 100px; */
+  margin-left: 5px;
+  padding: 0px 10px;
+  /* background-color: white; */
+  border-radius: 3px;
+  /* border: 1px solid #9ce1b8; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  font-size: 16px;
+  span {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 160%;
+    color: #011108;
+  }
+  .currentSelect {
+    width: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .arrowDown {
+    margin-left: 3px;
+    position: relative;
+    width: auto;
+    height: 26px;
+  }
+  .selection-options {
+    position: absolute;
+    width: 100%;
+    display: ${({ selectOptionOpen }) => (selectOptionOpen ? 'flex' : 'none')};
+    background-color: white;
+    /* border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px; */
+    border-radius: 3px;
+    border: 1px solid #9ce1b8;
+    flex-direction: column;
+    align-items: center;
+    top: 25px;
+  }
+  .selection-options span {
+    text-align: center;
+    width: 100%;
+    /* color: #131313; */
+    /* font-size: 16px; */
+    /* line-height: 24px; */
+    border-bottom: 1px solid #9ce1b850;
+  }
 
-  console.log('router  = ', router);
+  @media (max-width: 1279px) {
+    .selection-options {
+      top: -5px;
+    }
+    .arrowDown {
+      height: 30px;
+    }
+  }
+`;
+
+export const NavBar = ({ locale, router, path }) => {
+  const { setCurrentLanguage, currentLanguage, setTab, currentActiveTab } =
+    useContext(GlobalContext);
+  const [hastoggle, setHastoggle] = useState(false);
+  // const [currentTab, setCurrentTab] = useState('/');
+
+  const [selectOptionOpen, setSelectOptionOpen] = useState(false);
+
+  // console.log('router  = ', router);
+  // console.log('router path ', router.asPath)
 
   const toggleHambburger = () => {
     setHastoggle(!hastoggle);
@@ -290,130 +410,40 @@ export const NavBar = ({ locale, router, path }) => {
   const selectLanguage = (e) => {
     setCurrentLang(e.value);
     setCurrentLanguage(e.value);
-    // dispatch({ type: 'SET_LANGUAGE', payload: e.value });
-    closeNav();
-    // console.log('option select. = ', currentLang);
-  };
-
-  // const dispatch = useDispatch();
-
-  const onChangeLanguage = (e) => {
-    const locale = e.target.value;
-    // console.log('router path ', router);
-    router.push(router.pathname, router.pathname, { locale });
-    // router.push(path, path, { locale });
-    setCurrentLanguage(locale);
-    // dispatch({ type: 'SET_LANGUAGE', payload: locale });
     closeNav();
   };
+
+  const setLang = (language) => {
+    const locale = language;
+    router.locale = locale;
+    // router.push(router.pathname, router.pathname, { locale });
+    setCurrentLanguage(language);
+    setSelectOptionOpen(false);
+    closeNav();
+  };
+  const toggleLangSelect = () => setSelectOptionOpen(!selectOptionOpen);
+
+  useEffect(() => {
+    if (router.asPath == '/faq/') {
+      setTab('faq');
+    } else if (router.asPath == '/blog/') {
+      setTab('blog');
+    } else if (router.asPath == '/about/') {
+      setTab('about');
+    } else if (router.asPath == '/#whyjoin') {
+      setTab('whyjoin');
+    } else if (router.asPath == '/') {
+      setTab('home');
+    }
+  }, [currentActiveTab]);
   return (
     <Nav hastoggle={hastoggle}>
       <div className='fixed-bg left' />
       <div className='fixed-bg right' />
-      <NavContainer>
-        <Link href='/'>
-          <div className='logo-container' onClick={closeNav}>
-            <Img
-              src='bantaba_logo-nav.svg'
-              alt='logo'
-              width={108}
-              height={24}
-              priority={true}
-            />
-          </div>
-        </Link>
-        <ul className='desk-left-nav'>
-          <li>
-            <a href='#'>Why Join</a>
-          </li>
-          <li>
-            <Link href='/about'>
-              <a>About</a>
-            </Link>
-          </li>
-          <li>
-            <Link href='/blog'>
-              <a>Blog</a>
-            </Link>
-          </li>
-          <li>
-            <Link href='/faq'>
-              <a>FAQ</a>
-            </Link>
-          </li>
-        </ul>
-        <ul className='desk-right-nav'>
-          <li>
-            <div className='lang-desktop'>
-              <Img
-                src='globe-d.svg'
-                alt='logo'
-                width={18}
-                height={18}
-                priority={true}
-              />
-
-              <Customselect onChange={onChangeLanguage} default={locale}>
-                <option value='en'>EN</option>
-                <option value='fr'>FR</option>
-              </Customselect>
-            </div>
-          </li>
-          <li>
-            <Link
-              href='https://community.ourbantaba.com/en/login'
-              passHref={true}
-            >
-              <a>Login</a>
-            </Link>
-          </li>
-          <li>
-            <ButtonArrow
-              maxWidth='122px'
-              maxHeight='44px'
-              title={'Sign Up'}
-              isArrow={true}
-              color={'white'}
-              href='https://community.ourbantaba.com/en/register'
-              fontSize='1rem'
-              mRight='0px'
-            />
-          </li>
-        </ul>
-        <div className='lang hide-on-mobile' hastoggle={hastoggle}>
-          <Img
-            src='globe-d.svg'
-            alt='logo'
-            width={18}
-            height={18}
-            priority={true}
-          />
-          <Customselect onChange={onChangeLanguage} default={locale}>
-            <option value='en'>EN</option>
-            <option value='fr'>FR</option>
-          </Customselect>
-
-          {/* <span className='langName'>EN</span> */}
-          {/* <Select
-            value={options.filter(function (option) {
-              return option.value === currentLang;
-            })}
-            onChange={selectLanguage}
-            className='langName'
-            options={options}
-          /> */}
-        </div>
-        <HamburgerContainer onClick={toggleHambburger}>
-          <Hamburger hastoggle={hastoggle}>
-            <li></li>
-            <li></li>
-            <li></li>
-          </Hamburger>
-        </HamburgerContainer>
-
+      <NavContainer hastoggle={hastoggle} currentActiveTab={currentActiveTab}>
         <Menu hastoggle={hastoggle}>
           <li onClick={toggleHambburger}>
-            <a href='#'>Why Join</a>
+            <a href='/#whyjoin'>Why Join</a>
           </li>
           <li onClick={toggleHambburger}>
             <Link href='/about'>
@@ -430,29 +460,6 @@ export const NavBar = ({ locale, router, path }) => {
               <a>FAQ</a>
             </Link>
           </li>
-
-          {/* <li>
-            <a href='#'>Testimonials</a>
-          </li> */}
-          {/* <li>
-            <a href='#'>Press</a>
-          </li> */}
-          {/* <li>
-            <a href='#'>Our Partners</a>
-          </li> */}
-          {/* <li>
-            <a href='#'>Our Mission</a>
-          </li> */}
-          {/* <li>
-            <Link href='/contact'>
-              <a>Contact Us</a>
-            </Link>
-          </li> */}
-          {/* <li>
-            <Link href='/newsletter'>
-              <a>Join our Newsletter</a>
-            </Link>
-          </li> */}
 
           <li className='spacer' />
           <li className='button border-green' onClick={toggleHambburger}>
@@ -463,6 +470,174 @@ export const NavBar = ({ locale, router, path }) => {
             <a href='#'>Sign Up</a>
           </li>
         </Menu>
+        <div className='nav-bg'>
+          <Link href='/'>
+            <div className='logo-container' onClick={closeNav}>
+              <Img
+                src='bantaba_logo-nav.svg'
+                alt='logo'
+                width={108}
+                height={24}
+                priority={true}
+              />
+            </div>
+          </Link>
+          <ul className='desk-left-nav'>
+            <li className='why-join-tab'>
+              <Link href='/#whyjoin'>
+                <a>Why Join</a>
+              </Link>
+            </li>
+            <li className='about-li'>
+              <Link href='/about'>
+                <a>About</a>
+              </Link>
+            </li>
+            <li className='blog-li'>
+              <Link href='/blog'>
+                <a>Blog</a>
+              </Link>
+            </li>
+            <li className='faq-li'>
+              <Link href='/faq'>
+                <a>FAQ</a>
+              </Link>
+            </li>
+          </ul>
+          <ul className='desk-right-nav'>
+            <li>
+              <div className='lang-desktop'>
+                <Img
+                  src='globe-d.svg'
+                  alt='logo'
+                  width={18}
+                  height={18}
+                  priority={true}
+                />
+
+                {/* <Customselect onChange={onChangeLanguage} default={locale}>
+                <option value='en'>EN</option>
+                <option value='fr'>FR</option>
+              </Customselect> */}
+                <SelectOption selectOptionOpen={selectOptionOpen}>
+                  <div className='currentSelect' onClick={toggleLangSelect}>
+                    <div>
+                      {' '}
+                      {currentLanguage === 'en' ? 'English' : 'French'}
+                    </div>
+                    <div className='arrowDown'>
+                      <Img
+                        src='arrow-down.svg'
+                        alt='logo'
+                        width={10}
+                        height={5}
+                        priority={true}
+                      />
+                    </div>
+                  </div>
+
+                  <div className='selection-options'>
+                    <span
+                      onClick={() => {
+                        setLang('en');
+                      }}
+                    >
+                      English
+                    </span>
+                    <span
+                      onClick={() => {
+                        setLang('fr');
+                      }}
+                    >
+                      French
+                    </span>
+                  </div>
+                </SelectOption>
+              </div>
+            </li>
+            <li>
+              <Link
+                href='https://community.ourbantaba.com/en/login'
+                passHref={true}
+              >
+                <a>Login</a>
+              </Link>
+            </li>
+            <li>
+              <ButtonArrow
+                maxWidth='122px'
+                maxHeight='44px'
+                title={'Sign Up'}
+                isArrow={true}
+                color={'white'}
+                href='https://community.ourbantaba.com/en/register'
+                fontSize='1rem'
+                mRight='0px'
+              />
+            </li>
+          </ul>
+          <div className='lang hide-on-mobile' hastoggle={hastoggle}>
+            <Img
+              src='globe-d.svg'
+              alt='logo'
+              width={18}
+              height={18}
+              priority={true}
+            />
+            {/* <Customselect onChange={onChangeLanguage} default={locale}>
+            <option value='en'>EN</option>
+            <option value='fr'>FR</option>
+          </Customselect> */}
+            <SelectOption selectOptionOpen={selectOptionOpen}>
+              <div className='currentSelect' onClick={toggleLangSelect}>
+                <div> {currentLanguage === 'en' ? 'EN' : 'FR'}</div>
+                <div className='arrowDown'>
+                  <Img
+                    src='arrow-down.svg'
+                    alt='logo'
+                    width={10}
+                    height={5}
+                    priority={true}
+                  />
+                </div>
+              </div>
+
+              <div className='selection-options'>
+                <span
+                  onClick={() => {
+                    setLang('en');
+                  }}
+                >
+                  EN
+                </span>
+                <span
+                  onClick={() => {
+                    setLang('fr');
+                  }}
+                >
+                  FR
+                </span>
+              </div>
+            </SelectOption>
+
+            {/* <span className='langName'>EN</span> */}
+            {/* <Select
+            value={options.filter(function (option) {
+              return option.value === currentLang;
+            })}
+            onChange={selectLanguage}
+            className='langName'
+            options={options}
+          /> */}
+          </div>
+          <HamburgerContainer onClick={toggleHambburger}>
+            <Hamburger hastoggle={hastoggle}>
+              <li></li>
+              <li></li>
+              <li></li>
+            </Hamburger>
+          </HamburgerContainer>
+        </div>
       </NavContainer>
     </Nav>
   );

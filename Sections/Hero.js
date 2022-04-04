@@ -107,6 +107,10 @@ const HeroSection = styled.section`
     background-color: transparent;
     overflow-x: hidden;
     position: relative;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
     /* background-color: orange; */
 
     h1 {
