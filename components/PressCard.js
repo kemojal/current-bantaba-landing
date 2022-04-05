@@ -61,7 +61,8 @@ const PCard = styled.div`
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
-    height: 60px;
+    /* height: 60px; */
+    height: 70px;
   }
   .ellipse-text {
     height: 100px;
