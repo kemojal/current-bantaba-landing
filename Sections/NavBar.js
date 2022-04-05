@@ -101,6 +101,7 @@ const NavContainer = styled.div`
 
     .nav-bg {
       background-color: transparent;
+      border: none;
     }
 
     .desk-left-nav {
@@ -123,7 +124,7 @@ const NavContainer = styled.div`
 
     .why-join-tab {
       color: ${({ currentActiveTab }) =>
-        currentActiveTab == 'whyjoin'? '#009743 !important' : '#5b615e'};
+        currentActiveTab == 'whyjoin' ? '#009743 !important' : '#5b615e'};
       border-bottom: ${({ currentActiveTab }) =>
         currentActiveTab == 'whyjoin'
           ? '3px solid #009743'
@@ -131,7 +132,7 @@ const NavContainer = styled.div`
     }
     .about-li {
       color: ${({ currentActiveTab }) =>
-        currentActiveTab == 'about'? '#009743 !important' : '#5b615e'};
+        currentActiveTab == 'about' ? '#009743 !important' : '#5b615e'};
       border-bottom: ${({ currentActiveTab }) =>
         currentActiveTab === 'about'
           ? '3px solid #009743'
@@ -139,7 +140,7 @@ const NavContainer = styled.div`
     }
     .blog-li {
       color: ${({ currentActiveTab }) =>
-        currentActiveTab == 'blog'? '#009743 !important' : '#5b615e'};
+        currentActiveTab == 'blog' ? '#009743 !important' : '#5b615e'};
       border-bottom: ${({ currentActiveTab }) =>
         currentActiveTab === 'blog'
           ? '3px solid #009743'
@@ -147,7 +148,7 @@ const NavContainer = styled.div`
     }
     .faq-li {
       color: ${({ currentActiveTab }) =>
-        currentActiveTab == 'faq'? '#009743 !important' : '#5b615e'};
+        currentActiveTab == 'faq' ? '#009743 !important' : '#5b615e'};
       border-bottom: ${({ currentActiveTab }) =>
         currentActiveTab === 'faq'
           ? '3px solid #009743'

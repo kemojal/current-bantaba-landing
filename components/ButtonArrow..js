@@ -14,7 +14,7 @@ const ButtonArrow = ({
   maxWidth,
   maxHeight,
   fontSize,
-  mRight
+  mRight,
 }) => {
   return (
     <Link href={href ? href : '/'} passHref={true}>
@@ -26,14 +26,20 @@ const ButtonArrow = ({
         maxWidth={maxWidth}
         maxHeight={maxHeight}
         width={width}
-        mRight = {mRight}
+        mRight={mRight}
       >
         <Text fontSize={fontSize} isArrow={isArrow} className='btn-title'>
           {title}
         </Text>
         {isArrow && (
           <ArrowWrapper>
-            <Img src='arrow.svg' alt='logo' layout='fill' objectFit='contain' />
+            <Img
+              priority={true}
+              src='arrow.svg'
+              alt='logo'
+              layout='fill'
+              objectFit='contain'
+            />
           </ArrowWrapper>
         )}
       </Button>
@@ -73,7 +79,7 @@ const Button = styled.div`
     width: ${({ width }) => (width ? width : '260px')};
     max-width: 320px;
     max-width: ${({ maxWidth }) => (maxWidth ? maxWidth : '320px')};
-    margin-right:${({ mRight }) => (mRight ? mRight : '26px !important')};
+    margin-right: ${({ mRight }) => (mRight ? mRight : '26px !important')};
     max-height: ${({ maxHeight }) => (maxHeight ? maxHeight : '66px')};
     border-radius: 6px;
 

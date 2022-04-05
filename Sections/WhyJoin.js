@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useContext } from 'react';
+import React, { useContext } from 'react';
 import Link from 'next/link';
 
 import styled from 'styled-components';
@@ -11,8 +11,6 @@ import { motion } from 'framer-motion';
 import { useIntersection } from 'react-use';
 import WhyFunction from '../components/WhyFunction';
 import ButtonArrow from '../components/ButtonArrow.';
-
-import Fade from 'react-reveal/Fade';
 
 const WhySection = styled.section`
   background-color: transparent;
@@ -281,26 +279,6 @@ export const WhyJoin = ({ lang }) => {
   const openNewsLetterModal = () => {
     showNewsLetterModal();
   };
-  const myRef = useRef(null);
-  const intersection = useIntersection(myRef, {
-    root: null,
-    rootMargin: '0px',
-    threshold: 0.2,
-  });
-  const fadeIn = {
-    opacity: 1,
-    y: 0,
-    x: 0,
-  };
-
-  const fadeOut = {
-    opacity: 0,
-    y: 100,
-    x: 0,
-  };
-
-  const animationName =
-    intersection && intersection.intersectionRatio < 0.2 ? fadeOut : fadeIn;
 
   const whyDiaspora = [
     {
@@ -320,33 +298,29 @@ export const WhyJoin = ({ lang }) => {
     },
   ];
   return (
-    <WhySection ref={myRef} id="whyjoin">
+    <WhySection id='whyjoin'>
       <div className='container'>
         <DestopLeftIllustration>
-          <Fade bottom>
-            <div className='device-frame2'>
-              <Img
-                src='why-device.svg'
-                alt='logo'
-                layout='fill'
-                objectFit='contain'
-              />
-            </div>
-          </Fade>
+          <div className='device-frame2'>
+            <Img
+              src='why-device2.svg'
+              alt='logo'
+              layout='fill'
+              objectFit='contain'
+              priority={true}
+            />
+          </div>
         </DestopLeftIllustration>
         <div className='right-section'>
-          <Fade bottom>
-            <p className='why-title'>{lang.why_join_diaspora}</p>
-          </Fade>
+          <p className='why-title'>{lang.why_join_diaspora}</p>
+
           <ul className='why-list-container'>
             {whyDiaspora.map((item, index) => {
               let borderType = index === whyDiaspora.length - 1 ? false : true;
 
               return (
                 <li key={index}>
-                  <Fade bottom>
-                    <WhyFunction {...item} borderType={borderType} />
-                  </Fade>
+                  <WhyFunction {...item} borderType={borderType} />
                 </li>
               );
             })}
@@ -363,78 +337,60 @@ export const WhyJoin = ({ lang }) => {
             />
           </div>
           <div className='footer-text'>
-            <Fade right>
-              {lang.are_you_none_diaspora + ' '}
-              <div className='align-row'>
-                <span>{lang.connect_with_us}</span>
-                <span className='link' onClick={openNewsLetterModal}>
-                  <a>{lang.here}.</a>
-                </span>
-              </div>
-            </Fade>
+            {lang.are_you_none_diaspora + ' '}
+            <div className='align-row'>
+              <span>{lang.connect_with_us}</span>
+              <span className='link' onClick={openNewsLetterModal}>
+                <a>{lang.here}.</a>
+              </span>
+            </div>
           </div>
         </div>
         <div className='mobile-info'>
-          <motion.p
-            className='why-title'
-            initial={fadeOut}
-            animate={fadeIn}
-            transition={{
-              type: 'spring',
-              stiffness: 260,
-              damping: 20,
-              default: {
-                duration: 0.4,
-              },
-            }}
-          >
+          <p className='why-title'>
             {lang.why_join_diaspora}
             {/* Why you should join our diaspora community? */}
-          </motion.p>
-          <Fade>
-            <div className='device-frame'>
-              <Img
-                src='mobile-pic-1.svg'
-                alt='logo'
-                layout='fill'
-                objectFit='contain'
-              />
-            </div>
-          </Fade>
-          <Fade bottom>
-            <p className='notosans-bold-licorice-18px why-sub-title'>
-              {lang.discover_mentor_and_invest}
-            </p>
-          </Fade>
-          <Fade bottom>
-            <p className='notosans-normal-licorice-18px normal pl-pr-15'>
-              {lang.get_an_opportunity}
-            </p>
-          </Fade>
-          <Fade bottom>
-            <div className='join-bt-container'>
-              <ButtonArrow
-                type={'no border'}
-                className='join-btn'
-                title={lang.join_as_diaspora}
-                bgcolor='var(--algae-green)'
-                color='var(--licorice)'
-                href='https://community.ourbantaba.com/en/'
-              />
-            </div>
-          </Fade>
+          </p>
+
+          <div className='device-frame'>
+            <Img
+              src='mobile-pic-3b.svg'
+              alt='logo'
+              layout='fill'
+              objectFit='contain'
+              priority={true}
+            />
+          </div>
+
+          <p className='notosans-bold-licorice-18px why-sub-title'>
+            {lang.discover_mentor_and_invest}
+          </p>
+
+          <p className='notosans-normal-licorice-18px normal pl-pr-15'>
+            {lang.get_an_opportunity}
+          </p>
+
+          <div className='join-bt-container'>
+            <ButtonArrow
+              type={'no border'}
+              className='join-btn'
+              title={lang.join_as_diaspora}
+              bgcolor='var(--algae-green)'
+              color='var(--licorice)'
+              href='https://community.ourbantaba.com/en/'
+            />
+          </div>
+
           <div className='footer'>
-            <Fade right>
-              {lang.are_you_none_diaspora + ' '}
-              <div className='align-row'>
-                <span>{lang.connect_with_us}</span>
-                <span className='link'>
-                  <span onClick={openNewsLetterModal}>
-                    <a>{lang.here}.</a>
-                  </span>
+            {lang.are_you_none_diaspora + ' '}
+            <div className='align-row'>
+              <span>{lang.connect_with_us}</span>
+              <span className='link'>
+                <span onClick={openNewsLetterModal}>
+                  <a>{lang.here}.</a>
                 </span>
-              </div>
-            </Fade>
+              </span>
+            </div>
           </div>
         </div>
       </div>

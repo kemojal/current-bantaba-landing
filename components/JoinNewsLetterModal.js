@@ -1,4 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react';
+import axios from 'axios';
+
 import styled from 'styled-components';
 import { Img } from '../components/Img';
 import { useSelector } from 'react-redux';
@@ -382,7 +384,7 @@ const JoinNewsLetterModal = () => {
     });
   };
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     if (Object.keys(formData).length === 0) {
       setFormStage(1);
@@ -396,6 +398,44 @@ const JoinNewsLetterModal = () => {
       if (validateEmail(formData.userEmail)) {
         setFormError(false);
         setFormStage(2);
+        console.log('submited data = ', formData);
+
+        //https://landingapi-dev.ourbantaba.com/newsletter/create
+        // axios.post('https://reqres.in/api/articles', article)
+        // .then(response => this.setState({ articleId: response.data.id }));
+        let postData = {
+          firstname: formData.userName,
+          category: formData.userCategory,
+          email: formData.userEmail,
+          investment_range: ''
+        };
+
+        //   {
+        //     "firstname": "Edgar",
+        //     "category": "consult",
+        //     "email": "fiedgar2@email.com",
+        //         "investment_range": ""
+        // }
+        try {
+          const res = await axios.post(
+            'https://landingapi-dev.ourbantaba.com/nonDiaspora/create',
+            postData,
+            {
+              headers: {
+                'Content-Type': 'application/json',
+              },
+            },
+            console.log(res) //this comes back undefined
+          );
+        } catch (e) {}
+
+        // axios
+        //   .get('https://landingapi-dev.ourbantaba.com/newsletter/create', {
+        //     name: 'James Max',
+        //     category: 'startup',
+        //     email: 'james@email.com',
+        //   })
+        //   .then((response) => console.log('response = ', response));
       }
     }
   };

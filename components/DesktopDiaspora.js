@@ -1,12 +1,10 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { Img } from './Img';
 import WhyFunction from './WhyFunction';
 import { motion } from 'framer-motion';
 import { useIntersection } from 'react-use';
 import ButtonArrow from './ButtonArrow.';
-
-import Fade from 'react-reveal/Fade';
 
 const DesktopStartupContainer = styled.div`
   width: 100%;
@@ -21,7 +19,7 @@ const DesktopStartupContainer = styled.div`
       font-family: 'Poppins';
       font-style: normal;
       font-weight: 700;
-      font-size: 40px;
+      font-size: 38px;
       line-height: 130%;
       text-align: left;
       color: #011108;
@@ -57,7 +55,7 @@ const DesktopStartupContainer = styled.div`
   }
   @media (min-width: 1500px) {
     .left-section {
-      padding: 0 50px;
+      padding: 0 0px;
       padding-left: 0px;
     }
   }
@@ -67,19 +65,19 @@ const whyDiaspora = [
     text: 'Access investors',
     subText:
       'It is free & easy to seek funding on Bantaba. Simply sign-up to connect with diaspora angels looking to invest in African startups.',
-    src: 'why-d1.svg',
+    src: 'why-s1a.svg',
   },
   {
     text: 'Mentorship & consultancy',
     subText:
       'Receive mentorship & support from an extensive list of diaspora experts from across the globe',
-    src: 'why-d2.svg',
+    src: 'why-s2a.svg',
   },
   {
     text: 'Career opportunities',
     subText:
       'Build a strong network for your startup and gain visibility in the diaspora community.',
-    src: 'why-d3.svg',
+    src: 'why-s3a.svg',
   },
 ];
 
@@ -99,11 +97,6 @@ const DestopLeftIllustration = styled.div`
     &::before {
       content: '';
       position: absolute;
-      /* width: 973.96px;
-      height: 956.06px; */
-
-      /* right: -260px; */
-      /* right: -372px; */
 
       width: 835.96px;
       height: 870.06px;
@@ -115,71 +108,45 @@ const DestopLeftIllustration = styled.div`
 `;
 
 const DesktopDiaspora = () => {
-  const myRef = useRef(null);
-  const intersection = useIntersection(myRef, {
-    root: null,
-    rootMargin: '0px',
-    threshold: 0.2,
-  });
-  const fadeIn = {
-    opacity: 1,
-    y: 0,
-    x: 0,
-  };
-
-  const fadeOut = {
-    opacity: 0,
-    y: 100,
-    x: 0,
-  };
-
-  const animationName =
-    intersection && intersection.intersectionRatio < 0.2 ? fadeOut : fadeIn;
   return (
-    <DesktopStartupContainer ref={myRef}>
+    <DesktopStartupContainer>
       <div className='left-section'>
-        <Fade bottom>
-          <p className='why-title'>
-            Why you should join our diaspora community?
-          </p>
-        </Fade>
+        <p className='why-title'>
+          Why join our African tech startup community?
+        </p>
+
         <ul className='why-list-container'>
           {whyDiaspora.map((item, index) => {
             let borderType = index === whyDiaspora.length - 1 ? false : true;
 
             return (
               <li key={index}>
-                <Fade bottom>
-                  <WhyFunction {...item} borderType={borderType} />
-                </Fade>
+                <WhyFunction {...item} borderType={borderType} />
               </li>
             );
           })}
         </ul>
-        <Fade bottom>
-          <div className='join-bt-container'>
-            <ButtonArrow
-              maxWidth='218.2px'
-              className='join-btn'
-              title={'Join as Startup'}
-              bgcolor='transparent'
-              color='#009743'
-              href={'https://community.ourbantaba.com/en/register'}
-            />
-          </div>
-        </Fade>
+
+        <div className='join-bt-container'>
+          <ButtonArrow
+            maxWidth='218.2px'
+            className='join-btn'
+            title={'Join as Startup'}
+            bgcolor='transparent'
+            color='#009743'
+            href={'https://community.ourbantaba.com/en/register'}
+          />
+        </div>
       </div>
       <DestopLeftIllustration>
-        <Fade bottom>
-          <div className='device-frame2'>
-            <Img
-              src='startup-device.png'
-              alt='logo'
-              layout='fill'
-              objectFit='contain'
-            />
-          </div>
-        </Fade>
+        <div className='device-frame2'>
+          <Img
+            src='startup-device.png'
+            alt='logo'
+            layout='fill'
+            objectFit='contain'
+          />
+        </div>
       </DestopLeftIllustration>
     </DesktopStartupContainer>
   );

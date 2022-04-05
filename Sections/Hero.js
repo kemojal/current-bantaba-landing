@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
 import { Img } from '../components/Img';
@@ -27,10 +27,6 @@ const HeroSection = styled.section`
   padding: 2em 1rem;
 
   h1 {
-    /* font-size: 1.8em; */
-    /* color: var(--licorice); */
-    /* font-family: var(--font-family-noto_sans); */
-    /* font-size: var(--font-size-xxl); */
     font-style: normal;
     font-weight: 800;
     letter-spacing: 0px;
@@ -131,6 +127,7 @@ const HeroSection = styled.section`
       line-height: 160%;
       color: #5b615e;
       margin-top: 0px;
+      padding-right: 10px;
     }
     .functions {
       width: 100%;
@@ -175,42 +172,12 @@ const VideoPlaceholder = styled.div`
   justify-content: center;
   align-items: center;
 
-  /* &::after { 
-    content: '',
-    position: absolute,
-    width: 50px;
-    height: 50px;
-    background-color: red;
-    z-index: 10px;
-  } */
   @media (min-width: 600px) {
     display: none;
   }
 `;
 export const Hero = ({ lang }) => {
   const { t, i18n } = useTranslation();
-  console.log('i18n = ', i18n);
-
-  const myRef = useRef(null);
-  const intersection = useIntersection(myRef, {
-    root: null,
-    rootMargin: '0px',
-    threshold: 0.2,
-  });
-  const fadeIn = {
-    opacity: 1,
-    y: 0,
-    x: 0,
-  };
-
-  const fadeOut = {
-    opacity: 0,
-    y: 100,
-    x: 0,
-  };
-
-  const animationName =
-    intersection && intersection.intersectionRatio < 0.2 ? fadeOut : fadeIn;
 
   const functionsData = [
     {
@@ -227,37 +194,9 @@ export const Hero = ({ lang }) => {
     },
   ];
   return (
-    <HeroSection ref={myRef}>
-      <motion.h1
-        className='hero-title'
-        initial={fadeOut}
-        animate={fadeIn}
-        transition={{
-          type: 'spring',
-          stiffness: 260,
-          damping: 20,
-          default: {
-            duration: 0.4,
-          },
-        }}
-      >
-        {lang.hero_header}
-      </motion.h1>
-      <motion.p
-        className='subtext'
-        initial={fadeOut}
-        animate={fadeIn}
-        transition={{
-          type: 'spring',
-          stiffness: 260,
-          damping: 20,
-          default: {
-            duration: 0.6,
-          },
-        }}
-      >
-        {lang.hero_discription}
-      </motion.p>
+    <HeroSection>
+      <h1 className='hero-title'>{lang.hero_header}</h1>
+      <p className='subtext'>{lang.hero_discription}</p>
       {/* <Button title={'Create an Account'} /> */}
       <div className='functions'>
         {functionsData.map((item, index) => {
@@ -265,20 +204,7 @@ export const Hero = ({ lang }) => {
         })}
       </div>
 
-      {/*Using Zoom Effect*/}
-      <motion.div
-        initial={fadeOut}
-        animate={fadeIn}
-        transition={{
-          type: 'spring',
-          stiffness: 260,
-          damping: 20,
-          default: {
-            duration: 0.4,
-          },
-        }}
-        className='button-row'
-      >
+      <div className='button-row'>
         <ButtonArrow
           className='w-270-btn'
           title={lang.create_account}
@@ -295,9 +221,15 @@ export const Hero = ({ lang }) => {
           maxWidth='150px'
           href='https://community.ourbantaba.com/en/login'
         />
-      </motion.div>
+      </div>
       <VideoPlaceholder>
-        <Img src='hero.gif' alt='logo' layout='fill' objectFit='contain' />
+        <Img
+          priority={true}
+          src='hero.gif'
+          alt='logo'
+          layout='fill'
+          objectFit='contain'
+        />
       </VideoPlaceholder>
       {/* <Illustration /> */}
     </HeroSection>

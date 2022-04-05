@@ -5,7 +5,6 @@ import { Img } from '../components/Img';
 import SocialContainer from '../components/SocialContainer';
 import Footer from './Footer';
 
-import Fade from 'react-reveal/Fade';
 import FooterCols from '../components/FooterCols';
 import JoinNewsLetterModal from '../components/JoinNewsLetterModal';
 import ContactUsModal from '../components/ContactUsModal';
@@ -132,21 +131,6 @@ const Copyright = styled.div`
 `;
 
 export const Mission = () => {
-  // const socialList = [
-  //   {
-  //     src: 'twiiter.svg',
-  //   },
-  //   {
-  //     src: 'facebook.svg',
-  //   },
-  //   {
-  //     src: 'instagram.svg',
-  //   },
-  //   {
-  //     src: 'linkedin.svg',
-  //   },
-  // ];
-
   const socialList = [
     {
       scrDesktop: 'twiiter-d.svg',
@@ -174,54 +158,43 @@ export const Mission = () => {
     <MissionSection>
       <div className='row-on-desktop'>
         <div className='sub-mission'>
-          <Fade bottom>
-            <div className='logo-frame'>
-              <Img
-                src='mission-logo.svg'
-                alt='logo'
-                layout='fill'
-                objectFit='contain'
-              />
-            </div>
-          </Fade>
-          <Fade bottom>
-            <div className='notosans-normal-licorice-16px mission'>
-              Our mission is to empower Africa&#39;s tech startup ecosystem by
-              leveraging resources in the African diaspora
-            </div>
-          </Fade>
+          <div className='logo-frame'>
+            <Img
+              src='mission-logo.svg'
+              alt='logo'
+              layout='fill'
+              objectFit='contain'
+            />
+          </div>
+
+          <div className='notosans-normal-licorice-16px mission'>
+            Our mission is to empower Africa&#39;s tech startup ecosystem by
+            leveraging resources in the African diaspora
+          </div>
         </div>
 
-        <Fade bottom>
-          <div className='footer-wrapper w-45'>
-            <Footer />
-          </div>
-        </Fade>
+        <div className='footer-wrapper w-45'>
+          <Footer />
+        </div>
 
         <div className='sub-mission address-w-25'>
           <div className='hide-on-mobile'>
             <FooterCols {...address} />
           </div>
 
-          <Fade bottom>
-            <SocialContainer socialList={socialList} />
-          </Fade>
+          <SocialContainer socialList={socialList} />
         </div>
       </div>
 
       <Copyright>
-        <Fade bottom>
-          <span className='notosans-normal-licorice-14px'>
-            www.ourbantaba.com
-          </span>
-          <span className='notosans-normal-licorice-14px'>
-            Copyright © 2021
-          </span>
-        </Fade>
+        <span className='notosans-normal-licorice-14px'>
+          www.ourbantaba.com
+        </span>
+        <span className='notosans-normal-licorice-14px'>Copyright © 2021</span>
       </Copyright>
       <JoinNewsLetterModal />
       <ContactUsModal />
-      <NewsLetterModal/>
+      <NewsLetterModal />
     </MissionSection>
   );
 };

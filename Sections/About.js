@@ -5,8 +5,6 @@ import { Img } from '../components/Img';
 import Link from 'next/link';
 import { LinkContainer } from '../components/LinkContainer';
 
-import Fade from 'react-reveal/Fade';
-
 const AboutSectionContainer = styled.section`
   background-color: white;
   /* min-height: 100vh; */
@@ -46,18 +44,13 @@ const AboutSectionContainer = styled.section`
     height: 270px;
   }
   p.title {
-    /* line-height: 25px; */
-    /* text-align: center; */
-    /* font-family: Noto Sans; */
-    /* font-style: normal; */
-    /* font-weight: bold; */
+   
 
     margin: 10px 0;
     
     margin-bottom: 0;
     padding: 25px 0;
-    /* color: rgba(19, 19, 19, 1); */
-    /* font-size: 26px; */
+    
 
 
     font-size: 26px;
@@ -80,8 +73,7 @@ const AboutSectionContainer = styled.section`
     margin: 10px 0;
     margin-top: 0;
     margin-bottom: 20px;
-    /* font-size: 1.2rem; */
-    /* line-height: 1.8rem; */
+    
 
     letter-spacing: 0.00px;
     line-height: 28px;
@@ -93,8 +85,7 @@ const AboutSectionContainer = styled.section`
     display: none;
   }
   .link {
-    /* color: green; */
-    /* font-weight: normal; */
+   
     display: flex;
     justify-content: center;
     color: var(--fun-green);
@@ -148,12 +139,10 @@ const AboutSectionContainer = styled.section`
       line-height: 130%;
     }
     p.normal {
-      /* margin: 35px 0; */
+      
       margin-top: 0;
       margin-bottom: 12px;
-      /* font-size: 1.2rem; */
-      /* line-height: 1.5rem; */
-      /* background-color: orange; */
+     
 
       font-family: 'Poppins';
       font-style: normal;
@@ -176,7 +165,7 @@ const AboutSectionContainer = styled.section`
 
 const ArrowIcon = styled.div`
   position: relative;
-  /* height: 12px; */
+
   width: 14px;
   display: flex;
   justify-content: center;
@@ -187,59 +176,56 @@ export const AboutSection = () => {
   return (
     <AboutSectionContainer>
       <div className='container'>
-        <Fade bottom>
-          <div className='about-left'>
-            <div className='about-img'>
-              <Img
-                src='about-pic-2.svg'
-                alt='about bantaba'
-                layout='fill'
-                objectFit='contain'
-              />
-            </div>
+        <div className='about-left'>
+          <div className='about-img'>
+            <Img
+              src='about-pic-3.svg'
+              alt='about bantaba'
+              layout='fill'
+              objectFit='contain'
+            />
           </div>
-        </Fade>
+        </div>
+
         <div className='about-right'>
-          <Fade bottom>
-            <p className='title'>Bantaba was born from a passion for Africa.</p>
-          </Fade>
+          <p className='title'>Bantaba was born from a passion for Africa.</p>
+
           <div>
-            <Fade bottom>
-              <p className='notosans-normal-licorice-18px normal'>
-                The platform is named after an ancient Manding word for a big
-                tree under which elder’s of an African village would gather to
-                make important decisions.
-              </p>
-            </Fade>
-            <Fade bottom>
-              <p className='notosans-normal-licorice-18px normal'>
-                Like its origin, Bantaba platform serves as a digital meeting
-                place that bridges the gap between Africa’s tech startup
-                ecosystem and diaspora knowledge, capital and network.
-              </p>
-            </Fade>
-            <Fade bottom>
-              <p className='hide-on-mobile notosans-normal-licorice-18px normal'>
-                Our mission is to build a future for Africans by empow-ering the
-                African startup ecosystem.
-              </p>
-            </Fade>
+            <p className='notosans-normal-licorice-18px normal'>
+              The platform is named after an ancient Manding word for a big tree
+              under which elder’s of an African village would gather to make
+              important decisions.
+            </p>
+
+            <p className='notosans-normal-licorice-18px normal'>
+              Like its origin, Bantaba platform serves as a digital meeting
+              place that bridges the gap between Africa’s tech startup ecosystem
+              and diaspora knowledge, capital and network.
+            </p>
+
+            <p className='hide-on-mobile notosans-normal-licorice-18px normal'>
+              Our mission is to build a future for Africans by empow-ering the
+              African startup ecosystem.
+            </p>
+
             <div className='desktop-spacer' />
-            <Fade bottom>
-              <LinkContainer>
-                <Link className='link'  href={'https://community.ourbantaba.com/en/register'}>
-                  <a>Let&#39;s build Africa Together</a>
-                </Link>
-                <ArrowIcon>
-                  <Img
-                    src='arrow-green.svg'
-                    alt='logo'
-                    layout='fill'
-                    objectFit='contain'
-                  />
-                </ArrowIcon>
-              </LinkContainer>
-            </Fade>
+
+            <LinkContainer>
+              <Link
+                className='link'
+                href={'https://community.ourbantaba.com/en/register'}
+              >
+                <a>Let&#39;s build Africa Together</a>
+              </Link>
+              <ArrowIcon>
+                <Img
+                  src='arrow-green.svg'
+                  alt='logo'
+                  layout='fill'
+                  objectFit='contain'
+                />
+              </ArrowIcon>
+            </LinkContainer>
           </div>
         </div>
       </div>

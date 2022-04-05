@@ -8,6 +8,16 @@ import Fade from 'react-reveal/Fade';
 
 const MobileStartupContainer = styled.div`
 background-color: #fcf9e8;
+position: relative;
+/* &:after {
+  position: absolute;
+  width: 100%;
+  height: 100px;
+  content: '';
+  background-color: red;
+  bottom: 0;
+
+} */
 
   @media (min-width: 1280px) {
     display: none;
@@ -19,15 +29,23 @@ background-color: #fcf9e8;
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* padding: 0 2rem; */
-  /* padding-top: 1rem; */
-  /* padding-bottom: 3.125rem; */
+  
   .device-frame {
-    /* margin: 25px 0; */
     position: relative;
     width: 350px;
-    /* height: 416px; */
+   
     height: 416px;
+
+
+    /* tuned-1 */
+    width: 100vw;
+    height: 524px;
+
+    /* tuned-2:  */
+    /* width: 90vw;
+    height: 435px;
+
+    margin-top: 5px; */
   }
   p.title {
     font-size: 26px;
@@ -81,43 +99,37 @@ background-color: #fcf9e8;
 const MobileStartup = () => {
   return (
     <MobileStartupContainer>
-      <Fade bottom>
-        <p className='spacer title'>
-          Why join our African tech startup community?
-        </p>
-      </Fade>
-      <Fade bottom>
-        <div className='device-frame'>
-          <Img
-            src='mobile-pic-2.svg'
-            alt='logo'
-            layout='fill'
-            objectFit='contain'
-          />
-        </div>
-      </Fade>
-      <Fade left>
-        <p className='notosans-bold-licorice-18px spacer why-sub-title'>
-          Access diaspora investors, mentors and consultants in one place.
-        </p>
-      </Fade>
-      <Fade right>
-        <p className='notosans-normal-licorice-18px normal'>
-          A perfect place to build a diaspora community around your startup.
-        </p>
-      </Fade>
-      <Fade bottom>
-        <div className='join-bt-container'>
-          <ButtonArrow
-            type={'no border'}
-            className='join-btn'
-            title={'Join as Startup'}
-            bgcolor='var(--algae-green)'
-            color='var(--licorice)'
-            href='https://community.ourbantaba.com/en/register'
-          />
-        </div>
-      </Fade>
+      <p className='spacer title'>
+        Why join our African tech startup community?
+      </p>
+
+      <div className='device-frame'>
+        <Img
+          src='mobile-pic-4b.svg'
+          alt='logo'
+          layout='fill'
+          objectFit='contain'
+        />
+      </div>
+
+      <p className='notosans-bold-licorice-18px spacer why-sub-title'>
+        Access diaspora investors, mentors and consultants in one place.
+      </p>
+
+      <p className='notosans-normal-licorice-18px normal'>
+        A perfect place to build a diaspora community around your startup.
+      </p>
+
+      <div className='join-bt-container'>
+        <ButtonArrow
+          type={'no border'}
+          className='join-btn'
+          title={'Join as Startup'}
+          bgcolor='var(--algae-green)'
+          color='var(--licorice)'
+          href='https://community.ourbantaba.com/en/register'
+        />
+      </div>
     </MobileStartupContainer>
   );
 };

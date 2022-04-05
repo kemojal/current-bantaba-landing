@@ -1,4 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react';
+import axios from 'axios';
+
 import styled from 'styled-components';
 import { Img } from '../components/Img';
 import { useSelector } from 'react-redux';

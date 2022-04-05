@@ -217,17 +217,15 @@ export const PressCard = ({ title, author, author_image, cover_img, link }) => {
           positive news. As such, these teams are today entering the prestigious
           incubator today. …
         </P>
-        <a href={link} target='_blank'>
-          <div className='read-more'>
-            <span>Read More</span>
-            <div className='readmore-icon'>
-              <Img
-                src='read-more-icon.svg'
-                alt='logo'
-                layout='fill'
-                objectFit='contain'
-              />
-            </div>
+        <a className='read-more' href={link} target='_blank'>
+          <span>Read More</span>
+          <div className='readmore-icon'>
+            <Img
+              src='read-more-icon.svg'
+              alt='logo'
+              layout='fill'
+              objectFit='contain'
+            />
           </div>
         </a>
       </div>

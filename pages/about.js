@@ -6,7 +6,7 @@ import { NavBar } from '../Sections/NavBar';
 import i18n from 'i18next';
 import { useRouter } from 'next/router';
 
-import Fade from 'react-reveal/Fade';
+// import Fade from 'react-reveal/Fade';
 
 import en from '../lang/en';
 import fr from '../lang/fr';
@@ -325,7 +325,7 @@ const Aboutontainer = styled.div`
     padding: 0;
     } */
 
-    .reset-mb-50{
+    .reset-mb-50 {
       margin-bottom: 0;
     }
   }
@@ -361,159 +361,137 @@ export default function About({ team }) {
       <FluidContainer>
         <div className='section row-on-desktop'>
           <div className='desk-textcolum pr-30'>
-            <Fade bottom>
-              <h1 className='about-m-title hide-on-desktop'>About Us</h1>
-            </Fade>
+            <h1 className='about-m-title hide-on-desktop'>About Us</h1>
 
-            <Fade bottom>
-              <p className='desktop-about-title hide-on-mobile mbd-15'>
-                We’re linking Africa&#39;s startup ecosystem to global
-                knowledge, network and capital.
-              </p>
-            </Fade>
-            <Fade bottom>
-              <div className=' notosans-normal-licorice-16px line-height-24 pb-24 desktop-normal-text'>
-                Bantaba is Africa’s biggest startup-diaspora community that
-                connects African tech startups to investors, mentors and
-                consultants in the African diaspora.
-                <br />
-                <br />
-                Our platform enables the African diaspora to contribute to
-                Africa’s tech ecosystem through networking, mentoring and
-                investing in tech startups on the continent.
-              </div>
-            </Fade>
+            <p className='desktop-about-title hide-on-mobile mbd-15'>
+              We’re linking Africa&#39;s startup ecosystem to global knowledge,
+              network and capital.
+            </p>
+
+            <div className=' notosans-normal-licorice-16px line-height-24 pb-24 desktop-normal-text'>
+              Bantaba is Africa’s biggest startup-diaspora community that
+              connects African tech startups to investors, mentors and
+              consultants in the African diaspora.
+              <br />
+              <br />
+              Our platform enables the African diaspora to contribute to
+              Africa’s tech ecosystem through networking, mentoring and
+              investing in tech startups on the continent.
+            </div>
           </div>
           <div className='desk-textcolum align-column-end'>
-            <Fade bottom>
-              <div className='img-wrapper'>
-                <div className='about-img-1 hide-on-desktop'>
-                  <Img
-                    src={'Group-image_1.jpg'}
-                    alt='logo'
-                    layout='fill'
-                    objectFit='contain'
-                    priority={true}
-                  />
-                </div>
-                <div className='about-img-2 h-422 hide-on-mobile'>
-                  <Img
-                    src={'Group-image_1.jpg'}
-                    alt='logo'
-                    layout='fill'
-                    objectFit='contain'
-                    priority={true}
-                  />
-                </div>
+            <div className='img-wrapper'>
+              <div className='about-img-1 hide-on-desktop'>
+                <Img
+                  src={'Group-image_1.jpg'}
+                  alt='logo'
+                  layout='fill'
+                  objectFit='contain'
+                  priority={true}
+                />
               </div>
-            </Fade>
+              <div className='about-img-2 h-422 hide-on-mobile'>
+                <Img
+                  src={'Group-image_1.jpg'}
+                  alt='logo'
+                  layout='fill'
+                  objectFit='contain'
+                  priority={true}
+                />
+              </div>
+            </div>
           </div>
         </div>
         <div className='section bg-section-two pt-24  row-on-desktop reverse-row'>
           <div className='desk-textcolum pl-30'>
-            <Fade bottom>
-              <p className='notosans-bold-licorice-22px  about-section-title desktop-about-title'>
-                A desire to build Africa
-              </p>
-            </Fade>
-            <Fade bottom>
-              <div className='notosans-normal-licorice-16px line-height-24 desktop-normal-text'>
-                The company was founded in 2021 by a group of young diaspora
-                professionals who saw the potential of using Africa’s magnitude
-                of resources in the diaspora to build the continent.
-                <br />
-                <br />
-                Working together we built Bantaba, a startup-diaspora community
-                where African tech startups can access knowledge, network and
-                capital and diaspora professionals can contribute to the
-                development of Africa by supporting entrepreneurs addressing
-                important challenges on the continent.
-              </div>
-            </Fade>
+            <p className='notosans-bold-licorice-22px  about-section-title desktop-about-title'>
+              A desire to build Africa
+            </p>
+
+            <div className='notosans-normal-licorice-16px line-height-24 desktop-normal-text'>
+              The company was founded in 2021 by a group of young diaspora
+              professionals who saw the potential of using Africa’s magnitude of
+              resources in the diaspora to build the continent.
+              <br />
+              <br />
+              Working together we built Bantaba, a startup-diaspora community
+              where African tech startups can access knowledge, network and
+              capital and diaspora professionals can contribute to the
+              development of Africa by supporting entrepreneurs addressing
+              important challenges on the continent.
+            </div>
           </div>
           <div className='desk-textcolum'>
             <div className='v-spacer' />
-            <Fade bottom>
-              <div className='about-img-2 hide-on-desktop'>
-                <Img
-                  src={'Group-image_2.jpg'}
-                  alt='logo'
-                  layout='fill'
-                  objectFit='contain'
-                  priority={true}
-                />
-              </div>
-              <div className='about-img-2 h-324 hide-on-mobile'>
-                <Img
-                  src={'Group-image_2.jpg'}
-                  alt='logo'
-                  layout='fill'
-                  objectFit='contain'
-                  priority={true}
-                />
-              </div>
-            </Fade>
+
+            <div className='about-img-2 hide-on-desktop'>
+              <Img
+                src={'Group-image_2.jpg'}
+                alt='logo'
+                layout='fill'
+                objectFit='contain'
+                priority={true}
+              />
+            </div>
+            <div className='about-img-2 h-324 hide-on-mobile'>
+              <Img
+                src={'Group-image_2.jpg'}
+                alt='logo'
+                layout='fill'
+                objectFit='contain'
+                priority={true}
+              />
+            </div>
           </div>
         </div>
         <div className='section row-on-desktop'>
           <div className='desk-textcolum pr-30'>
-            <Fade bottom>
-              <p className='notosans-bold-licorice-22px  about-section-title pt-24 pt-24 desktop-about-title'>
-                We’re empowering startups and bringing Africa closer to the
-                Diaspora.
-              </p>
-            </Fade>
-            <Fade bottom>
-              <div className='notosans-normal-licorice-16px line-height-24 desktop-normal-text'>
-                As a diaspora professional, our platform uses your preference to
-                connect you with startups that perfectly match your interest,
-                think Tinder but for a different kind of love -{' '}
-                <span className='emphasize'>LOVE FOR AFRICA</span>.
-                <br />
-                <br />
-                African tech startups, on the other hand, can share their
-                funding and knowledge needs, and get matched with diaspora
-                investors or professionals in the community who can help reach
-                their goals.
-              </div>
-            </Fade>
+            <p className='notosans-bold-licorice-22px  about-section-title pt-24 pt-24 desktop-about-title'>
+              We’re empowering startups and bringing Africa closer to the
+              Diaspora.
+            </p>
+
+            <div className='notosans-normal-licorice-16px line-height-24 desktop-normal-text'>
+              As a diaspora professional, our platform uses your preference to
+              connect you with startups that perfectly match your interest,
+              think Tinder but for a different kind of love -{' '}
+              <span className='emphasize'>LOVE FOR AFRICA</span>.
+              <br />
+              <br />
+              African tech startups, on the other hand, can share their funding
+              and knowledge needs, and get matched with diaspora investors or
+              professionals in the community who can help reach their goals.
+            </div>
           </div>
           <div className='desk-textcolum align-column-end'>
-            <Fade bottom>
-              <div className='about-img-2 h-399 hide-on-mobile'>
-                <Img
-                  src={'Group-image_3.jpg'}
-                  alt='logo'
-                  layout='fill'
-                  objectFit='contain'
-                  priority={true}
-                />
-              </div>
-            </Fade>
+            <div className='about-img-2 h-399 hide-on-mobile'>
+              <Img
+                src={'Group-image_3.jpg'}
+                alt='logo'
+                layout='fill'
+                objectFit='contain'
+                priority={true}
+              />
+            </div>
           </div>
         </div>
         <div className='section'>
-          <Fade bottom>
-            <p className='notosans-bold-licorice-22px  align-center line-height-34 pb-24 mission-text-desktop'>
-              Bantaba is on a mission to become the link between global
-              knowledge, capital and Africa&#39;s startup ecosystem.
-            </p>
-          </Fade>
+          <p className='notosans-bold-licorice-22px  align-center line-height-34 pb-24 mission-text-desktop'>
+            Bantaba is on a mission to become the link between global knowledge,
+            capital and Africa&#39;s startup ecosystem.
+          </p>
         </div>
         <div className='section s-three mb-50 reset-mb-50'>
           <div className='bg-fix-s3'>
-            <Fade bottom>
-              <div className='blob-wrapper'>
-                <Img
-                  src={'blob-about.svg'}
-                  alt='logo'
-                  layout='fill'
-                  objectFit='contain'
-                  priority={true}
-
-                />
-              </div>
-            </Fade>
+            <div className='blob-wrapper'>
+              <Img
+                src={'blob-about.svg'}
+                alt='logo'
+                layout='fill'
+                objectFit='contain'
+                priority={true}
+              />
+            </div>
           </div>
           <div className='fixed-bg hide-on-mobile'>
             <div className='fixed-bg-relative'>
@@ -526,28 +504,25 @@ export default function About({ team }) {
               />
             </div>
           </div>
-          <Fade bottom>
-            <p className='notosans-bold-licorice-22px  align-center z-10 blob-green'>
-              It&#39;s{' '}
-              <span className='color-green-desktop'>TIME FOR AFRICA</span>,
-              Let's start the revolution together!
-            </p>
-          </Fade>
+
+          <p className='notosans-bold-licorice-22px  align-center z-10 blob-green'>
+            It&#39;s{' '}
+            <span className='color-green-desktop'>TIME FOR AFRICA</span>, Let's
+            start the revolution together!
+          </p>
         </div>
         <div className='section bg-section-two section-four pt-24 '>
           <div className='s4-white-space' />
-          <Fade bottom>
-            <p className='notosans-bold-licorice-22px  align-center desktop-title'>
-              Our team
-            </p>
-          </Fade>
-          <Fade bottom>
-            <ul className='team-list'>
-              {team.team.map((item, index) => {
-                return <AboutTeamCard key={index} {...item} />;
-              })}
-            </ul>
-          </Fade>
+
+          <p className='notosans-bold-licorice-22px  align-center desktop-title'>
+            Our team
+          </p>
+
+          <ul className='team-list'>
+            {team.team.map((item, index) => {
+              return <AboutTeamCard key={index} {...item} />;
+            })}
+          </ul>
         </div>
       </FluidContainer>
       <Mission />

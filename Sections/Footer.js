@@ -35,10 +35,6 @@ const FooterLinkContainer = styled.div`
   }
 `;
 const Footer = () => {
-  // const { quickLinks, setQuickLinks } = useState({
-  //   title: 'Quick Link',
-  //   list: ['Home', 'About Us', 'Press', 'Blog'],
-  // });
 
   const FooterData = [
     {

@@ -7,8 +7,6 @@ import { FluidContainer } from '../components/FluidContainer';
 import MobileTestimobialCard from '../components/MobileTestimobialCard';
 import { TestimonialCard } from '../components/TestimonialCard';
 
-import Fade from 'react-reveal/Fade';
-
 const TestimonialSection = styled.section`
   /* background-color: var(--ottoman); */
   /* height: 80vh; */
@@ -128,31 +126,7 @@ const Cards = styled.div`
     }
   }
 `;
-// const Testimonials = [
-//   {
-//     // src: 'mf1.svg',
-//     src: 'test-profile1.svg',
-//     name: 'Name Nameson',
-//     position: 'Startup name',
-//     text: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since..`,
-//   },
-//   {
-//     // src: 'mf2.svg',
-//     src: 'test-profile1.svg',
-//     name: 'Darlene Robertson',
-//     position: 'Startup name',
-//     text: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since..`,
-//   },
-//   {
-//     // src: 'mf1.svg',
-//     src: 'test-profile1.svg',
-//     name: 'Name Nameson',
-//     position: 'Startup Name',
-//     text: `Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-//     nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-//     sed diam voluptua.`,
-//   },
-// ];
+
 export const Testimonial = () => {
   const scrollTestimonialRef1 = useRef();
   const scrollTestimonialRef2 = useRef();
@@ -181,39 +155,35 @@ export const Testimonial = () => {
     <TestimonialSection>
       <div className='fluid'>
         <div className='testimonial-header'>
-          <Fade bottom>
-            <h1 className='notosans-bold-licorice-20px title'>
-              What others say about Bantaba
-            </h1>
-          </Fade>
-          <Fade bottom>
-            <div className='desktop-arrow-container'>
-              <span onClick={() => scrollRef2(380)}>
-                <ArrowButton position={'left'} top={'0'} />
-              </span>
-              <span onClick={() => scrollRef2(-380)}>
-                <ArrowButton position={'right'} top={'0'} />
-              </span>
-            </div>
-          </Fade>
+          <h1 className='notosans-bold-licorice-20px title'>
+            What others say about Bantaba
+          </h1>
+
+          <div className='desktop-arrow-container'>
+            <span onClick={() => scrollRef2(380)}>
+              <ArrowButton position={'left'} top={'0'} />
+            </span>
+            <span onClick={() => scrollRef2(-380)}>
+              <ArrowButton position={'right'} top={'0'} />
+            </span>
+          </div>
         </div>
 
-        <Fade bottom>
-          <div className='mobile'>
-            <Cards ref={scrollTestimonialRef1}>
-              {testimonials.map((item, index) => {
-                return <MobileTestimobialCard key={index} {...item} />;
-              })}
-            </Cards>
-          </div>
-          <div className='desktop'>
-            <Cards ref={scrollTestimonialRef2}>
-              {testimonials.map((item, index) => {
-                return <TestimonialCard key={index} {...item} />;
-              })}
-            </Cards>
-          </div>
-        </Fade>
+        <div className='mobile'>
+          <Cards ref={scrollTestimonialRef1}>
+            {testimonials.map((item, index) => {
+              return <MobileTestimobialCard key={index} {...item} />;
+            })}
+          </Cards>
+        </div>
+        <div className='desktop'>
+          <Cards ref={scrollTestimonialRef2}>
+            {testimonials.map((item, index) => {
+              return <TestimonialCard key={index} {...item} />;
+            })}
+          </Cards>
+        </div>
+
         <div className='mobile'>
           <span onClick={() => scrollRef1(380)}>
             <ArrowButton position={'left'} className='hide-on-desktop' />

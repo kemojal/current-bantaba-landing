@@ -8,8 +8,6 @@ import { FluidContainer } from '../components/FluidContainer';
 import { LinkContainer } from '../components/LinkContainer';
 import AfricaMap from '../components/AfricaMap';
 
-import Fade from 'react-reveal/Fade';
-
 const MapSectionContainer = styled.section`
   /* background-color: #e8fcf0; */
   background-color: var(--ottoman);
@@ -156,10 +154,8 @@ const MapSectionContainer = styled.section`
     }
   }
 `;
-const MapImg = styled(motion.div)`
+const MapImg = styled.div`
   position: relative;
-  /* width: 376px; */
-  /* height: 209px; */
 
   width: 833px;
   height: 399px;
@@ -183,33 +179,12 @@ const ArrowIcon = styled.div`
   margin-left: 10px;
 `;
 export const MapSection = () => {
-  const myRef = useRef(null);
-  const intersection = useIntersection(myRef, {
-    root: null,
-    rootMargin: '0px',
-    threshold: 0.2,
-  });
-  const fadeIn = {
-    opacity: 1,
-    y: 0,
-    x: 0,
-  };
-
-  const fadeOut = {
-    opacity: 0,
-    y: 100,
-    x: 0,
-  };
-
-  const animationName =
-    intersection && intersection.intersectionRatio < 0.2 ? fadeOut : fadeIn;
-
   return (
-    <MapSectionContainer ref={myRef}>
+    <MapSectionContainer>
       <FluidContainer flipColumn={'column-reverse'}>
         <div className='map-left'>
           <div className='map-desktop'>
-            <MapImg animate={animationName}>
+            <MapImg>
               <Img
                 src='desktop-map-2.png'
                 alt='logo'
@@ -219,7 +194,7 @@ export const MapSection = () => {
             </MapImg>
           </div>
           <div className='map-mobile hide-on-desktop'>
-            <MapImg animate={animationName}>
+            <MapImg>
               <Img
                 src='africa-map.svg'
                 alt='logo'
@@ -243,46 +218,40 @@ export const MapSection = () => {
         </div>
 
         <div className='map-right'>
-          <Fade bottom>
-            <p className='notosans-bold-licorice-20px title'>
-              Discover the most innovative and exciting startups in Africa
-            </p>
-          </Fade>
-          <Fade bottom>
-            <p className='notosans-normal-licorice-16px normal hide-on-desktop'>
-              Our platform has since its launch connected over 150 African tech
-              startups with diaspora professionals and investors across the
-              world
-            </p>
-          </Fade>
-          <Fade bottom>
-            <p className='normal hide-on-mobile'>
-              In 2021 we decided that location should no longer be a barrier to
-              support entrepreneurs addressing Africa’s biggest challenges. Our
-              platform has since its launch connected over 150 African tech
-              startups with diaspora professionals and investors across the
-              world
-            </p>
-          </Fade>
+          <p className='notosans-bold-licorice-20px title'>
+            Discover the most innovative and exciting startups in Africa
+          </p>
+
+          <p className='notosans-normal-licorice-16px normal hide-on-desktop'>
+            Our platform has since its launch connected over 150 African tech
+            startups with diaspora professionals and investors across the world
+          </p>
+
+          <p className='normal hide-on-mobile'>
+            In 2021 we decided that location should no longer be a barrier to
+            support entrepreneurs addressing Africa’s biggest challenges. Our
+            platform has since its launch connected over 150 African tech
+            startups with diaspora professionals and investors across the world
+          </p>
+
           <div className='desktop-spacer' />
-          <Fade bottom>
-            <LinkContainer>
-              <Link
-                className='link'
-                href='https://community.ourbantaba.com/en/register'
-              >
-                <a>Join our growing community</a>
-              </Link>
-              <ArrowIcon>
-                <Img
-                  src='arrow-green.svg'
-                  alt='logo'
-                  layout='fill'
-                  objectFit='contain'
-                />
-              </ArrowIcon>
-            </LinkContainer>
-          </Fade>
+
+          <LinkContainer>
+            <Link
+              className='link'
+              href='https://community.ourbantaba.com/en/register'
+            >
+              <a>Join our growing community</a>
+            </Link>
+            <ArrowIcon>
+              <Img
+                src='arrow-green.svg'
+                alt='logo'
+                layout='fill'
+                objectFit='contain'
+              />
+            </ArrowIcon>
+          </LinkContainer>
         </div>
       </FluidContainer>
     </MapSectionContainer>

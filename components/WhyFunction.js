@@ -7,9 +7,11 @@ const WhyFunction = ({ text, subText, src, borderType }) => {
   return (
     <Container borderType={borderType}>
       <div className='row'>
-        <Icon>
-          <Img src={src} alt='logo' layout='fill' objectFit='contain' />
-        </Icon>
+        <div className='icon-wrapper'>
+          <Icon>
+            <Img src={src} alt='logo' layout='fill' objectFit='contain' />
+          </Icon>
+        </div>
         <div className='col'>
           <p className='title'>{text}</p>
           <div className='discription'>{subText}</div>
@@ -22,7 +24,6 @@ const WhyFunction = ({ text, subText, src, borderType }) => {
 const Container = styled.div`
   display: flex;
   align-items: center;
-  /* background-color: #0097430d; */
   padding: 0px 0px;
   border-radius: 10px;
   margin-right: 15px;
@@ -30,6 +31,13 @@ const Container = styled.div`
   border-radius: 0px;
   position: relative;
   margin-bottom: 10px;
+
+  .icon-wrapper {
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   &:before {
     content: '';
     position: absolute;
@@ -67,7 +75,6 @@ const Container = styled.div`
     flex-direction: column;
     margin-right: auto;
     margin-bottom: 0;
-    /* margin: 38px 38px; */
     p {
       font-style: normal;
       font-family: 'Poppins';
@@ -75,15 +82,12 @@ const Container = styled.div`
     }
     .title {
       font-weight: 700;
-      /* line-height: 125%; */
       font-size: 40px;
-      /* color:  orange; */
     }
     .discription {
       font-weight: 500;
       line-height: 160%;
       padding: 10px 0;
-      /* padding-bottom: 45px; */
       font-weight: normal;
       /* font-weight: 500; */
       font-size: 18px;
@@ -93,9 +97,10 @@ const Container = styled.div`
     }
     .col {
       padding-left: 20px;
+      padding-top: 19px;
     }
     &:before {
-      left: 45px;
+      left: 49px;
       top: 18px;
     }
   }
@@ -104,15 +109,7 @@ const Icon = styled.div`
   position: relative;
   height: 90px;
   width: 200px;
-  /* &:before {
-    content: '';
-    width: 30px;
-    height: 30px;
-    background-color: white;
-    position: absolute;
-    transform: translate(-5px, -5px);
-    border-radius: 50%;
-  } */
+
   @media (min-width: 600px) {
     height: 90px;
     width: 200px;

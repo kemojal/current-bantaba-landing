@@ -4,7 +4,7 @@ import { ArrowButton } from '../components/ArrowButton';
 import { PressCard } from '../components/PressCard';
 import { Img } from '../components/Img';
 
-import Fade from 'react-reveal/Fade';
+
 
 const PressSection = styled.section`
   width: 100vw;
@@ -120,7 +120,6 @@ export const Press = ({ press }) => {
   return (
     <PressSection>
       <div className='fluid'>
-        <Fade bottom>
           <h1 className='notosans-bold-licorice-20px show-on-mobile'>Press</h1>
           <div className='press-header show-on-desktop'>
             <h1 className='notosans-bold-licorice-20px read-title '>
@@ -139,16 +138,11 @@ export const Press = ({ press }) => {
               <span>View All</span>
             </div>
           </div>
-        </Fade>
+       
         <div className='card-container' ref={scrollRef}>
           {press.press.map((item, index) => {
             return <PressCard key={index} {...item} />;
           })}
-          {/* <PressCard {...press.press[0]} />
-            <PressCard {...press.press[1]} />
-            <PressCard {...press.press[2]} />
-            <PressCard {...press.press[3]} />
-            <PressCard {...press.press[4]} /> */}
         </div>
 
         <span onClick={() => scroll(380)}>

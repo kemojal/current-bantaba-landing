@@ -1,9 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import Fade from 'react-reveal/Fade';
 
 import { Img } from '../components/Img';
-import Image from 'next/image'
+import Image from 'next/image';
 const CardDiv = styled.div`
   /* box-sizing: border-box; */
   /* width: 300px !important; */
@@ -11,16 +10,12 @@ const CardDiv = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
   
-  /* overflow: hidden; */
-  /* background-color: orange; */
-  /* margin: 0 20px; */
-  /* border: 1px solid green; */
 
   .profile-frame {
     position: relative;
-    /* width: 258px; */
-    /* height: 262px; */
+   
     width: 102px;
     height: 102px;
   }
@@ -47,27 +42,14 @@ const CardDiv = styled.div`
     /* font-size: 24px; */
   }
   .text {
-    
-    /* letter-spacing: 0px;
-    line-height: 16px;
-    color: var(--licorice);
-    font-family: var(--font-family-noto_sans);
-    font-size: var(--font-size-s);
-    font-style: normal;
-    font-weight: 400;
-    text-align: center;
-    position: relative;
-    width: 100%;
-    padding: 10px ; */
-    /* background-color: orange; */
+   
   }
   @media (min-width: 1280px) {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    
-    /* width: 500px; */
-    /* flex-wrap: nowrap; */
+
+   
     margin-left: 12.5px;
     background: #ffffff;
     border: 1px solid rgba(1, 17, 8, 0.1);
@@ -87,7 +69,7 @@ const CardDiv = styled.div`
       /* width: 102px; */
       height: 102px;
       border-radius: 50%;
-      background-color: #009A3650;
+      background-color: #009a3650;
       overflow: hidden;
       box-shadow: 1.91534px 3.83069px 100px 1.91534px rgb(166 166 166 / 15%);
     }
@@ -100,7 +82,7 @@ const CardDiv = styled.div`
       line-height: 160%;
       letter-spacing: -0.03em;
       color: #5b615e;
-      
+
       padding: 5px;
       padding-top: 10px;
       padding-bottom: 15px;
@@ -152,10 +134,10 @@ const TestCol = styled.div`
     padding-bottom: 5px;
     width: 423px;
     position: relative;
-    .col-flip-desktop{
+    .col-flip-desktop {
       display: flex;
       flex-direction: column;
-      padding-top: 5px
+      padding-top: 5px;
     }
     &::before {
       content: '';
@@ -164,7 +146,7 @@ const TestCol = styled.div`
       height: 167px;
       /* right: -260px; */
       background: url('/assets/images/quotation.svg') no-repeat;
-      /* background-size: 100% 100%; */
+      
     }
   }
 `;
@@ -188,31 +170,25 @@ const P = styled.p`
         content: '';
         left: 0px;
         z-index: 100;
-        /* background-color: orange; */
-        /* content: "\275D";  */
+        
 }
 `;
 export const TestimonialCard = ({ src, name, position, text }) => {
   return (
     <CardDiv>
       <div className='img-col'>
-        <Fade bottom>
-          <div className='profile-frame'>
-            <Image src={src} alt='logo' layout='fill' objectFit='contain' />
-          </div>
-        </Fade>
+        <div className='profile-frame'>
+          <Image src={src} alt='logo' layout='fill' objectFit='contain' />
+        </div>
       </div>
 
       <TestCol>
-        <Fade right>
-          <div className='col-flip-desktop'>
-            <h3 className='name'>{name}</h3>
-            <h3 className='position'>{position}</h3>
-          </div>
-        </Fade>
-        <Fade right>
-          <p className='notosans-normal-licorice-16px text'>{text}</p>
-        </Fade>
+        <div className='col-flip-desktop'>
+          <h3 className='name'>{name}</h3>
+          <h3 className='position'>{position}</h3>
+        </div>
+
+        <p className='notosans-normal-licorice-16px text'>{text}</p>
       </TestCol>
     </CardDiv>
   );
