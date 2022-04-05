@@ -184,7 +184,7 @@ const BlogDetailContainer = styled.div`
       max-width: 1126px;
     }
     .blog-text-container p {
-      margin-bottom: 10px;
+      margin-bottom: 1.25rem;
       font-size: 18px;
       line-height: 160%;
       font-style: normal;
