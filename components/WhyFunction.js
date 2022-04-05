@@ -90,10 +90,18 @@ const Container = styled.div`
       padding: 10px 0;
       font-weight: normal;
       /* font-weight: 500; */
-      font-size: 18px;
+      /* font-size: 18px; */
       line-height: 150%;
       color: #5b615e;
       padding-bottom: 1.56rem;
+
+      font-family: 'Poppins';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 20px;
+      /* line-height: 160%; */
+      /* position: relative; */
+      color: #5b615e;
     }
     .col {
       padding-left: 20px;

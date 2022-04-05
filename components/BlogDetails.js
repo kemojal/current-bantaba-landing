@@ -13,6 +13,11 @@ import { GlobalContext } from '../context/GlobalState';
 
 import Image from 'next/image';
 
+import { useRouter } from 'next/router';
+
+import en from '../lang/en';
+import fr from '../lang/fr';
+
 const BlogDetailContainer = styled.div`
   width: 99%;
   min-height: 100vh;
@@ -24,7 +29,7 @@ const BlogDetailContainer = styled.div`
   padding-bottom: 0;
   border-radius: 20px;
   position: fixed;
-  background-color: #F2F2F2;
+  background-color: #f2f2f2;
   overflow: scroll;
   height: 100vh;
   top: 0;
@@ -54,18 +59,18 @@ const BlogDetailContainer = styled.div`
     width: 100%;
   }
   .reading-col {
-     background-color: white;
-     padding: 25px 15px;
-     overflow: hidden;
-     border-radius: 15px;
-      /* padding: 15px; */
-    }
-    .related-blogs-container {
-      background-color: white;
-     padding: 25px 15px;
-     overflow: hidden;
-     border-radius: 15px;
-    }
+    background-color: white;
+    padding: 25px 15px;
+    overflow: hidden;
+    border-radius: 15px;
+    /* padding: 15px; */
+  }
+  .related-blogs-container {
+    background-color: white;
+    padding: 25px 15px;
+    overflow: hidden;
+    border-radius: 15px;
+  }
   @media (min-width: 1280px) {
     /* padding-top: 64px; */
 
@@ -186,12 +191,12 @@ const BlogDetailContainer = styled.div`
       color: #5b615e;
     }
 
-
-/* p.ib.ic.cq.dx.id.ie.if.ig.ih.ii.ij.ik.il.im.in.io.ip.iq.ir.is.it.iu.iv.iw.ix.iy.dn strong{
+    /* p.ib.ic.cq.dx.id.ie.if.ig.ih.ii.ij.ik.il.im.in.io.ip.iq.ir.is.it.iu.iv.iw.ix.iy.dn strong{
   font-size: 16px;
   font-weight: 600;
 } */
-    .blog-text-container h3, strong {
+    .blog-text-container h3,
+    strong {
       margin: 5px 0;
       font-style: normal;
       font-weight: 600;
@@ -386,21 +391,22 @@ const BlogDetailContainer = styled.div`
         font-family: 'Poppins';
       }
       .blog-text-container p {
-      margin-bottom: 5px;
-      font-size: 16px;
-      line-height: 160%;
-      font-style: normal;
-      color: #5b615e;
-    }
-    .blog-text-container h3, strong {
-      margin: 5px 0;
-      font-style: normal;
-      font-weight: 600;
-      font-family: 'Poppins';
-      font-size: 20px;
-      line-height: 160%;
-      color: #011108;
-    }
+        margin-bottom: 5px;
+        font-size: 16px;
+        line-height: 160%;
+        font-style: normal;
+        color: #5b615e;
+      }
+      .blog-text-container h3,
+      strong {
+        margin: 5px 0;
+        font-style: normal;
+        font-weight: 600;
+        font-family: 'Poppins';
+        font-size: 20px;
+        line-height: 160%;
+        color: #011108;
+      }
       .text-title {
         font-family: 'Poppins';
         font-style: normal;
@@ -574,6 +580,10 @@ const BlogDetail = ({
   const { currentDetail, showBlogDetailFunction, setBlogDetailFunction } =
     useContext(GlobalContext);
 
+  const router = useRouter();
+  const { locale } = router;
+  const lan = locale == 'en' ? en : fr;
+
   return (
     <BlogDetailContainer>
       <FluidContainer>
@@ -706,7 +716,7 @@ const BlogDetail = ({
         </div>
       </FluidContainer>
       <Mission />
-      <NavBar />
+      <NavBar locale={lan} router={router} />
     </BlogDetailContainer>
   );
 };

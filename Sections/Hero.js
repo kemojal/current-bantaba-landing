@@ -128,6 +128,13 @@ const HeroSection = styled.section`
       color: #5b615e;
       margin-top: 0px;
       padding-right: 10px;
+
+      font-family: 'Poppins';
+      /* font-style: normal; */
+      /* font-weight: 400; */
+      /* font-size: 20px; */
+
+      color: #5b615e;
     }
     .functions {
       width: 100%;

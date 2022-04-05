@@ -72,6 +72,7 @@ const PCard = styled.div`
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
+    color: #5b615e;
     /* height: 88px; */
   }
 
