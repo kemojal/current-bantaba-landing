@@ -14,6 +14,7 @@ export const Img = ({
   layout,
   objectFit,
   quality,
+  
 }) => {
   return (
     <Image

@@ -33,7 +33,8 @@ export default (state, action) => {
       return { ...state, currentDetail: action.payload };
     case 'SET_TAB':
       return { ...state, currentActiveTab: action.payload };
-
+    case `SET_IS_PAGE_ROUTING`:
+      return { ...state, isPageRouting: action.payload };
     default:
       return state;
   }

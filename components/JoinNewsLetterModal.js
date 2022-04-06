@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux';
 import { GlobalContext } from '../context/GlobalState';
 
 import Select from 'react-select';
+import { NON_DIASPORA } from './../apis/APIs';
 
 const ModalContainer = styled.div`
 
@@ -398,16 +399,11 @@ const JoinNewsLetterModal = () => {
       if (validateEmail(formData.userEmail)) {
         setFormError(false);
         setFormStage(2);
-        console.log('submited data = ', formData);
-
-        //https://landingapi-dev.ourbantaba.com/newsletter/create
-        // axios.post('https://reqres.in/api/articles', article)
-        // .then(response => this.setState({ articleId: response.data.id }));
         let postData = {
           firstname: formData.userName,
-          category: formData.userCategory,
+          category: formData.userCategory.toLowerCase(),
           email: formData.userEmail,
-          investment_range: ''
+          investment_range: '',
         };
 
         //   {
@@ -417,25 +413,21 @@ const JoinNewsLetterModal = () => {
         //         "investment_range": ""
         // }
         try {
-          const res = await axios.post(
-            'https://landingapi-dev.ourbantaba.com/nonDiaspora/create',
-            postData,
-            {
+          const res = await axios
+            .post(`${NON_DIASPORA}/create`, postData, {
               headers: {
                 'Content-Type': 'application/json',
               },
-            },
-            console.log(res) //this comes back undefined
-          );
+            })
+            .then(({ data }) => {
+              console.log('axios results = ', data);
+              if (data.statusMsg === 'Success') {
+                setFormStage(2);
+              } else {
+                setFormStage(3);
+              }
+            });
         } catch (e) {}
-
-        // axios
-        //   .get('https://landingapi-dev.ourbantaba.com/newsletter/create', {
-        //     name: 'James Max',
-        //     category: 'startup',
-        //     email: 'james@email.com',
-        //   })
-        //   .then((response) => console.log('response = ', response));
       }
     }
   };

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import styled from 'styled-components';
 import { Img } from '../components/Img';
 import Fade from 'react-reveal/Fade';
@@ -6,6 +6,9 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 import { GlobalContext } from '../context/GlobalState';
+
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 
 const FeaturedBlogCardContainer = styled.div`
   width: 100%;
@@ -158,23 +161,55 @@ const FeaturedBlogCard = ({
     });
   };
 
+  const [loaded, setLoaded] = useState(false);
+  const imgSkeleton = loaded ? '' : 'skeleton';
+
+  const handleLoaded = () => {
+    setLoaded(true);
+  };
+
   return (
     <FeaturedBlogCardContainer>
       <div className='featured-img-cover'>
-        <Fade bottom>
-          <div className='f-img-wrapper'>
-            <Image src={cover_img} alt='logo' layout='fill' objectFit='cover' />
-          </div>
-        </Fade>
+        <div className={`f-img-wrapper ${imgSkeleton}`}>
+          <Image
+            src={cover_img}
+            alt='logo'
+            layout='fill'
+            objectFit='cover'
+            onLoad={(e) => {
+              e.target.src.indexOf('data:image/gif;base64') < 0 &&
+                handleLoaded();
+            }}
+          />
+        </div>
       </div>
       <div className='featured-body'>
-        <Fade bottom>
+        {loaded ? (
           <p className='f-title'>{title}</p>
-        </Fade>
+        ) : (
+          <Skeleton
+            baseColor='#E8FCF0'
+            height={28}
+            width={713}
+            highlightColor='#04853A25'
+            className='f-title'
+          />
+        )}
+
         <div className='f-category-row'>
-          <Fade bottom>
+          {loaded ? (
             <p className='f-category'>{category}</p>
-          </Fade>
+          ) : (
+            <Skeleton
+              baseColor='#E8FCF0'
+              height={32}
+              width={135}
+              highlightColor='#04853A25'
+              className='f-category'
+            />
+          )}
+
           <div className='f-read-time'>
             <Fade bottom>
               <div className='read-time-icon'>
@@ -186,24 +221,49 @@ const FeaturedBlogCard = ({
                 />
               </div>
             </Fade>
-            <Fade bottom>
+            {loaded ? (
               <span className='f-read-time-label'>Read {read_time}</span>
-            </Fade>
+            ) : (
+              <Skeleton
+                baseColor='#E8FCF0'
+                height={18}
+                width={87}
+                highlightColor='#04853A25'
+                className='f-read-time-label'
+              />
+            )}
           </div>
         </div>
-        <Fade bottom>
+        {loaded ? (
           <div
             dangerouslySetInnerHTML={{ __html: summary }}
             className='f-summary-text'
           />
-        </Fade>
-        <div onClick={showDetail} className='read-button'>
-          <Fade bottom>
+        ) : (
+          <Skeleton
+            baseColor='#E8FCF0'
+            height={28}
+            count={3}
+            highlightColor='#04853A25'
+            className='f-summary-text'
+          />
+        )}
+
+        {loaded ? (
+          <div onClick={showDetail} className='read-button'>
             <span>
               <a>Read More</a>
             </span>
-          </Fade>
-        </div>
+          </div>
+        ) : (
+          <Skeleton
+            baseColor='#E8FCF0'
+            height={25}
+            width={97}
+            highlightColor='#04853A25'
+            className='read-button'
+          />
+        )}
       </div>
     </FeaturedBlogCardContainer>
   );

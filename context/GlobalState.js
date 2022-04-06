@@ -12,6 +12,7 @@ const initialState = {
   showBlogDetail: false,
   currentDetail: {},
   currentActiveTab: 'home',
+  isPageRouting: false,
 };
 
 // Create context
@@ -79,12 +80,12 @@ export const GlobalProvider = ({ children }) => {
       payload: condition,
     });
   }
-  // function setFrFAQ(condition) {
-  //   dispatch({
-  //     type: 'SET_FRFAQS',
-  //     payload: condition,
-  //   });
-  // }
+  function setIsPageRouting(condition) {
+    dispatch({
+      type: 'SET_IS_PAGE_ROUTING',
+      payload: condition,
+    });
+  }
 
   return (
     <GlobalContext.Provider
@@ -98,6 +99,7 @@ export const GlobalProvider = ({ children }) => {
         showContactUsModal: state.showContactUsModal,
         subscribeNewsletterModal: state.subscribeNewsletterModal,
         currentActiveTab: state.currentActiveTab,
+        isPageRouting: state.isPageRouting,
         showNewsLetterModal,
         toggleContactModal,
         closeNewsLetterModal,
@@ -106,6 +108,7 @@ export const GlobalProvider = ({ children }) => {
         setBlogDetailFunction,
         toggleSubscribeNewsletterModal,
         setTab,
+        setIsPageRouting,
       }}
     >
       {children}

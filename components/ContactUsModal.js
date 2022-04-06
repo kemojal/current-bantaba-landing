@@ -373,14 +373,7 @@ const ContactUsModal = () => {
   const [formData, setFormData] = useState({});
   const [formError, setFormError] = useState(false);
   const [isEmailValid, setIsEmailValid] = useState(true);
-  //   const [modalState, setModalState] = useState(show ? true : true);
-
-  //   const showHideClassName = modalState
   //     ? 'modal display-block'
-  //     : 'modal display-none';
-
-  //   const { isNewsLetterModal } = useSelector((state) => state);
-  //   console.log('redux state parameter = ', isNewsLetterModal);
 
   const { showContactModal, toggleContactModal } = useContext(GlobalContext);
   const closemodal = (e) => {
@@ -473,7 +466,7 @@ const ContactUsModal = () => {
                       className='name'
                       placeholder='Email Address'
                     />
-                    <textarea className='textarea' placeholder="Message..."/>
+                    <textarea className='textarea' placeholder='Message...' />
                     {/* <Select
                       value={formData.userCategory || ''}
                       onChange={handleSelectChange}

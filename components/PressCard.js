@@ -105,6 +105,11 @@ const PCard = styled.div`
     line-height: 160%;
     color: #5b615e;
   }
+  @media (max-width: 600px) {
+    .title {
+      height: 50px;
+    }
+  }
   @media (min-width: 1280px) {
     width: 300px;
     width: 31%;

@@ -1,17 +1,31 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useState } from 'react';
+import styled, { keyframes } from 'styled-components';
 import AboutTeamCard from '../components/AboutTeamCard';
 import { Img } from '../components/Img';
+import Image from 'next/image';
 import { NavBar } from '../Sections/NavBar';
 import i18n from 'i18next';
 import { useRouter } from 'next/router';
 
 // import Fade from 'react-reveal/Fade';
+// skeleton loading
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 
 import en from '../lang/en';
 import fr from '../lang/fr';
 import { Mission } from '../Sections/Mission';
 import { FluidContainer } from '../components/FluidContainer';
+
+const shimmer = keyframes` 
+  0%{
+    background-position: -450px 0;
+  }
+  100%{
+    background-position: 450px 0;
+  }
+`;
+
 const Aboutontainer = styled.div`
   width: 100%;
   min-height: 100vh;
@@ -77,6 +91,19 @@ const Aboutontainer = styled.div`
     border-radius: 10px;
     overflow: hidden;
   }
+  /* .skeleton {
+    background-color: #e8fcf0;
+    background-image: linear-gradient(
+      to right,
+      #e8fcf0 0%,
+      rgba(0, 0, 0, 0.05) 20%,
+      #e8fcf0 40%,
+      #e8fcf0 100%
+    );
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    animation: ${shimmer} 1s linear infinite;
+  } */
   .bg-section-two {
     background-color: #e8fcf1;
     padding-bottom: 0;
@@ -336,26 +363,12 @@ export default function About({ team }) {
   const { locale } = router;
   const lan = locale == 'en' ? en : fr;
 
-  // const TeamMembers = [
-  //   {
-  //     name: 'Lamin K. Darboe',
-  //     position: 'CEO',
-  //     linkedinLink: 'anananannannan@linkedin',
-  //     email: 'vmvmvmvm@email',
-  //   },
-  //   {
-  //     name: 'Lamin K. Darboe',
-  //     position: 'CEO',
-  //     linkedinLink: 'anananannannan@linkedin',
-  //     email: 'vmvmvmvm@email',
-  //   },
-  //   {
-  //     name: 'Lamin K. Darboe',
-  //     position: 'CEO',
-  //     linkedinLink: 'anananannannan@linkedin',
-  //     email: 'vmvmvmvm@email',
-  //   },
-  // ];
+  const [loaded, setLoaded] = useState(false);
+  const imgSkeleton = loaded ? '' : 'skeleton';
+  const handleLoaded = () => {
+    setLoaded(true);
+  };
+
   return (
     <Aboutontainer>
       <FluidContainer>
@@ -363,40 +376,68 @@ export default function About({ team }) {
           <div className='desk-textcolum pr-30'>
             <h1 className='about-m-title hide-on-desktop'>About Us</h1>
 
-            <p className='desktop-about-title hide-on-mobile mbd-15'>
-              We’re linking Africa&#39;s startup ecosystem to global knowledge,
-              network and capital.
-            </p>
+            {loaded ? (
+              <p className='desktop-about-title hide-on-mobile mbd-15'>
+                We’re linking Africa&#39;s startup ecosystem to global
+                knowledge, network and capital.
+              </p>
+            ) : (
+              <Skeleton
+                baseColor='#E8FCF0'
+                height={45}
+                width={528}
+                count={3}
+                highlightColor='#04853A25'
+                className='desktop-about-title hide-on-mobile mbd-15'
+              />
+            )}
 
-            <div className=' notosans-normal-licorice-16px line-height-24 pb-24 desktop-normal-text'>
-              Bantaba is Africa’s biggest startup-diaspora community that
-              connects African tech startups to investors, mentors and
-              consultants in the African diaspora.
-              <br />
-              <br />
-              Our platform enables the African diaspora to contribute to
-              Africa’s tech ecosystem through networking, mentoring and
-              investing in tech startups on the continent.
-            </div>
+            {loaded ? (
+              <div className=' notosans-normal-licorice-16px line-height-24 pb-24 desktop-normal-text'>
+                Bantaba is Africa’s biggest startup-diaspora community that
+                connects African tech startups to investors, mentors and
+                consultants in the African diaspora.
+                <br />
+                <br />
+                Our platform enables the African diaspora to contribute to
+                Africa’s tech ecosystem through networking, mentoring and
+                investing in tech startups on the continent.
+              </div>
+            ) : (''
+              // <Skeleton
+              //   baseColor='#E8FCF0'
+              //   height={28}
+              //   width={528}
+              //   count={5}
+              //   highlightColor='#04853A25'
+              //   className=' notosans-normal-licorice-16px line-height-24 pb-24 desktop-normal-text'
+              // />
+            )}
           </div>
           <div className='desk-textcolum align-column-end'>
             <div className='img-wrapper'>
-              <div className='about-img-1 hide-on-desktop'>
-                <Img
-                  src={'Group-image_1.jpg'}
+              <div className={`about-img-1 ${imgSkeleton} hide-on-desktop`}>
+                <Image
+                  src={'/assets/images/Group-image_1.jpg'}
                   alt='logo'
                   layout='fill'
                   objectFit='contain'
                   priority={true}
                 />
               </div>
-              <div className='about-img-2 h-422 hide-on-mobile'>
-                <Img
-                  src={'Group-image_1.jpg'}
+              <div
+                className={`about-img-2 h-422 ${imgSkeleton} hide-on-mobile`}
+              >
+                <Image
+                  src={'/assets/images/Group-image_1.jpg'}
                   alt='logo'
                   layout='fill'
                   objectFit='contain'
-                  priority={true}
+                  // priority={true}
+                  onLoad={(e) => {
+                    e.target.src.indexOf('data:image/gif;base64') < 0 &&
+                      handleLoaded();
+                  }}
                 />
               </div>
             </div>

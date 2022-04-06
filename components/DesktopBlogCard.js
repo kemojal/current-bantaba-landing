@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import styled from 'styled-components';
 import { Img } from '../components/Img';
 import Fade from 'react-reveal/Fade';
@@ -6,6 +6,9 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 import { GlobalContext } from '../context/GlobalState';
+
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 
 const DesktopBlogCardContainer = styled.div`
   cursor: pointer;
@@ -128,6 +131,14 @@ const DesktopBlogCard = ({
 }) => {
   const { showBlogDetail, showBlogDetailFunction, setBlogDetailFunction } =
     useContext(GlobalContext);
+
+  const [loaded, setLoaded] = useState(false);
+
+  const imgSkeleton = loaded ? '' : 'skeleton';
+  const handleLoaded = () => {
+    setLoaded(true);
+  };
+
   const showDetail = () => {
     showBlogDetailFunction(true);
     setBlogDetailFunction({
@@ -152,33 +163,79 @@ const DesktopBlogCard = ({
       onClick={showDetail}
     >
       <div className='blog-img-cover'>
-        <Fade bottom>
-          <div className='b-img-wrapper'>
-            <Image src={cover_img} alt='logo' layout='fill' objectFit='cover' />
+        
+          <div className={`b-img-wrapper ${imgSkeleton}`}>
+            <Image
+              src={cover_img}
+              alt='logo'
+              layout='fill'
+              objectFit='cover'
+              onLoad={(e) => {
+                e.target.src.indexOf('data:image/gif;base64') < 0 &&
+                  handleLoaded();
+              }}
+            />
           </div>
-        </Fade>
+        
       </div>
       <div className='blog-card-body'>
-        <Fade bottom>
+        {loaded ? (
           <p className='blog-title'>{title}</p>
-        </Fade>
+        ) : (
+          <Skeleton
+            baseColor='#E8FCF0'
+            height={27}
+            highlightColor='#04853A25'
+            count={2}
+            className='blog-title'
+          />
+        )}
         <div className='category-row'>
-          <Fade bottom>
+          {loaded ? (
             <p className='b-category'>{category}</p>
-          </Fade>
+          ) : (
+            <Skeleton
+              baseColor='#E8FCF0'
+              height={19}
+              width={72}
+              highlightColor='#04853A25'
+              className='b-category'
+            />
+          )}
+
           <div className='read-time'>
-            <Fade bottom>
+            <Fade>
               <div className='read-time-icon'>
-                <Img
-                  src='read-time-icon.svg'
-                  alt='logo'
-                  layout='fill'
-                  objectFit='cover'
-                />
+                {loaded ? (
+                  <Img
+                    src='read-time-icon.svg'
+                    alt='logo'
+                    layout='fill'
+                    objectFit='cover'
+                  />
+                ) : (
+                  <Skeleton
+                    baseColor='#E8FCF0'
+                    height={26}
+                    width={26}
+                    borderRadius={26}
+                    highlightColor='#04853A25'
+                  />
+                )}
               </div>
             </Fade>
-            <Fade bottom>
-              <span className='f-read-time-label'>Read {read_time}</span>
+            <Fade>
+              {loaded ? (
+                <span className='f-read-time-label'>Read {read_time}</span>
+              ) : (
+                <Skeleton
+                  className='f-read-time-label'
+                  baseColor='#E8FCF0'
+                  height={18}
+                  width={88}
+                  highlightColor='#04853A25'
+                />
+              )}
             </Fade>
           </div>
         </div>

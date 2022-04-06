@@ -14,6 +14,7 @@ import { GlobalContext } from '../context/GlobalState';
 import Image from 'next/image';
 
 import { useRouter } from 'next/router';
+import { FacebookShareButton, FacebookIcon } from 'react-share';
 
 import en from '../lang/en';
 import fr from '../lang/fr';
@@ -40,14 +41,14 @@ const BlogDetailContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #04853a;
+    background-color: #d5f3e2;
     padding: 10px 15px;
     color: white;
     border-radius: 8px;
     position: fixed;
     top: 100px;
     z-index: 99;
-    color: white;
+    color: #04853a;
     left: 120px;
   }
 
@@ -503,12 +504,12 @@ const ArrowWrapper = styled.div`
   margin-right: 5px;
   justify-content: center;
   align-items: center;
-  transform: scaleX(-1);
+  /* transform: scaleX(-1); */
   &:before {
     width: 40px;
     height: 0px;
     position: absolute;
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: red;
     border-radius: 50%;
     content: '';
   }
@@ -539,33 +540,6 @@ const BlogDetail = ({
       scrDesktop: 'linkedin-d.svg',
     },
   ];
-  // const relatedNews = [
-  //   {
-  //     title: 'What makes a Perfect Pitch Deck?',
-  //     readTime: 3,
-  //     category: 'Tech',
-  //   },
-  //   {
-  //     title: 'Challenges faced by female Entrepreneurs in Africa',
-  //     readTime: 3,
-  //     category: 'Tech',
-  //   },
-  //   {
-  //     title: 'Why you should mentor a start-up in Africa',
-  //     readTime: 3,
-  //     category: 'Tech',
-  //   },
-  //   {
-  //     title: 'Relief for African startups as Bantaba platform goes live',
-  //     readTime: 3,
-  //     category: 'Tech',
-  //   },
-  //   {
-  //     title: 'These are the leading investment countries in Africa',
-  //     readTime: 3,
-  //     category: 'Tech',
-  //   },
-  // ];
 
   const RenderHTML = (props) => (
     <span dangerouslySetInnerHTML={{ __html: props.HTML }}></span>
@@ -593,7 +567,7 @@ const BlogDetail = ({
               <button className='close-detail-btn' onClick={closeDetail}>
                 <ArrowWrapper>
                   <Img
-                    src='arrow.svg'
+                    src='back-arrow-blog.svg'
                     alt='logo'
                     layout='fill'
                     objectFit='contain'
@@ -657,7 +631,16 @@ const BlogDetail = ({
                     <span className='share-text'>Share this article:</span>
                   </Fade>
                   <Fade bottom>
-                    <SocialContainer socialList={socialList} />
+                    <FacebookShareButton
+                      url={
+                        'https://blog.ourbantaba.com/en/post/The-rise-of-African-tech-startups'
+                      }
+                      media={title}
+                      children={<p>hello</p>}
+                    >
+                      <FacebookIcon size={32} round />
+                    </FacebookShareButton>
+                    {/* <SocialContainer socialList={socialList} /> */}
                   </Fade>{' '}
                 </div>
                 <div className='author tags'>

@@ -46,4 +46,8 @@
 
     --max-width: 1116px;
 
+
+    --skeleton-bg: 'red';
+   --skeleton-highlight:'#04853A25'
+
 }

@@ -153,9 +153,6 @@ export default function Home({ press }) {
         <Partner lang={lan} />
         <Mission lang={lan} />
         <NavBar locale={lan} path={'/'} router={router} />
-        {/* <JoinNewsLetterModal />
-        <ContactUsModal />
-        <NewsLetterModal /> */}
       </main>
 
       {/* <footer className={styles.footer}>
