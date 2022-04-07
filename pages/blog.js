@@ -138,12 +138,16 @@ function Blog({ blogs }) {
   const rightSide = '';
   // const [restBlogs, setRestBlogs] = useState();
 
-  const { showBlogDetail } = useContext(GlobalContext);
+  const { showBlogDetail, currentLanguage } = useContext(GlobalContext);
 
   const router = useRouter();
   const { locale } = router;
-  const lan = locale == 'en' ? en : fr;
+  // const lan = locale == 'en' ? en : fr;
+  const [lan, setlan] = useState(currentLanguage == 'en' ? en : fr);
 
+  useEffect(() => {
+    setlan(currentLanguage == 'en' ? en : fr);
+  }, [currentLanguage]);
 
   // const Blogs = [
   //   {
@@ -185,10 +189,9 @@ function Blog({ blogs }) {
     <BlogContainer>
       <FluidContainer>
         <Fade bottom>
-          <h1 className='blog-m-title'>Blog</h1>
+          <h1 className='blog-m-title'>{lan.blog}</h1>
         </Fade>
 
-       
         <div className='blog-cards-container mt-24   desktop-layout '>
           <div className='blog-desk-colum-left'>
             <FeaturedBlogCard {...featured} />
@@ -263,7 +266,7 @@ function Blog({ blogs }) {
         </div>
       </FluidContainer>
 
-      <Mission />
+      <Mission lang={lan} />
       <NavBar locale={lan} router={router} />
       {showBlogDetail && <BlogDetail {...featured} />}
     </BlogContainer>

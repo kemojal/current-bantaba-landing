@@ -122,7 +122,7 @@ const partnersData = [
   //   title: 'TWILIO SendGrid',
   // },
 ];
-export const Partner = () => {
+export const Partner = ({ lang}) => {
   return (
     <PartnerSection>
       <div className='before'></div>
@@ -130,7 +130,7 @@ export const Partner = () => {
         <FluidContainer>
           <Fade bottom>
             <p className='notosans-bold-licorice-20px partner-title'>
-              Our Partners
+              {lang.our_partners}
             </p>
           </Fade>
           <Fade bottom>

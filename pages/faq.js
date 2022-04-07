@@ -158,7 +158,7 @@ const Input = styled.input`
 export default function FAQ({ EnglishFaQ, FrenchFAQ }) {
   const router = useRouter();
   const { locale } = router;
-  const lan = locale == 'en' ? en : fr;
+  // const lan = locale == 'en' ? en : fr;
 
   const { currentLanguage } = useContext(GlobalContext);
   const [currentQueryData, setCurrentQueryData] = useState(
@@ -169,6 +169,8 @@ export default function FAQ({ EnglishFaQ, FrenchFAQ }) {
   const [result, setResult] = useState(
     currentLanguage === 'en' ? EnglishFaQ.FAQData : FrenchFAQ.FAQData
   );
+
+  const [lan, setlan] = useState(currentLanguage == 'en' ? en : fr);
   let inputHandler = (e) => {
     setQuery(e.target.value);
     setResult(QueryData(query));
@@ -181,6 +183,7 @@ export default function FAQ({ EnglishFaQ, FrenchFAQ }) {
     setCurrentQueryData(
       currentLanguage === 'en' ? EnglishFaQ.FAQData : FrenchFAQ.FAQData
     );
+    setlan(currentLanguage == 'en' ? en : fr);
   }, [currentLanguage]);
 
   const QueryData = (query) => {
@@ -198,7 +201,7 @@ export default function FAQ({ EnglishFaQ, FrenchFAQ }) {
     <FAQContainer>
       <div className='container'>
         <Fade bottom>
-          <p className='header-title'>FAQs</p>
+        <p className='header-title'>{lan.faqs}</p>
         </Fade>
         <Fade bottom>
           <div className='input-search mt-24'>
@@ -223,7 +226,7 @@ export default function FAQ({ EnglishFaQ, FrenchFAQ }) {
           })}
         </ul>
       </div>
-      <Mission />
+      <Mission lang={lan} />
       <NavBar locale={lan} router={router} />
     </FAQContainer>
   );

@@ -34,57 +34,56 @@ const FooterLinkContainer = styled.div`
     }
   }
 `;
-const Footer = () => {
-
+const Footer = ({ lang }) => {
   const FooterData = [
     {
-      title: 'Quick Links',
+      title: lang.quicklinks,
       list: [
         {
-          title: 'Home',
+          title: lang.home,
           link: '/',
         },
         {
-          title: 'About Us',
+          title: lang.about_us,
           link: '/about',
         },
         {
-          title: 'Press',
-          link: '/',
+          title: lang.press_mobile,
+          link: '/#press',
         },
         {
-          title: 'Blog',
+          title: lang.blog,
           link: '/blog',
         },
       ],
     },
     {
-      title: 'Support',
+      title: lang.support,
       list: [
         {
-          title: 'Contact Us',
+          title: lang.contact_us,
           link: '/contact',
         },
         {
-          title: 'Join our newsletter',
+          title: lang.join_our_newsletter,
           link: '/newsletter',
         },
         {
-          title: 'FAQs',
+          title: lang.faqs,
           link: '/faq',
         },
       ],
     },
   ];
   const address = {
-    title: 'Address',
-    address: ['Östermalmsgatan 26A ', '114 26 Stockholm'],
+    title: lang.address,
+    address: [lang.address_no1, lang.address_no2],
   };
   return (
     <FooterLinkContainer>
       <div className='footer-link-row'>
         {FooterData.map((item, index) => {
-          return <FooterCols key={index} {...item} />;
+          return <FooterCols key={index} {...item} lang={lang}/>;
         })}
       </div>
       <div className='address-container'>{<FooterCols {...address} />}</div>

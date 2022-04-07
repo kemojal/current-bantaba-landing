@@ -1,11 +1,14 @@
 import React, { useEffect, useState, useContext } from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
+
 import { Img } from '../components/Img';
 import { useSelector } from 'react-redux';
 
 import { GlobalContext } from '../context/GlobalState';
 
 import Select from 'react-select';
+import { NEWSLETTER } from './../apis/APIs';
 
 const ModalContainer = styled.div`
 
@@ -16,7 +19,8 @@ const ModalContainer = styled.div`
   height: 100%;
   background: rgba(0, 0, 0, 0.7);
   display:${({ modalState }) => (modalState ? 'block' : 'none')} ;
-  z-index: 10;
+  /* z-index: 10; */
+  z-index: 11;
   /* display: none; */
   .main-modal {
     position: fixed;
@@ -263,9 +267,10 @@ color: #01110850;
   @media (max-width: 1280px) {
      .main-modal {
          width: 95%;
-         height: 100%;
+         height: 95%;
          overflow-x: hidden;
          overflow-y: scroll;
+         top: 51%;
      } 
      .relative-container{
          display: flex;
@@ -400,7 +405,7 @@ const NewsLetterModal = () => {
     });
   };
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     if (Object.keys(formData).length === 0) {
       setFormStage(1);
@@ -413,7 +418,27 @@ const NewsLetterModal = () => {
       setIsEmailValid(validateEmail(formData.userEmail));
       if (validateEmail(formData.userEmail)) {
         setFormError(false);
-        setFormStage(2);
+        // setFormStage(2);
+        let postData = {
+          name: formData.userName,
+          category: formData.userCategory.toLowerCase(),
+          email: formData.userEmail,
+        };
+        try {
+          const res = await axios
+            .post(`${NEWSLETTER}/create`, postData, {
+              headers: {
+                'Content-Type': 'application/json',
+              },
+            })
+            .then(({ data }) => {
+              if (data.statusMsg === 'Success') {
+                setFormStage(2);
+              } else {
+                setFormStage(3);
+              }
+            });
+        } catch (e) {}
       }
     }
   };

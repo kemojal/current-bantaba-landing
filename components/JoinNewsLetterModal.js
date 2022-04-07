@@ -19,7 +19,7 @@ const ModalContainer = styled.div`
   height: 100%;
   background: rgba(0, 0, 0, 0.7);
   display:${({ modalState }) => (modalState ? 'block' : 'none')} ;
-  z-index: 10;
+  z-index: 11;
   /* display: none; */
   .main-modal {
     position: fixed;
@@ -250,9 +250,10 @@ const ModalContainer = styled.div`
   @media (max-width: 1280px) {
      .main-modal {
          width: 95%;
-         height: 100%;
+         height: 95%;
          overflow-x: hidden;
          overflow-y: scroll;
+         top: 51%;
      } 
      .relative-container{
          display: flex;
@@ -359,13 +360,6 @@ const JoinNewsLetterModal = () => {
   const [isEmailValid, setIsEmailValid] = useState(true);
   //   const [modalState, setModalState] = useState(show ? true : true);
 
-  //   const showHideClassName = modalState
-  //     ? 'modal display-block'
-  //     : 'modal display-none';
-
-  //   const { isNewsLetterModal } = useSelector((state) => state);
-  //   console.log('redux state parameter = ', isNewsLetterModal);
-
   const { showModal, closeNewsLetterModal } = useContext(GlobalContext);
   const closemodal = (e) => {
     e.stopPropagation();
@@ -398,7 +392,7 @@ const JoinNewsLetterModal = () => {
       setIsEmailValid(validateEmail(formData.userEmail));
       if (validateEmail(formData.userEmail)) {
         setFormError(false);
-        setFormStage(2);
+        // setFormStage(2);
         let postData = {
           firstname: formData.userName,
           category: formData.userCategory.toLowerCase(),

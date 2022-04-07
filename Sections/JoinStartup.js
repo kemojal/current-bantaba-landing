@@ -30,12 +30,12 @@ const WhySection = styled.section`
     } */
   }
 `;
-export const JoinStartup = () => {
+export const JoinStartup = ({ lang }) => {
   return (
     <WhySection>
       <div className='container'>
-        <MobileStartup />
-        <DesktopDiaspora />
+        <MobileStartup lang={lang} />
+        <DesktopDiaspora lang={lang} />
       </div>
     </WhySection>
   );

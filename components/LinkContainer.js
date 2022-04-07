@@ -16,9 +16,18 @@ const LinkContainer = styled.h3`
   font-weight: 600;
   line-height: 20px;
   text-align: center;
+  position: relative;
+  transition: all 0.2s ease-in-out;
+
+  
 
   &:hover {
-    text-decoration: underline;
+    /* text-decoration: underline; */
+    background-color: #009743;
+    color: white;
+   
+    transform: translateY(-5px) scale(1.01);
+   
   }
 
   @media (min-width: 1280px) {
@@ -29,12 +38,23 @@ const LinkContainer = styled.h3`
     padding: 15px 30px;
     font-family: 'Poppins';
     font-style: normal;
-    font-weight: 400;
+    font-weight: 600;
     font-size: 18px;
     line-height: 150%;
     border-radius: 6px;
     color: #009743;
     max-height: 57px;
+
+    &:before { 
+    content: '',
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #009743;
+    position: absolute;
+    left: 0;
+    z-index:99;
+  }
   }
 `;
 

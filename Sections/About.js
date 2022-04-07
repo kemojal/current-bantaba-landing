@@ -172,7 +172,7 @@ const ArrowIcon = styled.div`
   align-items: center;
   margin-left: 10px;
 `;
-export const AboutSection = () => {
+export const AboutSection = ({ lang }) => {
   return (
     <AboutSectionContainer>
       <div className='container'>
@@ -188,24 +188,19 @@ export const AboutSection = () => {
         </div>
 
         <div className='about-right'>
-          <p className='title'>Bantaba was born from a passion for Africa.</p>
+          <p className='title'>{lang.bantaba_born_passion}</p>
 
           <div>
             <p className='notosans-normal-licorice-18px normal'>
-              The platform is named after an ancient Manding word for a big tree
-              under which elder’s of an African village would gather to make
-              important decisions.
+              {lang.about_section_p1}
             </p>
 
             <p className='notosans-normal-licorice-18px normal'>
-              Like its origin, Bantaba platform serves as a digital meeting
-              place that bridges the gap between Africa’s tech startup ecosystem
-              and diaspora knowledge, capital and network.
+              {lang.about_section_p2}
             </p>
 
             <p className='hide-on-mobile notosans-normal-licorice-18px normal'>
-              Our mission is to build a future for Africans by empow-ering the
-              African startup ecosystem.
+              {lang.about_section_p3_desktop}
             </p>
 
             <div className='desktop-spacer' />
@@ -215,7 +210,7 @@ export const AboutSection = () => {
                 className='link'
                 href={'https://community.ourbantaba.com/en/register'}
               >
-                <a>Let&#39;s build Africa Together</a>
+                <a>{lang.lets_build_africa}</a>
               </Link>
               <ArrowIcon>
                 <Img

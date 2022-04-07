@@ -67,13 +67,19 @@ const Button = styled.div`
   margin: 10px 0;
   /* kidas design */
   height: 60px;
-  width: 260px;
+  /* width: 260px; */
+  width: ${({ width }) => (width ? width : '260px')};
   /* border-radius: 20px; */
   border-radius: 10px;
+  transition: all 0.1s ease-in-out;
   /* kidas design */
   .btn-title {
     font-weight: 600;
     color: ${({ color }) => (color ? color : '#ffffff')} !important;
+  }
+  &:hover{
+    transform: translateY(-4px) scale(1.01);
+
   }
   @media (min-width: 600px) {
     width: ${({ width }) => (width ? width : '260px')};

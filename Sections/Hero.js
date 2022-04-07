@@ -116,6 +116,7 @@ const HeroSection = styled.section`
       /* font-size: 45px; */
       /* font-size: 3.2em; */
       font-size: 2.81rem;
+      font-size: ${({ lang }) => (lang === 'en' ? '2.81rem' : '2.5rem')};
       line-height: 120%;
       margin-bottom: 1.56rem;
       /* margin-bottom: 0.5em; */
@@ -201,7 +202,7 @@ export const Hero = ({ lang }) => {
     },
   ];
   return (
-    <HeroSection>
+    <HeroSection lang={lang}>
       <h1 className='hero-title'>{lang.hero_header}</h1>
       <p className='subtext'>{lang.hero_discription}</p>
       {/* <Button title={'Create an Account'} /> */}

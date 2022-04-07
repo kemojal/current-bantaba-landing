@@ -1,7 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
 import styled from 'styled-components';
 import { Img } from '../components/Img';
 import Link from 'next/link';
+import { GlobalContext } from '../context/GlobalState';
+
 import { motion } from 'framer-motion';
 import { useIntersection } from 'react-use';
 import { FluidContainer } from '../components/FluidContainer';
@@ -101,11 +103,12 @@ const MapSectionContainer = styled.section`
       margin: 10px 0;
       margin-bottom: 0;
       padding: 1.56rem 0;
-
+      margin-top: ${({ lang }) => (lang === 'en' ? '10px' : '3.6px')};
       font-family: 'Poppins';
       font-style: normal;
       font-weight: 700;
-      font-size: 2.5rem;
+      /* font-size: 2.5rem; */
+      font-size:  ${({ lang }) => (lang === 'en' ? '2.5rem' : '2.1rem')};
       line-height: 130%;
       text-align: center;
       color: #011108;
@@ -178,9 +181,10 @@ const ArrowIcon = styled.div`
   align-items: center;
   margin-left: 10px;
 `;
-export const MapSection = () => {
+export const MapSection = ({ lang }) => {
+  const { currentLanguage } = useContext(GlobalContext);
   return (
-    <MapSectionContainer>
+    <MapSectionContainer lang = {currentLanguage}>
       <FluidContainer flipColumn={'column-reverse'}>
         <div className='map-left'>
           <div className='map-desktop'>
@@ -219,19 +223,15 @@ export const MapSection = () => {
 
         <div className='map-right'>
           <p className='notosans-bold-licorice-20px title'>
-            Discover the most innovative and exciting startups in Africa
+            {lang.discover_innovative_startups_Africa}
           </p>
 
           <p className='notosans-normal-licorice-16px normal hide-on-desktop'>
-            Our platform has since its launch connected over 150 African tech
-            startups with diaspora professionals and investors across the world
+            {lang.discover_innovative_startups_Africa_subtext_mobile}
           </p>
 
           <p className='normal hide-on-mobile'>
-            In 2021 we decided that location should no longer be a barrier to
-            support entrepreneurs addressing Africa’s biggest challenges. Our
-            platform has since its launch connected over 150 African tech
-            startups with diaspora professionals and investors across the world
+            {lang.discover_innovative_startups_Africa_subtext_desktop}
           </p>
 
           <div className='desktop-spacer' />
@@ -241,7 +241,7 @@ export const MapSection = () => {
               className='link'
               href='https://community.ourbantaba.com/en/register'
             >
-              <a>Join our growing community</a>
+              <a>{lang.Join_our_growing_community}</a>
             </Link>
             <ArrowIcon>
               <Img

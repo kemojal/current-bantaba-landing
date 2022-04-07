@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { Img } from './Img';
 import WhyFunction from './WhyFunction';
 import { motion } from 'framer-motion';
 import { useIntersection } from 'react-use';
 import ButtonArrow from './ButtonArrow.';
+
+import { GlobalContext } from '../context/GlobalState';
 
 const DesktopStartupContainer = styled.div`
   width: 100%;
@@ -60,26 +62,6 @@ const DesktopStartupContainer = styled.div`
     }
   }
 `;
-const whyDiaspora = [
-  {
-    text: 'Access investors',
-    subText:
-      'It is free & easy to seek funding on Bantaba. Simply sign-up to connect with diaspora angels looking to invest in African startups.',
-    src: 'why-s1a.svg',
-  },
-  {
-    text: 'Mentorship & consultancy',
-    subText:
-      'Receive mentorship & support from an extensive list of diaspora experts from across the globe',
-    src: 'why-s2a.svg',
-  },
-  {
-    text: 'Career opportunities',
-    subText:
-      'Build a strong network for your startup and gain visibility in the diaspora community.',
-    src: 'why-s3a.svg',
-  },
-];
 
 const DestopLeftIllustration = styled.div`
   display: none;
@@ -107,13 +89,29 @@ const DestopLeftIllustration = styled.div`
   }
 `;
 
-const DesktopDiaspora = () => {
+const DesktopDiaspora = ({ lang }) => {
+  const { currentLanguage } = useContext(GlobalContext);
+  const whyDiaspora = [
+    {
+      text: lang.access_investors_desktop,
+      subText: lang.access_investors_subtext_desktop,
+      src: 'why-s1a.svg',
+    },
+    {
+      text: lang.mentorship_consultancy_desktop,
+      subText: lang.mentorship_consultancy_subtext_desktop,
+      src: 'why-s2a.svg',
+    },
+    {
+      text: lang.build_a_network_desktop,
+      subText: lang.build_a_network_subtext_desktop,
+      src: 'why-s3a.svg',
+    },
+  ];
   return (
     <DesktopStartupContainer>
       <div className='left-section'>
-        <p className='why-title'>
-          Why join our African tech startup community?
-        </p>
+        <p className='why-title'>{lang.why_join_startup}</p>
 
         <ul className='why-list-container'>
           {whyDiaspora.map((item, index) => {
@@ -129,9 +127,10 @@ const DesktopDiaspora = () => {
 
         <div className='join-bt-container'>
           <ButtonArrow
-            maxWidth='218.2px'
+            maxWidth={currentLanguage === 'en' ? '218.2px' : '300px'}
+            width={currentLanguage === 'en' ? '218.2px' : '300px'}
             className='join-btn'
-            title={'Join as Startup'}
+            title={lang.join_as_startup}
             bgcolor='transparent'
             color='#009743'
             href={'https://community.ourbantaba.com/en/register'}

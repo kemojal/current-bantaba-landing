@@ -4,8 +4,6 @@ import { ArrowButton } from '../components/ArrowButton';
 import { PressCard } from '../components/PressCard';
 import { Img } from '../components/Img';
 
-
-
 const PressSection = styled.section`
   width: 100vw;
   display: flex;
@@ -51,6 +49,7 @@ const PressSection = styled.section`
   @media (min-width: 1280px) {
     background-color: #f9f9f9;
     background-color: white;
+    /* padding-top: 100px; */
     .card-container {
       flex-direction: row;
       height: auto;
@@ -111,37 +110,37 @@ const PressSection = styled.section`
     }
   }
 `;
-export const Press = ({ press }) => {
+export const Press = ({ press, lang }) => {
   const scrollRef = useRef();
 
   const scroll = (scrollOffset) => {
     scrollRef.current.scrollLeft += scrollOffset;
   };
   return (
-    <PressSection>
+    <PressSection id='press'>
       <div className='fluid'>
-          <h1 className='notosans-bold-licorice-20px show-on-mobile'>Press</h1>
-          <div className='press-header show-on-desktop'>
-            <h1 className='notosans-bold-licorice-20px read-title '>
-              Read more about us
-            </h1>
+        <h1 className='notosans-bold-licorice-20px show-on-mobile'>{lang.press_mobile}</h1>
+        <div className='press-header show-on-desktop'>
+          <h1 className='notosans-bold-licorice-20px read-title '>
+            {lang.Read_more_about_us_desktop}
+          </h1>
 
-            <div className='view-all'>
-              <div className='view-icon'>
-                <Img
-                  src='view-all.svg'
-                  alt='logo'
-                  layout='fill'
-                  objectFit='contain'
-                />
-              </div>
-              <span>View All</span>
+          <div className='view-all'>
+            <div className='view-icon'>
+              <Img
+                src='view-all.svg'
+                alt='logo'
+                layout='fill'
+                objectFit='contain'
+              />
             </div>
+            <span>{lang.view_all_desktop}</span>
           </div>
-       
+        </div>
+
         <div className='card-container' ref={scrollRef}>
           {press.press.map((item, index) => {
-            return <PressCard key={index} {...item} />;
+            return <PressCard key={index} {...item}/>;
           })}
         </div>
 

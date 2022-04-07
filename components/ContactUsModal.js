@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux';
 import { GlobalContext } from '../context/GlobalState';
 
 import Select from 'react-select';
+import { CONTACTUS } from './../apis/APIs';
 
 const ModalContainer = styled.div`
 
@@ -18,7 +19,7 @@ const ModalContainer = styled.div`
   height: 100%;
   background: rgba(0, 0, 0, 0.7);
   display:${({ modalState }) => (modalState ? 'block' : 'none')} ;
-  z-index: 10;
+  z-index: 11;
   /* display: none; */
   .main-modal {
     position: fixed;
@@ -260,14 +261,16 @@ font-weight: 400;
 font-size: 14px;
 line-height: 160%;
 color: #01110850;
+color: #011108;
 
   }
   @media (max-width: 1280px) {
      .main-modal {
          width: 95%;
-         height: 100%;
+         height: 95%;
          overflow-x: hidden;
          overflow-y: scroll;
+         top: 51%;
      } 
      .relative-container{
          display: flex;
@@ -388,13 +391,14 @@ const ContactUsModal = () => {
   };
   const handleChange = (e) => {
     e.stopPropagation();
+    console.log('name', e.target.name, ' value ', e.target.value);
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
   };
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     if (Object.keys(formData).length === 0) {
       setFormStage(1);
@@ -407,7 +411,29 @@ const ContactUsModal = () => {
       setIsEmailValid(validateEmail(formData.userEmail));
       if (validateEmail(formData.userEmail)) {
         setFormError(false);
-        setFormStage(2);
+        // setFormStage(2);
+
+        let postData = {
+          name: formData.userName,
+          message: formData.message,
+          email: formData.userEmail,
+        };
+        console.log('contact us data', postData);
+        try {
+          const res = await axios
+            .post(`${CONTACTUS}/create`, postData, {
+              headers: {
+                'Content-Type': 'application/json',
+              },
+            })
+            .then(({ data }) => {
+              if (data.statusMsg === 'Success') {
+                setFormStage(2);
+              } else {
+                setFormStage(3);
+              }
+            });
+        } catch (e) {}
       }
     }
   };
@@ -466,7 +492,13 @@ const ContactUsModal = () => {
                       className='name'
                       placeholder='Email Address'
                     />
-                    <textarea className='textarea' placeholder='Message...' />
+                    <textarea
+                      name='message'
+                      value={formData.message || ''}
+                      onChange={handleChange}
+                      className='textarea'
+                      placeholder='Message...'
+                    />
                     {/* <Select
                       value={formData.userCategory || ''}
                       onChange={handleSelectChange}
@@ -544,16 +576,6 @@ const ContactUsModal = () => {
           {formStage == 3 && (
             <>
               <div className='form-step-two'>
-                {/* <div className='s2-illustration-absolute'>
-                  <div className='s2-illustration'>
-                    <Img
-                      src='s2-illustration.svg'
-                      alt='logo'
-                      layout='fill'
-                      objectFit='cover'
-                    />
-                  </div>
-                </div> */}
                 <div className='s3-illustration-person'>
                   <Img
                     src='s3-illustration-person.svg'

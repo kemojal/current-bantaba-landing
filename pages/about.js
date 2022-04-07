@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import styled, { keyframes } from 'styled-components';
 import AboutTeamCard from '../components/AboutTeamCard';
 import { Img } from '../components/Img';
@@ -16,6 +16,8 @@ import en from '../lang/en';
 import fr from '../lang/fr';
 import { Mission } from '../Sections/Mission';
 import { FluidContainer } from '../components/FluidContainer';
+
+import { GlobalContext } from '../context/GlobalState';
 
 const shimmer = keyframes` 
   0%{
@@ -359,9 +361,16 @@ const Aboutontainer = styled.div`
 `;
 
 export default function About({ team }) {
+  const { currentLanguage } = useContext(GlobalContext);
+
   const router = useRouter();
   const { locale } = router;
-  const lan = locale == 'en' ? en : fr;
+  // const lan = locale == 'en' ? en : fr;
+  const [lan, setlan] = useState(currentLanguage == 'en' ? en : fr);
+
+  useEffect(() => {
+    setlan(currentLanguage == 'en' ? en : fr);
+  }, [currentLanguage]);
 
   const [loaded, setLoaded] = useState(false);
   const imgSkeleton = loaded ? '' : 'skeleton';
@@ -374,12 +383,13 @@ export default function About({ team }) {
       <FluidContainer>
         <div className='section row-on-desktop'>
           <div className='desk-textcolum pr-30'>
-            <h1 className='about-m-title hide-on-desktop'>About Us</h1>
+            <h1 className='about-m-title hide-on-desktop'>
+              {lan.about_us_page}
+            </h1>
 
             {loaded ? (
               <p className='desktop-about-title hide-on-mobile mbd-15'>
-                We’re linking Africa&#39;s startup ecosystem to global
-                knowledge, network and capital.
+                {lan.we_linking_africa_desktop}
               </p>
             ) : (
               <Skeleton
@@ -394,16 +404,13 @@ export default function About({ team }) {
 
             {loaded ? (
               <div className=' notosans-normal-licorice-16px line-height-24 pb-24 desktop-normal-text'>
-                Bantaba is Africa’s biggest startup-diaspora community that
-                connects African tech startups to investors, mentors and
-                consultants in the African diaspora.
+                {lan.subtext_11}
                 <br />
                 <br />
-                Our platform enables the African diaspora to contribute to
-                Africa’s tech ecosystem through networking, mentoring and
-                investing in tech startups on the continent.
+                {lan.subtext_12}
               </div>
-            ) : (''
+            ) : (
+              ''
               // <Skeleton
               //   baseColor='#E8FCF0'
               //   height={28}
@@ -446,20 +453,14 @@ export default function About({ team }) {
         <div className='section bg-section-two pt-24  row-on-desktop reverse-row'>
           <div className='desk-textcolum pl-30'>
             <p className='notosans-bold-licorice-22px  about-section-title desktop-about-title'>
-              A desire to build Africa
+              {lan.desire_build_africa}
             </p>
 
             <div className='notosans-normal-licorice-16px line-height-24 desktop-normal-text'>
-              The company was founded in 2021 by a group of young diaspora
-              professionals who saw the potential of using Africa’s magnitude of
-              resources in the diaspora to build the continent.
+              {lan.subtext_21}
               <br />
               <br />
-              Working together we built Bantaba, a startup-diaspora community
-              where African tech startups can access knowledge, network and
-              capital and diaspora professionals can contribute to the
-              development of Africa by supporting entrepreneurs addressing
-              important challenges on the continent.
+              {lan.subtext_22}
             </div>
           </div>
           <div className='desk-textcolum'>
@@ -488,20 +489,15 @@ export default function About({ team }) {
         <div className='section row-on-desktop'>
           <div className='desk-textcolum pr-30'>
             <p className='notosans-bold-licorice-22px  about-section-title pt-24 pt-24 desktop-about-title'>
-              We’re empowering startups and bringing Africa closer to the
-              Diaspora.
+              {lan.we_empowring_startups}
             </p>
 
             <div className='notosans-normal-licorice-16px line-height-24 desktop-normal-text'>
-              As a diaspora professional, our platform uses your preference to
-              connect you with startups that perfectly match your interest,
-              think Tinder but for a different kind of love -{' '}
+              {lan.subtext_31} -{' '}
               <span className='emphasize'>LOVE FOR AFRICA</span>.
               <br />
               <br />
-              African tech startups, on the other hand, can share their funding
-              and knowledge needs, and get matched with diaspora investors or
-              professionals in the community who can help reach their goals.
+              {lan.subtext_32}
             </div>
           </div>
           <div className='desk-textcolum align-column-end'>
@@ -518,8 +514,7 @@ export default function About({ team }) {
         </div>
         <div className='section'>
           <p className='notosans-bold-licorice-22px  align-center line-height-34 pb-24 mission-text-desktop'>
-            Bantaba is on a mission to become the link between global knowledge,
-            capital and Africa&#39;s startup ecosystem.
+            {lan.about_bantaba_is_on_mission}
           </p>
         </div>
         <div className='section s-three mb-50 reset-mb-50'>
@@ -547,16 +542,16 @@ export default function About({ team }) {
           </div>
 
           <p className='notosans-bold-licorice-22px  align-center z-10 blob-green'>
-            It&#39;s{' '}
-            <span className='color-green-desktop'>TIME FOR AFRICA</span>, Let's
-            start the revolution together!
+           {lan.its + ' '}
+            <span className='color-green-desktop'>{lan.time_for_africa}</span>
+            {' ' + lan.revolution_together}
           </p>
         </div>
         <div className='section bg-section-two section-four pt-24 '>
           <div className='s4-white-space' />
 
           <p className='notosans-bold-licorice-22px  align-center desktop-title'>
-            Our team
+            {lan.our_team}
           </p>
 
           <ul className='team-list'>
@@ -566,7 +561,7 @@ export default function About({ team }) {
           </ul>
         </div>
       </FluidContainer>
-      <Mission />
+      <Mission lang={lan} />
       <NavBar locale={lan} router={router} />
     </Aboutontainer>
   );

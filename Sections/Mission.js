@@ -130,7 +130,7 @@ const Copyright = styled.div`
   }
 `;
 
-export const Mission = () => {
+export const Mission = ({ lang }) => {
   const socialList = [
     {
       scrDesktop: 'twiiter-d.svg',
@@ -168,13 +168,12 @@ export const Mission = () => {
           </div>
 
           <div className='notosans-normal-licorice-16px mission'>
-            Our mission is to empower Africa&#39;s tech startup ecosystem by
-            leveraging resources in the African diaspora
+            {lang.our_mission}
           </div>
         </div>
 
         <div className='footer-wrapper w-45'>
-          <Footer />
+          <Footer lang={lang} />
         </div>
 
         <div className='sub-mission address-w-25'>
@@ -190,7 +189,10 @@ export const Mission = () => {
         <span className='notosans-normal-licorice-14px'>
           www.ourbantaba.com
         </span>
-        <span className='notosans-normal-licorice-14px'>Copyright © 2021</span>
+        <span className='notosans-normal-licorice-14px  '>
+          {'  -  '}
+          Copyright © 2021
+        </span>
       </Copyright>
       <JoinNewsLetterModal />
       <ContactUsModal />

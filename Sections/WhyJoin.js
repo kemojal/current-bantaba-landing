@@ -152,6 +152,7 @@ const WhySection = styled.section`
       font-style: normal;
       font-weight: 700;
       font-size: 40px;
+      font-size: 37px;
       line-height: 130%;
       text-align: left;
       color: #011108;
@@ -187,6 +188,7 @@ const WhySection = styled.section`
       position: relative;
       width: 762px;
       height: 835.65px;
+      transform: translateX(-86px);
     }
     .join-bt-container {
       width: 90%;
@@ -196,7 +198,7 @@ const WhySection = styled.section`
       /* width: 200px !important; */
     }
     .footer-text {
-      width: 90%;
+      width: ${({ lang }) => (lang === 'en' ? '90%' : '100%')};
       padding: 2.19rem 0;
       margin-top: 20px;
       border-top: 1px solid #5b615e30;
@@ -215,7 +217,8 @@ const WhySection = styled.section`
     .align-row{
       position: absolute;
       top: 67px;
-      left: 125px;
+      /* left: 125px; */
+      left: ${({ lang }) => (lang === 'en' ? '126px' : '280px')};
       display: flex;
       width: auto;
       justify-content: flex-start;
@@ -266,15 +269,15 @@ const DestopLeftIllustration = styled.div`
       left: -175px;
 
       width: 900px;
-      left: -300px;
+      /* left: -300px; */
+      left: -330px;
       background: url('/assets/images/why-blob.svg') no-repeat;
       background-size: 100% 100%;
     }
   }
 `;
 export const WhyJoin = ({ lang }) => {
-  const { showModal, showNewsLetterModal, closeNewsLetterModal } =
-    useContext(GlobalContext);
+  const { showNewsLetterModal, currentLanguage } = useContext(GlobalContext);
 
   const openNewsLetterModal = () => {
     showNewsLetterModal();
@@ -282,28 +285,28 @@ export const WhyJoin = ({ lang }) => {
 
   const whyDiaspora = [
     {
-      text: lang.invest_in_afica,
-      subText: lang.invest_subtext,
+      text: lang.invest_in_afica_dekstop,
+      subText: lang.invest_subtext_dekstop,
       src: 'why-d1.svg',
     },
     {
-      text: lang.be_part_of_the_startup_success,
-      subText: lang.startup_success_subtext,
+      text: lang.be_part_of_the_startup_success_dekstop,
+      subText: lang.startup_success_subtext_dekstop,
       src: 'why-d2.svg',
     },
     {
-      text: lang.career_opportunities,
-      subText: lang.career_opportunities_subtext,
+      text: lang.career_opportunities_dekstop,
+      subText: lang.career_opportunities_subtext_dekstop,
       src: 'why-d3.svg',
     },
   ];
   return (
-    <WhySection id='whyjoin'>
+    <WhySection id='whyjoin' lang={currentLanguage}>
       <div className='container'>
         <DestopLeftIllustration>
           <div className='device-frame2'>
             <Img
-              src='why-device2.svg'
+              src='why-device2b.svg'
               alt='logo'
               layout='fill'
               objectFit='contain'
@@ -313,7 +316,7 @@ export const WhyJoin = ({ lang }) => {
         </DestopLeftIllustration>
         <div className='right-section'>
           <p className='why-title'>{lang.why_join_diaspora}</p>
-
+          {/* <p>lang {lang} </p> */}
           <ul className='why-list-container'>
             {whyDiaspora.map((item, index) => {
               let borderType = index === whyDiaspora.length - 1 ? false : true;
@@ -331,13 +334,14 @@ export const WhyJoin = ({ lang }) => {
               title={lang.join_as_diaspora}
               bgcolor='transparent'
               color='#009743'
-              maxWidth='auto'
-              width='300px'
+              // maxWidth='auto'
+              maxWidth={currentLanguage === 'en' ? '218.2px' : '300px'}
+              width={currentLanguage === 'en' ? '218.2px' : '300px'}
               href={'https://community.ourbantaba.com/en/register'}
             />
           </div>
           <div className='footer-text'>
-            {lang.are_you_none_diaspora + ' '}
+            {lang.are_you_non_diaspora + ' '}
             <div className='align-row'>
               <span>{lang.connect_with_us}</span>
               <span className='link' onClick={openNewsLetterModal}>
@@ -378,11 +382,13 @@ export const WhyJoin = ({ lang }) => {
               bgcolor='var(--algae-green)'
               color='var(--licorice)'
               href='https://community.ourbantaba.com/en/'
+              // maxWidth={currentLanguage === 'en' ? '218.2px' : '300ppx'}
+              width={currentLanguage === 'en' ? '218.2px' : '300px'}
             />
           </div>
 
           <div className='footer'>
-            {lang.are_you_none_diaspora + ' '}
+            {lang.are_you_non_diaspora + ' '}
             <div className='align-row'>
               <span>{lang.connect_with_us}</span>
               <span className='link'>

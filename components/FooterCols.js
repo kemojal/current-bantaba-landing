@@ -1,4 +1,4 @@
-import React, {useContext } from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
 
@@ -55,15 +55,18 @@ const FooterColumn = styled.div`
     }
   }
 `;
-const FooterCols = ({ title, list, address }) => {
-  const { toggleContactModal, showNewsLetterModal, toggleSubscribeNewsletterModal } =
-    useContext(GlobalContext);
-  
+const FooterCols = ({ title, list, address, lang }) => {
+  const {
+    toggleContactModal,
+    showNewsLetterModal,
+    toggleSubscribeNewsletterModal,
+  } = useContext(GlobalContext);
+
   const openJoinNewsletter = () => {
     toggleSubscribeNewsletterModal(true);
   };
   const openContactUs = () => {
-    toggleContactModal(true)
+    toggleContactModal(true);
   };
   return (
     <FooterColumn address={address}>
@@ -71,7 +74,7 @@ const FooterCols = ({ title, list, address }) => {
       <ul>
         {list &&
           list.map((item) => {
-            if (item.title === 'Join our newsletter') {
+            if (item.title === lang.join_our_newsletter) {
               return (
                 <li
                   onClick={openJoinNewsletter}
@@ -82,7 +85,7 @@ const FooterCols = ({ title, list, address }) => {
                 </li>
               );
             }
-            if (item.title === 'Contact Us') {
+            if (item.title === lang.contact_us) {
               return (
                 <li
                   onClick={openContactUs}

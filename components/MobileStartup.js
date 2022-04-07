@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import styled from 'styled-components';
+import { GlobalContext } from '../context/GlobalState';
 import { Button } from './Button';
 import ButtonArrow from './ButtonArrow.';
 import { Img } from './Img';
@@ -96,12 +97,11 @@ position: relative;
     justify-content: center;
   }
 `;
-const MobileStartup = () => {
+const MobileStartup = ({ lang }) => {
+  const { currentLanguage } = useContext(GlobalContext);
   return (
     <MobileStartupContainer>
-      <p className='spacer title'>
-        Why join our African tech startup community?
-      </p>
+      <p className='spacer title'>{lang.why_join_startup}</p>
 
       <div className='device-frame'>
         <Img
@@ -113,21 +113,22 @@ const MobileStartup = () => {
       </div>
 
       <p className='notosans-bold-licorice-18px spacer why-sub-title'>
-        Access diaspora investors, mentors and consultants in one place.
+        {lang.access_investor_mobile}
       </p>
 
       <p className='notosans-normal-licorice-18px normal'>
-        A perfect place to build a diaspora community around your startup.
+        {lang.a_perfect_place_mobile}
       </p>
 
       <div className='join-bt-container'>
         <ButtonArrow
           type={'no border'}
           className='join-btn'
-          title={'Join as Startup'}
+          title={lang.join_as_startup}
           bgcolor='var(--algae-green)'
           color='var(--licorice)'
           href='https://community.ourbantaba.com/en/register'
+          width={currentLanguage === 'en' ? '218.2px' : '300px'}
         />
       </div>
     </MobileStartupContainer>

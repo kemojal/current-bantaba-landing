@@ -127,7 +127,7 @@ const Cards = styled.div`
   }
 `;
 
-export const Testimonial = () => {
+export const Testimonial = ({lang}) => {
   const scrollTestimonialRef1 = useRef();
   const scrollTestimonialRef2 = useRef();
   const [testimonials, setTestimonials] = useState([]);
@@ -156,7 +156,7 @@ export const Testimonial = () => {
       <div className='fluid'>
         <div className='testimonial-header'>
           <h1 className='notosans-bold-licorice-20px title'>
-            What others say about Bantaba
+            {lang.What_others_say_bantaba}
           </h1>
 
           <div className='desktop-arrow-container'>

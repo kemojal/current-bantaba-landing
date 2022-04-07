@@ -3,9 +3,9 @@ import styled from 'styled-components';
 
 import { Img } from '../components/Img';
 
-const WhyFunction = ({ text, subText, src, borderType }) => {
+const WhyFunction = ({ text, subText, src, borderType, direction }) => {
   return (
-    <Container borderType={borderType}>
+    <Container borderType={borderType} direction={direction}>
       <div className='row'>
         <div className='icon-wrapper'>
           <Icon>
@@ -33,7 +33,7 @@ const Container = styled.div`
   margin-bottom: 10px;
 
   .icon-wrapper {
-    width: 100px;
+    width: 80px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -83,6 +83,7 @@ const Container = styled.div`
     .title {
       font-weight: 700;
       font-size: 40px;
+      /* font-size: 37px; */
     }
     .discription {
       font-weight: 500;
@@ -90,7 +91,7 @@ const Container = styled.div`
       padding: 10px 0;
       font-weight: normal;
       /* font-weight: 500; */
-      /* font-size: 18px; */
+      font-size: 18px;
       line-height: 150%;
       color: #5b615e;
       padding-bottom: 1.56rem;
@@ -98,18 +99,21 @@ const Container = styled.div`
       font-family: 'Poppins';
       font-style: normal;
       font-weight: 400;
-      font-size: 20px;
+      /* font-size: 20px; */
       /* line-height: 160%; */
       /* position: relative; */
       color: #5b615e;
     }
     .col {
-      padding-left: 20px;
+      /* padding-left: 20px; */
       padding-top: 19px;
+      padding-left: 0;
+      padding-right: 0;
     }
     &:before {
       left: 49px;
       top: 18px;
+      left: 39px;
     }
   }
 `;

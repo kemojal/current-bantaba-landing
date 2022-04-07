@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 
 import Head from 'next/head';
 import Image from 'next/image';
@@ -118,11 +118,15 @@ import NewsLetterModal from '../components/NewsLetterModal';
 export default function Home({ press }) {
   const router = useRouter();
   const { locale } = router;
-  const lan = locale == 'en' ? en : fr;
 
   const { currentLanguage } = useContext(GlobalContext);
+  const [lan, setlan] = useState(currentLanguage == 'en' ? en : fr);
 
   // const { currentLanguage } = useSelector((state) => state);
+
+  useEffect(() => {
+    setlan(currentLanguage == 'en' ? en : fr);
+  }, [currentLanguage]);
 
   return (
     <div className={styles.container}>
