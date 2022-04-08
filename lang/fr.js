@@ -42,6 +42,7 @@ export default {
   discover_innovative_startups_Africa_subtext_mobile: `Notre plateforme a mis en relation plus de 150 startups tech africaines avec des experts et investisseurs de la diaspora à travers le monde.`,
   Join_our_growing_community: 'Rejoignez notre communauté >',
   What_others_say_bantaba: `Ce que pensent les autres de Bantaba`,
+  read_more: `Lire la suite`,
   Read_more_about_us_desktop: 'En savoir plus sur nous',
   view_all_desktop: 'Voir tous',
   press_mobile: 'Presse',

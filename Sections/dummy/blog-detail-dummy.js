@@ -453,8 +453,8 @@ const blogdetail = () => {
           </div>
         </div>
       </FluidContainer>
-      <Mission />
-      <NavBar />
+      <Mission lang={lan} />
+      <NavBar locale={lan} path={'/'} router={router} />
     </BlogDetailContainer>
   );
 };

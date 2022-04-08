@@ -48,7 +48,7 @@ export default {
   discover_innovative_startups_Africa_subtext_mobile: `Our platform has since its launch connected over 150 African tech startups with diaspora professionals and investors across the world`,
   Join_our_growing_community: 'Join our growing community',
   What_others_say_bantaba: `What others say about Bantaba`,
-  read_more: 'Read More',
+  read_more: 'Read Mpore',
   Read_more_about_us_desktop: 'Read more about us',
   view_all_desktop: 'View all',
   press_mobile: 'Press',
