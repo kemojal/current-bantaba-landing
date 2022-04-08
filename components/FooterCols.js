@@ -4,17 +4,22 @@ import Link from 'next/link';
 
 import { GlobalContext } from '../context/GlobalState';
 const FooterColumn = styled.div`
-  width: ${({ address }) => (address ? '100%' : 'auto')};
+  width: ${({ address }) => (address ? '100%' : '50%')};
   margin-top: 20px;
   display: flex;
   flex-direction: column;
   align-items: ${({ address }) => (address ? 'center' : 'flex-start')};
+  &:first-child {
+    margin-right: ${({ address }) => (address ? '0' : '40px')};
+    /* background-color: pink; */
+  }
   /* &:first-child {
     margin-right: ${({ address }) => (address ? '0' : '0px')};
-  }
-  &:nth-child(2) {
-    margin-left: ${({ address }) => (address ? '0' : '70px')};
   } */
+  &:nth-child(2) {
+    margin-left: ${({ address }) => (address ? '0' : '40px')};
+    /* background-color: pink; */
+  }
   p {
     letter-spacing: 0px;
     line-height: 22px;

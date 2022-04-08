@@ -29,7 +29,7 @@ const DesktopStartupContainer = styled.div`
       margin-bottom: 2rem;
     }
     .left-section {
-      width: 45%;
+      width: 50%;
       min-height: 658px;
       /* height: 950px; */
       /* padding-right: 150px; */
@@ -68,7 +68,7 @@ const DestopLeftIllustration = styled.div`
   @media (min-width: 1280px) {
     align-items: center;
     display: flex !important;
-    width: 55%;
+    width: 50%;
     height: 100%;
     display: flex;
     z-index: 10;

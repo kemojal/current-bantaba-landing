@@ -16,9 +16,11 @@ const FooterLinkContainer = styled.div`
     display: flex;
     width: 100vw;
     max-width: 18.625rem;
-    /* background-color: red; */
 
     justify-content: space-between;
+    justify-content: center;
+    /* transform: translateX(calc(50vw - 9.3125rem)); */
+    /* align-items: center; */
   }
 
   .address-container {
@@ -31,6 +33,21 @@ const FooterLinkContainer = styled.div`
   @media (min-width: 1280px) {
     .address-container {
       display: none;
+    }
+  }
+
+  @media (max-width: 1279px) {
+    .footer-link-row {
+      align-self: stretch;
+      width: 100vw;
+      max-width: 100vw;
+      /* background-color: red; */
+      transform: translateX(31px);
+    }
+    .address-container {
+      /* background: red; */
+      width: 100vw;
+      transform: translateX(31px);
     }
   }
 `;
@@ -83,7 +100,7 @@ const Footer = ({ lang }) => {
     <FooterLinkContainer>
       <div className='footer-link-row'>
         {FooterData.map((item, index) => {
-          return <FooterCols key={index} {...item} lang={lang}/>;
+          return <FooterCols key={index} {...item} lang={lang} />;
         })}
       </div>
       <div className='address-container'>{<FooterCols {...address} />}</div>
