@@ -444,7 +444,7 @@ const blogdetail = () => {
           </div>
         </div>
       </FluidContainer>
-      <Mission lang={lan} />
+      {/* <Mission lang={lan} /> */}
       <NavBar currentlan={lan} locale={lan} path={'/'} router={router} />
     </BlogDetailContainer>
   );

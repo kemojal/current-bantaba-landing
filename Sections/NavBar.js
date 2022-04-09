@@ -10,10 +10,8 @@ import { Img } from '../components/Img';
 
 import { GlobalContext } from '../context/GlobalState';
 
-
 import en from '../lang/en';
 import fr from '../lang/fr';
-
 
 // import { useRouter } from 'next/router';
 
@@ -95,6 +93,11 @@ const NavContainer = styled.div`
       hastoggle ? 'white' : 'var(--white-ice-color)'};
     border-bottom: 1px solid #e6f1eb;
   }
+  .logo-container {
+    position: relative;
+    width: 166px;
+    height: 37px;
+  }
   @media (min-width: 1280px) {
     max-width: var(--max-width);
     max-height: 50px;
@@ -105,6 +108,11 @@ const NavContainer = styled.div`
       background-color: transparent;
       border: none;
     }
+    /* .logo-container {
+    width: 108px;
+    height: 24px;
+    
+  } */
 
     .desk-left-nav {
       display: flex;
@@ -120,8 +128,7 @@ const NavContainer = styled.div`
       color: #5b615e;
       margin: ${({ currentLanguage }) =>
         currentLanguage == 'en' ? '0px 25px' : '0px 10px'};
-      
-    
+
       padding: 10px 0;
       text-align: center;
     }
@@ -404,7 +411,6 @@ export const NavBar = ({ locale, router, path, currentlan }) => {
     setCurrentLanguage(language);
     setSelectOptionOpen(false);
     closeNav();
-    
   };
   const toggleLangSelect = () => setSelectOptionOpen(!selectOptionOpen);
 
@@ -427,7 +433,11 @@ export const NavBar = ({ locale, router, path, currentlan }) => {
     <Nav hastoggle={hastoggle}>
       <div className='fixed-bg left' />
       <div className='fixed-bg right' />
-      <NavContainer hastoggle={hastoggle} currentActiveTab={currentActiveTab} currentlan= {currentlan}>
+      <NavContainer
+        hastoggle={hastoggle}
+        currentActiveTab={currentActiveTab}
+        currentlan={currentlan}
+      >
         <Menu hastoggle={hastoggle}>
           <li onClick={toggleHambburger}>
             <a href='/#whyjoin'>{currentlan.why_join}</a>
@@ -463,8 +473,8 @@ export const NavBar = ({ locale, router, path, currentlan }) => {
               <Img
                 src='bantaba_logo-nav.svg'
                 alt='logo'
-                width={108}
-                height={24}
+                layout='fill'
+                objectFit='contain'
                 priority={true}
               />
             </div>
@@ -502,12 +512,13 @@ export const NavBar = ({ locale, router, path, currentlan }) => {
                   priority={true}
                 />
 
-                
                 <SelectOption selectOptionOpen={selectOptionOpen}>
                   <div className='currentSelect' onClick={toggleLangSelect}>
                     <div>
                       {' '}
-                      {currentLanguage === 'en' ? currentlan.english : currentlan.french}
+                      {currentLanguage === 'en'
+                        ? currentlan.english
+                        : currentlan.french}
                     </div>
                     <div className='arrowDown'>
                       <Img
@@ -526,14 +537,14 @@ export const NavBar = ({ locale, router, path, currentlan }) => {
                         setLang('en');
                       }}
                     >
-                     {currentlan.english}
+                      {currentlan.english}
                     </span>
                     <span
                       onClick={() => {
                         setLang('fr');
                       }}
                     >
-                    {currentlan.french}
+                      {currentlan.french}
                     </span>
                   </div>
                 </SelectOption>
@@ -568,7 +579,7 @@ export const NavBar = ({ locale, router, path, currentlan }) => {
               height={18}
               priority={true}
             />
-           
+
             <SelectOption selectOptionOpen={selectOptionOpen}>
               <div className='currentSelect' onClick={toggleLangSelect}>
                 <div> {currentLanguage === 'en' ? 'EN' : 'FR'}</div>
@@ -600,8 +611,6 @@ export const NavBar = ({ locale, router, path, currentlan }) => {
                 </span>
               </div>
             </SelectOption>
-
-           
           </div>
           <HamburgerContainer onClick={toggleHambburger}>
             <Hamburger hastoggle={hastoggle}>
