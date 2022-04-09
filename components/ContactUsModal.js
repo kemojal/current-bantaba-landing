@@ -29,8 +29,13 @@ const ModalContainer = styled.div`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 1146px;
-    height: 617px;
+    /* width: 1146px;
+    height: 617px; */
+    max-width: 1146px;
+    max-height: 617px;
+    width: 80%;
+    height: 80%;
+    min-height: 300px;
     display: flex;
     overflow: hidden;
   }
@@ -260,10 +265,10 @@ color: #01110850;
 color: #011108;
 
   }
-  @media (max-width: 1280px) {
+  @media (max-width: 950px) {
      .main-modal {
          width: 95%;
-         height: 95%;
+         min-height: 95%;
          overflow-x: hidden;
          overflow-y: scroll;
          top: 51%;

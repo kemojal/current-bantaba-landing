@@ -29,8 +29,11 @@ const ModalContainer = styled.div`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 1146px;
-    height: 617px;
+    max-width: 1146px;
+    max-height: 617px;
+    width: 80%;
+    height: 80%;
+    min-height: 300px;
     display: flex;
     overflow: hidden;
   }
@@ -259,10 +262,10 @@ line-height: 160%;
 color: #01110850;
 
   }
-  @media (max-width: 1280px) {
+  @media (max-width: 950px) {
      .main-modal {
          width: 95%;
-         height: 95%;
+         min-height: 95%;
          overflow-x: hidden;
          overflow-y: scroll;
          top: 51%;
@@ -364,12 +367,11 @@ color: #01110850;
   }
   }
 `;
-const NewsLetterModal = ({lang}) => {
+const NewsLetterModal = ({ lang }) => {
   const [formStage, setFormStage] = useState(1);
   const [formData, setFormData] = useState({});
   const [formError, setFormError] = useState(false);
   const [isEmailValid, setIsEmailValid] = useState(true);
-  
 
   const { subscribeNewsletterModal, toggleSubscribeNewsletterModal } =
     useContext(GlobalContext);
@@ -396,7 +398,7 @@ const NewsLetterModal = ({lang}) => {
     if (Object.keys(formData).length === 0) {
       setFormStage(1);
     }
-    
+
     if (Object.keys(formData).length >= 2) {
       setIsEmailValid(validateEmail(formData.userEmail));
       if (validateEmail(formData.userEmail)) {
@@ -442,7 +444,6 @@ const NewsLetterModal = ({lang}) => {
     { value: 'Diaspora', label: 'Diaspora' },
     { value: 'Startup', label: 'Startup' },
   ];
-  
 
   return (
     <ModalContainer modalState={subscribeNewsletterModal} onClick={closemodal}>
@@ -453,7 +454,7 @@ const NewsLetterModal = ({lang}) => {
               <div className='left-modal'>
                 <p className='modal-title'>{lang.newletter_modal_title} </p>
                 <p className='modal-normal-text'>
-                 {lang.newletter_modal_title_subtext}
+                  {lang.newletter_modal_title_subtext}
                 </p>
 
                 <div className='modal-input-container'>
@@ -557,9 +558,7 @@ const NewsLetterModal = ({lang}) => {
                     objectFit='cover'
                   />
                 </div>
-                <p className='s2-text'>
-                {lang.Ooppss}
-                </p>
+                <p className='s2-text'>{lang.Ooppss}</p>
                 <button onClick={closemodal} className='back-to-home-btn'>
                   <div className='button-arrow'>
                     <Img
