@@ -73,11 +73,11 @@ const Footer = ({ lang }) => {
       list: [
         {
           title: lang.contact_us,
-          link: '/contact',
+          link: '',
         },
         {
           title: lang.join_our_newsletter,
-          link: '/newsletter',
+          link: '',
         },
         {
           title: lang.faqs,
