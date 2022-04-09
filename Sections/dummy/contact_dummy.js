@@ -3,9 +3,7 @@ import styled from 'styled-components';
 import { Img } from '../components/Img';
 import { NavBar } from '../Sections/NavBar';
 
-import Select from 'react-select';
-
-const NewsLetterContainer = styled.div`
+const ContactContainer = styled.div`
   width: 100%;
   min-height: 100vh;
   display: flex;
@@ -42,8 +40,7 @@ const NewsLetterContainer = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    display: flex;
-    flex-direction: column;
+
     width: 100%;
     padding: 10px 0;
   }
@@ -61,7 +58,7 @@ const NewsLetterContainer = styled.div`
     width: 100%;
     padding: 15px 10px;
     margin: 4px;
-    margin-top: 12px;
+    margin-top: 8px;
     border: none;
     background-color: #009743;
     border-radius: 5px;
@@ -72,23 +69,20 @@ const NewsLetterContainer = styled.div`
     font-style: normal;
     font-weight: 400;
   }
-
-  .input-select {
-    border: 1px solid var(--geyser);
+  textarea {
     width: 100%;
-    border-radius: 5px;
-    margin: 6px 0;
-    height: 46px;
+    margin: 12px 0;
+    background-color: var(--alabaster);
+    border-radius: 4.5px;
+    border: 1px solid var(--geyser);
+    min-height: 104px;
+    padding: 10px 10px;
   }
 `;
-function NewsLetter() {
-  const options = [
-    { value: 'startup', label: 'startup' },
-    { value: 'diaspora', label: 'diaspora' },
-  ];
+function Contact({ lang }) {
   return (
-    <NewsLetterContainer>
-      <h1 className='contact-m-title'>Subscribe to our newsletter</h1>
+    <ContactContainer>
+      <h1 className='contact-m-title'>About Us</h1>
       <div className='illustration-container'>
         <div className='illustration'>
           <Img
@@ -110,17 +104,20 @@ function NewsLetter() {
           className='notosans-normal-chicago-18px name'
           placeholder='email'
         />
-        <Select options={options} className='input-select' />
+        <textarea
+          type='text'
+          className='notosans-normal-chicago-18px name'
+          placeholder='message'
+        />
         <input
+          value='Send'
           type='submit'
-          value='Join'
           className='notosans-normal-chicago-18px'
-          placeholder='messa'
         />
       </form>
-      <NavBar  currentlan={lan}/>
-    </NewsLetterContainer>
+      <NavBar currentlan={lan} />
+    </ContactContainer>
   );
 }
 
-export default NewsLetter;
+export default Contact;

@@ -75,7 +75,7 @@ import { Press } from '../Sections/Press';
 import { Partner } from '../Sections/Partner';
 import { Mission } from '../Sections/Mission';
 import Illustration from '../Sections/Illustration';
-import JoinNewsLetterModal from '../components/JoinNewsLetterModal';
+// import JoinNewsLetterModal from '../components/JoinNewsLetterModal';
 
 import { GlobalContext } from '../context/GlobalState';
 
