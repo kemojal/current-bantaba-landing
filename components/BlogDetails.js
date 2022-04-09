@@ -14,10 +14,20 @@ import { GlobalContext } from '../context/GlobalState';
 import Image from 'next/image';
 
 import { useRouter } from 'next/router';
-import { FacebookShareButton, FacebookIcon } from 'react-share';
+import {
+  FacebookShareButton,
+  FacebookIcon,
+  TwitterShareButton,
+  TwitterIcon,
+  LinkedinShareButton,
+  LinkedinIcon,
+  InstapaperShareButton,
+  InstapaperIcon,
+} from 'react-share';
 
 import en from '../lang/en';
 import fr from '../lang/fr';
+import HelmetMetaData from './HelmetMetaData';
 
 const BlogDetailContainer = styled.div`
   width: 99%;
@@ -64,7 +74,6 @@ const BlogDetailContainer = styled.div`
     padding: 25px 15px;
     overflow: hidden;
     border-radius: 15px;
-    /* padding: 15px; */
   }
   .related-blogs-container {
     background-color: white;
@@ -73,8 +82,6 @@ const BlogDetailContainer = styled.div`
     border-radius: 15px;
   }
   @media (min-width: 1280px) {
-    /* padding-top: 64px; */
-
     .detail-row {
       width: 100%;
       display: flex;
@@ -83,7 +90,6 @@ const BlogDetailContainer = styled.div`
       position: relative;
       width: calc(67% - 15px);
       margin-right: 15px;
-      /* padding: 15px; */
     }
     .related-blogs-container {
       margin-left: 15px;
@@ -93,7 +99,6 @@ const BlogDetailContainer = styled.div`
       border: 1px solid #f8f8f8;
       box-shadow: 1.91534px 3.83069px 100px 1.91534px rgba(166, 166, 166, 0.15);
       height: auto;
-      /* margin-top: 105px; */
     }
 
     .blog-title {
@@ -106,11 +111,8 @@ const BlogDetailContainer = styled.div`
     }
     .imageWrapper {
       position: relative;
-      /* width: 1146px;
-      height: 583px; */
 
       position: relative;
-      /* width: 730px; */
       width: 100%;
       height: 371px;
       margin-top: 20px;
@@ -174,8 +176,6 @@ const BlogDetailContainer = styled.div`
     .social-container {
       display: flex;
       align-items: center;
-      /* background-color: orange; */
-      /* width: 300px; */
     }
     .share-text {
       margin-right: 15px;
@@ -191,11 +191,6 @@ const BlogDetailContainer = styled.div`
       font-style: normal;
       color: #5b615e;
     }
-
-    /* p.ib.ic.cq.dx.id.ie.if.ig.ih.ii.ij.ik.il.im.in.io.ip.iq.ir.is.it.iu.iv.iw.ix.iy.dn strong{
-  font-size: 16px;
-  font-weight: 600;
-} */
     .blog-text-container h3,
     strong {
       margin: 5px 0;
@@ -253,7 +248,6 @@ const BlogDetailContainer = styled.div`
       justify-content: space-between;
       padding: 5px 0;
       margin-top: 5px;
-      /* background-color: green; */
     }
     .category {
       color: #009743;
@@ -268,7 +262,6 @@ const BlogDetailContainer = styled.div`
       line-height: 160%;
     }
     .read-time {
-      /* margin-left: 10px; */
       display: flex;
       align-items: center;
     }
@@ -295,7 +288,6 @@ const BlogDetailContainer = styled.div`
         width: 100%;
         margin: 0;
         padding: 15px;
-        /* padding: 15px; */
       }
       .related-blogs-container {
         margin: 0;
@@ -320,11 +312,8 @@ const BlogDetailContainer = styled.div`
 
       .imageWrapper {
         position: relative;
-        /* width: 1146px;
-      height: 583px; */
 
         position: relative;
-        /* width: 730px; */
         width: 100%;
         height: 371px;
         margin-top: 20px;
@@ -379,8 +368,6 @@ const BlogDetailContainer = styled.div`
       .social-container {
         display: flex;
         align-items: center;
-        /* background-color: orange; */
-        /* width: 300px; */
       }
 
       .share-text {
@@ -470,7 +457,6 @@ const BlogDetailContainer = styled.div`
         line-height: 160%;
       }
       .read-time {
-        /* margin-left: 10px; */
         display: flex;
         align-items: center;
       }
@@ -504,7 +490,6 @@ const ArrowWrapper = styled.div`
   margin-right: 5px;
   justify-content: center;
   align-items: center;
-  /* transform: scaleX(-1); */
   &:before {
     width: 40px;
     height: 0px;
@@ -525,6 +510,7 @@ const BlogDetail = ({
   author,
   tags,
   related,
+  lang,
 }) => {
   const socialList = [
     {
@@ -615,7 +601,39 @@ const BlogDetail = ({
               <div className='social-container'>
                 <span className='share-text'>Share:</span>
                 <Fade bottom>
-                  <SocialContainer socialList={socialList} />
+                <FacebookShareButton
+                      url={
+                        'https://blog.ourbantaba.com/en/post'
+                      }
+                      media={title}
+                    >
+                      <FacebookIcon size={24} round />
+                    </FacebookShareButton>
+                    <TwitterShareButton
+                      url={
+                        'https://blog.ourbantaba.com/en/post'
+                      }
+                      media={title}
+                    >
+                      <TwitterIcon size={24} round />
+                    </TwitterShareButton>
+                    <LinkedinShareButton
+                      url={
+                        'https://blog.ourbantaba.com/en/post'
+                      }
+                      media={title}
+                    >
+                      <LinkedinIcon size={24} round />
+                    </LinkedinShareButton>
+                    <InstapaperShareButton
+                      url={
+                        'https://blog.ourbantaba.com/en/post'
+                      }
+                      media={title}
+                    >
+                      <InstapaperIcon  size={24} round />
+                    </InstapaperShareButton>
+                  {/* <SocialContainer socialList={socialList} /> */}
                 </Fade>{' '}
               </div>
             </div>
@@ -633,13 +651,36 @@ const BlogDetail = ({
                   <Fade bottom>
                     <FacebookShareButton
                       url={
-                        'https://blog.ourbantaba.com/en/post/The-rise-of-African-tech-startups'
+                        'https://blog.ourbantaba.com/en/post'
                       }
                       media={title}
-                      children={<p>hello</p>}
                     >
-                      <FacebookIcon size={32} round />
+                      <FacebookIcon size={24} round />
                     </FacebookShareButton>
+                    <TwitterShareButton
+                      url={
+                        'https://blog.ourbantaba.com/en/post'
+                      }
+                      media={title}
+                    >
+                      <TwitterIcon size={24} round />
+                    </TwitterShareButton>
+                    <LinkedinShareButton
+                      url={
+                        'https://blog.ourbantaba.com/en/post'
+                      }
+                      media={title}
+                    >
+                      <LinkedinIcon size={24} round />
+                    </LinkedinShareButton>
+                    <InstapaperShareButton
+                      url={
+                        'https://blog.ourbantaba.com/en/post'
+                      }
+                      media={title}
+                    >
+                      <InstapaperIcon  size={24} round />
+                    </InstapaperShareButton>
                     {/* <SocialContainer socialList={socialList} /> */}
                   </Fade>{' '}
                 </div>
@@ -648,7 +689,6 @@ const BlogDetail = ({
                   {tags.map((tag, i) => (
                     <span key={i}>{tag.name + ', '}</span>
                   ))}
-                  {/* Tags: Tech, Science XXX */}
                 </div>
               </div>
             </div>
@@ -698,8 +738,9 @@ const BlogDetail = ({
           </div>
         </div>
       </FluidContainer>
-      <Mission />
-      <NavBar locale={lan} router={router} />
+      <HelmetMetaData title='hello' imgage={cover_img} />
+      <Mission lang={lan} />
+      <NavBar currentlan={lan} locale={lan} router={router} />
     </BlogDetailContainer>
   );
 };

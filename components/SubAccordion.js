@@ -4,11 +4,10 @@ import { Img } from '../components/Img';
 
 import Fade from 'react-reveal/Fade';
 
-// collapse
+
 const SubAccordionContainer = styled.div`
   width: 100%;
   padding: 10px 15px;
-  /* border-bottom: 1px solid #9ce1b8; */
   border: 0.5px solid rgba(91, 97, 94, 0.05);
 
   &:last-child {
@@ -18,7 +17,6 @@ const SubAccordionContainer = styled.div`
     width: 100%;
     display: flex;
     align-items: center;
-    /* justify-content: space-between; */
     padding: 0 16px;
     cursor: pointer;
   }
@@ -37,12 +35,10 @@ const SubAccordionContainer = styled.div`
     font-weight: 600;
     opacity: 0.8;
     font-size: 18px;
-    /* font-weight: 400; */
   }
   .answer-container {
     width: 100%;
     padding: 10px;
-    //change style to desktop
     font-weight: 400;
     line-height: 160%;
     font-size: 16px;
@@ -93,10 +89,7 @@ export const SubAccordion = ({ question, answer }) => {
         <div
           dangerouslySetInnerHTML={{ __html: answer }}
           className='notosans-normal-kaitoke-green-18px answer-container'
-        >
-          {/* <div  /> */}
-          {/* {answer} */}
-        </div>
+        ></div>
       )}
     </SubAccordionContainer>
   );

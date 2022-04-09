@@ -8,20 +8,15 @@ import MobileTestimobialCard from '../components/MobileTestimobialCard';
 import { TestimonialCard } from '../components/TestimonialCard';
 
 const TestimonialSection = styled.section`
-  /* background-color: var(--ottoman); */
-  /* height: 80vh; */
   width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   position: relative;
-  /* padding: 2rem 0rem; */
   padding: 50px 0;
-  /* padding-top: 0rem; */
   .fluid {
     width: 100%;
-    /* background-color: red; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -44,8 +39,6 @@ const TestimonialSection = styled.section`
 
   @media (min-width: 1280px) {
     .fluid {
-      /* max-width: 1200px; */
-      /* max-width: 953px; */
       max-width: var(--max-width);
       display: flex;
 
@@ -96,12 +89,10 @@ const TestimonialSection = styled.section`
 const Cards = styled.div`
   display: flex;
   width: 100vw;
-  /* height: 400px; */
   overflow-x: scroll;
   align-items: center;
   justify-content: center;
   position: relative;
-  /* white-space: nowrap; */
   overscroll-behavior-x: contain;
   scroll-snap-type: x mandatory;
 
@@ -116,7 +107,6 @@ const Cards = styled.div`
     overflow: scroll;
     width: 100%;
     max-width: 1150px;
-    /* max-width: var(--max-width); */
     overflow-x: scroll;
     padding: 10px 0;
     border-radius: 10px;
@@ -127,7 +117,7 @@ const Cards = styled.div`
   }
 `;
 
-export const Testimonial = ({lang}) => {
+export const Testimonial = ({ lang }) => {
   const scrollTestimonialRef1 = useRef();
   const scrollTestimonialRef2 = useRef();
   const [testimonials, setTestimonials] = useState([]);

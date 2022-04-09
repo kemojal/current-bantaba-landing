@@ -11,7 +11,6 @@ import { LinkContainer } from '../components/LinkContainer';
 import AfricaMap from '../components/AfricaMap';
 
 const MapSectionContainer = styled.section`
-  /* background-color: #e8fcf0; */
   background-color: var(--ottoman);
   width: 100vw;
   display: flex;
@@ -20,7 +19,6 @@ const MapSectionContainer = styled.section`
   padding: 0 2rem;
   padding-top: 2rem;
   padding-bottom: 50px;
-  /* padding-bottom: 3.125rem; */
 
   .map-left,
   .map-right {
@@ -33,12 +31,7 @@ const MapSectionContainer = styled.section`
   }
 
   p.title {
-    /* line-height: 30px; */
     text-align: center;
-    /* font-family: Noto Sans; */
-    /* font-style: normal; */
-    /* font-weight: bold; */
-    /* font-size: 26px; */
     margin: 10px 0;
     margin-bottom: 0;
     padding: 25px 0;
@@ -49,14 +42,9 @@ const MapSectionContainer = styled.section`
     margin: 10px 0;
     margin-top: 0;
     margin-bottom: 20px;
-    /* font-size: 1.2rem; */
-    /* line-height: 2rem; */
-    /* line-height: 16px; */
     line-height: 22px;
   }
   .link {
-    /* color: green; */
-    /* font-weight: normal; */
     display: flex;
     justify-content: center;
     color: var(--kaitoke-green);
@@ -97,9 +85,6 @@ const MapSectionContainer = styled.section`
     p.title {
       line-height: 105%;
       text-align: center;
-      /* font-family: Noto Sans; */
-      /* font-style: normal; */
-      /* font-weight: bold; */
       margin: 10px 0;
       margin-bottom: 0;
       padding: 1.56rem 0;
@@ -107,8 +92,7 @@ const MapSectionContainer = styled.section`
       font-family: 'Poppins';
       font-style: normal;
       font-weight: 700;
-      /* font-size: 2.5rem; */
-      font-size:  ${({ lang }) => (lang === 'en' ? '2.5rem' : '2.1rem')};
+      font-size: ${({ lang }) => (lang === 'en' ? '2.5rem' : '2.1rem')};
       line-height: 130%;
       text-align: center;
       color: #011108;
@@ -116,11 +100,8 @@ const MapSectionContainer = styled.section`
     }
     p.normal {
       text-align: center;
-      /* margin: 35px 0; */
       margin-top: 0;
       margin-bottom: 12px;
-      /* font-size: 1.2rem; */
-      /* line-height: 1.8rem; */
 
       color: #5b615e;
       color: yellow;
@@ -174,7 +155,6 @@ const MapImg = styled.div`
 
 const ArrowIcon = styled.div`
   position: relative;
-  /* height: 12px; */
   width: 14px;
   display: flex;
   justify-content: center;
@@ -184,7 +164,7 @@ const ArrowIcon = styled.div`
 export const MapSection = ({ lang }) => {
   const { currentLanguage } = useContext(GlobalContext);
   return (
-    <MapSectionContainer lang = {currentLanguage}>
+    <MapSectionContainer lang={currentLanguage}>
       <FluidContainer flipColumn={'column-reverse'}>
         <div className='map-left'>
           <div className='map-desktop'>
@@ -207,18 +187,6 @@ export const MapSection = ({ lang }) => {
               />
             </MapImg>
           </div>
-          {/* <MapImg animate={animationName}>
-            <Img
-              src='map-mobile.svg'
-              alt='logo'
-              layout='fill'
-              objectFit='contain'
-            />
-          </MapImg> */}
-
-          {/* */}
-
-          {/* <AfricaMap/> */}
         </div>
 
         <div className='map-right'>

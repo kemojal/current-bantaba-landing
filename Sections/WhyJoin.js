@@ -27,18 +27,11 @@ const WhySection = styled.section`
     width: 100vw;
   }
   p.why-title {
-    /* line-height: 30px;
-    text-align: center;
-    font-family: Noto Sans;
-    font-style: normal;
-    font-weight: bold;
-    /* font-size: 25px; */
     font-size: 26px;
     margin: 10px 0;
     color: rgba(19, 19, 19, 1);
     padding: 0; */
 
-    /* kidas design */
     color: var(--licorice);
     font-family: var(--font-family-noto_sans);
     font-size: var(--font-size-l);
@@ -50,35 +43,28 @@ const WhySection = styled.section`
   }
   p.why-sub-title{
     letter-spacing: 0.00px;
-    /* line-height: 18px; */
     text-align: center;
     padding-bottom: 20px ;
     line-height: 24px;
 
   }
   p.normal {
-    /* font-size: 1rem; */
-    /* line-height: 1.5rem; */
     margin-top: 5px;
     margin-bottom: 20px;
     text-align: center;
     letter-spacing: 0.00px;
-    /* line-height: 18px; */
     line-height: 24px;
-    /* padding: 0 6.5px; */
   }
 
   .device-frame {
     margin: 25px 0;
     position: relative;
     width: 350px;
-    /* height: 416px; */
     height: 416px;
   }
 
   Button {
     margin: 10px 0;
-    /* width: calc(100vw - 4rem); */
     box-shadow: 0 0 0 2px #00853b2b, 0 0 0 6px #00000005;
   }
   
@@ -91,8 +77,6 @@ const WhySection = styled.section`
     flex-direction: column;
     align-items: center;
     width: 100%;
-    /* background-color: pink; */
-    /* padding: 0 15px; */
     padding: 50px 0;
   }
   .right-section {
@@ -105,11 +89,6 @@ const WhySection = styled.section`
     justify-content: center;
   }
   .footer {
-    /* font-size: 18px;
-    margin-top: 18px;
-    text-align: center;
-    color: #00000082; */
-
     color: var(--licorice);
     font-family: var(--font-family-noto_sans);
     font-size: var(--font-size-xxs);
@@ -128,7 +107,6 @@ const WhySection = styled.section`
   }
 
   .link {
-    /* text-decoration: underline; */
     color: #0033ff;
     margin-left: 10px;
     cursor: pointer;
@@ -141,7 +119,6 @@ const WhySection = styled.section`
     justify-content: center;
 
     .container {
-      /* max-width: 1220px; */
       max-width: var(--max-width);
       display: flex;
       flex-direction: row;
@@ -157,7 +134,6 @@ const WhySection = styled.section`
       text-align: left;
       color: #011108;
       width: 100%;
-      /* padding: 0 25px; */
       margin-bottom: 2rem;
       padding: 0;
     }
@@ -166,21 +142,11 @@ const WhySection = styled.section`
       width: 50%;
       padding: 0 10px;
       padding-top: 50px;
-
-      /* height: 950px; */
-      
-      
-      /* margin-left: 0px; */
-      /* padding-right: 150px; */
       display: flex;
       flex-direction: column;
       align-items: center;
-      /* padding-top: 150px; */
     }
-    .why-list-container {
-      /* padding: 10px 0; */
-      /* background-color: green; */
-    }
+    
     .mobile-info {
       display: none;
     }
@@ -194,9 +160,7 @@ const WhySection = styled.section`
       width: 90%;
       justify-content: flex-start;
     }
-    .join-btn {
-      /* width: 200px !important; */
-    }
+    
     .footer-text {
       width: ${({ lang }) => (lang === 'en' ? '90%' : '100%')};
       padding: 2.19rem 0;
@@ -208,16 +172,12 @@ const WhySection = styled.section`
       font-size: 20px;
       line-height: 160%;
       position: relative;
-      /* or 32px */
-
-      /* Paragraph */
 
       color: #5b615e;
     }
     .align-row{
       position: absolute;
       top: 67px;
-      /* left: 125px; */
       left: ${({ lang }) => (lang === 'en' ? '126px' : '280px')};
       display: flex;
       width: auto;
@@ -228,24 +188,11 @@ const WhySection = styled.section`
     position: relative;
     padding: 40px 0;
     .container {
-      /* max-width: 1200px; */
-      /* max-width: calc(100% - 300px); */
-      /* background-color: orange; */
       max-width: var(--max-width);
-    }
-    .right-section {
-      /* padding: 0 10px; */
-      /* padding-top */
     }
   }
 `;
-// const Container = styled.div`
-//     width: 100vw;
-//     background: orange;
-//     @media (min-width: 1280px) {
 
-//     }
-// `
 const DestopLeftIllustration = styled.div`
   display: none;
   @media (min-width: 1280px) {
@@ -259,17 +206,9 @@ const DestopLeftIllustration = styled.div`
     &::before {
       content: '';
       position: absolute;
-      /* width: 973.96px; */
-      /* width: 830.96px; */
-      width: 672.96px;
       top: 50px;
       bottom: 0px;
-      /* left: -260px; */
-      /* left: -329px; */
-      left: -175px;
-
       width: 900px;
-      /* left: -300px; */
       left: -330px;
       background: url('/assets/images/why-blob.svg') no-repeat;
       background-size: 100% 100%;
@@ -316,7 +255,6 @@ export const WhyJoin = ({ lang }) => {
         </DestopLeftIllustration>
         <div className='right-section'>
           <p className='why-title'>{lang.why_join_diaspora}</p>
-          {/* <p>lang {lang} </p> */}
           <ul className='why-list-container'>
             {whyDiaspora.map((item, index) => {
               let borderType = index === whyDiaspora.length - 1 ? false : true;
@@ -351,10 +289,7 @@ export const WhyJoin = ({ lang }) => {
           </div>
         </div>
         <div className='mobile-info'>
-          <p className='why-title'>
-            {lang.why_join_diaspora}
-            {/* Why you should join our diaspora community? */}
-          </p>
+          <p className='why-title'>{lang.why_join_diaspora}</p>
 
           <div className='device-frame'>
             <Img

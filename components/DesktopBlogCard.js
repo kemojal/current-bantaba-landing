@@ -28,15 +28,9 @@ const DesktopBlogCardContainer = styled.div`
     align-items: center;
     justify-content: center;
     padding: 0 10px;
-    /* padding: 10px 0; */
-    /* background-color: yellow; */
   }
   .b-img-wrapper {
     position: relative;
-    /* width: 322px;
-    height: 214.85px; */
-
-    /* tuned-image */
     width: 352px;
     height: 240.85px;
     border-radius: 8px;

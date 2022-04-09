@@ -17,13 +17,10 @@ import Slide from 'react-reveal/Zoom';
 
 const HeroSection = styled.section`
   background-color: var(--ottoman);
-  /* height: 80vh; */
   width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* padding: 0 1rem; */
-  /* padding-top: 0rem; */
   padding: 2em 1rem;
 
   h1 {
@@ -40,7 +37,6 @@ const HeroSection = styled.section`
     color: #001108;
     letter-spacing: -0.028125em;
 
-    /* kidas design */
     color: var(--licorice);
     font-family: var(--font-family-noto_sans);
     font-size: var(--font-size-xxl);
@@ -62,7 +58,6 @@ const HeroSection = styled.section`
     margin-top: 10px;
     font-size: 1.125em;
 
-    /* kidas design */
     color: var(--licorice);
     font-family: var(--font-family-noto_sans);
     font-size: var(--font-size-l);
@@ -74,7 +69,6 @@ const HeroSection = styled.section`
   }
   Button {
     margin: 30px 0;
-    /* width: calc(100vw - 4rem); */
     box-shadow: 0 0 0 2px #00853b2b, 0 0 0 6px #00000005;
   }
   .functions {
@@ -89,15 +83,12 @@ const HeroSection = styled.section`
     width: 100%;
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
-    /* background-color: orange; */
     align-items: center;
   }
 
   @media (min-width: 600px) {
     width: 50%;
     padding-top: 80px;
-    /* padding-left: 150px; */
     padding-right: 0px;
     align-items: flex-start;
     background-color: transparent;
@@ -107,19 +98,15 @@ const HeroSection = styled.section`
     &::-webkit-scrollbar {
       display: none;
     }
-    /* background-color: orange; */
 
     h1 {
       font-family: 'Poppins';
       font-style: normal;
       font-weight: 800;
-      /* font-size: 45px; */
-      /* font-size: 3.2em; */
       font-size: 2.81rem;
       font-size: ${({ lang }) => (lang === 'en' ? '2.81rem' : '2.5rem')};
       line-height: 120%;
       margin-bottom: 1.56rem;
-      /* margin-bottom: 0.5em; */
     }
     .subtext {
       font-style: normal;
@@ -131,16 +118,12 @@ const HeroSection = styled.section`
       padding-right: 10px;
 
       font-family: 'Poppins';
-      /* font-style: normal; */
-      /* font-weight: 400; */
-      /* font-size: 20px; */
 
       color: #5b615e;
     }
     .functions {
       width: 100%;
       max-width: 527px;
-      /* margin-top: 28px; */
       margin-top: 2.8rem;
       padding-bottom: 3.25rem;
       border-bottom: 1px solid ##c9cecb;
@@ -153,13 +136,6 @@ const HeroSection = styled.section`
       margin-top: 2.5rem;
       flex-direction: row;
       display: flex;
-      /* background-color: orange; */
-      /* justify-content: space-between; */
-    }
-    .w-120-btn {
-      /* ${ButtonArrow} */
-      background-color: red;
-      /* max-width: 10px !important; */
     }
     .w-270-btn {
       width: 320px;
@@ -169,8 +145,6 @@ const HeroSection = styled.section`
 
 const VideoPlaceholder = styled.div`
   margin: 10px 0;
-  /* background-color: var(--main-bg-color); */
-  /* opacity: 0.2; */
   position: relative;
   width: 100vw;
   height: 290px;
@@ -205,7 +179,6 @@ export const Hero = ({ lang }) => {
     <HeroSection lang={lang}>
       <h1 className='hero-title'>{lang.hero_header}</h1>
       <p className='subtext'>{lang.hero_discription}</p>
-      {/* <Button title={'Create an Account'} /> */}
       <div className='functions'>
         {functionsData.map((item, index) => {
           return <Function key={index} {...item} />;
@@ -239,7 +212,6 @@ export const Hero = ({ lang }) => {
           objectFit='contain'
         />
       </VideoPlaceholder>
-      {/* <Illustration /> */}
     </HeroSection>
   );
 };

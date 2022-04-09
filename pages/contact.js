@@ -10,10 +10,8 @@ const ContactContainer = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 0 15px;
-  /* padding-top: 5rem; */
   padding-top: 94px;
   .contact-m-title {
-    /* color: #00853b; */
     font-family: var(--font-family-noto_sans);
     font-size: var(--font-size-xxxl);
     font-style: normal;
@@ -36,8 +34,6 @@ const ContactContainer = styled.div`
     position: relative;
     width: 216px;
     height: 213px;
-    /* width: 270px; */
-    /* height: 270px; */
   }
   form {
     display: flex;
@@ -53,7 +49,6 @@ const ContactContainer = styled.div`
     padding: 10px 10px;
     margin: 4px;
     max-height: 53px;
-    /* margin: 12px 0; */
     margin: 6px 0;
     background-color: var(--alabaster);
     border-radius: 4.5px;
@@ -84,7 +79,7 @@ const ContactContainer = styled.div`
     padding: 10px 10px;
   }
 `;
-function Contact() {
+function Contact({lang}) {
   return (
     <ContactContainer>
       <h1 className='contact-m-title'>About Us</h1>
@@ -120,7 +115,7 @@ function Contact() {
           className='notosans-normal-chicago-18px'
         />
       </form>
-      <NavBar />
+      <NavBar  currentlan={lan} />
     </ContactContainer>
   );
 }

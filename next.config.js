@@ -2,12 +2,12 @@
 
 const nextConfig = {
   reactStrictMode: true,
-  // domains: ['res.cloudinary.com'],
+  
 };
 
 module.exports = nextConfig;
 
-// const { i18n } = require('./next-i18next.config');
+
 module.exports = {
   i18n: {
     defaultLocale: 'en',
@@ -17,7 +17,6 @@ module.exports = {
     domains: ['res.cloudinary.com'],
   },
   trailingSlash: true,
-  // reactStrictMode: true,
   async headers() {
     return [
       {
@@ -47,11 +46,7 @@ module.exports = {
       },
     ];
   },
-  // domains: ['res.cloudinary.com'],
+  
 };
 
-// module.exports = {
-//   images: {
-//     domains: ['res.cloudinary.com'],
-//   },
-// };
+

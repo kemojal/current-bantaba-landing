@@ -49,15 +49,11 @@ const ButtonArrow = ({
 
 const Button = styled.div`
   cursor: pointer;
-  /* border-radius: 0.375rem; */
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  /* padding: 1em 1.8125em; */
   border-radius: 4px;
-  /* padding: 0.3rem 1.275rem; */
-  /* gap: 0.625rem; */
   background-color: #009743;
   background-color: ${({ bgcolor }) =>
     bgcolor ? bgcolor : 'var(--fun-green);'};
@@ -65,14 +61,10 @@ const Button = styled.div`
   border: ${({ type }) => (type == 'no border' ? 'none' : '1px solid #009743')};
   max-width: 90vw;
   margin: 10px 0;
-  /* kidas design */
   height: 60px;
-  /* width: 260px; */
   width: ${({ width }) => (width ? width : '260px')};
-  /* border-radius: 20px; */
   border-radius: 10px;
   transition: all 0.1s ease-in-out;
-  /* kidas design */
   .btn-title {
     font-weight: 600;
     color: ${({ color }) => (color ? color : '#ffffff')} !important;
@@ -102,7 +94,6 @@ const Text = styled.p`
   font-size: 1em;
   line-height: 1.133;
 
-  /* kidas design */
   color: var(--white);
   font-family: var(--font-family-noto_sans);
   font-size: var(--font-size-l);
@@ -113,7 +104,6 @@ const Text = styled.p`
   letter-spacing: 0px;
   line-height: 32px;
   text-align: left;
-  /* kidas design */
   margin-right: ${({ isArrow }) => (isArrow ? '20px' : '0')};
   @media (min-width: 600px) {
     margin-right: ${({ isArrow }) => (isArrow ? '10px' : '0')};

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import styled from 'styled-components';
 import { PartnerCard } from '../components/PartnerCard';
 import { PressCard } from '../components/PressCard';
@@ -15,7 +15,6 @@ const PartnerSection = styled.section`
   position: relative;
   padding: 50px 0;
   background-color: var(--white);
-  /* padding-top: 0rem; */
 
   .shadow {
     width: 100%;
@@ -27,7 +26,6 @@ const PartnerSection = styled.section`
   .partner-title {
     width: 100%;
     text-align: center;
-    /* padding: 10px 0; */
 
     letter-spacing: 0px;
     line-height: 27px;
@@ -122,7 +120,22 @@ const partnersData = [
   //   title: 'TWILIO SendGrid',
   // },
 ];
-export const Partner = ({ lang}) => {
+export const Partner = ({ lang }) => {
+  const [partners, setPartners] = useState([]);
+
+  const parthnerRef = useRef();
+
+  async function getPartners() {
+    const response = await fetch(
+      'https://landingapi-dev.ourbantaba.com/partners/all'
+    );
+    const data = await response.json();
+    setPartners(data.partners);
+  }
+
+  useEffect(() => {
+    getPartners();
+  }, []);
   return (
     <PartnerSection>
       <div className='before'></div>
@@ -134,8 +147,8 @@ export const Partner = ({ lang}) => {
             </p>
           </Fade>
           <Fade bottom>
-            <CardsContainer>
-              {partnersData.map((item, index) => {
+            <CardsContainer ref={parthnerRef}>
+              {partners.map((item, index) => {
                 // return <TestimonialCard key={index} {...item} />;
                 return <PartnerCard key={index} {...item} />;
               })}

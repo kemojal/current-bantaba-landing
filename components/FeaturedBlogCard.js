@@ -28,21 +28,11 @@ const FeaturedBlogCardContainer = styled.div`
     align-items: center;
     justify-content: center;
     padding: 10px 0;
-    /* border-radius: 10px;
-    overflow: hidden; */
   }
   .f-img-wrapper {
-    /* width: 696px;
-    height: 362px; */
-
-    /* width: 697px; */
-    /* height: 350px; */
-
-    /* tuned-values */
     width: 766px;
     height: 385px;
 
-    /* width: 100%; */
     position: relative;
     border-radius: 10px;
     overflow: hidden;

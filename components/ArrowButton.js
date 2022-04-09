@@ -6,7 +6,6 @@ const Button = styled.button`
   width: 45px;
   height: 45px;
   background-color: var(--ottoman);
-  /* background-color: white; */
   border-radius: 50px;
   box-shadow: 0px 3px 6px #00000017;
   border: none;
@@ -20,12 +19,6 @@ const Button = styled.button`
     position == 'left' ? '10px' : 'calc(100% - 55px)'};
   transform: ${({ position }) =>
     position == 'left' ? 'scaleX(1)' : 'scaleX(-1)'};
-  /* border: none; */
-  /* .arrow-img {
-    position: relative;
-    width: 24px;
-    height: 18px;
-  } */
 
   .arrow-img {
     position: relative;

@@ -20,14 +20,8 @@ const WhySection = styled.section`
     padding: 140px 0;
     padding-bottom: 0px;
     .container {
-      /* max-width: 1200px; */
-      /* max-width: calc(100% - 300px); */
-      /* background-color: orange; */
       max-width: var(--max-width);
     }
-    /* .right-section {
-      padding: 0 50px;
-    } */
   }
 `;
 export const JoinStartup = ({ lang }) => {

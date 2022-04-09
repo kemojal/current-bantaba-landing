@@ -18,8 +18,6 @@ const BlogDetailContainer = styled.div`
   padding-top: 94px;
   padding-bottom: 0;
   @media (min-width: 1280px) {
-    /* padding-top: 64px; */
-
     .detail-row {
       width: 100%;
       display: flex;
@@ -27,7 +25,6 @@ const BlogDetailContainer = styled.div`
     .reading-col {
       width: calc(67% - 15px);
       margin-right: 15px;
-      /* padding: 15px; */
     }
     .related-blogs-container {
       margin-left: 15px;
@@ -50,8 +47,6 @@ const BlogDetailContainer = styled.div`
     }
     .imageWrapper {
       position: relative;
-      /* width: 1146px;
-      height: 583px; */
 
       width: 781px;
       height: 399px;
@@ -105,8 +100,6 @@ const BlogDetailContainer = styled.div`
     .social-container {
       display: flex;
       align-items: center;
-      /* background-color: orange; */
-      /* width: 300px; */
     }
     .share-text {
       margin-right: 15px;
@@ -160,7 +153,6 @@ const BlogDetailContainer = styled.div`
       display: flex;
       justify-content: space-between;
       padding: 5px 0;
-      /* background-color: green; */
     }
     .category {
       color: #009743;
@@ -175,7 +167,6 @@ const BlogDetailContainer = styled.div`
       line-height: 160%;
     }
     .read-time {
-      /* margin-left: 10px; */
       display: flex;
       align-items: center;
     }
@@ -454,7 +445,7 @@ const blogdetail = () => {
         </div>
       </FluidContainer>
       <Mission lang={lan} />
-      <NavBar locale={lan} path={'/'} router={router} />
+      <NavBar currentlan={lan} locale={lan} path={'/'} router={router} />
     </BlogDetailContainer>
   );
 };

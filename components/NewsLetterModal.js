@@ -19,9 +19,7 @@ const ModalContainer = styled.div`
   height: 100%;
   background: rgba(0, 0, 0, 0.7);
   display:${({ modalState }) => (modalState ? 'block' : 'none')} ;
-  /* z-index: 10; */
   z-index: 11;
-  /* display: none; */
   .main-modal {
     position: fixed;
     background: #ffffff;
@@ -50,7 +48,6 @@ const ModalContainer = styled.div`
     display: flex;
     flex-direction: column; column;
     align-items: center;
-    /* justify-content: center; */
     padding: 60px 50px;
   }
   .right-modal {
@@ -155,7 +152,6 @@ const ModalContainer = styled.div`
       flex-direction: column;
       align-items: center;
       position: relative: ;
-      /* justify-content: center; */
   }
   .s2-illustration-absolute{
     width: 934px;
@@ -208,7 +204,6 @@ const ModalContainer = styled.div`
       justify-content: center;
       align-items: center;
       cursor: pointer;
-      /* z-index: 90; */
   }
   .back-to-home-btn{
       cursor: pointer;
@@ -343,7 +338,6 @@ color: #01110850;
       align-items: center;
       position: relative: ;
       max-width: 100vw;
-      /* justify-content: center; */
   }
   .s2-illustration-absolute{
     max-width: 100vw;
@@ -364,26 +358,18 @@ color: #01110850;
     margin-top: 15px;
   }
   .close-btn{
-      /* background-color: #FF716C; */
       background-color: white;
       top: 10px;
       right: 10px;
   }
   }
 `;
-const NewsLetterModal = () => {
+const NewsLetterModal = ({lang}) => {
   const [formStage, setFormStage] = useState(1);
   const [formData, setFormData] = useState({});
   const [formError, setFormError] = useState(false);
   const [isEmailValid, setIsEmailValid] = useState(true);
-  //   const [modalState, setModalState] = useState(show ? true : true);
-
-  //   const showHideClassName = modalState
-  //     ? 'modal display-block'
-  //     : 'modal display-none';
-
-  //   const { isNewsLetterModal } = useSelector((state) => state);
-  //   console.log('redux state parameter = ', isNewsLetterModal);
+  
 
   const { subscribeNewsletterModal, toggleSubscribeNewsletterModal } =
     useContext(GlobalContext);
@@ -410,15 +396,11 @@ const NewsLetterModal = () => {
     if (Object.keys(formData).length === 0) {
       setFormStage(1);
     }
-    // if (Object.keys(formData).length >= 1 && Object.keys(formData).length < 3) {
-    //   setFormError(true);
-    //   setFormStage(3);
-    // }
+    
     if (Object.keys(formData).length >= 2) {
       setIsEmailValid(validateEmail(formData.userEmail));
       if (validateEmail(formData.userEmail)) {
         setFormError(false);
-        // setFormStage(2);
         let postData = {
           name: formData.userName,
           category: formData.userCategory.toLowerCase(),
@@ -460,11 +442,7 @@ const NewsLetterModal = () => {
     { value: 'Diaspora', label: 'Diaspora' },
     { value: 'Startup', label: 'Startup' },
   ];
-  //   useEffect(() => {
-  //     document.body.style.overflow = 'hidden';
-  //     return () => (document.body.style.overflow = 'unset');
-  //   }, []);
-  //
+  
 
   return (
     <ModalContainer modalState={subscribeNewsletterModal} onClick={closemodal}>
@@ -473,10 +451,9 @@ const NewsLetterModal = () => {
           {formStage == 1 && (
             <>
               <div className='left-modal'>
-                <p className='modal-title'>Subscribe to our newsletter </p>
+                <p className='modal-title'>{lang.newletter_modal_title} </p>
                 <p className='modal-normal-text'>
-                  Get the latest updates on the African tech space. We only fill
-                  your inbox with the good stuff!
+                 {lang.newletter_modal_title_subtext}
                 </p>
 
                 <div className='modal-input-container'>
@@ -487,7 +464,7 @@ const NewsLetterModal = () => {
                       onChange={handleChange}
                       type='text'
                       className='name'
-                      placeholder='Name'
+                      placeholder={lang.name}
                     />
                     <input
                       name='userEmail'
@@ -495,28 +472,27 @@ const NewsLetterModal = () => {
                       onChange={handleChange}
                       type='text'
                       className='name'
-                      placeholder='Email Address'
+                      placeholder={lang.email}
                     />
-                    {/* <textarea className='textarea' placeholder="Message..."/> */}
                     <Select
                       value={formData.userCategory || ''}
                       onChange={handleSelectChange}
                       options={options}
                       className='input-select'
-                      placeholder='Category'
+                      placeholder={lang.category}
                     />
                     <input
                       type='submit'
-                      value='Send'
+                      value={lang.send}
                       className='submit'
-                      placeholder='messa'
+                      placeholder={lang.message}
                     />
                   </form>
                   {formError && (
-                    <p className='error'>Please fill in the missing inputs</p>
+                    <p className='error'>{lang.pls_fill_missing}</p>
                   )}
                   {!isEmailValid && (
-                    <p className='error'>Please provide a valid email</p>
+                    <p className='error'>{lang.pls_valid_email}</p>
                   )}
                 </div>
               </div>
@@ -553,7 +529,7 @@ const NewsLetterModal = () => {
                     objectFit='cover'
                   />
                 </div>
-                <p className='s2-text'>Thank you for subscribing.</p>
+                <p className='s2-text'>{lang.thank_you_subscribe}</p>
                 <button onClick={closemodal} className='back-to-home-btn'>
                   <div className='button-arrow'>
                     <Img
@@ -564,7 +540,7 @@ const NewsLetterModal = () => {
                     />
                   </div>
 
-                  <span className='btn-text'>Back To Home</span>
+                  <span className='btn-text'>{lang.back_to_home}</span>
                 </button>
               </div>
             </>
@@ -573,16 +549,6 @@ const NewsLetterModal = () => {
           {formStage == 3 && (
             <>
               <div className='form-step-two'>
-                {/* <div className='s2-illustration-absolute'>
-                  <div className='s2-illustration'>
-                    <Img
-                      src='s2-illustration.svg'
-                      alt='logo'
-                      layout='fill'
-                      objectFit='cover'
-                    />
-                  </div>
-                </div> */}
                 <div className='s3-illustration-person'>
                   <Img
                     src='s3-illustration-person.svg'
@@ -592,7 +558,7 @@ const NewsLetterModal = () => {
                   />
                 </div>
                 <p className='s2-text'>
-                  Ooppss! Something went wrong. Please try later.
+                {lang.Ooppss}
                 </p>
                 <button onClick={closemodal} className='back-to-home-btn'>
                   <div className='button-arrow'>
@@ -604,7 +570,7 @@ const NewsLetterModal = () => {
                     />
                   </div>
 
-                  <span className='btn-text'>Back To Home</span>
+                  <span className='btn-text'>{lang.back_to_home}</span>
                 </button>
               </div>
             </>

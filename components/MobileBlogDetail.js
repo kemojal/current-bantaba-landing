@@ -30,8 +30,6 @@ const MobileBlogDetailContainer = styled.div`
   }
   .imageWrapper {
     position: relative;
-    /* width: 1146px;
-      height: 583px; */
 
     width: 96vw;
     height: 184px;

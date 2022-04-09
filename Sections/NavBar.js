@@ -10,6 +10,11 @@ import { Img } from '../components/Img';
 
 import { GlobalContext } from '../context/GlobalState';
 
+
+import en from '../lang/en';
+import fr from '../lang/fr';
+
+
 // import { useRouter } from 'next/router';
 
 const Nav = styled.nav`
@@ -36,7 +41,6 @@ const Nav = styled.nav`
     display: flex;
     align-items: center;
     position: absolute;
-    /* right: 60px; */
     right: 30px;
     top: -5px;
     transition: 0.25s ease-in-out;
@@ -91,9 +95,7 @@ const NavContainer = styled.div`
       hastoggle ? 'white' : 'var(--white-ice-color)'};
     border-bottom: 1px solid #e6f1eb;
   }
-  /* background-color: orange; */
   @media (min-width: 1280px) {
-    /* max-width: calc(100% - 300px); */
     max-width: var(--max-width);
     max-height: 50px;
     justify-content: space-between;
@@ -116,8 +118,10 @@ const NavContainer = styled.div`
       font-size: 16px;
       line-height: 150%;
       color: #5b615e;
-      margin: 0px 25px;
-      /* width: 50px; */
+      margin: ${({ currentLanguage }) =>
+        currentLanguage == 'en' ? '0px 25px' : '0px 10px'};
+      
+    
       padding: 10px 0;
       text-align: center;
     }
@@ -196,7 +200,6 @@ const Hamburger = styled.ul`
     background: black;
     content: '';
     position: relative;
-    /* transition: 0.25s ease-in-out; */
     transition: 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
     border-radius: 10px;
 
@@ -232,8 +235,6 @@ const Menu = styled.ul`
   opacity: ${({ hastoggle }) => (hastoggle ? '1' : '0')};
   li {
     padding: 10px 20px;
-    /* font-size: 20px; */
-    /* border-bottom: 1px solid #00000012; */
 
     color: var(--licorice);
     font-family: var(--font-family-noto_sans);
@@ -248,7 +249,6 @@ const Menu = styled.ul`
     display: flex;
   }
   li a {
-    /* background-color: orange; */
     width: 100%;
     height: 100%;
   }
@@ -261,9 +261,6 @@ const Menu = styled.ul`
     padding: 5px 0 !important;
   }
   @media (min-width: 1280px) {
-    /* .hide-on-mobile {
-      display: none !important;
-    } */
     display: inline;
     display: none;
     &hover {
@@ -291,7 +288,6 @@ const Menu = styled.ul`
     border-radius: 3px !important;
     margin: 5px 0 !important;
     text-align: center !important;
-    /* border-radius: 10px !important; */
 
     height: 60px !important;
     border-radius: 20px !important;
@@ -308,7 +304,6 @@ const Menu = styled.ul`
     font-style: normal;
     font-weight: 400;
     letter-spacing: 0px;
-    /* line-height: 27px; */
     text-align: center;
   }
   .border-green {
@@ -321,12 +316,9 @@ const Menu = styled.ul`
 const Customselect = styled.select``;
 
 const SelectOption = styled.div`
-  /* width: 100px; */
   margin-left: 5px;
   padding: 0px 10px;
-  /* background-color: white; */
   border-radius: 3px;
-  /* border: 1px solid #9ce1b8; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -358,8 +350,6 @@ const SelectOption = styled.div`
     width: 100%;
     display: ${({ selectOptionOpen }) => (selectOptionOpen ? 'flex' : 'none')};
     background-color: white;
-    /* border-bottom-left-radius: 3px;
-  border-bottom-right-radius: 3px; */
     border-radius: 3px;
     border: 1px solid #9ce1b8;
     flex-direction: column;
@@ -369,9 +359,6 @@ const SelectOption = styled.div`
   .selection-options span {
     text-align: center;
     width: 100%;
-    /* color: #131313; */
-    /* font-size: 16px; */
-    /* line-height: 24px; */
     border-bottom: 1px solid #9ce1b850;
   }
 
@@ -385,16 +372,12 @@ const SelectOption = styled.div`
   }
 `;
 
-export const NavBar = ({ locale, router, path }) => {
+export const NavBar = ({ locale, router, path, currentlan }) => {
   const { setCurrentLanguage, currentLanguage, setTab, currentActiveTab } =
     useContext(GlobalContext);
   const [hastoggle, setHastoggle] = useState(false);
-  // const [currentTab, setCurrentTab] = useState('/');
 
   const [selectOptionOpen, setSelectOptionOpen] = useState(false);
-
-  // console.log('router  = ', router);
-  // console.log('router path ', router.asPath)
 
   const toggleHambburger = () => {
     setHastoggle(!hastoggle);
@@ -421,8 +404,11 @@ export const NavBar = ({ locale, router, path }) => {
     setCurrentLanguage(language);
     setSelectOptionOpen(false);
     closeNav();
+    
   };
   const toggleLangSelect = () => setSelectOptionOpen(!selectOptionOpen);
+
+  // const [lan, setlan] = useState(currentLanguage == 'en' ? en : fr);
 
   useEffect(() => {
     if (router.asPath == '/faq/') {
@@ -441,34 +427,34 @@ export const NavBar = ({ locale, router, path }) => {
     <Nav hastoggle={hastoggle}>
       <div className='fixed-bg left' />
       <div className='fixed-bg right' />
-      <NavContainer hastoggle={hastoggle} currentActiveTab={currentActiveTab}>
+      <NavContainer hastoggle={hastoggle} currentActiveTab={currentActiveTab} currentlan= {currentlan}>
         <Menu hastoggle={hastoggle}>
           <li onClick={toggleHambburger}>
-            <a href='/#whyjoin'>Why Join</a>
+            <a href='/#whyjoin'>{currentlan.why_join}</a>
           </li>
           <li onClick={toggleHambburger}>
             <Link href='/about'>
-              <a>About</a>
+              <a>{currentlan.about}</a>
             </Link>
           </li>
           <li onClick={toggleHambburger}>
             <Link href='/blog'>
-              <a>Blog</a>
+              <a>{currentlan.blog}</a>
             </Link>
           </li>
           <li onClick={toggleHambburger}>
             <Link href='/faq'>
-              <a>FAQ</a>
+              <a>{currentlan.faqs}</a>
             </Link>
           </li>
 
           <li className='spacer' />
           <li className='button border-green' onClick={toggleHambburger}>
-            <a href='#'>Log In</a>
+            <a href='#'>{currentlan.login}</a>
           </li>
           <li className='spacer-2' />
           <li className='button bg-green' onClick={toggleHambburger}>
-            <a href='#'>Sign Up</a>
+            <a href='#'>{currentlan.sign_up}</a>
           </li>
         </Menu>
         <div className='nav-bg'>
@@ -486,22 +472,22 @@ export const NavBar = ({ locale, router, path }) => {
           <ul className='desk-left-nav'>
             <li className='why-join-tab'>
               <Link href='/#whyjoin'>
-                <a>Why Join</a>
+                <a>{currentlan.why_join}</a>
               </Link>
             </li>
             <li className='about-li'>
               <Link href='/about'>
-                <a>About</a>
+                <a>{currentlan.about}</a>
               </Link>
             </li>
             <li className='blog-li'>
               <Link href='/blog'>
-                <a>Blog</a>
+                <a>{currentlan.blog}</a>
               </Link>
             </li>
             <li className='faq-li'>
               <Link href='/faq'>
-                <a>FAQ</a>
+                <a>{currentlan.faqs}</a>
               </Link>
             </li>
           </ul>
@@ -516,15 +502,12 @@ export const NavBar = ({ locale, router, path }) => {
                   priority={true}
                 />
 
-                {/* <Customselect onChange={onChangeLanguage} default={locale}>
-                <option value='en'>EN</option>
-                <option value='fr'>FR</option>
-              </Customselect> */}
+                
                 <SelectOption selectOptionOpen={selectOptionOpen}>
                   <div className='currentSelect' onClick={toggleLangSelect}>
                     <div>
                       {' '}
-                      {currentLanguage === 'en' ? 'English' : 'French'}
+                      {currentLanguage === 'en' ? currentlan.english : currentlan.french}
                     </div>
                     <div className='arrowDown'>
                       <Img
@@ -543,14 +526,14 @@ export const NavBar = ({ locale, router, path }) => {
                         setLang('en');
                       }}
                     >
-                      English
+                     {currentlan.english}
                     </span>
                     <span
                       onClick={() => {
                         setLang('fr');
                       }}
                     >
-                      French
+                    {currentlan.french}
                     </span>
                   </div>
                 </SelectOption>
@@ -561,14 +544,14 @@ export const NavBar = ({ locale, router, path }) => {
                 href='https://community.ourbantaba.com/en/login'
                 passHref={true}
               >
-                <a>Login</a>
+                <a>{currentlan.login}</a>
               </Link>
             </li>
             <li>
               <ButtonArrow
                 maxWidth='122px'
                 maxHeight='44px'
-                title={'Sign Up'}
+                title={currentlan.sign_up}
                 isArrow={true}
                 color={'white'}
                 href='https://community.ourbantaba.com/en/register'
@@ -585,10 +568,7 @@ export const NavBar = ({ locale, router, path }) => {
               height={18}
               priority={true}
             />
-            {/* <Customselect onChange={onChangeLanguage} default={locale}>
-            <option value='en'>EN</option>
-            <option value='fr'>FR</option>
-          </Customselect> */}
+           
             <SelectOption selectOptionOpen={selectOptionOpen}>
               <div className='currentSelect' onClick={toggleLangSelect}>
                 <div> {currentLanguage === 'en' ? 'EN' : 'FR'}</div>
@@ -621,15 +601,7 @@ export const NavBar = ({ locale, router, path }) => {
               </div>
             </SelectOption>
 
-            {/* <span className='langName'>EN</span> */}
-            {/* <Select
-            value={options.filter(function (option) {
-              return option.value === currentLang;
-            })}
-            onChange={selectLanguage}
-            className='langName'
-            options={options}
-          /> */}
+           
           </div>
           <HamburgerContainer onClick={toggleHambburger}>
             <Hamburger hastoggle={hastoggle}>

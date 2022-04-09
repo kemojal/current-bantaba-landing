@@ -12,10 +12,8 @@ const NewsLetterContainer = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 0 15px;
-  /* padding-top: 5rem; */
   padding-top: 94px;
   .contact-m-title {
-    /* color: #00853b; */
     font-family: var(--font-family-noto_sans);
     font-size: var(--font-size-xxxl);
     font-style: normal;
@@ -38,8 +36,6 @@ const NewsLetterContainer = styled.div`
     position: relative;
     width: 216px;
     height: 213px;
-    /* width: 270px; */
-    /* height: 270px; */
   }
   form {
     display: flex;
@@ -122,7 +118,7 @@ function NewsLetter() {
           placeholder='messa'
         />
       </form>
-      <NavBar />
+      <NavBar  currentlan={lan}/>
     </NewsLetterContainer>
   );
 }

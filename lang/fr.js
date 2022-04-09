@@ -1,7 +1,6 @@
 export default {
   hero_header: `Rejoignez la plus grande Communauté Africaine Startups-diaspora`,
   hero_discription: ` Notre plateforme met en relation les startups tech africaines avec des experts et investisseurs de la diaspora Africaine.`,
-  // functionData: ['Savoir', 'Capital', 'Réseautage'],
   knowledge: 'Savoir',
   capital: 'Capital',
   network: 'Réseautage',
@@ -79,9 +78,34 @@ export default {
   subtext_32: `Les startups tech africaines, quant à elles, peuvent partager leurs besoins de fonds et de compétences, et sont mises en relation avec de potentiels investisseurs ou des experts de la communauté qui peuvent les aider à atteindre leurs objectifs.`,
   about_bantaba_is_on_mission: `Bantaba a pour mission de devenir le lien entre le savoir et le capital mondial avec l'écosystème des startups d’Afrique.`,
   its: `Il est`,
-  time_for_africa: `POUR L'AFRIQUE,`,
+  time_for_africa: `TEMPS POUR L'AFRIQUE,`,
   revolution_together: `commençons la révolution ensemble!`,
   our_team: `Notre Equipe`,
+
+  non_diapora_modal_title: `Recevez des messages du futur. Nous remplirons votre boîte de réception avec bonheur! `,
+  non_diapora_modal_title_subtext: `Rejoignez notre liste d'e-mails pour recevoir des infos incroyables sur les meilleures startups pour y investir. Nous vous promettons que nous ne vous enverrons que de bonnes choses.`,
+
+  contact_us_modal_title: `Nous Contacter`,
+  contact_us_modal_title_subtext: `Bonjour, comment pouvons-nous vous aider aujourd'hui?`,
+
+  newletter_modal_title: `S'abonner aux newsletter `,
+  newsletter_us_modal_title_subtext: `Bonjour, comment pouvons-nous vous aider aujourd'hui?`,
+
+  invest: 'Invest',
+  mentor: 'Mentor',
+  consult: 'Consult',
+  name: ' Nom ',
+  email: `E-mail`,
+  message: `Message`,
+  category: `Catégorie`,
+  connect: `Se Connecter`,
+  send: `Envoyer`,
+  thank_you_modal: `Merci pour votre intérêt, nous vous contacterons bientôt.`,
+  thank_you_subscribe: `Merci de vous être abonné`,
+  back_to_home: 'Fermer',
+  pls_fill_missing: `Veuillez remplir les données manquantes`,
+  pls_valid_email: `Veuillez fournir une adresse e-mail valide`,
+  Ooppss: `Ooppss ! Quelque chose a mal tourné Veuillez réessayer`,
 
   faqs: `FAQs`,
 

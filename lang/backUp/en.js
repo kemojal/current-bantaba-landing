@@ -2,7 +2,6 @@ export default {
   hero_header: `Join Africa’s biggest startup-diaspora community!`,
   hero_discription: ` Our platform connects African tech startups with professionals and
   investors in the African community abroad.`,
-  // functionData: ['Knowledge', 'Capital', 'Network'],
   knowledge: 'Knowledge',
   capital: 'Capital',
   network: 'Network',

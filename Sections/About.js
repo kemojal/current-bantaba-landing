@@ -14,8 +14,6 @@ const AboutSectionContainer = styled.section`
   align-items: center;
   justify-content: center;
   padding: 0 2rem;
-  /* padding-top: 2rem; */
-  /* padding-bottom: 3.125rem; */
   padding: 50px 2rem;
 
   .container {
@@ -30,7 +28,6 @@ const AboutSectionContainer = styled.section`
   }
   .about-right {
     width: 100%;
-    /* background-color: red; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -40,7 +37,6 @@ const AboutSectionContainer = styled.section`
   .about-img {
     position: relative;
     width: 351px;
-    /* height: 416px; */
     height: 270px;
   }
   p.title {
@@ -59,7 +55,6 @@ const AboutSectionContainer = styled.section`
     color: rgba(19, 19, 19, 1);
     padding: 0; */
 
-    /* kidas design */
     color: var(--licorice);
     font-family: var(--font-family-noto_sans);
     font-size: var(--font-size-l);
@@ -123,7 +118,6 @@ const AboutSectionContainer = styled.section`
     .about-img {
       position: relative;
       width: 609px;
-      /* height: 416px; */
       height: 465px;
     }
     p.title {

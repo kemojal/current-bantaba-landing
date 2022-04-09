@@ -20,7 +20,6 @@ const ModalContainer = styled.div`
   background: rgba(0, 0, 0, 0.7);
   display:${({ modalState }) => (modalState ? 'block' : 'none')} ;
   z-index: 11;
-  /* display: none; */
   .main-modal {
     position: fixed;
     background: #ffffff;
@@ -49,7 +48,6 @@ const ModalContainer = styled.div`
     display: flex;
     flex-direction: column; column;
     align-items: center;
-    /* justify-content: center; */
     padding: 60px 50px;
   }
   .right-modal {
@@ -154,7 +152,6 @@ const ModalContainer = styled.div`
       flex-direction: column;
       align-items: center;
       position: relative: ;
-      /* justify-content: center; */
   }
   .s2-illustration-absolute{
     width: 934px;
@@ -207,7 +204,6 @@ const ModalContainer = styled.div`
       justify-content: center;
       align-items: center;
       cursor: pointer;
-      /* z-index: 90; */
   }
   .back-to-home-btn{
       cursor: pointer;
@@ -343,7 +339,6 @@ color: #011108;
       align-items: center;
       position: relative: ;
       max-width: 100vw;
-      /* justify-content: center; */
   }
   .s2-illustration-absolute{
     max-width: 100vw;
@@ -364,21 +359,20 @@ color: #011108;
     margin-top: 15px;
   }
   .close-btn{
-      /* background-color: #FF716C; */
       background-color: white;
       top: 10px;
       right: 10px;
   }
   }
 `;
-const ContactUsModal = () => {
+const ContactUsModal = ({ lang }) => {
   const [formStage, setFormStage] = useState(1);
   const [formData, setFormData] = useState({});
   const [formError, setFormError] = useState(false);
   const [isEmailValid, setIsEmailValid] = useState(true);
-  //     ? 'modal display-block'
 
-  const { showContactModal, toggleContactModal } = useContext(GlobalContext);
+  const { showContactModal, toggleContactModal, currentLanguage } =
+    useContext(GlobalContext);
   const closemodal = (e) => {
     e.stopPropagation();
     setFormStage(1);
@@ -403,20 +397,16 @@ const ContactUsModal = () => {
     if (Object.keys(formData).length === 0) {
       setFormStage(1);
     }
-    // if (Object.keys(formData).length >= 1 && Object.keys(formData).length < 3) {
-    //   setFormError(true);
-    //   setFormStage(3);
-    // }
     if (Object.keys(formData).length >= 2) {
       setIsEmailValid(validateEmail(formData.userEmail));
       if (validateEmail(formData.userEmail)) {
         setFormError(false);
-        // setFormStage(2);
 
         let postData = {
           name: formData.userName,
           message: formData.message,
           email: formData.userEmail,
+          lang: currentLanguage,
         };
         console.log('contact us data', postData);
         try {
@@ -456,11 +446,6 @@ const ContactUsModal = () => {
     { value: 'Mentor', label: 'Mentor' },
     { value: 'Consult', label: 'Consult' },
   ];
-  //   useEffect(() => {
-  //     document.body.style.overflow = 'hidden';
-  //     return () => (document.body.style.overflow = 'unset');
-  //   }, []);
-  //
 
   return (
     <ModalContainer modalState={showContactModal} onClick={closemodal}>
@@ -469,9 +454,9 @@ const ContactUsModal = () => {
           {formStage == 1 && (
             <>
               <div className='left-modal'>
-                <p className='modal-title'>Contact Us</p>
+                <p className='modal-title'>{lang.contact_us_modal_title}</p>
                 <p className='modal-normal-text'>
-                  Hi, How can we help you today?
+                  {lang.contact_us_modal_title_subtext}
                 </p>
 
                 <div className='modal-input-container'>
@@ -482,7 +467,7 @@ const ContactUsModal = () => {
                       onChange={handleChange}
                       type='text'
                       className='name'
-                      placeholder='Name'
+                      placeholder={lang.name}
                     />
                     <input
                       name='userEmail'
@@ -490,34 +475,22 @@ const ContactUsModal = () => {
                       onChange={handleChange}
                       type='text'
                       className='name'
-                      placeholder='Email Address'
+                      placeholder={lang.email}
                     />
                     <textarea
                       name='message'
                       value={formData.message || ''}
                       onChange={handleChange}
                       className='textarea'
-                      placeholder='Message...'
+                      placeholder={lang.message}
                     />
-                    {/* <Select
-                      value={formData.userCategory || ''}
-                      onChange={handleSelectChange}
-                      options={options}
-                      className='input-select'
-                      placeholder='Category'
-                    /> */}
-                    <input
-                      type='submit'
-                      value='Send'
-                      className='submit'
-                      placeholder='messa'
-                    />
+                    <input type='submit' value={lang.send} className='submit' />
                   </form>
                   {formError && (
-                    <p className='error'>Please fill in the missing inputs</p>
+                    <p className='error'>{lang.pls_fill_missing}</p>
                   )}
                   {!isEmailValid && (
-                    <p className='error'>Please provide a valid email</p>
+                    <p className='error'>{lang.pls_valid_email}</p>
                   )}
                 </div>
               </div>
@@ -554,9 +527,7 @@ const ContactUsModal = () => {
                     objectFit='cover'
                   />
                 </div>
-                <p className='s2-text'>
-                  Thank you for reaching out, we will be in touch soon.
-                </p>
+                <p className='s2-text'>{lang.thank_you_modal}</p>
                 <button onClick={closemodal} className='back-to-home-btn'>
                   <div className='button-arrow'>
                     <Img
@@ -567,7 +538,7 @@ const ContactUsModal = () => {
                     />
                   </div>
 
-                  <span className='btn-text'>Back To Home</span>
+                  <span className='btn-text'>{lang.back_to_home}</span>
                 </button>
               </div>
             </>
@@ -584,9 +555,7 @@ const ContactUsModal = () => {
                     objectFit='cover'
                   />
                 </div>
-                <p className='s2-text'>
-                  Ooppss! Something went wrong. Please try later.
-                </p>
+                <p className='s2-text'>{lang.Ooppss}</p>
                 <button onClick={closemodal} className='back-to-home-btn'>
                   <div className='button-arrow'>
                     <Img

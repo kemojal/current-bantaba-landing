@@ -21,19 +21,7 @@ const FAQContainer = styled.div`
   flex-direction: column;
   align-items: center;
   position: relative;
-  /* padding-top: 4rem; */
   padding-top: 94px;
-
-  /* &:before{
-    position: absolute;
-    content: '';
-    
-    width: 100%;
-    top: 0;
-    height: 300px;
-    max-width: var(--max-width);
-    background-color: #009743;
-  } */
 
   .container {
     width: 100%;
@@ -51,7 +39,6 @@ const FAQContainer = styled.div`
     line-height: 38px;
     text-align: left;
     padding: 0px 15px;
-    /* margin-bottom: 7px; */
   }
   .input-search {
     width: 100%;
@@ -65,13 +52,11 @@ const FAQContainer = styled.div`
     width: 354px;
     height: 43px;
     background-color: var(--white);
-    /* border: 1px solid var(--algae-green); */
     border-radius: 10px;
     position: relative;
     display: flex;
     align-items: center;
     oveflow: hidden;
-    /* padding: 0 10px; */
   }
   .icon-fix {
     position: absolute;
@@ -89,8 +74,6 @@ const FAQContainer = styled.div`
     margin: 15px;
     width: calc(100% - 10px);
     margin: 5px;
-    /* border: 1px solid #9ce1b8; */
-    /* border: 1px solid rgba(91, 97, 94, 0.1); */
     box-sizing: border-box;
     border-radius: 6px;
     margin-bottom: 100px;
@@ -120,7 +103,6 @@ const FAQContainer = styled.div`
       padding-top: 0;
       margin-top: 25px;
       margin-bottom: 100px;
-      /* background: #ffffff; */
       background-color: transparent;
       padding: 0;
       margin-left: 0;
@@ -134,7 +116,6 @@ const FAQContainer = styled.div`
 const Input = styled.input`
   width: 100%;
   height: 100%;
-  /* border: none */
   padding-left: 40px;
   color: #5f5f5f;
   font-family: var(--font-family-noto_sans);
@@ -160,7 +141,7 @@ export default function FAQ({ EnglishFaQ, FrenchFAQ }) {
   const { locale } = router;
   // const lan = locale == 'en' ? en : fr;
 
-  const { currentLanguage } = useContext(GlobalContext);
+  const { currentLanguage, setCurrentLanguage } = useContext(GlobalContext);
   const [currentQueryData, setCurrentQueryData] = useState(
     currentLanguage === 'en' ? EnglishFaQ.FAQData : FrenchFAQ.FAQData
   );
@@ -177,6 +158,12 @@ export default function FAQ({ EnglishFaQ, FrenchFAQ }) {
   };
 
   useEffect(() => {
+    // const browserlang = localStorage.getItem('browserLanguague');
+    // if (browserlang) {
+    //   setCurrentLanguage(browserlang);
+    // } else {
+    //   localStorage.setItem('browserLanguague', JSON.stringify(currentLanguage));
+    // }
     setResult(
       currentLanguage === 'en' ? EnglishFaQ.FAQData : FrenchFAQ.FAQData
     );
@@ -201,7 +188,7 @@ export default function FAQ({ EnglishFaQ, FrenchFAQ }) {
     <FAQContainer>
       <div className='container'>
         <Fade bottom>
-        <p className='header-title'>{lan.faqs}</p>
+          <p className='header-title'>{lan.faqs}</p>
         </Fade>
         <Fade bottom>
           <div className='input-search mt-24'>
@@ -227,7 +214,7 @@ export default function FAQ({ EnglishFaQ, FrenchFAQ }) {
         </ul>
       </div>
       <Mission lang={lan} />
-      <NavBar locale={lan} router={router} />
+      <NavBar currentlan={lan} locale={lan} router={router} />
     </FAQContainer>
   );
 }

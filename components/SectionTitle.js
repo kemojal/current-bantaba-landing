@@ -7,7 +7,6 @@ const Text = styled.h1`
     font-family: Noto Sans;
     font-style: normal;
     font-weight: bold;
-    /* font-size: 25px; */
     font-size: 26px;
     margin: 10px 0;
     color: rgba(19, 19, 19, 1);

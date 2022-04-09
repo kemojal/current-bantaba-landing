@@ -4,8 +4,6 @@ import styled from 'styled-components';
 import { Img } from '../components/Img';
 import Image from 'next/image';
 const CardDiv = styled.div`
-  /* box-sizing: border-box; */
-  /* width: 300px !important; */
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -39,7 +37,6 @@ const CardDiv = styled.div`
     line-height: 18px;
     text-align: left;
     padding: 10px 0;
-    /* font-size: 24px; */
   }
   .text {
    
@@ -66,7 +63,6 @@ const CardDiv = styled.div`
 
     .profile-frame {
       position: relative;
-      /* width: 102px; */
       height: 102px;
       border-radius: 50%;
       background-color: #009a3650;
@@ -86,7 +82,6 @@ const CardDiv = styled.div`
       padding: 5px;
       padding-top: 10px;
       padding-bottom: 15px;
-      /* height: 5.44rem; */
       display: -webkit-box;
       -webkit-line-clamp: 5;
       -webkit-box-orient: vertical;
@@ -104,16 +99,12 @@ const CardDiv = styled.div`
       padding: 0;
     }
     .position {
-      /* margin-top: 5px; */
       font-family: 'Poppins';
       font-style: normal;
       font-weight: 400;
       font-size: 16px;
       line-height: 160%;
       padding: 0;
-      /* or 22px */
-
-      /* Paragraph */
 
       color: #5b615e;
     }
@@ -125,7 +116,6 @@ const TestCol = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* background: green; */
   @media (min-width: 1280px) {
     display: flex;
     flex-direction: column-reverse;
@@ -144,7 +134,6 @@ const TestCol = styled.div`
       position: absolute;
       width: 370px;
       height: 167px;
-      /* right: -260px; */
       background: url('/assets/images/quotation.svg') no-repeat;
       
     }
@@ -161,7 +150,6 @@ const P = styled.p`
     text-align: center;
     position: relative;
     width: 100%;
-    /* background-color: orange; */
     &:before{
         position: absolute;
         top: 0;

@@ -28,73 +28,39 @@ const CombinedHero = styled.div`
     flex-direction: row;
     background-color: var(--ottoman);
     width: 100vw !important;
-    /* overflow: hidden !important; */
     justify-content: center !important;
     align-items: center !important;
     min-height: 906px;
     background: url('/assets/images/hero-bg.svg') no-repeat center center/50px
       50px fixed;
-    /* background-size: 100%  100%; */
     background-size: cover !important;
     background-position-x: center;
     background-position-y: center;
 
-    /* &::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-
-  background: url('/assets/images/hero-bg.svg') no-repeat;
-  background-size: 100% 100%;
-  
-} */
     .container {
       width: 100%;
-      /* background-color: red; */
-      /* max-width: 1220px; */
       display: flex;
       flex-direction: row;
-      /* padding-right: 150px; */
       padding: 0 !important;
       width: var(--max-width) !important;
-
-      /* overflow: hidden !important; */
     }
   }
   @media (min-width: 1500px) {
     position: relative;
     .container {
-      /* max-width: 1220px; */
-      /* max-width: calc(100% - 300px); */
       display: flex;
       flex-direction: row;
-      /* overflow: hidden; */
       height: auto;
       position: relative;
       z-index: 10;
 
       display: flex;
       flex-direction: row;
-      /* overflow-x: hidden; */
+
       height: auto;
-      /* height: 780px; */
       adding-right: 0px;
     }
   }
-  /* @media (min-width: 2200px) {
-    .container {
-      max-width: 1150px;
-      background-color: orange;
-      display: flex;
-      flex-direction: row;
-      overflow-x: hidden;
-      height: auto;
-      height: 780px;
-    }
-  } */
 `;
 
 import { Button } from '../components/Button';
@@ -112,20 +78,25 @@ import Illustration from '../Sections/Illustration';
 import JoinNewsLetterModal from '../components/JoinNewsLetterModal';
 
 import { GlobalContext } from '../context/GlobalState';
-import ContactUsModal from '../components/ContactUsModal';
-import NewsLetterModal from '../components/NewsLetterModal';
 
 export default function Home({ press }) {
   const router = useRouter();
   const { locale } = router;
 
-  const { currentLanguage } = useContext(GlobalContext);
+  const { currentLanguage, setCurrentLanguage } = useContext(GlobalContext);
+
   const [lan, setlan] = useState(currentLanguage == 'en' ? en : fr);
 
   // const { currentLanguage } = useSelector((state) => state);
 
   useEffect(() => {
     setlan(currentLanguage == 'en' ? en : fr);
+    // const browserlang = localStorage.getItem('browserLanguague');
+    // if (browserlang) {
+    //   setCurrentLanguage(browserlang);
+    // } else {
+    //   localStorage.setItem('browserLanguague', JSON.stringify(currentLanguage));
+    // }
   }, [currentLanguage]);
 
   return (
@@ -156,21 +127,8 @@ export default function Home({ press }) {
         <Press lang={lan} press={press} />
         <Partner lang={lan} />
         <Mission lang={lan} />
-        <NavBar locale={lan} path={'/'} router={router} />
+        <NavBar currentlan={lan} locale={lan} path={'/'} router={router} />
       </main>
-
-      {/* <footer className={styles.footer}>
-        <a
-          href='https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          Powered by{' '}
-          <span className={styles.logo}>
-            <Image src='/vercel.svg' alt='Vercel Logo' width={72} height={16} />
-          </span>
-        </a>
-      </footer> */}
     </div>
   );
 }

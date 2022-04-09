@@ -2,7 +2,6 @@ export default {
   hero_header: `Join Africa’s biggest startup-diaspora community!`,
   hero_discription: ` Our platform connects African tech startups with professionals and
   investors in the African community abroad.`,
-  // functionData: ['Knowledge', 'Capital', 'Network'],
   knowledge: 'Knowledge',
   capital: 'Capital',
   network: 'Network',
@@ -88,6 +87,31 @@ export default {
   time_for_africa: `TIME FOR AFRICA,`,
   revolution_together: `Let's start the revolution together!`,
   our_team: `Our Team`,
+
+  non_diapora_modal_title: `Receive messages from the future. We only fill your inbox with happiness! `,
+  non_diapora_modal_title_subtext: `Join our mailing list to get the best news on startups to invest in. We promise we will only send you the good stuff.`,
+
+  contact_us_modal_title: `Contact us`,
+  contact_us_modal_title_subtext: `Hi, How can we help you today?`,
+
+  newletter_modal_title: `Join our newsletter  `,
+  newsletter_us_modal_title_subtext: `Get the latest updates on the African tech space. We only fill your inbox with the good stuff! `,
+  invest: 'Invest',
+  mentor: 'Mentor',
+  consult: 'Consult',
+  name: 'Name',
+  email: 'Email', 
+  message: `Message`,
+  category: 'Category',
+  connect: 'Connect',
+  send: `send`,
+  thank_you_modal: `Thank you for your interest, we will be in touch soon.`,
+  thank_you_subscribe: 'Thank you for joining our newsletter',
+  back_to_home: 'Back to Home',
+  pls_fill_missing: `Please fill in the missing inputs`,
+  pls_valid_email: `Please provide a valid email`,
+  Ooppss: `Ooppss! Something went wrong. Please try later.`,
+
 
   faqs: `FAQs`,
 

@@ -7,8 +7,6 @@ const FooterLinkContainer = styled.div`
   width: 100%;
   max-width: calc(100% - 63px);
   display: flex;
-  /* margin: 0px 20px; */
-  /* align-items: center; */
   justify-content: center;
   flex-wrap: wrap;
 
@@ -19,8 +17,6 @@ const FooterLinkContainer = styled.div`
 
     justify-content: space-between;
     justify-content: center;
-    /* transform: translateX(calc(50vw - 9.3125rem)); */
-    /* align-items: center; */
   }
 
   .address-container {
@@ -41,11 +37,9 @@ const FooterLinkContainer = styled.div`
       align-self: stretch;
       width: 100vw;
       max-width: 100vw;
-      /* background-color: red; */
       transform: translateX(31px);
     }
     .address-container {
-      /* background: red; */
       width: 100vw;
       transform: translateX(31px);
     }

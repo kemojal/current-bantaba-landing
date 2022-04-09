@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { GlobalContext } from '../context/GlobalState';
 import { Button } from './Button';
@@ -10,21 +10,11 @@ import Fade from 'react-reveal/Fade';
 const MobileStartupContainer = styled.div`
 background-color: #fcf9e8;
 position: relative;
-/* &:after {
-  position: absolute;
-  width: 100%;
-  height: 100px;
-  content: '';
-  background-color: red;
-  bottom: 0;
-
-} */
 
   @media (min-width: 1280px) {
     display: none;
   }
   padding: 2rem 15px;
-  /* padding: 0 15px; */
   width: 100%;
   width: 100vw;
   display: flex;
@@ -33,20 +23,8 @@ position: relative;
   
   .device-frame {
     position: relative;
-    width: 350px;
-   
-    height: 416px;
-
-
-    /* tuned-1 */
     width: 100vw;
     height: 524px;
-
-    /* tuned-2:  */
-    /* width: 90vw;
-    height: 435px;
-
-    margin-top: 5px; */
   }
   p.title {
     font-size: 26px;
@@ -54,7 +32,7 @@ position: relative;
     color: rgba(19, 19, 19, 1);
     padding: 0; */
 
-    /* kidas design */
+   
     color: var(--licorice);
     font-family: var(--font-family-noto_sans);
     font-size: var(--font-size-l);
@@ -78,8 +56,6 @@ position: relative;
     margin-top: 40px;
   }
   p.normal {
-    /* font-size: 1rem; */
-    /* line-height: 1.5rem; */
     margin-top: 0px;
     margin-bottom: 20px;
     text-align: center;
@@ -88,7 +64,6 @@ position: relative;
   }
   Button {
     margin: 30px 0;
-    /* width: calc(100vw - 4rem); */
     box-shadow: 0 0 0 2px #00853b2b, 0 0 0 6px #00000005;
   }
   .join-bt-container {

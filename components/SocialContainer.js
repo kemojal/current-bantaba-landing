@@ -5,8 +5,6 @@ import styled from 'styled-components';
 
 const SocialDiv = styled.div`
   width: 100%;
-  /* background-color: red; */
-  /* transform: translateX(12.5vw); */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -21,7 +19,6 @@ const SocialDiv = styled.div`
 
   @media (min-width: 1280px) {
     width: 100%;
-    /* background-color: red; */
   }
 `;
 

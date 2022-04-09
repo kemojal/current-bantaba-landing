@@ -31,12 +31,9 @@ const DesktopStartupContainer = styled.div`
     .left-section {
       width: 50%;
       min-height: 658px;
-      /* height: 950px; */
-      /* padding-right: 150px; */
       display: flex;
       flex-direction: column;
       align-items: center;
-      /* padding-top: 150px; */
     }
     .device-frame2 {
       position: relative;
@@ -73,7 +70,6 @@ const DestopLeftIllustration = styled.div`
     display: flex;
     z-index: 10;
     position: relative;
-    /* background-color: brown; */
     margin-top: 170px;
 
     &::before {

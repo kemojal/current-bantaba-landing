@@ -30,12 +30,10 @@ const TeamContainer = styled.li`
     width: 45%;
   }
   .right {
-    /* width: 55% */
     display: flex;
     flex-direction: column;
     height: 100%;
     justify-content: center;
-    /* align-items: center; */
     width: calc(100% - 45%);
   }
   .name,
@@ -116,7 +114,6 @@ const TeamContainer = styled.li`
       line-height: 150%;
       text-align: center;
       color: #011108;
-      /* margin-top: 20px; */
     }
     .position {
       font-family: 'Poppins';
@@ -126,16 +123,14 @@ const TeamContainer = styled.li`
       line-height: 150%;
       text-align: center;
       color: #01110870;
-      /* margin-top: 5px; */
     }
     .s-links {
       align-items: center;
       justify-content: space-between;
       background-color: red;
-      /* width: 100%; */
       width: 80px;
 
-      /* height: 30px; */
+      
       padding: 5px;
       background: linear-gradient(
         108.42deg,
@@ -144,12 +139,9 @@ const TeamContainer = styled.li`
       );
       border: 0.46875px solid #039543;
       backdrop-filter: blur(89.0625px);
-      /* border-radius: 9.375px; */
       border-radius: 18px;
       margin: 10px 0;
       margin-top: 5px;
-      /* margin-left: calc(50% - 45px); */
-      /* transform: translateX(calc( 100% )) */
     }
   }
   @media (max-width: 320px) {
@@ -171,7 +163,6 @@ const AboutTeamCard = ({
 }) => {
   return (
     <TeamContainer>
-      {/* src='/assets/images/kemo.jpg' */}
       <div className='left'>
         <Fade bottom>
           <div className='about-team-img'>

@@ -5,4 +5,4 @@ export const BLOG = LANDING_BASE_URL + 'blogs/all/en';
 export const NON_DIASPORA = LANDING_BASE_URL + 'nonDiaspora';
 export const NEWSLETTER = LANDING_BASE_URL + 'newsletter';
 export const CONTACTUS = LANDING_BASE_URL + 'contacts';
-// PRESS: BLOG_BASE_URL + 'all/en',
+

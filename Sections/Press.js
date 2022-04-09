@@ -13,11 +13,9 @@ const PressSection = styled.section`
   position: relative;
   padding: 50px 0;
   background-color: #fcf9e8;
-  /* padding-top: 0rem; */
   h1 {
     width: 100%;
     text-align: center;
-    /* padding: 10px 0; */
     line-height: 32px;
     margin-bottom: 28px;
   }
@@ -25,9 +23,7 @@ const PressSection = styled.section`
     scroll-behavior: smooth;
     transition: all 0.2s ease-in-out;: ;
     display: flex;
-    /* justify-content: center; */
     align-items: center;
-    /* height: 500px; */
     overflow-y: hidden;
     overflow-x: scroll;
     position: relative;
@@ -37,7 +33,6 @@ const PressSection = styled.section`
     &::-webkit-scrollbar {
       display: none;
     }
-    /* scroll-padding: 50%; */
   }
   .show-on-mobile {
     display: block;
@@ -49,15 +44,12 @@ const PressSection = styled.section`
   @media (min-width: 1280px) {
     background-color: #f9f9f9;
     background-color: white;
-    /* padding-top: 100px; */
     .card-container {
       flex-direction: row;
       height: auto;
       width: 100%;
-      /* max-width: 1153px; */
     }
     .fluid {
-      /* max-width: 1200px; */
       max-width: var(--max-width);
 
       display: flex;
@@ -71,7 +63,6 @@ const PressSection = styled.section`
       font-family: 'Poppins';
       font-style: normal;
       font-weight: 700;
-      /* font-size: 40px; */
       font-size: 2rem;
       line-height: 130%;
       text-align: left;
@@ -81,7 +72,6 @@ const PressSection = styled.section`
       align-items: center;
       justify-content: space-between;
       width: 100%;
-      /* padding: 10px 0; */
       margin-bottom: 3.125rem;
     }
     .view-all {

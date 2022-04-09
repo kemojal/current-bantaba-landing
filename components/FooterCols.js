@@ -11,14 +11,9 @@ const FooterColumn = styled.div`
   align-items: ${({ address }) => (address ? 'center' : 'flex-start')};
   &:first-child {
     margin-right: ${({ address }) => (address ? '0' : '40px')};
-    /* background-color: pink; */
   }
-  /* &:first-child {
-    margin-right: ${({ address }) => (address ? '0' : '0px')};
-  } */
   &:nth-child(2) {
     margin-left: ${({ address }) => (address ? '0' : '40px')};
-    /* background-color: pink; */
   }
   p {
     letter-spacing: 0px;
@@ -38,17 +33,14 @@ const FooterColumn = styled.div`
   }
   .address-div {
     width: 50vw;
-    /* transform: translateX(-13vw); */
     text-align: center;
     justify-content: center;
     display: flex;
     flex-direction: column;
     line-height: 19px;
-    /* background-color: orange; */
   }
   .address-div span {
     line-height: 19px;
-    /* background-color: orange; */
     margin-bottom: 6px;
   }
   @media (min-width: 1280px) {

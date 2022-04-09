@@ -20,7 +20,6 @@ const ModalContainer = styled.div`
   background: rgba(0, 0, 0, 0.7);
   display:${({ modalState }) => (modalState ? 'block' : 'none')} ;
   z-index: 11;
-  /* display: none; */
   .main-modal {
     position: fixed;
     background: #ffffff;
@@ -49,7 +48,6 @@ const ModalContainer = styled.div`
     display: flex;
     flex-direction: column; column;
     align-items: center;
-    /* justify-content: center; */
     padding: 60px 50px;
   }
   .right-modal {
@@ -85,7 +83,7 @@ const ModalContainer = styled.div`
   }
   .modal-input-container{
       width: 100%;
-      margin-top: 2.2rem;
+      margin-top: 0.5rem;
   }
   form {
     display: flex;
@@ -154,7 +152,6 @@ const ModalContainer = styled.div`
       flex-direction: column;
       align-items: center;
       position: relative: ;
-      /* justify-content: center; */
   }
   .s2-illustration-absolute{
     width: 934px;
@@ -207,7 +204,6 @@ const ModalContainer = styled.div`
       justify-content: center;
       align-items: center;
       cursor: pointer;
-      /* z-index: 90; */
   }
   .back-to-home-btn{
       cursor: pointer;
@@ -325,7 +321,6 @@ const ModalContainer = styled.div`
       align-items: center;
       position: relative: ;
       max-width: 100vw;
-      /* justify-content: center; */
   }
   .s2-illustration-absolute{
     max-width: 100vw;
@@ -346,19 +341,17 @@ const ModalContainer = styled.div`
     margin-top: 15px;
   }
   .close-btn{
-      /* background-color: #FF716C; */
       background-color: white;
       top: 10px;
       right: 10px;
   }
   }
 `;
-const JoinNewsLetterModal = () => {
+const JoinNewsLetterModal = ({ lang }) => {
   const [formStage, setFormStage] = useState(1);
   const [formData, setFormData] = useState({});
   const [formError, setFormError] = useState(false);
   const [isEmailValid, setIsEmailValid] = useState(true);
-  //   const [modalState, setModalState] = useState(show ? true : true);
 
   const { showModal, closeNewsLetterModal } = useContext(GlobalContext);
   const closemodal = (e) => {
@@ -392,7 +385,6 @@ const JoinNewsLetterModal = () => {
       setIsEmailValid(validateEmail(formData.userEmail));
       if (validateEmail(formData.userEmail)) {
         setFormError(false);
-        // setFormStage(2);
         let postData = {
           firstname: formData.userName,
           category: formData.userCategory.toLowerCase(),
@@ -400,12 +392,6 @@ const JoinNewsLetterModal = () => {
           investment_range: '',
         };
 
-        //   {
-        //     "firstname": "Edgar",
-        //     "category": "consult",
-        //     "email": "fiedgar2@email.com",
-        //         "investment_range": ""
-        // }
         try {
           const res = await axios
             .post(`${NON_DIASPORA}/create`, postData, {
@@ -440,15 +426,10 @@ const JoinNewsLetterModal = () => {
     }
   };
   const options = [
-    { value: 'Invest', label: 'Invest' },
-    { value: 'Mentor', label: 'Mentor' },
-    { value: 'Consult', label: 'Consult' },
+    { value: lang.invest, label: lang.invest },
+    { value: lang.mentor, label: lang.mentor },
+    { value: lang.mentor, label: lang.mentor },
   ];
-  //   useEffect(() => {
-  //     document.body.style.overflow = 'hidden';
-  //     return () => (document.body.style.overflow = 'unset');
-  //   }, []);
-  //
 
   return (
     <ModalContainer modalState={showModal} onClick={closemodal}>
@@ -457,14 +438,9 @@ const JoinNewsLetterModal = () => {
           {formStage == 1 && (
             <>
               <div className='left-modal'>
-                <p className='modal-title'>
-                  Receive messages from the future. We only fill your inbox with
-                  happiness.
-                </p>
+                <p className='modal-title'>{lang.non_diapora_modal_title}</p>
                 <p className='modal-normal-text'>
-                  Join our mailing list to get incredible news on the best
-                  companies to invest in. We promise, we would only send you the
-                  good stuff.
+                  {lang.non_diapora_modal_title_subtext}
                 </p>
 
                 <div className='modal-input-container'>
@@ -475,7 +451,7 @@ const JoinNewsLetterModal = () => {
                       onChange={handleChange}
                       type='text'
                       className='name'
-                      placeholder='Name'
+                      placeholder={lang.name}
                     />
                     <input
                       name='userEmail'
@@ -483,27 +459,27 @@ const JoinNewsLetterModal = () => {
                       onChange={handleChange}
                       type='text'
                       className='name'
-                      placeholder='Email Address'
+                      placeholder={lang.email}
                     />
                     <Select
                       value={formData.userCategory || ''}
                       onChange={handleSelectChange}
                       options={options}
                       className='input-select'
-                      placeholder='Category'
+                      placeholder={lang.category}
                     />
                     <input
                       type='submit'
-                      value='Connect'
+                      value={lang.connect}
                       className='submit'
-                      placeholder='messa'
+                      // placeholder={lang.message}
                     />
                   </form>
                   {formError && (
-                    <p className='error'>Please fill in the missing inputs</p>
+                    <p className='error'>{lang.pls_fill_missing}</p>
                   )}
                   {!isEmailValid && (
-                    <p className='error'>Please provide a valid email</p>
+                    <p className='error'>{lang.pls_valid_email}</p>
                   )}
                 </div>
               </div>
@@ -540,9 +516,7 @@ const JoinNewsLetterModal = () => {
                     objectFit='cover'
                   />
                 </div>
-                <p className='s2-text'>
-                  Thank you for your interest, we will be in touch soon.
-                </p>
+                <p className='s2-text'>{lang.thank_you_modal}</p>
                 <button onClick={closemodal} className='back-to-home-btn'>
                   <div className='button-arrow'>
                     <Img
@@ -553,7 +527,7 @@ const JoinNewsLetterModal = () => {
                     />
                   </div>
 
-                  <span className='btn-text'>Back To Home</span>
+                  <span className='btn-text'>{lang.back_to_home}</span>
                 </button>
               </div>
             </>
@@ -562,16 +536,6 @@ const JoinNewsLetterModal = () => {
           {formStage == 3 && (
             <>
               <div className='form-step-two'>
-                {/* <div className='s2-illustration-absolute'>
-                  <div className='s2-illustration'>
-                    <Img
-                      src='s2-illustration.svg'
-                      alt='logo'
-                      layout='fill'
-                      objectFit='cover'
-                    />
-                  </div>
-                </div> */}
                 <div className='s3-illustration-person'>
                   <Img
                     src='s3-illustration-person.svg'
@@ -580,9 +544,7 @@ const JoinNewsLetterModal = () => {
                     objectFit='cover'
                   />
                 </div>
-                <p className='s2-text'>
-                  Ooppss! Something went wrong. Please try later.
-                </p>
+                <p className='s2-text'>{lang.Ooppss}</p>
                 <button onClick={closemodal} className='back-to-home-btn'>
                   <div className='button-arrow'>
                     <Img
@@ -593,7 +555,7 @@ const JoinNewsLetterModal = () => {
                     />
                   </div>
 
-                  <span className='btn-text'>Back To Home</span>
+                  <span className='btn-text'>{lang.back_to_home}</span>
                 </button>
               </div>
             </>

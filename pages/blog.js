@@ -31,7 +31,6 @@ const BlogContainer = styled.div`
 
   position: relative;
   .blog-m-title {
-    /* color: #00853b; */
     font-family: var(--font-family-noto_sans);
     font-size: var(--font-size-xxxl);
     font-style: normal;
@@ -96,7 +95,6 @@ const BlogContainer = styled.div`
       flex-direction: row;
       flex-wrap: wrap;
       justify-content: flex-start;
-      /* background-color: red; */
     }
     .hide-on-desktop {
       display: none;
@@ -119,7 +117,6 @@ const BlogContainer = styled.div`
     }
     .previous-blogs-container {
       width: 100%;
-      /* margin-top: 30px; */
       flex-direction: row;
       flex-wrap: wrap;
       margin-bottom: 100px;
@@ -138,7 +135,8 @@ function Blog({ blogs }) {
   const rightSide = '';
   // const [restBlogs, setRestBlogs] = useState();
 
-  const { showBlogDetail, currentLanguage } = useContext(GlobalContext);
+  const { showBlogDetail, setCurrentLanguage, currentLanguage } =
+    useContext(GlobalContext);
 
   const router = useRouter();
   const { locale } = router;
@@ -147,34 +145,13 @@ function Blog({ blogs }) {
 
   useEffect(() => {
     setlan(currentLanguage == 'en' ? en : fr);
+    // const browserlang = localStorage.getItem('browserLanguague');
+    // if (browserlang) {
+    //   setCurrentLanguage(browserlang);
+    // } else {
+    //   localStorage.setItem('browserLanguague', JSON.stringify(currentLanguage));
+    // }
   }, [currentLanguage]);
-
-  // const Blogs = [
-  //   {
-  //     title: '',
-  //     category: 'Design',
-  //     cover_img: 'nmnmnmnmn.png svg jp',
-  //     summart: '',
-  //     full_text: 'bmbmbmbmb // render as html',
-  //   },
-  //   {
-  //     title: '',
-  //     category: 'Design',
-  //     cover_img: 'nmnmnmnmn.png svg jp',
-  //     summart: '',
-  //     full_text: 'bmbmbmbmb // render as html',
-  //   },
-  //   {
-  //     title: '',
-  //     category: 'Design',
-  //     cover_img: 'nmnmnmnmn.png svg jp',
-  //     summart: '',
-  //     full_text: 'bmbmbmbmb // render as html',
-  //   },
-  // ];
-  // useEffect(() => {
-  //   setRestBlogs(blogs.blogs.shift());
-  // }, []);
 
   const chunkArray = (arr, n) => {
     var chunkLength = Math.max(arr.length / n, 1);
@@ -267,8 +244,10 @@ function Blog({ blogs }) {
       </FluidContainer>
 
       <Mission lang={lan} />
-      <NavBar locale={lan} router={router} />
-      {showBlogDetail && <BlogDetail {...featured} />}
+      <NavBar currentlan={lan} locale={lan} router={router} />
+      {showBlogDetail && (
+        <BlogDetail {...featured} currentlan={lan} lang={lan} />
+      )}
     </BlogContainer>
   );
 }

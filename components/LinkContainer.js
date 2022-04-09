@@ -22,7 +22,6 @@ const LinkContainer = styled.h3`
   
 
   &:hover {
-    /* text-decoration: underline; */
     background-color: #009743;
     color: white;
    
@@ -31,7 +30,6 @@ const LinkContainer = styled.h3`
   }
 
   @media (min-width: 1280px) {
-    /* align-items: center; */
     justify-content: flex-start;
     border: 1px solid #009743;
     max-width: 350px;

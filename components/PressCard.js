@@ -5,29 +5,21 @@ import { Img } from '../components/Img';
 import Image from 'next/image';
 const PCard = styled.div`
   width: 100vw;
-  /* height: 500px; */
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* padding: 0 30px; */
   margin: 0px 15px;
   scroll-snap-align: center;
   .wrapper {
     background-color: var(--white);
-    /* background-color: orange; */
     display: flex;
     flex-direction: column;
     border-radius: 20px;
     box-shadow: 0px 3px 6px #00000029;
     padding-bottom: 26px;
     height: 100%;
-    /* padding: 10px 0px; */
-    /* height: 100%; */
-
-    /* max-width: 330px; */
     max-width: 100%;
   }
-  /* border: 1px solid green; */
 
   .profile-frame {
     position: relative;
@@ -52,7 +44,6 @@ const PCard = styled.div`
     font-style: normal;
     font-weight: 700;
     letter-spacing: 0px;
-    /* padding: 0 10px; */
     padding: 0 30px;
     margin-top: 18px;
 
@@ -61,7 +52,6 @@ const PCard = styled.div`
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
-    /* height: 60px; */
     height: 70px;
   }
   .ellipse-text {
@@ -73,7 +63,6 @@ const PCard = styled.div`
     overflow: hidden;
     text-overflow: ellipsis;
     color: #5b615e;
-    /* height: 88px; */
   }
 
   .read-more {
@@ -145,7 +134,6 @@ const P = styled.p`
   line-height: 16px;
 
   width: 100%;
-  /* background-color: green; */
   @media (min-width: 1280px) {
     font-family: 'Poppins' !important;
     font-style: normal;
@@ -154,7 +142,6 @@ const P = styled.p`
     margin: 16px 0;
     display: -webkit-box;
     -webkit-line-clamp: 2 !important;
-    /* height: 60px !important; */
   }
 `;
 const SourceRow = styled.div`
@@ -167,8 +154,6 @@ const SourceRow = styled.div`
 
   .source-img {
     position: relative;
-    /* width: 25px;
-    height: 25px; */
 
     width: 60px;
     height: 60px;
@@ -196,7 +181,6 @@ const SourceRow = styled.div`
     }
   }
 `;
-//
 export const PressCard = ({ title, author, author_image, cover_img, link }) => {
   return (
     <PCard>

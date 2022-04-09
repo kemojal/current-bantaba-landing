@@ -22,7 +22,6 @@ const Function = ({ text, src }) => {
 const Container = styled.div`
   display: flex;
   align-items: center;
-  /* background-color: #0097430d; */
   padding: 0px 0px;
   border-radius: 10px;
   margin-right: 15px;
@@ -52,15 +51,6 @@ const Icon = styled.div`
   position: relative;
   height: 20px;
   width: 20px;
-  /* &:before {
-    content: '';
-    width: 30px;
-    height: 30px;
-    background-color: white;
-    position: absolute;
-    transform: translate(-5px, -5px);
-    border-radius: 50%;
-  } */
   @media (min-width: 600px) {
     height: 40px;
     width: 40px;

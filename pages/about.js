@@ -8,7 +8,7 @@ import i18n from 'i18next';
 import { useRouter } from 'next/router';
 
 // import Fade from 'react-reveal/Fade';
-// skeleton loading
+
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 
@@ -34,7 +34,6 @@ const Aboutontainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* padding-top: 4rem; */
   padding-top: 94px;
 
   .section {
@@ -49,7 +48,6 @@ const Aboutontainer = styled.div`
   }
 
   .about-m-title {
-    /* color: #00853b; */
     font-family: var(--font-family-noto_sans);
     font-size: var(--font-size-xxxl);
     font-style: normal;
@@ -76,9 +74,6 @@ const Aboutontainer = styled.div`
   }
   .img-wrapper {
     width: 100%;
-    /* margin-top: 80px; */
-    /* position: relative; */
-    /* display: flex; */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -93,19 +88,7 @@ const Aboutontainer = styled.div`
     border-radius: 10px;
     overflow: hidden;
   }
-  /* .skeleton {
-    background-color: #e8fcf0;
-    background-image: linear-gradient(
-      to right,
-      #e8fcf0 0%,
-      rgba(0, 0, 0, 0.05) 20%,
-      #e8fcf0 40%,
-      #e8fcf0 100%
-    );
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    animation: ${shimmer} 1s linear infinite;
-  } */
+
   .bg-section-two {
     background-color: #e8fcf1;
     padding-bottom: 0;
@@ -145,7 +128,6 @@ const Aboutontainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    /* padding-bottom: 4rem; */
   }
   .z-10 {
     z-index: 10;
@@ -201,9 +183,6 @@ const Aboutontainer = styled.div`
       justify-content: center;
 
       flex-wrap: wrap;
-      /* padding-left: 0;
-      padding-right: 0;
-      background-color: orange !important; */
     }
     .bg-section-two {
       background-color: white;
@@ -231,11 +210,10 @@ const Aboutontainer = styled.div`
     .about-img-2 {
       width: 558px;
       height: 358px;
-      /* height: 422px; */
+
       border-radius: 10px;
       overflow: hidden;
       margin: 0;
-      /* background-color: red; */
     }
     .h-422 {
       height: 422px;
@@ -293,7 +271,6 @@ const Aboutontainer = styled.div`
       top: 0;
       bottom: 0;
       height: 100%;
-      /* background-color: pink !important; */
     }
     .fixed-bg-relative {
       position: relative;
@@ -350,9 +327,6 @@ const Aboutontainer = styled.div`
     .pl-30 {
       padding-left: 30px;
     }
-    /* .section {
-    padding: 0;
-    } */
 
     .reset-mb-50 {
       margin-bottom: 0;
@@ -361,14 +335,19 @@ const Aboutontainer = styled.div`
 `;
 
 export default function About({ team }) {
-  const { currentLanguage } = useContext(GlobalContext);
+  const { currentLanguage, setCurrentLanguage } = useContext(GlobalContext);
 
   const router = useRouter();
   const { locale } = router;
-  // const lan = locale == 'en' ? en : fr;
   const [lan, setlan] = useState(currentLanguage == 'en' ? en : fr);
 
   useEffect(() => {
+    const browserlang = localStorage.getItem('browserLanguague');
+    if (browserlang) {
+      setCurrentLanguage(browserlang);
+    } else {
+      localStorage.setItem('browserLanguague', JSON.stringify(currentLanguage));
+    }
     setlan(currentLanguage == 'en' ? en : fr);
   }, [currentLanguage]);
 
@@ -542,7 +521,7 @@ export default function About({ team }) {
           </div>
 
           <p className='notosans-bold-licorice-22px  align-center z-10 blob-green'>
-           {lan.its + ' '}
+            {lan.its + ' '}
             <span className='color-green-desktop'>{lan.time_for_africa}</span>
             {' ' + lan.revolution_together}
           </p>
@@ -562,7 +541,7 @@ export default function About({ team }) {
         </div>
       </FluidContainer>
       <Mission lang={lan} />
-      <NavBar locale={lan} router={router} />
+      <NavBar currentlan={lan} locale={lan} router={router} />
     </Aboutontainer>
   );
 }

@@ -9,12 +9,9 @@ const FluidContainer = styled.div`
     flex-direction: ${({ flipColumn }) => (flipColumn ? flipColumn : 'column')};
     align-items: center;
     justify-content: center;
-    /* flex-direction: row; */
     padding: 40px 0;
   }
 `;
 
 export { FluidContainer };
-// export const FluidContainer = ({ children }) => {
-//   return <FluidContainer>{children}</FluidContainer>;
-// };
+

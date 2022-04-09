@@ -67,7 +67,6 @@ const Container = styled.div`
     font-weight: 700;
     font-size: 22px !important;
     text-align: left !important;
-    /* line-height: 150%; */
   }
 
   @media (min-width: 600px) {
@@ -83,14 +82,12 @@ const Container = styled.div`
     .title {
       font-weight: 700;
       font-size: 40px;
-      /* font-size: 37px; */
     }
     .discription {
       font-weight: 500;
       line-height: 160%;
       padding: 10px 0;
       font-weight: normal;
-      /* font-weight: 500; */
       font-size: 18px;
       line-height: 150%;
       color: #5b615e;
@@ -99,13 +96,9 @@ const Container = styled.div`
       font-family: 'Poppins';
       font-style: normal;
       font-weight: 400;
-      /* font-size: 20px; */
-      /* line-height: 160%; */
-      /* position: relative; */
       color: #5b615e;
     }
     .col {
-      /* padding-left: 20px; */
       padding-top: 19px;
       padding-left: 0;
       padding-right: 0;

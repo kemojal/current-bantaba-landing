@@ -14,13 +14,11 @@ const MissionSection = styled.section`
   width: 100vw;
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
   justify-content: center;
   position: relative;
   padding: 50px 1rem;
   padding-bottom: 4rem;
   background-color: var(--ottoman);
-  /* padding-top: 0rem; */
   .logo-frame{
       width: 201px;
       height: 41px;
@@ -32,12 +30,6 @@ const MissionSection = styled.section`
     align-items: center;
     padding: 2rem 0rem
     width: 100vw;
-    /* color: var(--licorice);
-    font-family: var(--font-family-noto_sans);
-    font-size: var(--font-size-s);
-    font-style: normal;
-    font-weight: 400; */
-    /* line-height: 25px; */
     margin-top: 1rem;
     letter-spacing: 0.00px;
     line-height: 25px;
@@ -59,16 +51,13 @@ const MissionSection = styled.section`
   @media (min-width: 1280px) {
     width: 100%;
     padding-bottom: 0;
-    /* flex-direction: row; */
     align-items: center;
     justify-content: space-between;
 
     .sub-mission{
-      /* background-color: red; */
       max-width: 30%;
       display: flex;
       flex-direction: column;
-      /* justify-content: center; */
       padding-bottom: 43px;
     }
     .address-w-25{
@@ -80,16 +69,13 @@ const MissionSection = styled.section`
     .row-on-desktop{
       display: flex;
       flex-direction: row;
-      /* align-items: center; */
       width: 100%;
       justify-content: space-between;
-      /* background-color: green; */
       max-width: 1200px;
       padding: 0 50px;
     }
     .footer-wrapper{
       width: 100%;
-      /* background-color: red; */
       margin: 0 10px;
       width: 40%;
       justify-content: flex-start;
@@ -151,8 +137,8 @@ export const Mission = ({ lang }) => {
   ];
 
   const address = {
-    title: 'Address',
-    address: ['Östermalmsgatan 26A ', '114 26 Stockholm'],
+    title: lang.address,
+    address: [lang.address_no1, lang.address_no2],
   };
   return (
     <MissionSection>
@@ -194,9 +180,9 @@ export const Mission = ({ lang }) => {
           Copyright © 2021
         </span>
       </Copyright>
-      <JoinNewsLetterModal />
-      <ContactUsModal />
-      <NewsLetterModal />
+      <JoinNewsLetterModal lang={lang} />
+      <ContactUsModal lang={lang} />
+      <NewsLetterModal lang={lang} />
     </MissionSection>
   );
 };

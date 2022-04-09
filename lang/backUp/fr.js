@@ -1,7 +1,6 @@
 export default {
   hero_header: `Rejoignez la plus grande Communauté Africaine Startups-diaspora `,
   hero_discription: `Notre plateforme met en relation les startups tech africaines avec des experts et investisseurs de la diaspora Africaine. `,
-  // functionData: ['Savoir', 'Capital', 'Réseautage'],
   knowledge: 'Savoir',
   capital: 'Capital',
   network: 'Réseautage',

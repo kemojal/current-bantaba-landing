@@ -52,16 +52,12 @@ const ImgSrc = styled.img`
 `;
 const ImgContainer = styled.div`
   transform: translate(2%, -4.8%);
-  /* transform: translateX(10%); */
 `;
 const ImgWrapper = styled.div`
   position: relative;
-  /* width: 40.875rem;
-  height: 43rem; */
 
   width: 33.875rem;
   height: 44rem;
-  /* transform: translateX(15%); */
 `;
 
 const Illustration = () => {
