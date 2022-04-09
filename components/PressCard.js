@@ -201,13 +201,13 @@ export const PressCard = ({ title, author, author_image, cover_img, link }) => {
         </SourceRow>
 
         <h3 className='notosans-bold-licorice-20px title'>{title}</h3>
-        <P className='notosans-normal-licorice-16px ellipse-text'>
+        {/* <P className='notosans-normal-licorice-16px ellipse-text'>
           When the star-studded Board of Admissions of SSE BusinessLab, the
           venture incubator of the Stockholm School of Economics, gathered to
           assess the latest applicants, a total of 8 companies were given
           positive news. As such, these teams are today entering the prestigious
           incubator today. …
-        </P>
+        </P> */}
         <a className='read-more' href={link} target='_blank'>
           <span>Read More</span>
           <div className='readmore-icon'>

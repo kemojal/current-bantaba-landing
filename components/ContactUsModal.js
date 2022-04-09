@@ -54,6 +54,7 @@ const ModalContainer = styled.div`
     flex-direction: column; column;
     align-items: center;
     padding: 60px 50px;
+    padding-top: 20px;
   }
   .right-modal {
     width: 50%;
