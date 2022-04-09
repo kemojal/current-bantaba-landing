@@ -27,7 +27,7 @@ import {
 
 import en from '../lang/en';
 import fr from '../lang/fr';
-import HelmetMetaData from './HelmetMetaData';
+// import HelmetMetaData from './HelmetMetaData';
 
 const BlogDetailContainer = styled.div`
   width: 99%;
@@ -601,38 +601,30 @@ const BlogDetail = ({
               <div className='social-container'>
                 <span className='share-text'>Share:</span>
                 <Fade bottom>
-                <FacebookShareButton
-                      url={
-                        'https://blog.ourbantaba.com/en/post'
-                      }
-                      media={title}
-                    >
-                      <FacebookIcon size={24} round />
-                    </FacebookShareButton>
-                    <TwitterShareButton
-                      url={
-                        'https://blog.ourbantaba.com/en/post'
-                      }
-                      media={title}
-                    >
-                      <TwitterIcon size={24} round />
-                    </TwitterShareButton>
-                    <LinkedinShareButton
-                      url={
-                        'https://blog.ourbantaba.com/en/post'
-                      }
-                      media={title}
-                    >
-                      <LinkedinIcon size={24} round />
-                    </LinkedinShareButton>
-                    <InstapaperShareButton
-                      url={
-                        'https://blog.ourbantaba.com/en/post'
-                      }
-                      media={title}
-                    >
-                      <InstapaperIcon  size={24} round />
-                    </InstapaperShareButton>
+                  <FacebookShareButton
+                    url={'https://blog.ourbantaba.com/en/post'}
+                    media={title}
+                  >
+                    <FacebookIcon size={24} round />
+                  </FacebookShareButton>
+                  <TwitterShareButton
+                    url={'https://blog.ourbantaba.com/en/post'}
+                    media={title}
+                  >
+                    <TwitterIcon size={24} round />
+                  </TwitterShareButton>
+                  <LinkedinShareButton
+                    url={'https://blog.ourbantaba.com/en/post'}
+                    media={title}
+                  >
+                    <LinkedinIcon size={24} round />
+                  </LinkedinShareButton>
+                  <InstapaperShareButton
+                    url={'https://blog.ourbantaba.com/en/post'}
+                    media={title}
+                  >
+                    <InstapaperIcon size={24} round />
+                  </InstapaperShareButton>
                   {/* <SocialContainer socialList={socialList} /> */}
                 </Fade>{' '}
               </div>
@@ -650,36 +642,28 @@ const BlogDetail = ({
                   </Fade>
                   <Fade bottom>
                     <FacebookShareButton
-                      url={
-                        'https://blog.ourbantaba.com/en/post'
-                      }
+                      url={'https://blog.ourbantaba.com/en/post'}
                       media={title}
                     >
                       <FacebookIcon size={24} round />
                     </FacebookShareButton>
                     <TwitterShareButton
-                      url={
-                        'https://blog.ourbantaba.com/en/post'
-                      }
+                      url={'https://blog.ourbantaba.com/en/post'}
                       media={title}
                     >
                       <TwitterIcon size={24} round />
                     </TwitterShareButton>
                     <LinkedinShareButton
-                      url={
-                        'https://blog.ourbantaba.com/en/post'
-                      }
+                      url={'https://blog.ourbantaba.com/en/post'}
                       media={title}
                     >
                       <LinkedinIcon size={24} round />
                     </LinkedinShareButton>
                     <InstapaperShareButton
-                      url={
-                        'https://blog.ourbantaba.com/en/post'
-                      }
+                      url={'https://blog.ourbantaba.com/en/post'}
                       media={title}
                     >
-                      <InstapaperIcon  size={24} round />
+                      <InstapaperIcon size={24} round />
                     </InstapaperShareButton>
                     {/* <SocialContainer socialList={socialList} /> */}
                   </Fade>{' '}
@@ -738,7 +722,7 @@ const BlogDetail = ({
           </div>
         </div>
       </FluidContainer>
-      <HelmetMetaData title='hello' imgage={cover_img} />
+      {/* <HelmetMetaData title='hello' imgage={cover_img} /> */}
       <Mission lang={lan} />
       <NavBar currentlan={lan} locale={lan} router={router} />
     </BlogDetailContainer>
