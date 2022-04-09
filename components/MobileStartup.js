@@ -80,7 +80,7 @@ const MobileStartup = ({ lang }) => {
 
       <div className='device-frame'>
         <Img
-          src='mobile-pic-4b.svg'
+           src='mobile-pic-3b.svg'
           alt='logo'
           layout='fill'
           objectFit='contain'

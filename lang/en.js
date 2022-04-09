@@ -95,7 +95,7 @@ export default {
   contact_us_modal_title_subtext: `Hi, How can we help you today?`,
 
   newletter_modal_title: `Join our newsletter  `,
-  newsletter_us_modal_title_subtext: `Get the latest updates on the African tech space. We only fill your inbox with the good stuff! `,
+  newletter_modal_title_subtext: `Get the latest updates on the African tech space. We only fill your inbox with the good stuff! `,
   invest: 'Invest',
   mentor: 'Mentor',
   consult: 'Consult',

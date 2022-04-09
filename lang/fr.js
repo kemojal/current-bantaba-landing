@@ -89,7 +89,7 @@ export default {
   contact_us_modal_title_subtext: `Bonjour, comment pouvons-nous vous aider aujourd'hui?`,
 
   newletter_modal_title: `S'abonner aux newsletter `,
-  newsletter_us_modal_title_subtext: `Bonjour, comment pouvons-nous vous aider aujourd'hui?`,
+  newletter_modal_title_subtext: `Bonjour, comment pouvons-nous vous aider aujourd'hui?`,
 
   invest: 'Invest',
   mentor: 'Mentor',

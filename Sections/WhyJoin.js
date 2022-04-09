@@ -293,7 +293,7 @@ export const WhyJoin = ({ lang }) => {
 
           <div className='device-frame'>
             <Img
-              src='mobile-pic-3b.svg'
+              src='mobile-pic-4b.svg'
               alt='logo'
               layout='fill'
               objectFit='contain'
@@ -302,11 +302,11 @@ export const WhyJoin = ({ lang }) => {
           </div>
 
           <p className='notosans-bold-licorice-18px why-sub-title'>
-            {lang.discover_mentor_and_invest}
+            {lang.discover_mentor_and_invest_mobile}
           </p>
 
           <p className='notosans-normal-licorice-18px normal pl-pr-15'>
-            {lang.get_an_opportunity}
+            {lang.get_an_opportunity_mobile}
           </p>
 
           <div className='join-bt-container'>

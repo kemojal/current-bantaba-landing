@@ -113,6 +113,11 @@ const NavContainer = styled.div`
     height: 24px;
     
   } */
+  .logo-container {
+    position: relative;
+    width: 148px;
+    height: 30px;
+}
 
     .desk-left-nav {
       display: flex;
@@ -127,7 +132,7 @@ const NavContainer = styled.div`
       line-height: 150%;
       color: #5b615e;
       margin: ${({ currentLanguage }) =>
-        currentLanguage == 'en' ? '0px 25px' : '0px 10px'};
+        currentLanguage == 'en' ? '0px 25px' : '0px 6px'};
 
       padding: 10px 0;
       text-align: center;
