@@ -723,7 +723,7 @@ const BlogDetail = ({
         </div>
       </FluidContainer>
       {/* <HelmetMetaData title='hello' imgage={cover_img} /> */}
-      <Mission lang={lan} />
+      <Mission lang={lang} />
       <NavBar currentlan={lan} locale={lan} router={router} />
     </BlogDetailContainer>
   );
