@@ -35,7 +35,7 @@ const ModalContainer = styled.div`
     max-width: 1146px;
     max-height: 617px;
     width: 80%;
-    height: 80%;
+    height: 90%;
     min-height: 300px;
     display: flex;
     overflow: hidden;
@@ -450,9 +450,9 @@ const JoinNewsLetterModal = ({ lang }) => {
 
   const investmentOptions = [
     { value: '$1000', label: '$1000' },
-    { value: '1001 - $50000', label: '1001 - $50000' },
-    { value: '5001 - $100000', label: '5001 - $100000' },
-    { value: '$100000+', label: '$100000+' },
+    { value: '1001 - $5000', label: '1001 - $5000' },
+    { value: '5001 - $10000', label: '5001 - $10000' },
+    { value: '$10000+', label: '$10000+' },
   ];
 
   return (
