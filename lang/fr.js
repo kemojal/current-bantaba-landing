@@ -39,7 +39,7 @@ export default {
   discover_innovative_startups_Africa: `Découvrez les startups les plus innovantes et passionnantes d'Afrique`,
   discover_innovative_startups_Africa_subtext_desktop: `En 2021, nous avons décidé que l’endroit ne devait plus être un handicap pour accompagner les entrepreneurs qui relèvent les plus grands défis de l'Afrique. Depuis son lancement, notre plateforme a mis en relation plus de 150 startups technologiques africaines avec des experts et investisseurs de la diaspora à travers le monde entier.`,
   discover_innovative_startups_Africa_subtext_mobile: `Notre plateforme a mis en relation plus de 150 startups tech africaines avec des experts et investisseurs de la diaspora à travers le monde.`,
-  Join_our_growing_community: 'Rejoignez notre communauté >',
+  Join_our_growing_community: 'Rejoignez notre communauté',
   What_others_say_bantaba: `Ce que pensent les autres de Bantaba`,
   read_more: `En savoir plus`,
   Read_more_about_us_desktop: 'En savoir plus sur nous',
