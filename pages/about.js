@@ -1,4 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
+
+import Head from 'next/head';
 import styled, { keyframes } from 'styled-components';
 import AboutTeamCard from '../components/AboutTeamCard';
 import { Img } from '../components/Img';
@@ -358,191 +360,204 @@ export default function About({ team }) {
   };
 
   return (
-    <Aboutontainer>
-      <FluidContainer>
-        <div className='section row-on-desktop'>
-          <div className='desk-textcolum pr-30'>
-            <h1 className='about-m-title hide-on-desktop'>
-              {lan.about_us_page}
-            </h1>
+    <>
+      <Head>
+        <title>Bantaba | About</title>
+        <meta
+          name='description'
+          content='Bantaba enables Startups in Africa to access talent and capital from the diaspora community. '
+        />
+        <meta name='viewport' content='width=device-width, initial-scale=1' />
+        <meta httpEquiv='Content-Type' content='text/html; charset=utf-8' />
+        <link rel='icon' href='/favicons/favicon.ico' />
+      </Head>
 
-            {loaded ? (
-              <p className='desktop-about-title hide-on-mobile mbd-15'>
-                {lan.we_linking_africa_desktop}
-              </p>
-            ) : (
-              <Skeleton
-                baseColor='#E8FCF0'
-                height={45}
-                width={528}
-                count={3}
-                highlightColor='#04853A25'
-                className='desktop-about-title hide-on-mobile mbd-15'
-              />
-            )}
+      <Aboutontainer>
+        <FluidContainer>
+          <div className='section row-on-desktop'>
+            <div className='desk-textcolum pr-30'>
+              <h1 className='about-m-title hide-on-desktop'>
+                {lan.about_us_page}
+              </h1>
 
-            {loaded ? (
-              <div className=' notosans-normal-licorice-16px line-height-24 pb-24 desktop-normal-text'>
-                {lan.subtext_11}
-                <br />
-                <br />
-                {lan.subtext_12}
+              {loaded ? (
+                <p className='desktop-about-title hide-on-mobile mbd-15'>
+                  {lan.we_linking_africa_desktop}
+                </p>
+              ) : (
+                <Skeleton
+                  baseColor='#E8FCF0'
+                  height={45}
+                  width={528}
+                  count={3}
+                  highlightColor='#04853A25'
+                  className='desktop-about-title hide-on-mobile mbd-15'
+                />
+              )}
+
+              {loaded ? (
+                <div className=' notosans-normal-licorice-16px line-height-24 pb-24 desktop-normal-text'>
+                  {lan.subtext_11}
+                  <br />
+                  <br />
+                  {lan.subtext_12}
+                </div>
+              ) : (
+                ''
+                // <Skeleton
+                //   baseColor='#E8FCF0'
+                //   height={28}
+                //   width={528}
+                //   count={5}
+                //   highlightColor='#04853A25'
+                //   className=' notosans-normal-licorice-16px line-height-24 pb-24 desktop-normal-text'
+                // />
+              )}
+            </div>
+            <div className='desk-textcolum align-column-end'>
+              <div className='img-wrapper'>
+                <div className={`about-img-1 ${imgSkeleton} hide-on-desktop`}>
+                  <Image
+                    src={'/assets/images/Group-image_1-optimized.jpg'}
+                    alt='logo'
+                    layout='fill'
+                    objectFit='contain'
+                    priority={true}
+                  />
+                </div>
+                <div
+                  className={`about-img-2 h-422 ${imgSkeleton} hide-on-mobile`}
+                >
+                  <Image
+                    src={'/assets/images/Group-image_1-optimized.jpg'}
+                    alt='logo'
+                    layout='fill'
+                    objectFit='contain'
+                    // priority={true}
+                    onLoad={(e) => {
+                      e.target.src.indexOf('data:image/gif;base64') < 0 &&
+                        handleLoaded();
+                    }}
+                  />
+                </div>
               </div>
-            ) : (
-              ''
-              // <Skeleton
-              //   baseColor='#E8FCF0'
-              //   height={28}
-              //   width={528}
-              //   count={5}
-              //   highlightColor='#04853A25'
-              //   className=' notosans-normal-licorice-16px line-height-24 pb-24 desktop-normal-text'
-              // />
-            )}
+            </div>
           </div>
-          <div className='desk-textcolum align-column-end'>
-            <div className='img-wrapper'>
-              <div className={`about-img-1 ${imgSkeleton} hide-on-desktop`}>
-                <Image
-                  src={'/assets/images/Group-image_1-optimized.jpg'}
+          <div className='section bg-section-two pt-24  row-on-desktop reverse-row'>
+            <div className='desk-textcolum pl-30'>
+              <p className='notosans-bold-licorice-22px  about-section-title desktop-about-title'>
+                {lan.desire_build_africa}
+              </p>
+
+              <div className='notosans-normal-licorice-16px line-height-24 desktop-normal-text'>
+                {lan.subtext_21}
+                <br />
+                <br />
+                {lan.subtext_22}
+              </div>
+            </div>
+            <div className='desk-textcolum'>
+              <div className='v-spacer' />
+
+              <div className='about-img-2 hide-on-desktop'>
+                <Img
+                  src={'Group-image_2-optimized.jpg'}
                   alt='logo'
                   layout='fill'
                   objectFit='contain'
                   priority={true}
                 />
               </div>
-              <div
-                className={`about-img-2 h-422 ${imgSkeleton} hide-on-mobile`}
-              >
-                <Image
-                  src={'/assets/images/Group-image_1-optimized.jpg'}
+              <div className='about-img-2 h-324 hide-on-mobile'>
+                <Img
+                  src={'Group-image_2-optimized.jpg'}
                   alt='logo'
                   layout='fill'
                   objectFit='contain'
-                  // priority={true}
-                  onLoad={(e) => {
-                    e.target.src.indexOf('data:image/gif;base64') < 0 &&
-                      handleLoaded();
-                  }}
+                  priority={true}
                 />
               </div>
             </div>
           </div>
-        </div>
-        <div className='section bg-section-two pt-24  row-on-desktop reverse-row'>
-          <div className='desk-textcolum pl-30'>
-            <p className='notosans-bold-licorice-22px  about-section-title desktop-about-title'>
-              {lan.desire_build_africa}
+          <div className='section row-on-desktop'>
+            <div className='desk-textcolum pr-30'>
+              <p className='notosans-bold-licorice-22px  about-section-title pt-24 pt-24 desktop-about-title'>
+                {lan.we_empowring_startups}
+              </p>
+
+              <div className='notosans-normal-licorice-16px line-height-24 desktop-normal-text'>
+                {lan.subtext_31} -{' '}
+                <span className='emphasize'>LOVE FOR AFRICA</span>.
+                <br />
+                <br />
+                {lan.subtext_32}
+              </div>
+            </div>
+            <div className='desk-textcolum align-column-end'>
+              <div className='about-img-2 h-399 hide-on-mobile'>
+                <Img
+                  src={'Group-image_3-optimized.jpg'}
+                  alt='logo'
+                  layout='fill'
+                  objectFit='contain'
+                  priority={true}
+                />
+              </div>
+            </div>
+          </div>
+          <div className='section'>
+            <p className='notosans-bold-licorice-22px  align-center line-height-34 pb-24 mission-text-desktop'>
+              {lan.about_bantaba_is_on_mission}
+            </p>
+          </div>
+          <div className='section s-three mb-50 reset-mb-50'>
+            <div className='bg-fix-s3'>
+              <div className='blob-wrapper'>
+                <Img
+                  src={'blob-about.svg'}
+                  alt='logo'
+                  layout='fill'
+                  objectFit='contain'
+                  priority={true}
+                />
+              </div>
+            </div>
+            <div className='fixed-bg hide-on-mobile'>
+              <div className='fixed-bg-relative'>
+                <Img
+                  src={'fixed-bg-about.svg'}
+                  alt='logo'
+                  layout='fill'
+                  objectFit='contain'
+                  priority={true}
+                />
+              </div>
+            </div>
+
+            <p className='notosans-bold-licorice-22px  align-center z-10 blob-green'>
+              {lan.its + ' '}
+              <span className='color-green-desktop'>{lan.time_for_africa}</span>
+              {' ' + lan.revolution_together}
+            </p>
+          </div>
+          <div className='section bg-section-two section-four pt-24 '>
+            <div className='s4-white-space' />
+
+            <p className='notosans-bold-licorice-22px  align-center desktop-title'>
+              {lan.our_team}
             </p>
 
-            <div className='notosans-normal-licorice-16px line-height-24 desktop-normal-text'>
-              {lan.subtext_21}
-              <br />
-              <br />
-              {lan.subtext_22}
-            </div>
+            <ul className='team-list'>
+              {team.team.map((item, index) => {
+                return <AboutTeamCard key={index} {...item} />;
+              })}
+            </ul>
           </div>
-          <div className='desk-textcolum'>
-            <div className='v-spacer' />
-
-            <div className='about-img-2 hide-on-desktop'>
-              <Img
-                src={'Group-image_2-optimized.jpg'}
-                alt='logo'
-                layout='fill'
-                objectFit='contain'
-                priority={true}
-              />
-            </div>
-            <div className='about-img-2 h-324 hide-on-mobile'>
-              <Img
-                src={'Group-image_2-optimized.jpg'}
-                alt='logo'
-                layout='fill'
-                objectFit='contain'
-                priority={true}
-              />
-            </div>
-          </div>
-        </div>
-        <div className='section row-on-desktop'>
-          <div className='desk-textcolum pr-30'>
-            <p className='notosans-bold-licorice-22px  about-section-title pt-24 pt-24 desktop-about-title'>
-              {lan.we_empowring_startups}
-            </p>
-
-            <div className='notosans-normal-licorice-16px line-height-24 desktop-normal-text'>
-              {lan.subtext_31} -{' '}
-              <span className='emphasize'>LOVE FOR AFRICA</span>.
-              <br />
-              <br />
-              {lan.subtext_32}
-            </div>
-          </div>
-          <div className='desk-textcolum align-column-end'>
-            <div className='about-img-2 h-399 hide-on-mobile'>
-              <Img
-                src={'Group-image_3-optimized.jpg'}
-                alt='logo'
-                layout='fill'
-                objectFit='contain'
-                priority={true}
-              />
-            </div>
-          </div>
-        </div>
-        <div className='section'>
-          <p className='notosans-bold-licorice-22px  align-center line-height-34 pb-24 mission-text-desktop'>
-            {lan.about_bantaba_is_on_mission}
-          </p>
-        </div>
-        <div className='section s-three mb-50 reset-mb-50'>
-          <div className='bg-fix-s3'>
-            <div className='blob-wrapper'>
-              <Img
-                src={'blob-about.svg'}
-                alt='logo'
-                layout='fill'
-                objectFit='contain'
-                priority={true}
-              />
-            </div>
-          </div>
-          <div className='fixed-bg hide-on-mobile'>
-            <div className='fixed-bg-relative'>
-              <Img
-                src={'fixed-bg-about.svg'}
-                alt='logo'
-                layout='fill'
-                objectFit='contain'
-                priority={true}
-              />
-            </div>
-          </div>
-
-          <p className='notosans-bold-licorice-22px  align-center z-10 blob-green'>
-            {lan.its + ' '}
-            <span className='color-green-desktop'>{lan.time_for_africa}</span>
-            {' ' + lan.revolution_together}
-          </p>
-        </div>
-        <div className='section bg-section-two section-four pt-24 '>
-          <div className='s4-white-space' />
-
-          <p className='notosans-bold-licorice-22px  align-center desktop-title'>
-            {lan.our_team}
-          </p>
-
-          <ul className='team-list'>
-            {team.team.map((item, index) => {
-              return <AboutTeamCard key={index} {...item} />;
-            })}
-          </ul>
-        </div>
-      </FluidContainer>
-      <Mission lang={lan} />
-      <NavBar currentlan={lan} locale={lan} router={router} />
-    </Aboutontainer>
+        </FluidContainer>
+        <Mission lang={lan} />
+        <NavBar currentlan={lan} locale={lan} router={router} />
+      </Aboutontainer>
+    </>
   );
 }
 

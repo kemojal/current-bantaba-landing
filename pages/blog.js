@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import styled from 'styled-components';
-
+import Head from 'next/head';
 import { useRouter } from 'next/router';
 
 import { BlogCard } from '../components/BlogCard';
@@ -163,6 +163,17 @@ function Blog({ blogs }) {
     return chunks;
   };
   return (
+    <>
+      <Head>
+        <title>Bantaba | Blog</title>
+        <meta
+          name='description'
+          content='Bantaba enables Startups in Africa to access talent and capital from the diaspora community. '
+        />
+        <meta name='viewport' content='width=device-width, initial-scale=1' />
+        <meta httpEquiv='Content-Type' content='text/html; charset=utf-8' />
+        <link rel='icon' href='/favicons/favicon.ico' />
+      </Head>
     <BlogContainer>
       <FluidContainer>
         <Fade bottom>
@@ -249,6 +260,7 @@ function Blog({ blogs }) {
         <BlogDetail {...featured} currentlan={lan} lang={lan} />
       )}
     </BlogContainer>
+    </>
   );
 }
 

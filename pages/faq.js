@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useRouter } from 'next/router';
 import { GlobalContext } from '../context/GlobalState';
-
+import Head from 'next/head';
 import styled from 'styled-components';
 import Accordion from '../components/Accordion';
 
@@ -185,37 +185,53 @@ export default function FAQ({ EnglishFaQ, FrenchFAQ }) {
     }, []);
   };
   return (
-    <FAQContainer>
-      <div className='container'>
-        <Fade bottom>
-          <p className='header-title'>{lan.faqs}</p>
-        </Fade>
-        <Fade bottom>
-          <div className='input-search mt-24'>
-            <div className='search-container'>
-              <div className='icon-fix'>
-                <div className='search-icon'>
-                  <Img
-                    src={'search.svg'}
-                    alt='logo'
-                    layout='fill'
-                    objectFit='contain'
-                  />
+    <>
+      <Head>
+        <title>Bantaba | FAQ</title>
+        <meta
+          name='description'
+          content='Bantaba enables Startups in Africa to access talent and capital from the diaspora community. '
+        />
+        <meta name='viewport' content='width=device-width, initial-scale=1' />
+        <meta httpEquiv='Content-Type' content='text/html; charset=utf-8' />
+        <link rel='icon' href='/favicons/favicon.ico' />
+      </Head>
+      <FAQContainer>
+        <div className='container'>
+          <Fade bottom>
+            <p className='header-title'>{lan.faqs}</p>
+          </Fade>
+          <Fade bottom>
+            <div className='input-search mt-24'>
+              <div className='search-container'>
+                <div className='icon-fix'>
+                  <div className='search-icon'>
+                    <Img
+                      src={'search.svg'}
+                      alt='logo'
+                      layout='fill'
+                      objectFit='contain'
+                    />
+                  </div>
                 </div>
+                <Input
+                  onChange={inputHandler}
+                  type='text'
+                  placeholder='Search'
+                />
               </div>
-              <Input onChange={inputHandler} type='text' placeholder='Search' />
             </div>
-          </div>
-        </Fade>
-        <ul className='question-list-container'>
-          {result.map((item, index) => {
-            return <Accordion key={index} {...item} />;
-          })}
-        </ul>
-      </div>
-      <Mission lang={lan} />
-      <NavBar currentlan={lan} locale={lan} router={router} />
-    </FAQContainer>
+          </Fade>
+          <ul className='question-list-container'>
+            {result.map((item, index) => {
+              return <Accordion key={index} {...item} />;
+            })}
+          </ul>
+        </div>
+        <Mission lang={lan} />
+        <NavBar currentlan={lan} locale={lan} router={router} />
+      </FAQContainer>
+    </>
   );
 }
 

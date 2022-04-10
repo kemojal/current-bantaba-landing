@@ -1,9 +1,7 @@
 import { useState, useContext, useEffect } from 'react';
 
 import Head from 'next/head';
-import Image from 'next/image';
 
-import { useSelector } from 'react-redux';
 
 import en from '../lang/en';
 import fr from '../lang/fr';
@@ -102,7 +100,7 @@ export default function Home({ press }) {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Bantaba Landing Page</title>
+        <title>Bantaba | home</title>
         <meta
           name='description'
           content='Bantaba enables Startups in Africa to access talent and capital from the diaspora community. '

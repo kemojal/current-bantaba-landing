@@ -100,6 +100,8 @@ const NavContainer = styled.div`
   }
   @media (min-width: 1280px) {
     max-width: var(--max-width);
+    max-width: ${({ currentLanguage }) =>
+        currentLanguage == 'en' ? 'var(--max-width)' : 'calc(var(--max-width) + 100px )'};
     max-height: 50px;
     justify-content: space-between;
     padding: 0;
