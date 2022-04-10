@@ -61,6 +61,9 @@ const PnCard = styled.div`
 `;
 
 export const PartnerCard = ({ src, title, transpose }) => {
+  if (title === 'Turku University') {
+    transpose = true;
+  }
   return (
     <PnCard transpose={transpose}>
       <div className='wrapper'>
