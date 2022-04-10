@@ -105,6 +105,7 @@ export default {
   category: 'Category',
   connect: 'Connect',
   send: `send`,
+  investment_range: 'investment range',
   thank_you_modal: `Thank you for your interest, we will be in touch soon.`,
   thank_you_subscribe: 'Thank you for joining our newsletter',
   back_to_home: 'Back to Home',

@@ -30,9 +30,9 @@ const ModalContainer = styled.div`
     left: 50%;
     transform: translate(-50%, -50%);
     max-width: 1146px;
-    max-height: 617px;
+    max-height: 700px;
     width: 80%;
-    height: 80%;
+    height: 95%;
     min-height: 300px;
     display: flex;
     overflow: hidden;
@@ -105,7 +105,7 @@ const ModalContainer = styled.div`
     padding: 15px 20px;
     margin: 4px;
     max-height: 53px;
-    margin: 10px 0;
+    margin: 5px 0;
     background-color: var(--alabaster);
     border-radius: 4.5px;
     border: 1px solid var(--geyser);
@@ -120,7 +120,7 @@ const ModalContainer = styled.div`
     width: 100%;
     padding: 15px 10px;
     margin: 4px;
-    margin-top: 12px;
+    margin-top: 6px;
     border: none;
     background-color: #009743;
     border-radius: 5px;

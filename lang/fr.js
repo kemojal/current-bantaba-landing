@@ -89,7 +89,7 @@ export default {
   contact_us_modal_title_subtext: `Bonjour, comment pouvons-nous vous aider aujourd'hui?`,
 
   newletter_modal_title: `S'abonner aux newsletter `,
-  newletter_modal_title_subtext: `Bonjour, comment pouvons-nous vous aider aujourd'hui?`,
+  newletter_modal_title_subtext: `Recevez les actualités sur la scène technologique africaine. Nous ne remplissons votre boîte de réception qu'avec les bonnes choses!`,
 
   invest: 'Invest',
   mentor: 'Mentor',
@@ -100,6 +100,7 @@ export default {
   category: `Catégorie`,
   connect: `Se Connecter`,
   send: `Envoyer`,
+  investment_range: 'Fourchette',
   thank_you_modal: `Merci pour votre intérêt, nous vous contacterons bientôt.`,
   thank_you_subscribe: `Merci de vous être abonné`,
   back_to_home: 'Fermer',

@@ -33,9 +33,9 @@ const ModalContainer = styled.div`
     height: 617px;
     display: flex; */
     max-width: 1146px;
-    max-height: 617px;
+    max-height: 700px;
     width: 80%;
-    height: 90%;
+    height: 95%;
     min-height: 300px;
     display: flex;
     overflow: hidden;
@@ -54,8 +54,8 @@ const ModalContainer = styled.div`
     display: flex;
     flex-direction: column; column;
     align-items: center;
-    padding: 60px 50px;
-    padding-top: 20px;
+    /* padding: 60px 50px; */
+    padding: 20px 50px;
   }
   .right-modal {
     width: 50%;
@@ -86,7 +86,7 @@ const ModalContainer = styled.div`
     font-size: 16px;
     line-height: 160%;
     color: #5B615E;
-    margin-top: 15px;
+    margin-top: 8px;
   }
   .modal-input-container{
       width: 100%;
@@ -108,7 +108,7 @@ const ModalContainer = styled.div`
     padding: 15px 20px;
     margin: 4px;
     max-height: 53px;
-    margin: 10px 0;
+    margin: 5px 0;
     background-color: var(--alabaster);
     border-radius: 4.5px;
     border: 1px solid var(--geyser);
@@ -123,7 +123,7 @@ const ModalContainer = styled.div`
     width: 100%;
     padding: 15px 10px;
     margin: 4px;
-    margin-top: 12px;
+    margin-top: 6px;
     border: none;
     background-color: #009743;
     border-radius: 5px;
@@ -512,7 +512,7 @@ const JoinNewsLetterModal = ({ lang }) => {
                         }}
                         options={investmentOptions}
                         className='input-select'
-                        placeholder={'investment range'}
+                        placeholder={lang.investment_range}
                       />
                     )}
 
