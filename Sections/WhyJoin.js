@@ -245,7 +245,7 @@ export const WhyJoin = ({ lang }) => {
         <DestopLeftIllustration>
           <div className='device-frame2'>
             <Img
-              src='why-device2b.svg'
+              src='why-device2b-optimized2.png'
               alt='logo'
               layout='fill'
               objectFit='contain'
@@ -275,7 +275,7 @@ export const WhyJoin = ({ lang }) => {
               // maxWidth='auto'
               maxWidth={currentLanguage === 'en' ? '218.2px' : '300px'}
               width={currentLanguage === 'en' ? '218.2px' : '300px'}
-              href={'https://community.ourbantaba.com/en/register'}
+              href={`https://community.ourbantaba.com/${currentLanguage}/register`}
             />
           </div>
           <div className='footer-text'>
@@ -316,7 +316,7 @@ export const WhyJoin = ({ lang }) => {
               title={lang.join_as_diaspora}
               bgcolor='var(--algae-green)'
               color='var(--licorice)'
-              href='https://community.ourbantaba.com/en/'
+              href={`https://community.ourbantaba.com/${currentLanguage}/register`}
               // maxWidth={currentLanguage === 'en' ? '218.2px' : '300ppx'}
               width={currentLanguage === 'en' ? '218.2px' : '300px'}
             />

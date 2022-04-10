@@ -47,7 +47,7 @@ export default {
   discover_innovative_startups_Africa_subtext_mobile: `Our platform has since its launch connected over 150 African tech startups with diaspora professionals and investors across the world`,
   Join_our_growing_community: 'Join our growing community',
   What_others_say_bantaba: `What others say about Bantaba`,
-  read_more: 'Read Mpore',
+  read_more: 'Read More',
   Read_more_about_us_desktop: 'Read more about us',
   view_all_desktop: 'View all',
   press_mobile: 'Press',
@@ -100,7 +100,7 @@ export default {
   mentor: 'Mentor',
   consult: 'Consult',
   name: 'Name',
-  email: 'Email', 
+  email: 'Email',
   message: `Message`,
   category: 'Category',
   connect: 'Connect',
@@ -111,7 +111,6 @@ export default {
   pls_fill_missing: `Please fill in the missing inputs`,
   pls_valid_email: `Please provide a valid email`,
   Ooppss: `Ooppss! Something went wrong. Please try later.`,
-
 
   faqs: `FAQs`,
 

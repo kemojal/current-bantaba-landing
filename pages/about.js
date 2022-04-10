@@ -404,7 +404,7 @@ export default function About({ team }) {
             <div className='img-wrapper'>
               <div className={`about-img-1 ${imgSkeleton} hide-on-desktop`}>
                 <Image
-                  src={'/assets/images/Group-image_1.jpg'}
+                  src={'/assets/images/Group-image_1-optimized.jpg'}
                   alt='logo'
                   layout='fill'
                   objectFit='contain'
@@ -415,7 +415,7 @@ export default function About({ team }) {
                 className={`about-img-2 h-422 ${imgSkeleton} hide-on-mobile`}
               >
                 <Image
-                  src={'/assets/images/Group-image_1.jpg'}
+                  src={'/assets/images/Group-image_1-optimized.jpg'}
                   alt='logo'
                   layout='fill'
                   objectFit='contain'
@@ -447,7 +447,7 @@ export default function About({ team }) {
 
             <div className='about-img-2 hide-on-desktop'>
               <Img
-                src={'Group-image_2.jpg'}
+                src={'Group-image_2-optimized.jpg'}
                 alt='logo'
                 layout='fill'
                 objectFit='contain'
@@ -456,7 +456,7 @@ export default function About({ team }) {
             </div>
             <div className='about-img-2 h-324 hide-on-mobile'>
               <Img
-                src={'Group-image_2.jpg'}
+                src={'Group-image_2-optimized.jpg'}
                 alt='logo'
                 layout='fill'
                 objectFit='contain'
@@ -482,7 +482,7 @@ export default function About({ team }) {
           <div className='desk-textcolum align-column-end'>
             <div className='about-img-2 h-399 hide-on-mobile'>
               <Img
-                src={'Group-image_3.jpg'}
+                src={'Group-image_3-optimized.jpg'}
                 alt='logo'
                 layout='fill'
                 objectFit='contain'

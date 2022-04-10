@@ -113,11 +113,11 @@ const NavContainer = styled.div`
     height: 24px;
     
   } */
-  .logo-container {
-    position: relative;
-    width: 148px;
-    height: 30px;
-}
+    .logo-container {
+      position: relative;
+      width: 148px;
+      height: 30px;
+    }
 
     .desk-left-nav {
       display: flex;
@@ -132,7 +132,7 @@ const NavContainer = styled.div`
       line-height: 150%;
       color: #5b615e;
       margin: ${({ currentLanguage }) =>
-        currentLanguage == 'en' ? '0px 25px' : '0px 6px'};
+        currentLanguage == 'en' ? '0px 25px' : '0px 8px'};
 
       padding: 10px 0;
       text-align: center;
@@ -570,7 +570,7 @@ export const NavBar = ({ locale, router, path, currentlan }) => {
                 title={currentlan.sign_up}
                 isArrow={true}
                 color={'white'}
-                href='https://community.ourbantaba.com/en/register'
+                href={`https://community.ourbantaba.com/${currentLanguage}/register`}
                 fontSize='1rem'
                 mRight='0px'
               />

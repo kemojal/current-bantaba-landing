@@ -80,7 +80,7 @@ const MobileStartup = ({ lang }) => {
 
       <div className='device-frame'>
         <Img
-           src='mobile-pic-3b.svg'
+          src='mobile-pic-3b.svg'
           alt='logo'
           layout='fill'
           objectFit='contain'
@@ -102,7 +102,7 @@ const MobileStartup = ({ lang }) => {
           title={lang.join_as_startup}
           bgcolor='var(--algae-green)'
           color='var(--licorice)'
-          href='https://community.ourbantaba.com/en/register'
+          href={`https://community.ourbantaba.com/${currentLanguage}/register`}
           width={currentLanguage === 'en' ? '218.2px' : '300px'}
         />
       </div>

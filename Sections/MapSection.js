@@ -207,7 +207,7 @@ export const MapSection = ({ lang }) => {
           <LinkContainer>
             <Link
               className='link'
-              href='https://community.ourbantaba.com/en/register'
+              href={`https://community.ourbantaba.com/${currentLanguage}/register`}
             >
               <a>{lang.Join_our_growing_community}</a>
             </Link>

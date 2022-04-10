@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
+import { GlobalContext } from '../context/GlobalState';
 import { Button } from '../components/Button';
 import { Img } from '../components/Img';
 import Link from 'next/link';
@@ -167,13 +168,14 @@ const ArrowIcon = styled.div`
   margin-left: 10px;
 `;
 export const AboutSection = ({ lang }) => {
+  const { currentLanguage } = useContext(GlobalContext);
   return (
     <AboutSectionContainer>
       <div className='container'>
         <div className='about-left'>
           <div className='about-img'>
             <Img
-              src='about-pic-3.svg'
+              src='about-pic-3-optimized.jpg'
               alt='about bantaba'
               layout='fill'
               objectFit='contain'
@@ -202,7 +204,7 @@ export const AboutSection = ({ lang }) => {
             <LinkContainer>
               <Link
                 className='link'
-                href={'https://community.ourbantaba.com/en/register'}
+                href={`https://community.ourbantaba.com/${currentLanguage}/register`}
               >
                 <a>{lang.lets_build_africa}</a>
               </Link>

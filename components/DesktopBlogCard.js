@@ -157,20 +157,18 @@ const DesktopBlogCard = ({
       onClick={showDetail}
     >
       <div className='blog-img-cover'>
-        
-          <div className={`b-img-wrapper ${imgSkeleton}`}>
-            <Image
-              src={cover_img}
-              alt='logo'
-              layout='fill'
-              objectFit='cover'
-              onLoad={(e) => {
-                e.target.src.indexOf('data:image/gif;base64') < 0 &&
-                  handleLoaded();
-              }}
-            />
-          </div>
-        
+        <div className={`b-img-wrapper ${imgSkeleton}`}>
+          <Image
+            src={cover_img}
+            alt='logo'
+            layout='fill'
+            objectFit='cover'
+            onLoad={(e) => {
+              e.target.src.indexOf('data:image/gif;base64') < 0 &&
+                handleLoaded();
+            }}
+          />
+        </div>
       </div>
       <div className='blog-card-body'>
         {loaded ? (

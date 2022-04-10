@@ -181,7 +181,14 @@ const SourceRow = styled.div`
     }
   }
 `;
-export const PressCard = ({ title, author, author_image, cover_img, link }) => {
+export const PressCard = ({
+  title,
+  author,
+  author_image,
+  cover_img,
+  link,
+  read_more,
+}) => {
   return (
     <PCard>
       <div className='wrapper'>
@@ -209,7 +216,7 @@ export const PressCard = ({ title, author, author_image, cover_img, link }) => {
           incubator today. …
         </P> */}
         <a className='read-more' href={link} target='_blank'>
-          <span>Read More</span>
+          <span>{read_more}</span>
           <div className='readmore-icon'>
             <Img
               src='read-more-icon.svg'

@@ -129,14 +129,14 @@ const DesktopDiaspora = ({ lang }) => {
             title={lang.join_as_startup}
             bgcolor='transparent'
             color='#009743'
-            href={'https://community.ourbantaba.com/en/register'}
+            href={`https://community.ourbantaba.com/{currentLanguage}/register`}
           />
         </div>
       </div>
       <DestopLeftIllustration>
         <div className='device-frame2'>
           <Img
-            src='startup-device.png'
+            src='startup-device2.png'
             alt='logo'
             layout='fill'
             objectFit='contain'

@@ -61,11 +61,12 @@ const ImgWrapper = styled.div`
 `;
 
 const Illustration = () => {
+  // src='right-illustration-img.svg'
   return (
     <IllustrationContainer>
       <ImgWrapper>
         <Img
-          src='right-illustration-img.svg'
+          src='right-illustration-img-optimized.png'
           alt='logo'
           layout='fill'
           objectFit='contain'

@@ -171,7 +171,7 @@ function Blog({ blogs }) {
 
         <div className='blog-cards-container mt-24   desktop-layout '>
           <div className='blog-desk-colum-left'>
-            <FeaturedBlogCard {...featured} />
+            <FeaturedBlogCard {...featured} read_more={ lan.read_more}/>
             <div className='previous-blogs-container'>
               {restBlogs.map((item, index) => {
                 if (index === 0 || index > (restBlogs.length - 1) / 2) return;

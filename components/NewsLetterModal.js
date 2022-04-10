@@ -477,7 +477,11 @@ const NewsLetterModal = ({ lang }) => {
                       placeholder={lang.email}
                     />
                     <Select
-                      value={formData.userCategory || ''}
+                      value={
+                        options.filter(function (option) {
+                          return option.value === formData.userCategory;
+                        }) || ''
+                      }
                       onChange={handleSelectChange}
                       options={options}
                       className='input-select'

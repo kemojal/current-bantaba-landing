@@ -396,8 +396,9 @@ const JoinNewsLetterModal = ({ lang }) => {
           firstname: formData.userName,
           category: formData.userCategory.toLowerCase(),
           email: formData.userEmail,
-          investment_range: '',
+          investment_range: formData.investmentRange || '',
         };
+        // console.log('form data  = ', postData);
 
         try {
           const res = await axios
@@ -419,11 +420,20 @@ const JoinNewsLetterModal = ({ lang }) => {
     }
   };
   const handleSelectChange = (category) => {
+    console.log('user category = ', category);
     setFormData({
       ...formData,
       userCategory: category.value,
     });
   };
+  const handleInvestSelectChange = (range) => {
+    console.log('range  = ', range);
+    setFormData({
+      ...formData,
+      investmentRange: range.value,
+    });
+  };
+
   const validateEmail = (emailAdress) => {
     let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     if (emailAdress.match(regexEmail)) {
@@ -436,6 +446,13 @@ const JoinNewsLetterModal = ({ lang }) => {
     { value: lang.invest, label: lang.invest },
     { value: lang.mentor, label: lang.mentor },
     { value: lang.mentor, label: lang.mentor },
+  ];
+
+  const investmentOptions = [
+    { value: '$1000', label: '$1000' },
+    { value: '1001 - $50000', label: '1001 - $50000' },
+    { value: '5001 - $100000', label: '5001 - $100000' },
+    { value: '$100000+', label: '$100000+' },
   ];
 
   return (
@@ -469,12 +486,36 @@ const JoinNewsLetterModal = ({ lang }) => {
                       placeholder={lang.email}
                     />
                     <Select
-                      value={formData.userCategory || ''}
-                      onChange={handleSelectChange}
+                      value={
+                        options.filter(function (option) {
+                          return option.value === formData.userCategory;
+                        }) || ''
+                      }
+                      onChange={(value) => {
+                        handleSelectChange(value);
+                      }}
                       options={options}
                       className='input-select'
                       placeholder={lang.category}
                     />
+                    {formData.userCategory === lang.invest && (
+                      <Select
+                        // formData.investmentRange
+
+                        value={
+                          investmentOptions.filter(function (option) {
+                            return option.value === formData.investmentRange;
+                          }) || ''
+                        }
+                        onChange={(value) => {
+                          handleInvestSelectChange(value);
+                        }}
+                        options={investmentOptions}
+                        className='input-select'
+                        placeholder={'investment range'}
+                      />
+                    )}
+
                     <input
                       type='submit'
                       value={lang.connect}

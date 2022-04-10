@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
 import { Img } from '../components/Img';
@@ -12,6 +12,8 @@ import { useTranslation } from 'next-i18next';
 import ButtonArrow from '../components/ButtonArrow.';
 import Function from '../components/Function';
 import Illustration from './Illustration';
+
+import { GlobalContext } from '../context/GlobalState';
 
 import Slide from 'react-reveal/Zoom';
 
@@ -161,6 +163,8 @@ const VideoPlaceholder = styled.div`
 export const Hero = ({ lang }) => {
   const { t, i18n } = useTranslation();
 
+  const { currentLanguage } = useContext(GlobalContext);
+
   const functionsData = [
     {
       text: lang.knowledge,
@@ -192,7 +196,7 @@ export const Hero = ({ lang }) => {
           isArrow={true}
           color={'white'}
           maxWidth='276.4px'
-          href='https://community.ourbantaba.com/en/register'
+          href={`https://community.ourbantaba.com/${currentLanguage}/register`}
         />
         <ButtonArrow
           className='w-120-btn'
@@ -200,7 +204,7 @@ export const Hero = ({ lang }) => {
           bgcolor='transparent'
           color='#009743'
           maxWidth='150px'
-          href='https://community.ourbantaba.com/en/login'
+          href={`https://community.ourbantaba.com/${currentLanguage}/login`}
         />
       </div>
       <VideoPlaceholder>

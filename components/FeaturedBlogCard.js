@@ -133,6 +133,7 @@ const FeaturedBlogCard = ({
   full_text,
   tags,
   related,
+  read_more,
 }) => {
   const { showBlogDetail, showBlogDetailFunction, setBlogDetailFunction } =
     useContext(GlobalContext);
@@ -242,7 +243,7 @@ const FeaturedBlogCard = ({
         {loaded ? (
           <div onClick={showDetail} className='read-button'>
             <span>
-              <a>Read More</a>
+              <a>{read_more}</a>
             </span>
           </div>
         ) : (

@@ -130,7 +130,7 @@ export const Press = ({ press, lang }) => {
 
         <div className='card-container' ref={scrollRef}>
           {press.press.map((item, index) => {
-            return <PressCard key={index} {...item}/>;
+            return <PressCard key={index} {...item} read_more={ lang.read_more}/>;
           })}
         </div>
 
