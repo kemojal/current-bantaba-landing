@@ -91,7 +91,7 @@ const Cards = styled.div`
   width: 100vw;
   overflow-x: scroll;
   align-items: center;
-  justify-content: center;
+  /* justify-content: center; */
   position: relative;
   overscroll-behavior-x: contain;
   scroll-snap-type: x mandatory;
