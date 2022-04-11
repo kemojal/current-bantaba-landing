@@ -2,8 +2,6 @@ import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { Img } from './Img';
 import WhyFunction from './WhyFunction';
-import { motion } from 'framer-motion';
-import { useIntersection } from 'react-use';
 import ButtonArrow from './ButtonArrow.';
 
 import { GlobalContext } from '../context/GlobalState';
